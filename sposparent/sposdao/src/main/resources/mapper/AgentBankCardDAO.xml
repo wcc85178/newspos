@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AgentBankCardDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.AgentBankCard">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="bank_card_code" jdbcType="VARCHAR" property="bankCardCode" />
+    <result column="bank_card_name" jdbcType="VARCHAR" property="bankCardName" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="black_flag" jdbcType="VARCHAR" property="blackFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="man_id_card" jdbcType="VARCHAR" property="manIdCard" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bank_card_code, bank_card_name, ref_agent_id, black_flag, create_time, man_id_card, 
+    tel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from agent_bank_card
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from agent_bank_card
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.AgentBankCard">
+    insert into agent_bank_card (id, bank_card_code, bank_card_name, 
+      ref_agent_id, black_flag, create_time, 
+      man_id_card, tel)
+    values (#{id,jdbcType=INTEGER}, #{bankCardCode,jdbcType=VARCHAR}, #{bankCardName,jdbcType=VARCHAR}, 
+      #{refAgentId,jdbcType=INTEGER}, #{blackFlag,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{manIdCard,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.AgentBankCard">
+    insert into agent_bank_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code,
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="blackFlag != null">
+        black_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="manIdCard != null">
+        man_id_card,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bankCardCode != null">
+        #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="blackFlag != null">
+        #{blackFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manIdCard != null">
+        #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.AgentBankCard">
+    update agent_bank_card
+    <set>
+      <if test="bankCardCode != null">
+        bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="blackFlag != null">
+        black_flag = #{blackFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manIdCard != null">
+        man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.AgentBankCard">
+    update agent_bank_card
+    set bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      black_flag = #{blackFlag,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

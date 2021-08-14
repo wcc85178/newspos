@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.BankAuthDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.BankAuth">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="bank_flag" jdbcType="INTEGER" property="bankFlag" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="cardtype" jdbcType="VARCHAR" property="cardtype" />
+    <result column="cardname" jdbcType="VARCHAR" property="cardname" />
+    <result column="bankname" jdbcType="VARCHAR" property="bankname" />
+    <result column="banknum" jdbcType="VARCHAR" property="banknum" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="servicephone" jdbcType="VARCHAR" property="servicephone" />
+    <result column="cardprefixnum" jdbcType="VARCHAR" property="cardprefixnum" />
+    <result column="lenth" jdbcType="VARCHAR" property="lenth" />
+    <result column="card_no_length" jdbcType="VARCHAR" property="cardNoLength" />
+    <result column="bank_unionpay_all" jdbcType="VARCHAR" property="bankUnionpayAll" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bank_flag, code, cardtype, cardname, bankname, banknum, province, city, servicephone, 
+    cardprefixnum, lenth, card_no_length, bank_unionpay_all
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bank_auth
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bank_auth
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.BankAuth">
+    insert into bank_auth (id, bank_flag, code, 
+      cardtype, cardname, bankname, 
+      banknum, province, city, 
+      servicephone, cardprefixnum, lenth, 
+      card_no_length, bank_unionpay_all)
+    values (#{id,jdbcType=INTEGER}, #{bankFlag,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{cardtype,jdbcType=VARCHAR}, #{cardname,jdbcType=VARCHAR}, #{bankname,jdbcType=VARCHAR}, 
+      #{banknum,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{servicephone,jdbcType=VARCHAR}, #{cardprefixnum,jdbcType=VARCHAR}, #{lenth,jdbcType=VARCHAR}, 
+      #{cardNoLength,jdbcType=VARCHAR}, #{bankUnionpayAll,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.BankAuth">
+    insert into bank_auth
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bankFlag != null">
+        bank_flag,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="cardtype != null">
+        cardtype,
+      </if>
+      <if test="cardname != null">
+        cardname,
+      </if>
+      <if test="bankname != null">
+        bankname,
+      </if>
+      <if test="banknum != null">
+        banknum,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="servicephone != null">
+        servicephone,
+      </if>
+      <if test="cardprefixnum != null">
+        cardprefixnum,
+      </if>
+      <if test="lenth != null">
+        lenth,
+      </if>
+      <if test="cardNoLength != null">
+        card_no_length,
+      </if>
+      <if test="bankUnionpayAll != null">
+        bank_unionpay_all,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bankFlag != null">
+        #{bankFlag,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null">
+        #{cardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="cardname != null">
+        #{cardname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="banknum != null">
+        #{banknum,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="servicephone != null">
+        #{servicephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cardprefixnum != null">
+        #{cardprefixnum,jdbcType=VARCHAR},
+      </if>
+      <if test="lenth != null">
+        #{lenth,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNoLength != null">
+        #{cardNoLength,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUnionpayAll != null">
+        #{bankUnionpayAll,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.BankAuth">
+    update bank_auth
+    <set>
+      <if test="bankFlag != null">
+        bank_flag = #{bankFlag,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null">
+        cardtype = #{cardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="cardname != null">
+        cardname = #{cardname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="banknum != null">
+        banknum = #{banknum,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="servicephone != null">
+        servicephone = #{servicephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cardprefixnum != null">
+        cardprefixnum = #{cardprefixnum,jdbcType=VARCHAR},
+      </if>
+      <if test="lenth != null">
+        lenth = #{lenth,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNoLength != null">
+        card_no_length = #{cardNoLength,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUnionpayAll != null">
+        bank_unionpay_all = #{bankUnionpayAll,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.BankAuth">
+    update bank_auth
+    set bank_flag = #{bankFlag,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      cardtype = #{cardtype,jdbcType=VARCHAR},
+      cardname = #{cardname,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      banknum = #{banknum,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      servicephone = #{servicephone,jdbcType=VARCHAR},
+      cardprefixnum = #{cardprefixnum,jdbcType=VARCHAR},
+      lenth = #{lenth,jdbcType=VARCHAR},
+      card_no_length = #{cardNoLength,jdbcType=VARCHAR},
+      bank_unionpay_all = #{bankUnionpayAll,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

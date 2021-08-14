@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Pos">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sn_code" jdbcType="VARCHAR" property="snCode" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="pos_factory_id" jdbcType="INTEGER" property="posFactoryId" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="out_time" jdbcType="TIMESTAMP" property="outTime" />
+    <result column="bind_time" jdbcType="TIMESTAMP" property="bindTime" />
+    <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
+    <result column="main_key1" jdbcType="VARCHAR" property="mainKey1" />
+    <result column="main_key2" jdbcType="VARCHAR" property="mainKey2" />
+    <result column="main_key_checkvalue" jdbcType="VARCHAR" property="mainKeyCheckvalue" />
+    <result column="pik1" jdbcType="VARCHAR" property="pik1" />
+    <result column="pik2" jdbcType="VARCHAR" property="pik2" />
+    <result column="pik_checkvalue" jdbcType="VARCHAR" property="pikCheckvalue" />
+    <result column="mak1" jdbcType="VARCHAR" property="mak1" />
+    <result column="mak2" jdbcType="VARCHAR" property="mak2" />
+    <result column="mak_checkvalue" jdbcType="VARCHAR" property="makCheckvalue" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="used_flag" jdbcType="SMALLINT" property="usedFlag" />
+    <result column="ref_customer_id" jdbcType="INTEGER" property="refCustomerId" />
+    <result column="last_sign_time" jdbcType="TIMESTAMP" property="lastSignTime" />
+    <result column="needChargeBack" jdbcType="VARCHAR" property="needchargeback" />
+    <result column="chargeBackDone" jdbcType="VARCHAR" property="chargebackdone" />
+    <result column="chargeBackAmount" jdbcType="VARCHAR" property="chargebackamount" />
+    <result column="simno" jdbcType="VARCHAR" property="simno" />
+    <result column="imei" jdbcType="VARCHAR" property="imei" />
+    <result column="mainkey_download_time" jdbcType="TIMESTAMP" property="mainkeyDownloadTime" />
+    <result column="is_update" jdbcType="INTEGER" property="isUpdate" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="first_ins_id" jdbcType="INTEGER" property="firstInsId" />
+    <result column="policy_id" jdbcType="VARCHAR" property="policyId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sn_code, code, pos_factory_id, `security`, create_time, out_time, bind_time, 
+    active_time, main_key1, main_key2, main_key_checkvalue, pik1, pik2, pik_checkvalue, 
+    mak1, mak2, mak_checkvalue, mark, operator_name, used_flag, ref_customer_id, last_sign_time, 
+    needChargeBack, chargeBackDone, chargeBackAmount, simno, imei, mainkey_download_time, 
+    is_update, version, first_ins_id, policy_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Pos">
+    insert into pos (id, sn_code, code, 
+      pos_factory_id, `security`, create_time, 
+      out_time, bind_time, active_time, 
+      main_key1, main_key2, main_key_checkvalue, 
+      pik1, pik2, pik_checkvalue, 
+      mak1, mak2, mak_checkvalue, 
+      mark, operator_name, used_flag, 
+      ref_customer_id, last_sign_time, needChargeBack, 
+      chargeBackDone, chargeBackAmount, simno, 
+      imei, mainkey_download_time, is_update, 
+      version, first_ins_id, policy_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{snCode,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{posFactoryId,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{outTime,jdbcType=TIMESTAMP}, #{bindTime,jdbcType=TIMESTAMP}, #{activeTime,jdbcType=TIMESTAMP}, 
+      #{mainKey1,jdbcType=VARCHAR}, #{mainKey2,jdbcType=VARCHAR}, #{mainKeyCheckvalue,jdbcType=VARCHAR}, 
+      #{pik1,jdbcType=VARCHAR}, #{pik2,jdbcType=VARCHAR}, #{pikCheckvalue,jdbcType=VARCHAR}, 
+      #{mak1,jdbcType=VARCHAR}, #{mak2,jdbcType=VARCHAR}, #{makCheckvalue,jdbcType=VARCHAR}, 
+      #{mark,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{usedFlag,jdbcType=SMALLINT}, 
+      #{refCustomerId,jdbcType=INTEGER}, #{lastSignTime,jdbcType=TIMESTAMP}, #{needchargeback,jdbcType=VARCHAR}, 
+      #{chargebackdone,jdbcType=VARCHAR}, #{chargebackamount,jdbcType=VARCHAR}, #{simno,jdbcType=VARCHAR}, 
+      #{imei,jdbcType=VARCHAR}, #{mainkeyDownloadTime,jdbcType=TIMESTAMP}, #{isUpdate,jdbcType=INTEGER}, 
+      #{version,jdbcType=VARCHAR}, #{firstInsId,jdbcType=INTEGER}, #{policyId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Pos">
+    insert into pos
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="snCode != null">
+        sn_code,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="posFactoryId != null">
+        pos_factory_id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="outTime != null">
+        out_time,
+      </if>
+      <if test="bindTime != null">
+        bind_time,
+      </if>
+      <if test="activeTime != null">
+        active_time,
+      </if>
+      <if test="mainKey1 != null">
+        main_key1,
+      </if>
+      <if test="mainKey2 != null">
+        main_key2,
+      </if>
+      <if test="mainKeyCheckvalue != null">
+        main_key_checkvalue,
+      </if>
+      <if test="pik1 != null">
+        pik1,
+      </if>
+      <if test="pik2 != null">
+        pik2,
+      </if>
+      <if test="pikCheckvalue != null">
+        pik_checkvalue,
+      </if>
+      <if test="mak1 != null">
+        mak1,
+      </if>
+      <if test="mak2 != null">
+        mak2,
+      </if>
+      <if test="makCheckvalue != null">
+        mak_checkvalue,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="usedFlag != null">
+        used_flag,
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id,
+      </if>
+      <if test="lastSignTime != null">
+        last_sign_time,
+      </if>
+      <if test="needchargeback != null">
+        needChargeBack,
+      </if>
+      <if test="chargebackdone != null">
+        chargeBackDone,
+      </if>
+      <if test="chargebackamount != null">
+        chargeBackAmount,
+      </if>
+      <if test="simno != null">
+        simno,
+      </if>
+      <if test="imei != null">
+        imei,
+      </if>
+      <if test="mainkeyDownloadTime != null">
+        mainkey_download_time,
+      </if>
+      <if test="isUpdate != null">
+        is_update,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="firstInsId != null">
+        first_ins_id,
+      </if>
+      <if test="policyId != null">
+        policy_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="snCode != null">
+        #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="posFactoryId != null">
+        #{posFactoryId,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outTime != null">
+        #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bindTime != null">
+        #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTime != null">
+        #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainKey1 != null">
+        #{mainKey1,jdbcType=VARCHAR},
+      </if>
+      <if test="mainKey2 != null">
+        #{mainKey2,jdbcType=VARCHAR},
+      </if>
+      <if test="mainKeyCheckvalue != null">
+        #{mainKeyCheckvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="pik1 != null">
+        #{pik1,jdbcType=VARCHAR},
+      </if>
+      <if test="pik2 != null">
+        #{pik2,jdbcType=VARCHAR},
+      </if>
+      <if test="pikCheckvalue != null">
+        #{pikCheckvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="mak1 != null">
+        #{mak1,jdbcType=VARCHAR},
+      </if>
+      <if test="mak2 != null">
+        #{mak2,jdbcType=VARCHAR},
+      </if>
+      <if test="makCheckvalue != null">
+        #{makCheckvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="usedFlag != null">
+        #{usedFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="refCustomerId != null">
+        #{refCustomerId,jdbcType=INTEGER},
+      </if>
+      <if test="lastSignTime != null">
+        #{lastSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="needchargeback != null">
+        #{needchargeback,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackdone != null">
+        #{chargebackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackamount != null">
+        #{chargebackamount,jdbcType=VARCHAR},
+      </if>
+      <if test="simno != null">
+        #{simno,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="mainkeyDownloadTime != null">
+        #{mainkeyDownloadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUpdate != null">
+        #{isUpdate,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="firstInsId != null">
+        #{firstInsId,jdbcType=INTEGER},
+      </if>
+      <if test="policyId != null">
+        #{policyId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Pos">
+    update pos
+    <set>
+      <if test="snCode != null">
+        sn_code = #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="posFactoryId != null">
+        pos_factory_id = #{posFactoryId,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outTime != null">
+        out_time = #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bindTime != null">
+        bind_time = #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTime != null">
+        active_time = #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainKey1 != null">
+        main_key1 = #{mainKey1,jdbcType=VARCHAR},
+      </if>
+      <if test="mainKey2 != null">
+        main_key2 = #{mainKey2,jdbcType=VARCHAR},
+      </if>
+      <if test="mainKeyCheckvalue != null">
+        main_key_checkvalue = #{mainKeyCheckvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="pik1 != null">
+        pik1 = #{pik1,jdbcType=VARCHAR},
+      </if>
+      <if test="pik2 != null">
+        pik2 = #{pik2,jdbcType=VARCHAR},
+      </if>
+      <if test="pikCheckvalue != null">
+        pik_checkvalue = #{pikCheckvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="mak1 != null">
+        mak1 = #{mak1,jdbcType=VARCHAR},
+      </if>
+      <if test="mak2 != null">
+        mak2 = #{mak2,jdbcType=VARCHAR},
+      </if>
+      <if test="makCheckvalue != null">
+        mak_checkvalue = #{makCheckvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="usedFlag != null">
+        used_flag = #{usedFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      </if>
+      <if test="lastSignTime != null">
+        last_sign_time = #{lastSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="needchargeback != null">
+        needChargeBack = #{needchargeback,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackdone != null">
+        chargeBackDone = #{chargebackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackamount != null">
+        chargeBackAmount = #{chargebackamount,jdbcType=VARCHAR},
+      </if>
+      <if test="simno != null">
+        simno = #{simno,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="mainkeyDownloadTime != null">
+        mainkey_download_time = #{mainkeyDownloadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUpdate != null">
+        is_update = #{isUpdate,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="firstInsId != null">
+        first_ins_id = #{firstInsId,jdbcType=INTEGER},
+      </if>
+      <if test="policyId != null">
+        policy_id = #{policyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Pos">
+    update pos
+    set sn_code = #{snCode,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      pos_factory_id = #{posFactoryId,jdbcType=INTEGER},
+      `security` = #{security,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      out_time = #{outTime,jdbcType=TIMESTAMP},
+      bind_time = #{bindTime,jdbcType=TIMESTAMP},
+      active_time = #{activeTime,jdbcType=TIMESTAMP},
+      main_key1 = #{mainKey1,jdbcType=VARCHAR},
+      main_key2 = #{mainKey2,jdbcType=VARCHAR},
+      main_key_checkvalue = #{mainKeyCheckvalue,jdbcType=VARCHAR},
+      pik1 = #{pik1,jdbcType=VARCHAR},
+      pik2 = #{pik2,jdbcType=VARCHAR},
+      pik_checkvalue = #{pikCheckvalue,jdbcType=VARCHAR},
+      mak1 = #{mak1,jdbcType=VARCHAR},
+      mak2 = #{mak2,jdbcType=VARCHAR},
+      mak_checkvalue = #{makCheckvalue,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      used_flag = #{usedFlag,jdbcType=SMALLINT},
+      ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      last_sign_time = #{lastSignTime,jdbcType=TIMESTAMP},
+      needChargeBack = #{needchargeback,jdbcType=VARCHAR},
+      chargeBackDone = #{chargebackdone,jdbcType=VARCHAR},
+      chargeBackAmount = #{chargebackamount,jdbcType=VARCHAR},
+      simno = #{simno,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      mainkey_download_time = #{mainkeyDownloadTime,jdbcType=TIMESTAMP},
+      is_update = #{isUpdate,jdbcType=INTEGER},
+      version = #{version,jdbcType=VARCHAR},
+      first_ins_id = #{firstInsId,jdbcType=INTEGER},
+      policy_id = #{policyId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

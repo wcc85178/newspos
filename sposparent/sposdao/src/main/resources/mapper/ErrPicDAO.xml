@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.ErrPicDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.ErrPic">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="trans_id" jdbcType="INTEGER" property="transId" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="pic_type" jdbcType="INTEGER" property="picType" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="from_type" jdbcType="INTEGER" property="fromType" />
+    <result column="sign_pic" jdbcType="VARCHAR" property="signPic" />
+  </resultMap>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.ErrPic">
+    insert into err_pic (id, trans_id, pic_url, 
+      pic_type, is_valid, create_date, 
+      create_by, from_type, sign_pic
+      )
+    values (#{id,jdbcType=INTEGER}, #{transId,jdbcType=INTEGER}, #{picUrl,jdbcType=VARCHAR}, 
+      #{picType,jdbcType=INTEGER}, #{isValid,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{fromType,jdbcType=INTEGER}, #{signPic,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.ErrPic">
+    insert into err_pic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="transId != null">
+        trans_id,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="picType != null">
+        pic_type,
+      </if>
+      <if test="isValid != null">
+        is_valid,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="fromType != null">
+        from_type,
+      </if>
+      <if test="signPic != null">
+        sign_pic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="transId != null">
+        #{transId,jdbcType=INTEGER},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picType != null">
+        #{picType,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="fromType != null">
+        #{fromType,jdbcType=INTEGER},
+      </if>
+      <if test="signPic != null">
+        #{signPic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

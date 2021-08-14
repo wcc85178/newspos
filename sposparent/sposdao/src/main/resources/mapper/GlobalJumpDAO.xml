@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.GlobalJumpDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.GlobalJump">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="high_money" jdbcType="DECIMAL" property="highMoney" />
+    <result column="low_money" jdbcType="DECIMAL" property="lowMoney" />
+    <result column="rule_flag" jdbcType="INTEGER" property="ruleFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, create_time, enable_flag, high_money, low_money, rule_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from global_jump
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from global_jump
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.GlobalJump">
+    insert into global_jump (id, `security`, create_time, 
+      enable_flag, high_money, low_money, 
+      rule_flag)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{enableFlag,jdbcType=INTEGER}, #{highMoney,jdbcType=DECIMAL}, #{lowMoney,jdbcType=DECIMAL}, 
+      #{ruleFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.GlobalJump">
+    insert into global_jump
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="highMoney != null">
+        high_money,
+      </if>
+      <if test="lowMoney != null">
+        low_money,
+      </if>
+      <if test="ruleFlag != null">
+        rule_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="highMoney != null">
+        #{highMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="lowMoney != null">
+        #{lowMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="ruleFlag != null">
+        #{ruleFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.GlobalJump">
+    update global_jump
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="highMoney != null">
+        high_money = #{highMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="lowMoney != null">
+        low_money = #{lowMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="ruleFlag != null">
+        rule_flag = #{ruleFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.GlobalJump">
+    update global_jump
+    set `security` = #{security,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      high_money = #{highMoney,jdbcType=DECIMAL},
+      low_money = #{lowMoney,jdbcType=DECIMAL},
+      rule_flag = #{ruleFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

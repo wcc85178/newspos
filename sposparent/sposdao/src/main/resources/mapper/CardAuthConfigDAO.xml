@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CardAuthConfigDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CardAuthConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pay_code" jdbcType="VARCHAR" property="payCode" />
+    <result column="ture_name_code" jdbcType="VARCHAR" property="tureNameCode" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="update" jdbcType="TIMESTAMP" property="update" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pay_code, ture_name_code, agent_id, `update`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from card_auth_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from card_auth_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CardAuthConfig">
+    insert into card_auth_config (id, pay_code, ture_name_code, 
+      agent_id, `update`)
+    values (#{id,jdbcType=INTEGER}, #{payCode,jdbcType=VARCHAR}, #{tureNameCode,jdbcType=VARCHAR}, 
+      #{agentId,jdbcType=INTEGER}, #{update,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CardAuthConfig">
+    insert into card_auth_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="payCode != null">
+        pay_code,
+      </if>
+      <if test="tureNameCode != null">
+        ture_name_code,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="update != null">
+        `update`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="payCode != null">
+        #{payCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tureNameCode != null">
+        #{tureNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="update != null">
+        #{update,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CardAuthConfig">
+    update card_auth_config
+    <set>
+      <if test="payCode != null">
+        pay_code = #{payCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tureNameCode != null">
+        ture_name_code = #{tureNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="update != null">
+        `update` = #{update,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CardAuthConfig">
+    update card_auth_config
+    set pay_code = #{payCode,jdbcType=VARCHAR},
+      ture_name_code = #{tureNameCode,jdbcType=VARCHAR},
+      agent_id = #{agentId,jdbcType=INTEGER},
+      `update` = #{update,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

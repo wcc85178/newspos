@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosRunningNoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosRunningNo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="pos_running_no" jdbcType="INTEGER" property="posRunningNo" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="ref_pos_id" jdbcType="INTEGER" property="refPosId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, pos_running_no, version, ref_pos_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_running_no
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_running_no
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosRunningNo">
+    insert into pos_running_no (id, `security`, pos_running_no, 
+      version, ref_pos_id)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{posRunningNo,jdbcType=INTEGER}, 
+      #{version,jdbcType=INTEGER}, #{refPosId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosRunningNo">
+    insert into pos_running_no
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="posRunningNo != null">
+        pos_running_no,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="refPosId != null">
+        ref_pos_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="posRunningNo != null">
+        #{posRunningNo,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="refPosId != null">
+        #{refPosId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosRunningNo">
+    update pos_running_no
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="posRunningNo != null">
+        pos_running_no = #{posRunningNo,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="refPosId != null">
+        ref_pos_id = #{refPosId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosRunningNo">
+    update pos_running_no
+    set `security` = #{security,jdbcType=VARCHAR},
+      pos_running_no = #{posRunningNo,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      ref_pos_id = #{refPosId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

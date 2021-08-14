@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.HsCoreTransLogbakDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.HsCoreTransLogbak">
+    <id column="transLogId" jdbcType="BIGINT" property="translogid" />
+    <result column="intTxnDt" jdbcType="CHAR" property="inttxndt" />
+    <result column="intTxnTm" jdbcType="CHAR" property="inttxntm" />
+    <result column="chTxnDt" jdbcType="CHAR" property="chtxndt" />
+    <result column="chTxnTm" jdbcType="CHAR" property="chtxntm" />
+    <result column="transSource" jdbcType="CHAR" property="transsource" />
+    <result column="transType" jdbcType="CHAR" property="transtype" />
+    <result column="msgTypeId" jdbcType="CHAR" property="msgtypeid" />
+    <result column="tradeCode" jdbcType="CHAR" property="tradecode" />
+    <result column="serverCode" jdbcType="CHAR" property="servercode" />
+    <result column="serverTypeCode" jdbcType="CHAR" property="servertypecode" />
+    <result column="cardSeriNo" jdbcType="CHAR" property="cardserino" />
+    <result column="trackingNo" jdbcType="CHAR" property="trackingno" />
+    <result column="origTrackingNo" jdbcType="CHAR" property="origtrackingno" />
+    <result column="referenceNo" jdbcType="CHAR" property="referenceno" />
+    <result column="merId" jdbcType="CHAR" property="merid" />
+    <result column="termId" jdbcType="CHAR" property="termid" />
+    <result column="orgNo" jdbcType="CHAR" property="orgno" />
+    <result column="agentNo" jdbcType="CHAR" property="agentno" />
+    <result column="batchId" jdbcType="CHAR" property="batchid" />
+    <result column="chMerId" jdbcType="CHAR" property="chmerid" />
+    <result column="chTermId" jdbcType="CHAR" property="chtermid" />
+    <result column="chBatchId" jdbcType="CHAR" property="chbatchid" />
+    <result column="chTrackingNo" jdbcType="CHAR" property="chtrackingno" />
+    <result column="settleDt" jdbcType="CHAR" property="settledt" />
+    <result column="transAmt" jdbcType="DECIMAL" property="transamt" />
+    <result column="cardNo" jdbcType="CHAR" property="cardno" />
+    <result column="authNo" jdbcType="CHAR" property="authno" />
+    <result column="userDefine60" jdbcType="CHAR" property="userdefine60" />
+    <result column="issNo" jdbcType="CHAR" property="issno" />
+    <result column="acqNo" jdbcType="CHAR" property="acqno" />
+    <result column="expireDt" jdbcType="CHAR" property="expiredt" />
+    <result column="transStat" jdbcType="SMALLINT" property="transstat" />
+    <result column="cancelStat" jdbcType="SMALLINT" property="cancelstat" />
+    <result column="chAddId" jdbcType="INTEGER" property="chaddid" />
+    <result column="replyCd" jdbcType="CHAR" property="replycd" />
+    <result column="checkStatus" jdbcType="SMALLINT" property="checkstatus" />
+    <result column="cardTypeFlag" jdbcType="CHAR" property="cardtypeflag" />
+    <result column="dcdata" jdbcType="CHAR" property="dcdata" />
+    <result column="merchantFee" jdbcType="DECIMAL" property="merchantfee" />
+    <result column="merchantSettle" jdbcType="DECIMAL" property="merchantsettle" />
+    <result column="orgSettle" jdbcType="DECIMAL" property="orgsettle" />
+    <result column="channelSettle" jdbcType="DECIMAL" property="channelsettle" />
+    <result column="lastUpdTs" jdbcType="TIMESTAMP" property="lastupdts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    transLogId, intTxnDt, intTxnTm, chTxnDt, chTxnTm, transSource, transType, msgTypeId, 
+    tradeCode, serverCode, serverTypeCode, cardSeriNo, trackingNo, origTrackingNo, referenceNo, 
+    merId, termId, orgNo, agentNo, batchId, chMerId, chTermId, chBatchId, chTrackingNo, 
+    settleDt, transAmt, cardNo, authNo, userDefine60, issNo, acqNo, expireDt, transStat, 
+    cancelStat, chAddId, replyCd, checkStatus, cardTypeFlag, dcdata, merchantFee, merchantSettle, 
+    orgSettle, channelSettle, lastUpdTs
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hs_core_trans_logbak
+    where transLogId = #{translogid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hs_core_trans_logbak
+    where transLogId = #{translogid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.HsCoreTransLogbak">
+    insert into hs_core_trans_logbak (transLogId, intTxnDt, intTxnTm, 
+      chTxnDt, chTxnTm, transSource, 
+      transType, msgTypeId, tradeCode, 
+      serverCode, serverTypeCode, cardSeriNo, 
+      trackingNo, origTrackingNo, referenceNo, 
+      merId, termId, orgNo, agentNo, 
+      batchId, chMerId, chTermId, 
+      chBatchId, chTrackingNo, settleDt, 
+      transAmt, cardNo, authNo, 
+      userDefine60, issNo, acqNo, 
+      expireDt, transStat, cancelStat, 
+      chAddId, replyCd, checkStatus, 
+      cardTypeFlag, dcdata, merchantFee, 
+      merchantSettle, orgSettle, channelSettle, 
+      lastUpdTs)
+    values (#{translogid,jdbcType=BIGINT}, #{inttxndt,jdbcType=CHAR}, #{inttxntm,jdbcType=CHAR}, 
+      #{chtxndt,jdbcType=CHAR}, #{chtxntm,jdbcType=CHAR}, #{transsource,jdbcType=CHAR}, 
+      #{transtype,jdbcType=CHAR}, #{msgtypeid,jdbcType=CHAR}, #{tradecode,jdbcType=CHAR}, 
+      #{servercode,jdbcType=CHAR}, #{servertypecode,jdbcType=CHAR}, #{cardserino,jdbcType=CHAR}, 
+      #{trackingno,jdbcType=CHAR}, #{origtrackingno,jdbcType=CHAR}, #{referenceno,jdbcType=CHAR}, 
+      #{merid,jdbcType=CHAR}, #{termid,jdbcType=CHAR}, #{orgno,jdbcType=CHAR}, #{agentno,jdbcType=CHAR}, 
+      #{batchid,jdbcType=CHAR}, #{chmerid,jdbcType=CHAR}, #{chtermid,jdbcType=CHAR}, 
+      #{chbatchid,jdbcType=CHAR}, #{chtrackingno,jdbcType=CHAR}, #{settledt,jdbcType=CHAR}, 
+      #{transamt,jdbcType=DECIMAL}, #{cardno,jdbcType=CHAR}, #{authno,jdbcType=CHAR}, 
+      #{userdefine60,jdbcType=CHAR}, #{issno,jdbcType=CHAR}, #{acqno,jdbcType=CHAR}, 
+      #{expiredt,jdbcType=CHAR}, #{transstat,jdbcType=SMALLINT}, #{cancelstat,jdbcType=SMALLINT}, 
+      #{chaddid,jdbcType=INTEGER}, #{replycd,jdbcType=CHAR}, #{checkstatus,jdbcType=SMALLINT}, 
+      #{cardtypeflag,jdbcType=CHAR}, #{dcdata,jdbcType=CHAR}, #{merchantfee,jdbcType=DECIMAL}, 
+      #{merchantsettle,jdbcType=DECIMAL}, #{orgsettle,jdbcType=DECIMAL}, #{channelsettle,jdbcType=DECIMAL}, 
+      #{lastupdts,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.HsCoreTransLogbak">
+    insert into hs_core_trans_logbak
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="translogid != null">
+        transLogId,
+      </if>
+      <if test="inttxndt != null">
+        intTxnDt,
+      </if>
+      <if test="inttxntm != null">
+        intTxnTm,
+      </if>
+      <if test="chtxndt != null">
+        chTxnDt,
+      </if>
+      <if test="chtxntm != null">
+        chTxnTm,
+      </if>
+      <if test="transsource != null">
+        transSource,
+      </if>
+      <if test="transtype != null">
+        transType,
+      </if>
+      <if test="msgtypeid != null">
+        msgTypeId,
+      </if>
+      <if test="tradecode != null">
+        tradeCode,
+      </if>
+      <if test="servercode != null">
+        serverCode,
+      </if>
+      <if test="servertypecode != null">
+        serverTypeCode,
+      </if>
+      <if test="cardserino != null">
+        cardSeriNo,
+      </if>
+      <if test="trackingno != null">
+        trackingNo,
+      </if>
+      <if test="origtrackingno != null">
+        origTrackingNo,
+      </if>
+      <if test="referenceno != null">
+        referenceNo,
+      </if>
+      <if test="merid != null">
+        merId,
+      </if>
+      <if test="termid != null">
+        termId,
+      </if>
+      <if test="orgno != null">
+        orgNo,
+      </if>
+      <if test="agentno != null">
+        agentNo,
+      </if>
+      <if test="batchid != null">
+        batchId,
+      </if>
+      <if test="chmerid != null">
+        chMerId,
+      </if>
+      <if test="chtermid != null">
+        chTermId,
+      </if>
+      <if test="chbatchid != null">
+        chBatchId,
+      </if>
+      <if test="chtrackingno != null">
+        chTrackingNo,
+      </if>
+      <if test="settledt != null">
+        settleDt,
+      </if>
+      <if test="transamt != null">
+        transAmt,
+      </if>
+      <if test="cardno != null">
+        cardNo,
+      </if>
+      <if test="authno != null">
+        authNo,
+      </if>
+      <if test="userdefine60 != null">
+        userDefine60,
+      </if>
+      <if test="issno != null">
+        issNo,
+      </if>
+      <if test="acqno != null">
+        acqNo,
+      </if>
+      <if test="expiredt != null">
+        expireDt,
+      </if>
+      <if test="transstat != null">
+        transStat,
+      </if>
+      <if test="cancelstat != null">
+        cancelStat,
+      </if>
+      <if test="chaddid != null">
+        chAddId,
+      </if>
+      <if test="replycd != null">
+        replyCd,
+      </if>
+      <if test="checkstatus != null">
+        checkStatus,
+      </if>
+      <if test="cardtypeflag != null">
+        cardTypeFlag,
+      </if>
+      <if test="dcdata != null">
+        dcdata,
+      </if>
+      <if test="merchantfee != null">
+        merchantFee,
+      </if>
+      <if test="merchantsettle != null">
+        merchantSettle,
+      </if>
+      <if test="orgsettle != null">
+        orgSettle,
+      </if>
+      <if test="channelsettle != null">
+        channelSettle,
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="translogid != null">
+        #{translogid,jdbcType=BIGINT},
+      </if>
+      <if test="inttxndt != null">
+        #{inttxndt,jdbcType=CHAR},
+      </if>
+      <if test="inttxntm != null">
+        #{inttxntm,jdbcType=CHAR},
+      </if>
+      <if test="chtxndt != null">
+        #{chtxndt,jdbcType=CHAR},
+      </if>
+      <if test="chtxntm != null">
+        #{chtxntm,jdbcType=CHAR},
+      </if>
+      <if test="transsource != null">
+        #{transsource,jdbcType=CHAR},
+      </if>
+      <if test="transtype != null">
+        #{transtype,jdbcType=CHAR},
+      </if>
+      <if test="msgtypeid != null">
+        #{msgtypeid,jdbcType=CHAR},
+      </if>
+      <if test="tradecode != null">
+        #{tradecode,jdbcType=CHAR},
+      </if>
+      <if test="servercode != null">
+        #{servercode,jdbcType=CHAR},
+      </if>
+      <if test="servertypecode != null">
+        #{servertypecode,jdbcType=CHAR},
+      </if>
+      <if test="cardserino != null">
+        #{cardserino,jdbcType=CHAR},
+      </if>
+      <if test="trackingno != null">
+        #{trackingno,jdbcType=CHAR},
+      </if>
+      <if test="origtrackingno != null">
+        #{origtrackingno,jdbcType=CHAR},
+      </if>
+      <if test="referenceno != null">
+        #{referenceno,jdbcType=CHAR},
+      </if>
+      <if test="merid != null">
+        #{merid,jdbcType=CHAR},
+      </if>
+      <if test="termid != null">
+        #{termid,jdbcType=CHAR},
+      </if>
+      <if test="orgno != null">
+        #{orgno,jdbcType=CHAR},
+      </if>
+      <if test="agentno != null">
+        #{agentno,jdbcType=CHAR},
+      </if>
+      <if test="batchid != null">
+        #{batchid,jdbcType=CHAR},
+      </if>
+      <if test="chmerid != null">
+        #{chmerid,jdbcType=CHAR},
+      </if>
+      <if test="chtermid != null">
+        #{chtermid,jdbcType=CHAR},
+      </if>
+      <if test="chbatchid != null">
+        #{chbatchid,jdbcType=CHAR},
+      </if>
+      <if test="chtrackingno != null">
+        #{chtrackingno,jdbcType=CHAR},
+      </if>
+      <if test="settledt != null">
+        #{settledt,jdbcType=CHAR},
+      </if>
+      <if test="transamt != null">
+        #{transamt,jdbcType=DECIMAL},
+      </if>
+      <if test="cardno != null">
+        #{cardno,jdbcType=CHAR},
+      </if>
+      <if test="authno != null">
+        #{authno,jdbcType=CHAR},
+      </if>
+      <if test="userdefine60 != null">
+        #{userdefine60,jdbcType=CHAR},
+      </if>
+      <if test="issno != null">
+        #{issno,jdbcType=CHAR},
+      </if>
+      <if test="acqno != null">
+        #{acqno,jdbcType=CHAR},
+      </if>
+      <if test="expiredt != null">
+        #{expiredt,jdbcType=CHAR},
+      </if>
+      <if test="transstat != null">
+        #{transstat,jdbcType=SMALLINT},
+      </if>
+      <if test="cancelstat != null">
+        #{cancelstat,jdbcType=SMALLINT},
+      </if>
+      <if test="chaddid != null">
+        #{chaddid,jdbcType=INTEGER},
+      </if>
+      <if test="replycd != null">
+        #{replycd,jdbcType=CHAR},
+      </if>
+      <if test="checkstatus != null">
+        #{checkstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="cardtypeflag != null">
+        #{cardtypeflag,jdbcType=CHAR},
+      </if>
+      <if test="dcdata != null">
+        #{dcdata,jdbcType=CHAR},
+      </if>
+      <if test="merchantfee != null">
+        #{merchantfee,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantsettle != null">
+        #{merchantsettle,jdbcType=DECIMAL},
+      </if>
+      <if test="orgsettle != null">
+        #{orgsettle,jdbcType=DECIMAL},
+      </if>
+      <if test="channelsettle != null">
+        #{channelsettle,jdbcType=DECIMAL},
+      </if>
+      <if test="lastupdts != null">
+        #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.HsCoreTransLogbak">
+    update hs_core_trans_logbak
+    <set>
+      <if test="inttxndt != null">
+        intTxnDt = #{inttxndt,jdbcType=CHAR},
+      </if>
+      <if test="inttxntm != null">
+        intTxnTm = #{inttxntm,jdbcType=CHAR},
+      </if>
+      <if test="chtxndt != null">
+        chTxnDt = #{chtxndt,jdbcType=CHAR},
+      </if>
+      <if test="chtxntm != null">
+        chTxnTm = #{chtxntm,jdbcType=CHAR},
+      </if>
+      <if test="transsource != null">
+        transSource = #{transsource,jdbcType=CHAR},
+      </if>
+      <if test="transtype != null">
+        transType = #{transtype,jdbcType=CHAR},
+      </if>
+      <if test="msgtypeid != null">
+        msgTypeId = #{msgtypeid,jdbcType=CHAR},
+      </if>
+      <if test="tradecode != null">
+        tradeCode = #{tradecode,jdbcType=CHAR},
+      </if>
+      <if test="servercode != null">
+        serverCode = #{servercode,jdbcType=CHAR},
+      </if>
+      <if test="servertypecode != null">
+        serverTypeCode = #{servertypecode,jdbcType=CHAR},
+      </if>
+      <if test="cardserino != null">
+        cardSeriNo = #{cardserino,jdbcType=CHAR},
+      </if>
+      <if test="trackingno != null">
+        trackingNo = #{trackingno,jdbcType=CHAR},
+      </if>
+      <if test="origtrackingno != null">
+        origTrackingNo = #{origtrackingno,jdbcType=CHAR},
+      </if>
+      <if test="referenceno != null">
+        referenceNo = #{referenceno,jdbcType=CHAR},
+      </if>
+      <if test="merid != null">
+        merId = #{merid,jdbcType=CHAR},
+      </if>
+      <if test="termid != null">
+        termId = #{termid,jdbcType=CHAR},
+      </if>
+      <if test="orgno != null">
+        orgNo = #{orgno,jdbcType=CHAR},
+      </if>
+      <if test="agentno != null">
+        agentNo = #{agentno,jdbcType=CHAR},
+      </if>
+      <if test="batchid != null">
+        batchId = #{batchid,jdbcType=CHAR},
+      </if>
+      <if test="chmerid != null">
+        chMerId = #{chmerid,jdbcType=CHAR},
+      </if>
+      <if test="chtermid != null">
+        chTermId = #{chtermid,jdbcType=CHAR},
+      </if>
+      <if test="chbatchid != null">
+        chBatchId = #{chbatchid,jdbcType=CHAR},
+      </if>
+      <if test="chtrackingno != null">
+        chTrackingNo = #{chtrackingno,jdbcType=CHAR},
+      </if>
+      <if test="settledt != null">
+        settleDt = #{settledt,jdbcType=CHAR},
+      </if>
+      <if test="transamt != null">
+        transAmt = #{transamt,jdbcType=DECIMAL},
+      </if>
+      <if test="cardno != null">
+        cardNo = #{cardno,jdbcType=CHAR},
+      </if>
+      <if test="authno != null">
+        authNo = #{authno,jdbcType=CHAR},
+      </if>
+      <if test="userdefine60 != null">
+        userDefine60 = #{userdefine60,jdbcType=CHAR},
+      </if>
+      <if test="issno != null">
+        issNo = #{issno,jdbcType=CHAR},
+      </if>
+      <if test="acqno != null">
+        acqNo = #{acqno,jdbcType=CHAR},
+      </if>
+      <if test="expiredt != null">
+        expireDt = #{expiredt,jdbcType=CHAR},
+      </if>
+      <if test="transstat != null">
+        transStat = #{transstat,jdbcType=SMALLINT},
+      </if>
+      <if test="cancelstat != null">
+        cancelStat = #{cancelstat,jdbcType=SMALLINT},
+      </if>
+      <if test="chaddid != null">
+        chAddId = #{chaddid,jdbcType=INTEGER},
+      </if>
+      <if test="replycd != null">
+        replyCd = #{replycd,jdbcType=CHAR},
+      </if>
+      <if test="checkstatus != null">
+        checkStatus = #{checkstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="cardtypeflag != null">
+        cardTypeFlag = #{cardtypeflag,jdbcType=CHAR},
+      </if>
+      <if test="dcdata != null">
+        dcdata = #{dcdata,jdbcType=CHAR},
+      </if>
+      <if test="merchantfee != null">
+        merchantFee = #{merchantfee,jdbcType=DECIMAL},
+      </if>
+      <if test="merchantsettle != null">
+        merchantSettle = #{merchantsettle,jdbcType=DECIMAL},
+      </if>
+      <if test="orgsettle != null">
+        orgSettle = #{orgsettle,jdbcType=DECIMAL},
+      </if>
+      <if test="channelsettle != null">
+        channelSettle = #{channelsettle,jdbcType=DECIMAL},
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where transLogId = #{translogid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.HsCoreTransLogbak">
+    update hs_core_trans_logbak
+    set intTxnDt = #{inttxndt,jdbcType=CHAR},
+      intTxnTm = #{inttxntm,jdbcType=CHAR},
+      chTxnDt = #{chtxndt,jdbcType=CHAR},
+      chTxnTm = #{chtxntm,jdbcType=CHAR},
+      transSource = #{transsource,jdbcType=CHAR},
+      transType = #{transtype,jdbcType=CHAR},
+      msgTypeId = #{msgtypeid,jdbcType=CHAR},
+      tradeCode = #{tradecode,jdbcType=CHAR},
+      serverCode = #{servercode,jdbcType=CHAR},
+      serverTypeCode = #{servertypecode,jdbcType=CHAR},
+      cardSeriNo = #{cardserino,jdbcType=CHAR},
+      trackingNo = #{trackingno,jdbcType=CHAR},
+      origTrackingNo = #{origtrackingno,jdbcType=CHAR},
+      referenceNo = #{referenceno,jdbcType=CHAR},
+      merId = #{merid,jdbcType=CHAR},
+      termId = #{termid,jdbcType=CHAR},
+      orgNo = #{orgno,jdbcType=CHAR},
+      agentNo = #{agentno,jdbcType=CHAR},
+      batchId = #{batchid,jdbcType=CHAR},
+      chMerId = #{chmerid,jdbcType=CHAR},
+      chTermId = #{chtermid,jdbcType=CHAR},
+      chBatchId = #{chbatchid,jdbcType=CHAR},
+      chTrackingNo = #{chtrackingno,jdbcType=CHAR},
+      settleDt = #{settledt,jdbcType=CHAR},
+      transAmt = #{transamt,jdbcType=DECIMAL},
+      cardNo = #{cardno,jdbcType=CHAR},
+      authNo = #{authno,jdbcType=CHAR},
+      userDefine60 = #{userdefine60,jdbcType=CHAR},
+      issNo = #{issno,jdbcType=CHAR},
+      acqNo = #{acqno,jdbcType=CHAR},
+      expireDt = #{expiredt,jdbcType=CHAR},
+      transStat = #{transstat,jdbcType=SMALLINT},
+      cancelStat = #{cancelstat,jdbcType=SMALLINT},
+      chAddId = #{chaddid,jdbcType=INTEGER},
+      replyCd = #{replycd,jdbcType=CHAR},
+      checkStatus = #{checkstatus,jdbcType=SMALLINT},
+      cardTypeFlag = #{cardtypeflag,jdbcType=CHAR},
+      dcdata = #{dcdata,jdbcType=CHAR},
+      merchantFee = #{merchantfee,jdbcType=DECIMAL},
+      merchantSettle = #{merchantsettle,jdbcType=DECIMAL},
+      orgSettle = #{orgsettle,jdbcType=DECIMAL},
+      channelSettle = #{channelsettle,jdbcType=DECIMAL},
+      lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP}
+    where transLogId = #{translogid,jdbcType=BIGINT}
+  </update>
+</mapper>

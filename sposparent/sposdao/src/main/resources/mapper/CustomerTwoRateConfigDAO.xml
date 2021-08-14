@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerTwoRateConfigDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerTwoRateConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="trans_code" jdbcType="VARCHAR" property="transCode" />
+    <result column="trans_type" jdbcType="VARCHAR" property="transType" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="counter_fee" jdbcType="VARCHAR" property="counterFee" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mark, trans_code, trans_type, rate, counter_fee
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_two_rate_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_two_rate_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerTwoRateConfig">
+    insert into customer_two_rate_config (id, mark, trans_code, 
+      trans_type, rate, counter_fee
+      )
+    values (#{id,jdbcType=INTEGER}, #{mark,jdbcType=VARCHAR}, #{transCode,jdbcType=VARCHAR}, 
+      #{transType,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, #{counterFee,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerTwoRateConfig">
+    insert into customer_two_rate_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="transCode != null">
+        trans_code,
+      </if>
+      <if test="transType != null">
+        trans_type,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="counterFee != null">
+        counter_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="counterFee != null">
+        #{counterFee,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerTwoRateConfig">
+    update customer_two_rate_config
+    <set>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        trans_code = #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        trans_type = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="counterFee != null">
+        counter_fee = #{counterFee,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerTwoRateConfig">
+    update customer_two_rate_config
+    set mark = #{mark,jdbcType=VARCHAR},
+      trans_code = #{transCode,jdbcType=VARCHAR},
+      trans_type = #{transType,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      counter_fee = #{counterFee,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

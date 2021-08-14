@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.ErrfenrunDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Errfenrun">
+    <result column="trans_id" jdbcType="VARCHAR" property="transId" />
+    <result column="amount" jdbcType="VARCHAR" property="amount" />
+  </resultMap>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Errfenrun">
+    insert into errfenrun (trans_id, amount)
+    values (#{transId,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Errfenrun">
+    insert into errfenrun
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transId != null">
+        trans_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transId != null">
+        #{transId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

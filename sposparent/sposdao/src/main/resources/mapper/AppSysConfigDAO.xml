@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AppSysConfigDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.AppSysConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sys_conf_name" jdbcType="VARCHAR" property="sysConfName" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note1" jdbcType="VARCHAR" property="note1" />
+    <result column="note2" jdbcType="VARCHAR" property="note2" />
+    <result column="note3" jdbcType="VARCHAR" property="note3" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="note4" jdbcType="VARCHAR" property="note4" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sys_conf_name, descr, note, note1, note2, note3, `status`, note4
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_sys_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from app_sys_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.AppSysConfig">
+    insert into app_sys_config (id, sys_conf_name, descr, 
+      note, note1, note2, 
+      note3, `status`, note4
+      )
+    values (#{id,jdbcType=INTEGER}, #{sysConfName,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{note1,jdbcType=VARCHAR}, #{note2,jdbcType=VARCHAR}, 
+      #{note3,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{note4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.AppSysConfig">
+    insert into app_sys_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sysConfName != null">
+        sys_conf_name,
+      </if>
+      <if test="descr != null">
+        descr,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="note1 != null">
+        note1,
+      </if>
+      <if test="note2 != null">
+        note2,
+      </if>
+      <if test="note3 != null">
+        note3,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="note4 != null">
+        note4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sysConfName != null">
+        #{sysConfName,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="note1 != null">
+        #{note1,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        #{note2,jdbcType=VARCHAR},
+      </if>
+      <if test="note3 != null">
+        #{note3,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="note4 != null">
+        #{note4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.AppSysConfig">
+    update app_sys_config
+    <set>
+      <if test="sysConfName != null">
+        sys_conf_name = #{sysConfName,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="note1 != null">
+        note1 = #{note1,jdbcType=VARCHAR},
+      </if>
+      <if test="note2 != null">
+        note2 = #{note2,jdbcType=VARCHAR},
+      </if>
+      <if test="note3 != null">
+        note3 = #{note3,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="note4 != null">
+        note4 = #{note4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.AppSysConfig">
+    update app_sys_config
+    set sys_conf_name = #{sysConfName,jdbcType=VARCHAR},
+      descr = #{descr,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      note1 = #{note1,jdbcType=VARCHAR},
+      note2 = #{note2,jdbcType=VARCHAR},
+      note3 = #{note3,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=TINYINT},
+      note4 = #{note4,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

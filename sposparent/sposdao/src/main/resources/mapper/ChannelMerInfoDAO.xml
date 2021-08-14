@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.ChannelMerInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.ChannelMerInfo">
+    <id column="chId" jdbcType="INTEGER" property="chid" />
+    <result column="chName" jdbcType="VARCHAR" property="chname" />
+    <result column="chMerId" jdbcType="CHAR" property="chmerid" />
+    <result column="chTermId" jdbcType="CHAR" property="chtermid" />
+    <result column="chSeriId" jdbcType="CHAR" property="chseriid" />
+    <result column="chBatchId" jdbcType="CHAR" property="chbatchid" />
+    <result column="chTermSeqId" jdbcType="CHAR" property="chtermseqid" />
+    <result column="chStat" jdbcType="SMALLINT" property="chstat" />
+    <result column="chType" jdbcType="SMALLINT" property="chtype" />
+    <result column="chAddId" jdbcType="INTEGER" property="chaddid" />
+    <result column="chFeeId" jdbcType="SMALLINT" property="chfeeid" />
+    <result column="orgCode" jdbcType="INTEGER" property="orgcode" />
+    <result column="provId" jdbcType="INTEGER" property="provid" />
+    <result column="chZMK" jdbcType="CHAR" property="chzmk" />
+    <result column="chZPK" jdbcType="CHAR" property="chzpk" />
+    <result column="chZAK" jdbcType="CHAR" property="chzak" />
+    <result column="chZEK" jdbcType="CHAR" property="chzek" />
+    <result column="chEncKey" jdbcType="CHAR" property="chenckey" />
+    <result column="openDate" jdbcType="TIMESTAMP" property="opendate" />
+    <result column="transAmtPool" jdbcType="DECIMAL" property="transamtpool" />
+    <result column="lastUpdTs" jdbcType="TIMESTAMP" property="lastupdts" />
+    <result column="oprId" jdbcType="VARCHAR" property="oprid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    chId, chName, chMerId, chTermId, chSeriId, chBatchId, chTermSeqId, chStat, chType, 
+    chAddId, chFeeId, orgCode, provId, chZMK, chZPK, chZAK, chZEK, chEncKey, openDate, 
+    transAmtPool, lastUpdTs, oprId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from channel_mer_info
+    where chId = #{chid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from channel_mer_info
+    where chId = #{chid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.ChannelMerInfo">
+    insert into channel_mer_info (chId, chName, chMerId, 
+      chTermId, chSeriId, chBatchId, 
+      chTermSeqId, chStat, chType, 
+      chAddId, chFeeId, orgCode, 
+      provId, chZMK, chZPK, chZAK, 
+      chZEK, chEncKey, openDate, 
+      transAmtPool, lastUpdTs, oprId
+      )
+    values (#{chid,jdbcType=INTEGER}, #{chname,jdbcType=VARCHAR}, #{chmerid,jdbcType=CHAR}, 
+      #{chtermid,jdbcType=CHAR}, #{chseriid,jdbcType=CHAR}, #{chbatchid,jdbcType=CHAR}, 
+      #{chtermseqid,jdbcType=CHAR}, #{chstat,jdbcType=SMALLINT}, #{chtype,jdbcType=SMALLINT}, 
+      #{chaddid,jdbcType=INTEGER}, #{chfeeid,jdbcType=SMALLINT}, #{orgcode,jdbcType=INTEGER}, 
+      #{provid,jdbcType=INTEGER}, #{chzmk,jdbcType=CHAR}, #{chzpk,jdbcType=CHAR}, #{chzak,jdbcType=CHAR}, 
+      #{chzek,jdbcType=CHAR}, #{chenckey,jdbcType=CHAR}, #{opendate,jdbcType=TIMESTAMP}, 
+      #{transamtpool,jdbcType=DECIMAL}, #{lastupdts,jdbcType=TIMESTAMP}, #{oprid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.ChannelMerInfo">
+    insert into channel_mer_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chid != null">
+        chId,
+      </if>
+      <if test="chname != null">
+        chName,
+      </if>
+      <if test="chmerid != null">
+        chMerId,
+      </if>
+      <if test="chtermid != null">
+        chTermId,
+      </if>
+      <if test="chseriid != null">
+        chSeriId,
+      </if>
+      <if test="chbatchid != null">
+        chBatchId,
+      </if>
+      <if test="chtermseqid != null">
+        chTermSeqId,
+      </if>
+      <if test="chstat != null">
+        chStat,
+      </if>
+      <if test="chtype != null">
+        chType,
+      </if>
+      <if test="chaddid != null">
+        chAddId,
+      </if>
+      <if test="chfeeid != null">
+        chFeeId,
+      </if>
+      <if test="orgcode != null">
+        orgCode,
+      </if>
+      <if test="provid != null">
+        provId,
+      </if>
+      <if test="chzmk != null">
+        chZMK,
+      </if>
+      <if test="chzpk != null">
+        chZPK,
+      </if>
+      <if test="chzak != null">
+        chZAK,
+      </if>
+      <if test="chzek != null">
+        chZEK,
+      </if>
+      <if test="chenckey != null">
+        chEncKey,
+      </if>
+      <if test="opendate != null">
+        openDate,
+      </if>
+      <if test="transamtpool != null">
+        transAmtPool,
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs,
+      </if>
+      <if test="oprid != null">
+        oprId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chid != null">
+        #{chid,jdbcType=INTEGER},
+      </if>
+      <if test="chname != null">
+        #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="chmerid != null">
+        #{chmerid,jdbcType=CHAR},
+      </if>
+      <if test="chtermid != null">
+        #{chtermid,jdbcType=CHAR},
+      </if>
+      <if test="chseriid != null">
+        #{chseriid,jdbcType=CHAR},
+      </if>
+      <if test="chbatchid != null">
+        #{chbatchid,jdbcType=CHAR},
+      </if>
+      <if test="chtermseqid != null">
+        #{chtermseqid,jdbcType=CHAR},
+      </if>
+      <if test="chstat != null">
+        #{chstat,jdbcType=SMALLINT},
+      </if>
+      <if test="chtype != null">
+        #{chtype,jdbcType=SMALLINT},
+      </if>
+      <if test="chaddid != null">
+        #{chaddid,jdbcType=INTEGER},
+      </if>
+      <if test="chfeeid != null">
+        #{chfeeid,jdbcType=SMALLINT},
+      </if>
+      <if test="orgcode != null">
+        #{orgcode,jdbcType=INTEGER},
+      </if>
+      <if test="provid != null">
+        #{provid,jdbcType=INTEGER},
+      </if>
+      <if test="chzmk != null">
+        #{chzmk,jdbcType=CHAR},
+      </if>
+      <if test="chzpk != null">
+        #{chzpk,jdbcType=CHAR},
+      </if>
+      <if test="chzak != null">
+        #{chzak,jdbcType=CHAR},
+      </if>
+      <if test="chzek != null">
+        #{chzek,jdbcType=CHAR},
+      </if>
+      <if test="chenckey != null">
+        #{chenckey,jdbcType=CHAR},
+      </if>
+      <if test="opendate != null">
+        #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transamtpool != null">
+        #{transamtpool,jdbcType=DECIMAL},
+      </if>
+      <if test="lastupdts != null">
+        #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprid != null">
+        #{oprid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.ChannelMerInfo">
+    update channel_mer_info
+    <set>
+      <if test="chname != null">
+        chName = #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="chmerid != null">
+        chMerId = #{chmerid,jdbcType=CHAR},
+      </if>
+      <if test="chtermid != null">
+        chTermId = #{chtermid,jdbcType=CHAR},
+      </if>
+      <if test="chseriid != null">
+        chSeriId = #{chseriid,jdbcType=CHAR},
+      </if>
+      <if test="chbatchid != null">
+        chBatchId = #{chbatchid,jdbcType=CHAR},
+      </if>
+      <if test="chtermseqid != null">
+        chTermSeqId = #{chtermseqid,jdbcType=CHAR},
+      </if>
+      <if test="chstat != null">
+        chStat = #{chstat,jdbcType=SMALLINT},
+      </if>
+      <if test="chtype != null">
+        chType = #{chtype,jdbcType=SMALLINT},
+      </if>
+      <if test="chaddid != null">
+        chAddId = #{chaddid,jdbcType=INTEGER},
+      </if>
+      <if test="chfeeid != null">
+        chFeeId = #{chfeeid,jdbcType=SMALLINT},
+      </if>
+      <if test="orgcode != null">
+        orgCode = #{orgcode,jdbcType=INTEGER},
+      </if>
+      <if test="provid != null">
+        provId = #{provid,jdbcType=INTEGER},
+      </if>
+      <if test="chzmk != null">
+        chZMK = #{chzmk,jdbcType=CHAR},
+      </if>
+      <if test="chzpk != null">
+        chZPK = #{chzpk,jdbcType=CHAR},
+      </if>
+      <if test="chzak != null">
+        chZAK = #{chzak,jdbcType=CHAR},
+      </if>
+      <if test="chzek != null">
+        chZEK = #{chzek,jdbcType=CHAR},
+      </if>
+      <if test="chenckey != null">
+        chEncKey = #{chenckey,jdbcType=CHAR},
+      </if>
+      <if test="opendate != null">
+        openDate = #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transamtpool != null">
+        transAmtPool = #{transamtpool,jdbcType=DECIMAL},
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprid != null">
+        oprId = #{oprid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where chId = #{chid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.ChannelMerInfo">
+    update channel_mer_info
+    set chName = #{chname,jdbcType=VARCHAR},
+      chMerId = #{chmerid,jdbcType=CHAR},
+      chTermId = #{chtermid,jdbcType=CHAR},
+      chSeriId = #{chseriid,jdbcType=CHAR},
+      chBatchId = #{chbatchid,jdbcType=CHAR},
+      chTermSeqId = #{chtermseqid,jdbcType=CHAR},
+      chStat = #{chstat,jdbcType=SMALLINT},
+      chType = #{chtype,jdbcType=SMALLINT},
+      chAddId = #{chaddid,jdbcType=INTEGER},
+      chFeeId = #{chfeeid,jdbcType=SMALLINT},
+      orgCode = #{orgcode,jdbcType=INTEGER},
+      provId = #{provid,jdbcType=INTEGER},
+      chZMK = #{chzmk,jdbcType=CHAR},
+      chZPK = #{chzpk,jdbcType=CHAR},
+      chZAK = #{chzak,jdbcType=CHAR},
+      chZEK = #{chzek,jdbcType=CHAR},
+      chEncKey = #{chenckey,jdbcType=CHAR},
+      openDate = #{opendate,jdbcType=TIMESTAMP},
+      transAmtPool = #{transamtpool,jdbcType=DECIMAL},
+      lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP},
+      oprId = #{oprid,jdbcType=VARCHAR}
+    where chId = #{chid,jdbcType=INTEGER}
+  </update>
+</mapper>

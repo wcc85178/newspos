@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.Fort1196ResultDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Fort1196Result">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="countbefore" jdbcType="INTEGER" property="countbefore" />
+    <result column="sumbefore" jdbcType="VARCHAR" property="sumbefore" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="day" jdbcType="VARCHAR" property="day" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="countafter" jdbcType="INTEGER" property="countafter" />
+    <result column="sumafter" jdbcType="VARCHAR" property="sumafter" />
+    <result column="new_url" jdbcType="VARCHAR" property="newUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, countbefore, sumbefore, url, `day`, content, create_time, countafter, sumafter, 
+    new_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fort1_196_result
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fort1_196_result
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Fort1196Result">
+    insert into fort1_196_result (id, countbefore, sumbefore, 
+      url, `day`, content, 
+      create_time, countafter, sumafter, 
+      new_url)
+    values (#{id,jdbcType=INTEGER}, #{countbefore,jdbcType=INTEGER}, #{sumbefore,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{day,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{countafter,jdbcType=INTEGER}, #{sumafter,jdbcType=VARCHAR}, 
+      #{newUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Fort1196Result">
+    insert into fort1_196_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="countbefore != null">
+        countbefore,
+      </if>
+      <if test="sumbefore != null">
+        sumbefore,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="day != null">
+        `day`,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="countafter != null">
+        countafter,
+      </if>
+      <if test="sumafter != null">
+        sumafter,
+      </if>
+      <if test="newUrl != null">
+        new_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="countbefore != null">
+        #{countbefore,jdbcType=INTEGER},
+      </if>
+      <if test="sumbefore != null">
+        #{sumbefore,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null">
+        #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countafter != null">
+        #{countafter,jdbcType=INTEGER},
+      </if>
+      <if test="sumafter != null">
+        #{sumafter,jdbcType=VARCHAR},
+      </if>
+      <if test="newUrl != null">
+        #{newUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Fort1196Result">
+    update fort1_196_result
+    <set>
+      <if test="countbefore != null">
+        countbefore = #{countbefore,jdbcType=INTEGER},
+      </if>
+      <if test="sumbefore != null">
+        sumbefore = #{sumbefore,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null">
+        `day` = #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countafter != null">
+        countafter = #{countafter,jdbcType=INTEGER},
+      </if>
+      <if test="sumafter != null">
+        sumafter = #{sumafter,jdbcType=VARCHAR},
+      </if>
+      <if test="newUrl != null">
+        new_url = #{newUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Fort1196Result">
+    update fort1_196_result
+    set countbefore = #{countbefore,jdbcType=INTEGER},
+      sumbefore = #{sumbefore,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      `day` = #{day,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      countafter = #{countafter,jdbcType=INTEGER},
+      sumafter = #{sumafter,jdbcType=VARCHAR},
+      new_url = #{newUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

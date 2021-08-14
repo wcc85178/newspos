@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerAdditionalMaterialsDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerAdditionalMaterials">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="business_photo" jdbcType="VARCHAR" property="businessPhoto" />
+    <result column="business_license_name" jdbcType="VARCHAR" property="businessLicenseName" />
+    <result column="business_license_no" jdbcType="VARCHAR" property="businessLicenseNo" />
+    <result column="business_license_expire" jdbcType="VARCHAR" property="businessLicenseExpire" />
+    <result column="door_photo" jdbcType="VARCHAR" property="doorPhoto" />
+    <result column="cashier_photo" jdbcType="VARCHAR" property="cashierPhoto" />
+    <result column="in_store_photo" jdbcType="VARCHAR" property="inStorePhoto" />
+    <result column="audit_state" jdbcType="INTEGER" property="auditState" />
+    <result column="audit_desc" jdbcType="VARCHAR" property="auditDesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, business_photo, business_license_name, business_license_no, business_license_expire, 
+    door_photo, cashier_photo, in_store_photo, audit_state, audit_desc, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_additional_materials
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_additional_materials
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerAdditionalMaterials">
+    insert into customer_additional_materials (id, customer_id, business_photo, 
+      business_license_name, business_license_no, 
+      business_license_expire, door_photo, cashier_photo, 
+      in_store_photo, audit_state, audit_desc, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{businessPhoto,jdbcType=VARCHAR}, 
+      #{businessLicenseName,jdbcType=VARCHAR}, #{businessLicenseNo,jdbcType=VARCHAR}, 
+      #{businessLicenseExpire,jdbcType=VARCHAR}, #{doorPhoto,jdbcType=VARCHAR}, #{cashierPhoto,jdbcType=VARCHAR}, 
+      #{inStorePhoto,jdbcType=VARCHAR}, #{auditState,jdbcType=INTEGER}, #{auditDesc,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerAdditionalMaterials">
+    insert into customer_additional_materials
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="businessPhoto != null">
+        business_photo,
+      </if>
+      <if test="businessLicenseName != null">
+        business_license_name,
+      </if>
+      <if test="businessLicenseNo != null">
+        business_license_no,
+      </if>
+      <if test="businessLicenseExpire != null">
+        business_license_expire,
+      </if>
+      <if test="doorPhoto != null">
+        door_photo,
+      </if>
+      <if test="cashierPhoto != null">
+        cashier_photo,
+      </if>
+      <if test="inStorePhoto != null">
+        in_store_photo,
+      </if>
+      <if test="auditState != null">
+        audit_state,
+      </if>
+      <if test="auditDesc != null">
+        audit_desc,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="businessPhoto != null">
+        #{businessPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseName != null">
+        #{businessLicenseName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseNo != null">
+        #{businessLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseExpire != null">
+        #{businessLicenseExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="doorPhoto != null">
+        #{doorPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierPhoto != null">
+        #{cashierPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="inStorePhoto != null">
+        #{inStorePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="auditState != null">
+        #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="auditDesc != null">
+        #{auditDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerAdditionalMaterials">
+    update customer_additional_materials
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="businessPhoto != null">
+        business_photo = #{businessPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseName != null">
+        business_license_name = #{businessLicenseName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseNo != null">
+        business_license_no = #{businessLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseExpire != null">
+        business_license_expire = #{businessLicenseExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="doorPhoto != null">
+        door_photo = #{doorPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="cashierPhoto != null">
+        cashier_photo = #{cashierPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="inStorePhoto != null">
+        in_store_photo = #{inStorePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="auditState != null">
+        audit_state = #{auditState,jdbcType=INTEGER},
+      </if>
+      <if test="auditDesc != null">
+        audit_desc = #{auditDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerAdditionalMaterials">
+    update customer_additional_materials
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      business_photo = #{businessPhoto,jdbcType=VARCHAR},
+      business_license_name = #{businessLicenseName,jdbcType=VARCHAR},
+      business_license_no = #{businessLicenseNo,jdbcType=VARCHAR},
+      business_license_expire = #{businessLicenseExpire,jdbcType=VARCHAR},
+      door_photo = #{doorPhoto,jdbcType=VARCHAR},
+      cashier_photo = #{cashierPhoto,jdbcType=VARCHAR},
+      in_store_photo = #{inStorePhoto,jdbcType=VARCHAR},
+      audit_state = #{auditState,jdbcType=INTEGER},
+      audit_desc = #{auditDesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosAgentMappingDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosAgentMapping">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="sale_slip_img" jdbcType="VARCHAR" property="saleSlipImg" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="pos_id" jdbcType="INTEGER" property="posId" />
+    <result column="sn_code" jdbcType="VARCHAR" property="snCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, create_time, operator_name, sale_slip_img, ref_agent_id, pos_id, 
+    sn_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_agent_mapping
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_agent_mapping
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosAgentMapping">
+    insert into pos_agent_mapping (id, `security`, create_time, 
+      operator_name, sale_slip_img, ref_agent_id, 
+      pos_id, sn_code)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{operatorName,jdbcType=VARCHAR}, #{saleSlipImg,jdbcType=VARCHAR}, #{refAgentId,jdbcType=INTEGER}, 
+      #{posId,jdbcType=INTEGER}, #{snCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosAgentMapping">
+    insert into pos_agent_mapping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="saleSlipImg != null">
+        sale_slip_img,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="posId != null">
+        pos_id,
+      </if>
+      <if test="snCode != null">
+        sn_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="saleSlipImg != null">
+        #{saleSlipImg,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="posId != null">
+        #{posId,jdbcType=INTEGER},
+      </if>
+      <if test="snCode != null">
+        #{snCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosAgentMapping">
+    update pos_agent_mapping
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="saleSlipImg != null">
+        sale_slip_img = #{saleSlipImg,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="posId != null">
+        pos_id = #{posId,jdbcType=INTEGER},
+      </if>
+      <if test="snCode != null">
+        sn_code = #{snCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosAgentMapping">
+    update pos_agent_mapping
+    set `security` = #{security,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      sale_slip_img = #{saleSlipImg,jdbcType=VARCHAR},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      pos_id = #{posId,jdbcType=INTEGER},
+      sn_code = #{snCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

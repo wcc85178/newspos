@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosArgsDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosArgs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="group_code" jdbcType="INTEGER" property="groupCode" />
+    <result column="param_args_type" jdbcType="INTEGER" property="paramArgsType" />
+    <result column="param_code" jdbcType="VARCHAR" property="paramCode" />
+    <result column="param_name" jdbcType="VARCHAR" property="paramName" />
+    <result column="param_type" jdbcType="INTEGER" property="paramType" />
+    <result column="param_value" jdbcType="VARCHAR" property="paramValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, group_code, param_args_type, param_code, param_name, param_type, 
+    param_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_args
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_args
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosArgs">
+    insert into pos_args (id, `security`, group_code, 
+      param_args_type, param_code, param_name, 
+      param_type, param_value)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{groupCode,jdbcType=INTEGER}, 
+      #{paramArgsType,jdbcType=INTEGER}, #{paramCode,jdbcType=VARCHAR}, #{paramName,jdbcType=VARCHAR}, 
+      #{paramType,jdbcType=INTEGER}, #{paramValue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosArgs">
+    insert into pos_args
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="groupCode != null">
+        group_code,
+      </if>
+      <if test="paramArgsType != null">
+        param_args_type,
+      </if>
+      <if test="paramCode != null">
+        param_code,
+      </if>
+      <if test="paramName != null">
+        param_name,
+      </if>
+      <if test="paramType != null">
+        param_type,
+      </if>
+      <if test="paramValue != null">
+        param_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null">
+        #{groupCode,jdbcType=INTEGER},
+      </if>
+      <if test="paramArgsType != null">
+        #{paramArgsType,jdbcType=INTEGER},
+      </if>
+      <if test="paramCode != null">
+        #{paramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paramName != null">
+        #{paramName,jdbcType=VARCHAR},
+      </if>
+      <if test="paramType != null">
+        #{paramType,jdbcType=INTEGER},
+      </if>
+      <if test="paramValue != null">
+        #{paramValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosArgs">
+    update pos_args
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null">
+        group_code = #{groupCode,jdbcType=INTEGER},
+      </if>
+      <if test="paramArgsType != null">
+        param_args_type = #{paramArgsType,jdbcType=INTEGER},
+      </if>
+      <if test="paramCode != null">
+        param_code = #{paramCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paramName != null">
+        param_name = #{paramName,jdbcType=VARCHAR},
+      </if>
+      <if test="paramType != null">
+        param_type = #{paramType,jdbcType=INTEGER},
+      </if>
+      <if test="paramValue != null">
+        param_value = #{paramValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosArgs">
+    update pos_args
+    set `security` = #{security,jdbcType=VARCHAR},
+      group_code = #{groupCode,jdbcType=INTEGER},
+      param_args_type = #{paramArgsType,jdbcType=INTEGER},
+      param_code = #{paramCode,jdbcType=VARCHAR},
+      param_name = #{paramName,jdbcType=VARCHAR},
+      param_type = #{paramType,jdbcType=INTEGER},
+      param_value = #{paramValue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.IcCardTagCodeDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.IcCardTagCode">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="ic_card_group" jdbcType="INTEGER" property="icCardGroup" />
+    <result column="ic_card_type" jdbcType="INTEGER" property="icCardType" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, code, ic_card_group, ic_card_type, `value`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ic_card_tag_code
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ic_card_tag_code
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.IcCardTagCode">
+    insert into ic_card_tag_code (id, `security`, code, 
+      ic_card_group, ic_card_type, `value`
+      )
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{icCardGroup,jdbcType=INTEGER}, #{icCardType,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.IcCardTagCode">
+    insert into ic_card_tag_code
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="icCardGroup != null">
+        ic_card_group,
+      </if>
+      <if test="icCardType != null">
+        ic_card_type,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icCardGroup != null">
+        #{icCardGroup,jdbcType=INTEGER},
+      </if>
+      <if test="icCardType != null">
+        #{icCardType,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.IcCardTagCode">
+    update ic_card_tag_code
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="icCardGroup != null">
+        ic_card_group = #{icCardGroup,jdbcType=INTEGER},
+      </if>
+      <if test="icCardType != null">
+        ic_card_type = #{icCardType,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.IcCardTagCode">
+    update ic_card_tag_code
+    set `security` = #{security,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      ic_card_group = #{icCardGroup,jdbcType=INTEGER},
+      ic_card_type = #{icCardType,jdbcType=INTEGER},
+      `value` = #{value,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

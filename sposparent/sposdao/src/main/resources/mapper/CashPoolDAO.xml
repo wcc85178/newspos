@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CashPoolDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CashPool">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="agent_low_gain" jdbcType="DECIMAL" property="agentLowGain" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="margin" jdbcType="DECIMAL" property="margin" />
+    <result column="oen_code" jdbcType="VARCHAR" property="oenCode" />
+    <result column="reset_time" jdbcType="BIGINT" property="resetTime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="withdraw_fee" jdbcType="DECIMAL" property="withdrawFee" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, agent_low_gain, balance, margin, oen_code, reset_time, version, withdraw_fee
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cash_pool
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cash_pool
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CashPool">
+    insert into cash_pool (id, `security`, agent_low_gain, 
+      balance, margin, oen_code, 
+      reset_time, version, withdraw_fee
+      )
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{agentLowGain,jdbcType=DECIMAL}, 
+      #{balance,jdbcType=DECIMAL}, #{margin,jdbcType=DECIMAL}, #{oenCode,jdbcType=VARCHAR}, 
+      #{resetTime,jdbcType=BIGINT}, #{version,jdbcType=INTEGER}, #{withdrawFee,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CashPool">
+    insert into cash_pool
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="agentLowGain != null">
+        agent_low_gain,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="margin != null">
+        margin,
+      </if>
+      <if test="oenCode != null">
+        oen_code,
+      </if>
+      <if test="resetTime != null">
+        reset_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="withdrawFee != null">
+        withdraw_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLowGain != null">
+        #{agentLowGain,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="margin != null">
+        #{margin,jdbcType=DECIMAL},
+      </if>
+      <if test="oenCode != null">
+        #{oenCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resetTime != null">
+        #{resetTime,jdbcType=BIGINT},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawFee != null">
+        #{withdrawFee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CashPool">
+    update cash_pool
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLowGain != null">
+        agent_low_gain = #{agentLowGain,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="margin != null">
+        margin = #{margin,jdbcType=DECIMAL},
+      </if>
+      <if test="oenCode != null">
+        oen_code = #{oenCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resetTime != null">
+        reset_time = #{resetTime,jdbcType=BIGINT},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawFee != null">
+        withdraw_fee = #{withdrawFee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CashPool">
+    update cash_pool
+    set `security` = #{security,jdbcType=VARCHAR},
+      agent_low_gain = #{agentLowGain,jdbcType=DECIMAL},
+      balance = #{balance,jdbcType=DECIMAL},
+      margin = #{margin,jdbcType=DECIMAL},
+      oen_code = #{oenCode,jdbcType=VARCHAR},
+      reset_time = #{resetTime,jdbcType=BIGINT},
+      version = #{version,jdbcType=INTEGER},
+      withdraw_fee = #{withdrawFee,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

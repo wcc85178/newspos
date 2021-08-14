@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MrsEpOperaRecordDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MrsEpOperaRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="message_type" jdbcType="VARCHAR" property="messageType" />
+    <result column="mer_trace" jdbcType="VARCHAR" property="merTrace" />
+    <result column="opera_trace" jdbcType="VARCHAR" property="operaTrace" />
+    <result column="req_trace" jdbcType="VARCHAR" property="reqTrace" />
+    <result column="back_url" jdbcType="VARCHAR" property="backUrl" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shiyi.sposdao.entity.MrsEpOperaRecordWithBLOBs">
+    <result column="req_data" jdbcType="LONGVARCHAR" property="reqData" />
+    <result column="ext_data" jdbcType="LONGVARCHAR" property="extData" />
+    <result column="resp_data" jdbcType="LONGVARCHAR" property="respData" />
+    <result column="audit_req_data" jdbcType="LONGVARCHAR" property="auditReqData" />
+    <result column="audit_resp_data" jdbcType="LONGVARCHAR" property="auditRespData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, message_type, mer_trace, opera_trace, req_trace, back_url, audit_status, create_time, 
+    update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    req_data, ext_data, resp_data, audit_req_data, audit_resp_data
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mrs_ep_opera_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mrs_ep_opera_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MrsEpOperaRecordWithBLOBs">
+    insert into mrs_ep_opera_record (id, message_type, mer_trace, 
+      opera_trace, req_trace, back_url, 
+      audit_status, create_time, update_time, 
+      req_data, ext_data, resp_data, 
+      audit_req_data, audit_resp_data)
+    values (#{id,jdbcType=INTEGER}, #{messageType,jdbcType=VARCHAR}, #{merTrace,jdbcType=VARCHAR}, 
+      #{operaTrace,jdbcType=VARCHAR}, #{reqTrace,jdbcType=VARCHAR}, #{backUrl,jdbcType=VARCHAR}, 
+      #{auditStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{reqData,jdbcType=LONGVARCHAR}, #{extData,jdbcType=LONGVARCHAR}, #{respData,jdbcType=LONGVARCHAR}, 
+      #{auditReqData,jdbcType=LONGVARCHAR}, #{auditRespData,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MrsEpOperaRecordWithBLOBs">
+    insert into mrs_ep_opera_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="messageType != null">
+        message_type,
+      </if>
+      <if test="merTrace != null">
+        mer_trace,
+      </if>
+      <if test="operaTrace != null">
+        opera_trace,
+      </if>
+      <if test="reqTrace != null">
+        req_trace,
+      </if>
+      <if test="backUrl != null">
+        back_url,
+      </if>
+      <if test="auditStatus != null">
+        audit_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="reqData != null">
+        req_data,
+      </if>
+      <if test="extData != null">
+        ext_data,
+      </if>
+      <if test="respData != null">
+        resp_data,
+      </if>
+      <if test="auditReqData != null">
+        audit_req_data,
+      </if>
+      <if test="auditRespData != null">
+        audit_resp_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="messageType != null">
+        #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="merTrace != null">
+        #{merTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="operaTrace != null">
+        #{operaTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="reqTrace != null">
+        #{reqTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="backUrl != null">
+        #{backUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reqData != null">
+        #{reqData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extData != null">
+        #{extData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="respData != null">
+        #{respData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="auditReqData != null">
+        #{auditReqData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="auditRespData != null">
+        #{auditRespData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MrsEpOperaRecordWithBLOBs">
+    update mrs_ep_opera_record
+    <set>
+      <if test="messageType != null">
+        message_type = #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="merTrace != null">
+        mer_trace = #{merTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="operaTrace != null">
+        opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="reqTrace != null">
+        req_trace = #{reqTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="backUrl != null">
+        back_url = #{backUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        audit_status = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reqData != null">
+        req_data = #{reqData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extData != null">
+        ext_data = #{extData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="respData != null">
+        resp_data = #{respData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="auditReqData != null">
+        audit_req_data = #{auditReqData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="auditRespData != null">
+        audit_resp_data = #{auditRespData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shiyi.sposdao.entity.MrsEpOperaRecordWithBLOBs">
+    update mrs_ep_opera_record
+    set message_type = #{messageType,jdbcType=VARCHAR},
+      mer_trace = #{merTrace,jdbcType=VARCHAR},
+      opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      req_trace = #{reqTrace,jdbcType=VARCHAR},
+      back_url = #{backUrl,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      req_data = #{reqData,jdbcType=LONGVARCHAR},
+      ext_data = #{extData,jdbcType=LONGVARCHAR},
+      resp_data = #{respData,jdbcType=LONGVARCHAR},
+      audit_req_data = #{auditReqData,jdbcType=LONGVARCHAR},
+      audit_resp_data = #{auditRespData,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MrsEpOperaRecord">
+    update mrs_ep_opera_record
+    set message_type = #{messageType,jdbcType=VARCHAR},
+      mer_trace = #{merTrace,jdbcType=VARCHAR},
+      opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      req_trace = #{reqTrace,jdbcType=VARCHAR},
+      back_url = #{backUrl,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

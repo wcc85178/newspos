@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MrsAgentDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MrsAgent">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="agent_name" jdbcType="VARCHAR" property="agentName" />
+    <result column="agent_key" jdbcType="VARCHAR" property="agentKey" />
+    <result column="agent_device_no" jdbcType="VARCHAR" property="agentDeviceNo" />
+    <result column="agent_org_no" jdbcType="VARCHAR" property="agentOrgNo" />
+    <result column="back_url" jdbcType="VARCHAR" property="backUrl" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="params" jdbcType="CHAR" property="params" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="organiz_id" jdbcType="INTEGER" property="organizId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, agent_name, agent_key, agent_device_no, agent_org_no, back_url, remark, params, 
+    `status`, create_time, update_time, organiz_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mrs_agent
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mrs_agent
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MrsAgent">
+    insert into mrs_agent (id, agent_name, agent_key, 
+      agent_device_no, agent_org_no, back_url, 
+      remark, params, `status`, 
+      create_time, update_time, organiz_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{agentName,jdbcType=VARCHAR}, #{agentKey,jdbcType=VARCHAR}, 
+      #{agentDeviceNo,jdbcType=VARCHAR}, #{agentOrgNo,jdbcType=VARCHAR}, #{backUrl,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{params,jdbcType=CHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{organizId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MrsAgent">
+    insert into mrs_agent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="agentName != null">
+        agent_name,
+      </if>
+      <if test="agentKey != null">
+        agent_key,
+      </if>
+      <if test="agentDeviceNo != null">
+        agent_device_no,
+      </if>
+      <if test="agentOrgNo != null">
+        agent_org_no,
+      </if>
+      <if test="backUrl != null">
+        back_url,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="params != null">
+        params,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="organizId != null">
+        organiz_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agentName != null">
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentKey != null">
+        #{agentKey,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDeviceNo != null">
+        #{agentDeviceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="agentOrgNo != null">
+        #{agentOrgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="backUrl != null">
+        #{backUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null">
+        #{params,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizId != null">
+        #{organizId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MrsAgent">
+    update mrs_agent
+    <set>
+      <if test="agentName != null">
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentKey != null">
+        agent_key = #{agentKey,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDeviceNo != null">
+        agent_device_no = #{agentDeviceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="agentOrgNo != null">
+        agent_org_no = #{agentOrgNo,jdbcType=VARCHAR},
+      </if>
+      <if test="backUrl != null">
+        back_url = #{backUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null">
+        params = #{params,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizId != null">
+        organiz_id = #{organizId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MrsAgent">
+    update mrs_agent
+    set agent_name = #{agentName,jdbcType=VARCHAR},
+      agent_key = #{agentKey,jdbcType=VARCHAR},
+      agent_device_no = #{agentDeviceNo,jdbcType=VARCHAR},
+      agent_org_no = #{agentOrgNo,jdbcType=VARCHAR},
+      back_url = #{backUrl,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      params = #{params,jdbcType=CHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      organiz_id = #{organizId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

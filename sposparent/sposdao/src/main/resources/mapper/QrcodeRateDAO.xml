@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.QrcodeRateDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.QrcodeRate">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="tn_flag" jdbcType="INTEGER" property="tnFlag" />
+    <result column="trade_fee" jdbcType="VARCHAR" property="tradeFee" />
+    <result column="withdrawal_fee" jdbcType="VARCHAR" property="withdrawalFee" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tn_flag, trade_fee, withdrawal_fee, descr
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from qrcode_rate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from qrcode_rate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.QrcodeRate">
+    insert into qrcode_rate (id, tn_flag, trade_fee, 
+      withdrawal_fee, descr)
+    values (#{id,jdbcType=INTEGER}, #{tnFlag,jdbcType=INTEGER}, #{tradeFee,jdbcType=VARCHAR}, 
+      #{withdrawalFee,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.QrcodeRate">
+    insert into qrcode_rate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tnFlag != null">
+        tn_flag,
+      </if>
+      <if test="tradeFee != null">
+        trade_fee,
+      </if>
+      <if test="withdrawalFee != null">
+        withdrawal_fee,
+      </if>
+      <if test="descr != null">
+        descr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tnFlag != null">
+        #{tnFlag,jdbcType=INTEGER},
+      </if>
+      <if test="tradeFee != null">
+        #{tradeFee,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawalFee != null">
+        #{withdrawalFee,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        #{descr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.QrcodeRate">
+    update qrcode_rate
+    <set>
+      <if test="tnFlag != null">
+        tn_flag = #{tnFlag,jdbcType=INTEGER},
+      </if>
+      <if test="tradeFee != null">
+        trade_fee = #{tradeFee,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawalFee != null">
+        withdrawal_fee = #{withdrawalFee,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.QrcodeRate">
+    update qrcode_rate
+    set tn_flag = #{tnFlag,jdbcType=INTEGER},
+      trade_fee = #{tradeFee,jdbcType=VARCHAR},
+      withdrawal_fee = #{withdrawalFee,jdbcType=VARCHAR},
+      descr = #{descr,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

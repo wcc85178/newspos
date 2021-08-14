@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerAuditDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerAudit">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="audit_flag" jdbcType="VARCHAR" property="auditFlag" />
+    <result column="man_name" jdbcType="VARCHAR" property="manName" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="apply_auth_time" jdbcType="BIGINT" property="applyAuthTime" />
+    <result column="man_id_card" jdbcType="VARCHAR" property="manIdCard" />
+    <result column="editer" jdbcType="VARCHAR" property="editer" />
+    <result column="editer_time" jdbcType="TIMESTAMP" property="editerTime" />
+    <result column="hash" jdbcType="VARCHAR" property="hash" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, audit_flag, man_name, ref_agent_id, apply_auth_time, man_id_card, editer, 
+    editer_time, hash
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_audit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_audit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerAudit">
+    insert into customer_audit (id, code, audit_flag, 
+      man_name, ref_agent_id, apply_auth_time, 
+      man_id_card, editer, editer_time, 
+      hash)
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{auditFlag,jdbcType=VARCHAR}, 
+      #{manName,jdbcType=VARCHAR}, #{refAgentId,jdbcType=INTEGER}, #{applyAuthTime,jdbcType=BIGINT}, 
+      #{manIdCard,jdbcType=VARCHAR}, #{editer,jdbcType=VARCHAR}, #{editerTime,jdbcType=TIMESTAMP}, 
+      #{hash,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerAudit">
+    insert into customer_audit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="auditFlag != null">
+        audit_flag,
+      </if>
+      <if test="manName != null">
+        man_name,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="applyAuthTime != null">
+        apply_auth_time,
+      </if>
+      <if test="manIdCard != null">
+        man_id_card,
+      </if>
+      <if test="editer != null">
+        editer,
+      </if>
+      <if test="editerTime != null">
+        editer_time,
+      </if>
+      <if test="hash != null">
+        hash,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        #{auditFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="applyAuthTime != null">
+        #{applyAuthTime,jdbcType=BIGINT},
+      </if>
+      <if test="manIdCard != null">
+        #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="editer != null">
+        #{editer,jdbcType=VARCHAR},
+      </if>
+      <if test="editerTime != null">
+        #{editerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hash != null">
+        #{hash,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerAudit">
+    update customer_audit
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        audit_flag = #{auditFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        man_name = #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="applyAuthTime != null">
+        apply_auth_time = #{applyAuthTime,jdbcType=BIGINT},
+      </if>
+      <if test="manIdCard != null">
+        man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="editer != null">
+        editer = #{editer,jdbcType=VARCHAR},
+      </if>
+      <if test="editerTime != null">
+        editer_time = #{editerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hash != null">
+        hash = #{hash,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerAudit">
+    update customer_audit
+    set code = #{code,jdbcType=VARCHAR},
+      audit_flag = #{auditFlag,jdbcType=VARCHAR},
+      man_name = #{manName,jdbcType=VARCHAR},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      apply_auth_time = #{applyAuthTime,jdbcType=BIGINT},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      editer = #{editer,jdbcType=VARCHAR},
+      editer_time = #{editerTime,jdbcType=TIMESTAMP},
+      hash = #{hash,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

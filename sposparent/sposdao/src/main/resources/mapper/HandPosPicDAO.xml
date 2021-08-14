@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.HandPosPicDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.HandPosPic">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="trans_id" jdbcType="INTEGER" property="transId" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="pic_type" jdbcType="INTEGER" property="picType" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="from_type" jdbcType="INTEGER" property="fromType" />
+    <result column="sign_pic" jdbcType="VARCHAR" property="signPic" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, trans_id, pic_url, pic_type, is_valid, create_date, create_by, from_type, sign_pic
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hand_pos_pic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hand_pos_pic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.HandPosPic">
+    insert into hand_pos_pic (id, trans_id, pic_url, 
+      pic_type, is_valid, create_date, 
+      create_by, from_type, sign_pic
+      )
+    values (#{id,jdbcType=INTEGER}, #{transId,jdbcType=INTEGER}, #{picUrl,jdbcType=VARCHAR}, 
+      #{picType,jdbcType=INTEGER}, #{isValid,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{fromType,jdbcType=INTEGER}, #{signPic,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.HandPosPic">
+    insert into hand_pos_pic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="transId != null">
+        trans_id,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="picType != null">
+        pic_type,
+      </if>
+      <if test="isValid != null">
+        is_valid,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="fromType != null">
+        from_type,
+      </if>
+      <if test="signPic != null">
+        sign_pic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="transId != null">
+        #{transId,jdbcType=INTEGER},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picType != null">
+        #{picType,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="fromType != null">
+        #{fromType,jdbcType=INTEGER},
+      </if>
+      <if test="signPic != null">
+        #{signPic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.HandPosPic">
+    update hand_pos_pic
+    <set>
+      <if test="transId != null">
+        trans_id = #{transId,jdbcType=INTEGER},
+      </if>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picType != null">
+        pic_type = #{picType,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="fromType != null">
+        from_type = #{fromType,jdbcType=INTEGER},
+      </if>
+      <if test="signPic != null">
+        sign_pic = #{signPic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.HandPosPic">
+    update hand_pos_pic
+    set trans_id = #{transId,jdbcType=INTEGER},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      pic_type = #{picType,jdbcType=INTEGER},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      from_type = #{fromType,jdbcType=INTEGER},
+      sign_pic = #{signPic,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

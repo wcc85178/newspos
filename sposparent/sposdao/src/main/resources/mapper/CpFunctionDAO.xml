@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CpFunctionDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CpFunction">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="domain_name" jdbcType="VARCHAR" property="domainName" />
+    <result column="entity_name" jdbcType="VARCHAR" property="entityName" />
+    <result column="filter_sql" jdbcType="VARCHAR" property="filterSql" />
+    <result column="generator_pojo" jdbcType="INTEGER" property="generatorPojo" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sort_desc_field" jdbcType="VARCHAR" property="sortDescField" />
+    <result column="sort_field_name" jdbcType="VARCHAR" property="sortFieldName" />
+    <result column="sort_name" jdbcType="VARCHAR" property="sortName" />
+    <result column="table_name" jdbcType="VARCHAR" property="tableName" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="used" jdbcType="INTEGER" property="used" />
+    <result column="ref_filter_sql" jdbcType="VARCHAR" property="refFilterSql" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="fitAble" jdbcType="INTEGER" property="fitable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, domain_name, entity_name, filter_sql, generator_pojo, `name`, sort_desc_field, 
+    sort_field_name, sort_name, `table_name`, url, used, ref_filter_sql, sort, fitAble
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_function
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cp_function
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CpFunction">
+    insert into cp_function (id, `security`, domain_name, 
+      entity_name, filter_sql, generator_pojo, 
+      `name`, sort_desc_field, sort_field_name, 
+      sort_name, `table_name`, url, 
+      used, ref_filter_sql, sort, 
+      fitAble)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{domainName,jdbcType=VARCHAR}, 
+      #{entityName,jdbcType=VARCHAR}, #{filterSql,jdbcType=VARCHAR}, #{generatorPojo,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{sortDescField,jdbcType=VARCHAR}, #{sortFieldName,jdbcType=VARCHAR}, 
+      #{sortName,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{used,jdbcType=INTEGER}, #{refFilterSql,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{fitable,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CpFunction">
+    insert into cp_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="domainName != null">
+        domain_name,
+      </if>
+      <if test="entityName != null">
+        entity_name,
+      </if>
+      <if test="filterSql != null">
+        filter_sql,
+      </if>
+      <if test="generatorPojo != null">
+        generator_pojo,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="sortDescField != null">
+        sort_desc_field,
+      </if>
+      <if test="sortFieldName != null">
+        sort_field_name,
+      </if>
+      <if test="sortName != null">
+        sort_name,
+      </if>
+      <if test="tableName != null">
+        `table_name`,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="used != null">
+        used,
+      </if>
+      <if test="refFilterSql != null">
+        ref_filter_sql,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="fitable != null">
+        fitAble,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="entityName != null">
+        #{entityName,jdbcType=VARCHAR},
+      </if>
+      <if test="filterSql != null">
+        #{filterSql,jdbcType=VARCHAR},
+      </if>
+      <if test="generatorPojo != null">
+        #{generatorPojo,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sortDescField != null">
+        #{sortDescField,jdbcType=VARCHAR},
+      </if>
+      <if test="sortFieldName != null">
+        #{sortFieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortName != null">
+        #{sortName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null">
+        #{used,jdbcType=INTEGER},
+      </if>
+      <if test="refFilterSql != null">
+        #{refFilterSql,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="fitable != null">
+        #{fitable,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CpFunction">
+    update cp_function
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        domain_name = #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="entityName != null">
+        entity_name = #{entityName,jdbcType=VARCHAR},
+      </if>
+      <if test="filterSql != null">
+        filter_sql = #{filterSql,jdbcType=VARCHAR},
+      </if>
+      <if test="generatorPojo != null">
+        generator_pojo = #{generatorPojo,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sortDescField != null">
+        sort_desc_field = #{sortDescField,jdbcType=VARCHAR},
+      </if>
+      <if test="sortFieldName != null">
+        sort_field_name = #{sortFieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortName != null">
+        sort_name = #{sortName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        `table_name` = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null">
+        used = #{used,jdbcType=INTEGER},
+      </if>
+      <if test="refFilterSql != null">
+        ref_filter_sql = #{refFilterSql,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="fitable != null">
+        fitAble = #{fitable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CpFunction">
+    update cp_function
+    set `security` = #{security,jdbcType=VARCHAR},
+      domain_name = #{domainName,jdbcType=VARCHAR},
+      entity_name = #{entityName,jdbcType=VARCHAR},
+      filter_sql = #{filterSql,jdbcType=VARCHAR},
+      generator_pojo = #{generatorPojo,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      sort_desc_field = #{sortDescField,jdbcType=VARCHAR},
+      sort_field_name = #{sortFieldName,jdbcType=VARCHAR},
+      sort_name = #{sortName,jdbcType=VARCHAR},
+      `table_name` = #{tableName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      used = #{used,jdbcType=INTEGER},
+      ref_filter_sql = #{refFilterSql,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      fitAble = #{fitable,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

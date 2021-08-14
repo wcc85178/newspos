@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AppVersionDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.AppVersion">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="version_desc" jdbcType="VARCHAR" property="versionDesc" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="platform_versioin" jdbcType="VARCHAR" property="platformVersioin" />
+    <result column="update_flag" jdbcType="VARCHAR" property="updateFlag" />
+    <result column="update_url" jdbcType="VARCHAR" property="updateUrl" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="app_down_platform" jdbcType="VARCHAR" property="appDownPlatform" />
+    <result column="for_ios" jdbcType="VARCHAR" property="forIos" />
+    <result column="expirationDate" jdbcType="VARCHAR" property="expirationdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `state`, app_id, version_desc, version, platform, platform_versioin, update_flag, 
+    update_url, create_time, app_down_platform, for_ios, expirationDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_version
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from app_version
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.AppVersion">
+    insert into app_version (id, `state`, app_id, 
+      version_desc, version, platform, 
+      platform_versioin, update_flag, update_url, 
+      create_time, app_down_platform, for_ios, 
+      expirationDate)
+    values (#{id,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
+      #{versionDesc,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
+      #{platformVersioin,jdbcType=VARCHAR}, #{updateFlag,jdbcType=VARCHAR}, #{updateUrl,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{appDownPlatform,jdbcType=VARCHAR}, #{forIos,jdbcType=VARCHAR}, 
+      #{expirationdate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.AppVersion">
+    insert into app_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="versionDesc != null">
+        version_desc,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="platformVersioin != null">
+        platform_versioin,
+      </if>
+      <if test="updateFlag != null">
+        update_flag,
+      </if>
+      <if test="updateUrl != null">
+        update_url,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="appDownPlatform != null">
+        app_down_platform,
+      </if>
+      <if test="forIos != null">
+        for_ios,
+      </if>
+      <if test="expirationdate != null">
+        expirationDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="versionDesc != null">
+        #{versionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="platformVersioin != null">
+        #{platformVersioin,jdbcType=VARCHAR},
+      </if>
+      <if test="updateFlag != null">
+        #{updateFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUrl != null">
+        #{updateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="appDownPlatform != null">
+        #{appDownPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="forIos != null">
+        #{forIos,jdbcType=VARCHAR},
+      </if>
+      <if test="expirationdate != null">
+        #{expirationdate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.AppVersion">
+    update app_version
+    <set>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="versionDesc != null">
+        version_desc = #{versionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="platformVersioin != null">
+        platform_versioin = #{platformVersioin,jdbcType=VARCHAR},
+      </if>
+      <if test="updateFlag != null">
+        update_flag = #{updateFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUrl != null">
+        update_url = #{updateUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="appDownPlatform != null">
+        app_down_platform = #{appDownPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="forIos != null">
+        for_ios = #{forIos,jdbcType=VARCHAR},
+      </if>
+      <if test="expirationdate != null">
+        expirationDate = #{expirationdate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.AppVersion">
+    update app_version
+    set `state` = #{state,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      version_desc = #{versionDesc,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      platform_versioin = #{platformVersioin,jdbcType=VARCHAR},
+      update_flag = #{updateFlag,jdbcType=VARCHAR},
+      update_url = #{updateUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      app_down_platform = #{appDownPlatform,jdbcType=VARCHAR},
+      for_ios = #{forIos,jdbcType=VARCHAR},
+      expirationDate = #{expirationdate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

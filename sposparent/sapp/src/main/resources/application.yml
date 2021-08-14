@@ -1,0 +1,15 @@
+server:
+  port: 8989
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.200.87:3306/spos?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: CeShi#0301!
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml

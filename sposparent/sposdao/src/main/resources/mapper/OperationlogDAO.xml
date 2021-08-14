@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.OperationlogDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Operationlog">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="userID" jdbcType="VARCHAR" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="logLevel" jdbcType="VARCHAR" property="loglevel" />
+    <result column="logMessage" jdbcType="VARCHAR" property="logmessage" />
+  </resultMap>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Operationlog">
+    insert into operationlog (id, userID, userName, 
+      createTime, logLevel, logMessage
+      )
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{loglevel,jdbcType=VARCHAR}, #{logmessage,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Operationlog">
+    insert into operationlog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userID,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="loglevel != null">
+        logLevel,
+      </if>
+      <if test="logmessage != null">
+        logMessage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loglevel != null">
+        #{loglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="logmessage != null">
+        #{logmessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

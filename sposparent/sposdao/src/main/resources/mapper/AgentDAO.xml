@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AgentDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Agent">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="affiliation" jdbcType="VARCHAR" property="affiliation" />
+    <result column="audit_flag" jdbcType="INTEGER" property="auditFlag" />
+    <result column="bank_card_city" jdbcType="VARCHAR" property="bankCardCity" />
+    <result column="bank_card_code" jdbcType="VARCHAR" property="bankCardCode" />
+    <result column="bank_card_name" jdbcType="VARCHAR" property="bankCardName" />
+    <result column="bank_card_province" jdbcType="VARCHAR" property="bankCardProvince" />
+    <result column="bank_card_type" jdbcType="INTEGER" property="bankCardType" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_sub_name" jdbcType="VARCHAR" property="bankSubName" />
+    <result column="bohui_mark" jdbcType="VARCHAR" property="bohuiMark" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="fengding_fenrun" jdbcType="VARCHAR" property="fengdingFenrun" />
+    <result column="img_bank_license" jdbcType="VARCHAR" property="imgBankLicense" />
+    <result column="img_business_license" jdbcType="VARCHAR" property="imgBusinessLicense" />
+    <result column="img_hand_id_card" jdbcType="VARCHAR" property="imgHandIdCard" />
+    <result column="img_id_card_down" jdbcType="VARCHAR" property="imgIdCardDown" />
+    <result column="img_id_card_up" jdbcType="VARCHAR" property="imgIdCardUp" />
+    <result column="img_organization" jdbcType="VARCHAR" property="imgOrganization" />
+    <result column="img_xieyi1" jdbcType="VARCHAR" property="imgXieyi1" />
+    <result column="img_xieyi2" jdbcType="VARCHAR" property="imgXieyi2" />
+    <result column="img_xieyi3" jdbcType="VARCHAR" property="imgXieyi3" />
+    <result column="man_email" jdbcType="VARCHAR" property="manEmail" />
+    <result column="man_id_card" jdbcType="VARCHAR" property="manIdCard" />
+    <result column="man_name" jdbcType="VARCHAR" property="manName" />
+    <result column="man_tel" jdbcType="VARCHAR" property="manTel" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="daqu_agent_id" jdbcType="VARCHAR" property="daquAgentId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="parent_type" jdbcType="INTEGER" property="parentType" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="t0fenrun1" jdbcType="VARCHAR" property="t0fenrun1" />
+    <result column="t0fenrun2" jdbcType="VARCHAR" property="t0fenrun2" />
+    <result column="t0fenrun3" jdbcType="VARCHAR" property="t0fenrun3" />
+    <result column="t0fenrun4" jdbcType="VARCHAR" property="t0fenrun4" />
+    <result column="t0fenrun5" jdbcType="VARCHAR" property="t0fenrun5" />
+    <result column="t0fenrun6" jdbcType="VARCHAR" property="t0fenrun6" />
+    <result column="t0fenrun_mark" jdbcType="VARCHAR" property="t0fenrunMark" />
+    <result column="t1fenrun1" jdbcType="VARCHAR" property="t1fenrun1" />
+    <result column="t1fenrun2" jdbcType="VARCHAR" property="t1fenrun2" />
+    <result column="t1fenrun3" jdbcType="VARCHAR" property="t1fenrun3" />
+    <result column="t1fenrun4" jdbcType="VARCHAR" property="t1fenrun4" />
+    <result column="t1fenrun5" jdbcType="VARCHAR" property="t1fenrun5" />
+    <result column="t1fenrun6" jdbcType="VARCHAR" property="t1fenrun6" />
+    <result column="t1fenrun_mark" jdbcType="VARCHAR" property="t1fenrunMark" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="OPERATOR_NAME" jdbcType="VARCHAR" property="operatorName" />
+    <result column="agent_draw_fee" jdbcType="VARCHAR" property="agentDrawFee" />
+    <result column="totalmargin" jdbcType="VARCHAR" property="totalmargin" />
+    <result column="countcustomer" jdbcType="DOUBLE" property="countcustomer" />
+    <result column="countstandard" jdbcType="DOUBLE" property="countstandard" />
+    <result column="posnum" jdbcType="DOUBLE" property="posnum" />
+    <result column="actnum" jdbcType="DOUBLE" property="actnum" />
+    <result column="actscale" jdbcType="VARCHAR" property="actscale" />
+    <result column="counter_fee" jdbcType="VARCHAR" property="counterFee" />
+    <result column="agent_accountId" jdbcType="INTEGER" property="agentAccountid" />
+    <result column="fenrun_flag" jdbcType="SMALLINT" property="fenrunFlag" />
+    <result column="own_account_id" jdbcType="INTEGER" property="ownAccountId" />
+    <result column="is_auth" jdbcType="SMALLINT" property="isAuth" />
+    <result column="agent_version_flag" jdbcType="VARCHAR" property="agentVersionFlag" />
+    <result column="flexible_account_id" jdbcType="INTEGER" property="flexibleAccountId" />
+    <result column="init_customer_mcc_rate" jdbcType="VARCHAR" property="initCustomerMccRate" />
+    <result column="agent_koufei_flag" jdbcType="VARCHAR" property="agentKoufeiFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, affiliation, audit_flag, bank_card_city, bank_card_code, bank_card_name, 
+    bank_card_province, bank_card_type, bank_name, bank_sub_name, bohui_mark, create_time, 
+    enable_flag, fengding_fenrun, img_bank_license, img_business_license, img_hand_id_card, 
+    img_id_card_down, img_id_card_up, img_organization, img_xieyi1, img_xieyi2, img_xieyi3, 
+    man_email, man_id_card, man_name, man_tel, mark, `name`, daqu_agent_id, parent_id, 
+    parent_type, `password`, t0fenrun1, t0fenrun2, t0fenrun3, t0fenrun4, t0fenrun5, t0fenrun6, 
+    t0fenrun_mark, t1fenrun1, t1fenrun2, t1fenrun3, t1fenrun4, t1fenrun5, t1fenrun6, 
+    t1fenrun_mark, username, OPERATOR_NAME, agent_draw_fee, totalmargin, countcustomer, 
+    countstandard, posnum, actnum, actscale, counter_fee, agent_accountId, fenrun_flag, 
+    own_account_id, is_auth, agent_version_flag, flexible_account_id, init_customer_mcc_rate, 
+    agent_koufei_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from agent
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from agent
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Agent">
+    insert into agent (id, `security`, affiliation, 
+      audit_flag, bank_card_city, bank_card_code, 
+      bank_card_name, bank_card_province, bank_card_type, 
+      bank_name, bank_sub_name, bohui_mark, 
+      create_time, enable_flag, fengding_fenrun, 
+      img_bank_license, img_business_license, img_hand_id_card, 
+      img_id_card_down, img_id_card_up, img_organization, 
+      img_xieyi1, img_xieyi2, img_xieyi3, 
+      man_email, man_id_card, man_name, 
+      man_tel, mark, `name`, 
+      daqu_agent_id, parent_id, parent_type, 
+      `password`, t0fenrun1, t0fenrun2, 
+      t0fenrun3, t0fenrun4, t0fenrun5, 
+      t0fenrun6, t0fenrun_mark, t1fenrun1, 
+      t1fenrun2, t1fenrun3, t1fenrun4, 
+      t1fenrun5, t1fenrun6, t1fenrun_mark, 
+      username, OPERATOR_NAME, agent_draw_fee, 
+      totalmargin, countcustomer, countstandard, 
+      posnum, actnum, actscale, 
+      counter_fee, agent_accountId, fenrun_flag, 
+      own_account_id, is_auth, agent_version_flag, 
+      flexible_account_id, init_customer_mcc_rate, 
+      agent_koufei_flag)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{affiliation,jdbcType=VARCHAR}, 
+      #{auditFlag,jdbcType=INTEGER}, #{bankCardCity,jdbcType=VARCHAR}, #{bankCardCode,jdbcType=VARCHAR}, 
+      #{bankCardName,jdbcType=VARCHAR}, #{bankCardProvince,jdbcType=VARCHAR}, #{bankCardType,jdbcType=INTEGER}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankSubName,jdbcType=VARCHAR}, #{bohuiMark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{enableFlag,jdbcType=INTEGER}, #{fengdingFenrun,jdbcType=VARCHAR}, 
+      #{imgBankLicense,jdbcType=VARCHAR}, #{imgBusinessLicense,jdbcType=VARCHAR}, #{imgHandIdCard,jdbcType=VARCHAR}, 
+      #{imgIdCardDown,jdbcType=VARCHAR}, #{imgIdCardUp,jdbcType=VARCHAR}, #{imgOrganization,jdbcType=VARCHAR}, 
+      #{imgXieyi1,jdbcType=VARCHAR}, #{imgXieyi2,jdbcType=VARCHAR}, #{imgXieyi3,jdbcType=VARCHAR}, 
+      #{manEmail,jdbcType=VARCHAR}, #{manIdCard,jdbcType=VARCHAR}, #{manName,jdbcType=VARCHAR}, 
+      #{manTel,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{daquAgentId,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{parentType,jdbcType=INTEGER}, 
+      #{password,jdbcType=VARCHAR}, #{t0fenrun1,jdbcType=VARCHAR}, #{t0fenrun2,jdbcType=VARCHAR}, 
+      #{t0fenrun3,jdbcType=VARCHAR}, #{t0fenrun4,jdbcType=VARCHAR}, #{t0fenrun5,jdbcType=VARCHAR}, 
+      #{t0fenrun6,jdbcType=VARCHAR}, #{t0fenrunMark,jdbcType=VARCHAR}, #{t1fenrun1,jdbcType=VARCHAR}, 
+      #{t1fenrun2,jdbcType=VARCHAR}, #{t1fenrun3,jdbcType=VARCHAR}, #{t1fenrun4,jdbcType=VARCHAR}, 
+      #{t1fenrun5,jdbcType=VARCHAR}, #{t1fenrun6,jdbcType=VARCHAR}, #{t1fenrunMark,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{agentDrawFee,jdbcType=VARCHAR}, 
+      #{totalmargin,jdbcType=VARCHAR}, #{countcustomer,jdbcType=DOUBLE}, #{countstandard,jdbcType=DOUBLE}, 
+      #{posnum,jdbcType=DOUBLE}, #{actnum,jdbcType=DOUBLE}, #{actscale,jdbcType=VARCHAR}, 
+      #{counterFee,jdbcType=VARCHAR}, #{agentAccountid,jdbcType=INTEGER}, #{fenrunFlag,jdbcType=SMALLINT}, 
+      #{ownAccountId,jdbcType=INTEGER}, #{isAuth,jdbcType=SMALLINT}, #{agentVersionFlag,jdbcType=VARCHAR}, 
+      #{flexibleAccountId,jdbcType=INTEGER}, #{initCustomerMccRate,jdbcType=VARCHAR}, 
+      #{agentKoufeiFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Agent">
+    insert into agent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="affiliation != null">
+        affiliation,
+      </if>
+      <if test="auditFlag != null">
+        audit_flag,
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city,
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code,
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name,
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province,
+      </if>
+      <if test="bankCardType != null">
+        bank_card_type,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name,
+      </if>
+      <if test="bohuiMark != null">
+        bohui_mark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="fengdingFenrun != null">
+        fengding_fenrun,
+      </if>
+      <if test="imgBankLicense != null">
+        img_bank_license,
+      </if>
+      <if test="imgBusinessLicense != null">
+        img_business_license,
+      </if>
+      <if test="imgHandIdCard != null">
+        img_hand_id_card,
+      </if>
+      <if test="imgIdCardDown != null">
+        img_id_card_down,
+      </if>
+      <if test="imgIdCardUp != null">
+        img_id_card_up,
+      </if>
+      <if test="imgOrganization != null">
+        img_organization,
+      </if>
+      <if test="imgXieyi1 != null">
+        img_xieyi1,
+      </if>
+      <if test="imgXieyi2 != null">
+        img_xieyi2,
+      </if>
+      <if test="imgXieyi3 != null">
+        img_xieyi3,
+      </if>
+      <if test="manEmail != null">
+        man_email,
+      </if>
+      <if test="manIdCard != null">
+        man_id_card,
+      </if>
+      <if test="manName != null">
+        man_name,
+      </if>
+      <if test="manTel != null">
+        man_tel,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="daquAgentId != null">
+        daqu_agent_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="parentType != null">
+        parent_type,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="t0fenrun1 != null">
+        t0fenrun1,
+      </if>
+      <if test="t0fenrun2 != null">
+        t0fenrun2,
+      </if>
+      <if test="t0fenrun3 != null">
+        t0fenrun3,
+      </if>
+      <if test="t0fenrun4 != null">
+        t0fenrun4,
+      </if>
+      <if test="t0fenrun5 != null">
+        t0fenrun5,
+      </if>
+      <if test="t0fenrun6 != null">
+        t0fenrun6,
+      </if>
+      <if test="t0fenrunMark != null">
+        t0fenrun_mark,
+      </if>
+      <if test="t1fenrun1 != null">
+        t1fenrun1,
+      </if>
+      <if test="t1fenrun2 != null">
+        t1fenrun2,
+      </if>
+      <if test="t1fenrun3 != null">
+        t1fenrun3,
+      </if>
+      <if test="t1fenrun4 != null">
+        t1fenrun4,
+      </if>
+      <if test="t1fenrun5 != null">
+        t1fenrun5,
+      </if>
+      <if test="t1fenrun6 != null">
+        t1fenrun6,
+      </if>
+      <if test="t1fenrunMark != null">
+        t1fenrun_mark,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME,
+      </if>
+      <if test="agentDrawFee != null">
+        agent_draw_fee,
+      </if>
+      <if test="totalmargin != null">
+        totalmargin,
+      </if>
+      <if test="countcustomer != null">
+        countcustomer,
+      </if>
+      <if test="countstandard != null">
+        countstandard,
+      </if>
+      <if test="posnum != null">
+        posnum,
+      </if>
+      <if test="actnum != null">
+        actnum,
+      </if>
+      <if test="actscale != null">
+        actscale,
+      </if>
+      <if test="counterFee != null">
+        counter_fee,
+      </if>
+      <if test="agentAccountid != null">
+        agent_accountId,
+      </if>
+      <if test="fenrunFlag != null">
+        fenrun_flag,
+      </if>
+      <if test="ownAccountId != null">
+        own_account_id,
+      </if>
+      <if test="isAuth != null">
+        is_auth,
+      </if>
+      <if test="agentVersionFlag != null">
+        agent_version_flag,
+      </if>
+      <if test="flexibleAccountId != null">
+        flexible_account_id,
+      </if>
+      <if test="initCustomerMccRate != null">
+        init_customer_mcc_rate,
+      </if>
+      <if test="agentKoufeiFlag != null">
+        agent_koufei_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="affiliation != null">
+        #{affiliation,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bankCardCity != null">
+        #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardType != null">
+        #{bankCardType,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="bohuiMark != null">
+        #{bohuiMark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="fengdingFenrun != null">
+        #{fengdingFenrun,jdbcType=VARCHAR},
+      </if>
+      <if test="imgBankLicense != null">
+        #{imgBankLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="imgBusinessLicense != null">
+        #{imgBusinessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="imgHandIdCard != null">
+        #{imgHandIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardDown != null">
+        #{imgIdCardDown,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardUp != null">
+        #{imgIdCardUp,jdbcType=VARCHAR},
+      </if>
+      <if test="imgOrganization != null">
+        #{imgOrganization,jdbcType=VARCHAR},
+      </if>
+      <if test="imgXieyi1 != null">
+        #{imgXieyi1,jdbcType=VARCHAR},
+      </if>
+      <if test="imgXieyi2 != null">
+        #{imgXieyi2,jdbcType=VARCHAR},
+      </if>
+      <if test="imgXieyi3 != null">
+        #{imgXieyi3,jdbcType=VARCHAR},
+      </if>
+      <if test="manEmail != null">
+        #{manEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="manIdCard != null">
+        #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="daquAgentId != null">
+        #{daquAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="parentType != null">
+        #{parentType,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun1 != null">
+        #{t0fenrun1,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun2 != null">
+        #{t0fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun3 != null">
+        #{t0fenrun3,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun4 != null">
+        #{t0fenrun4,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun5 != null">
+        #{t0fenrun5,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun6 != null">
+        #{t0fenrun6,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrunMark != null">
+        #{t0fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun1 != null">
+        #{t1fenrun1,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun2 != null">
+        #{t1fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun3 != null">
+        #{t1fenrun3,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun4 != null">
+        #{t1fenrun4,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun5 != null">
+        #{t1fenrun5,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun6 != null">
+        #{t1fenrun6,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrunMark != null">
+        #{t1fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDrawFee != null">
+        #{agentDrawFee,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmargin != null">
+        #{totalmargin,jdbcType=VARCHAR},
+      </if>
+      <if test="countcustomer != null">
+        #{countcustomer,jdbcType=DOUBLE},
+      </if>
+      <if test="countstandard != null">
+        #{countstandard,jdbcType=DOUBLE},
+      </if>
+      <if test="posnum != null">
+        #{posnum,jdbcType=DOUBLE},
+      </if>
+      <if test="actnum != null">
+        #{actnum,jdbcType=DOUBLE},
+      </if>
+      <if test="actscale != null">
+        #{actscale,jdbcType=VARCHAR},
+      </if>
+      <if test="counterFee != null">
+        #{counterFee,jdbcType=VARCHAR},
+      </if>
+      <if test="agentAccountid != null">
+        #{agentAccountid,jdbcType=INTEGER},
+      </if>
+      <if test="fenrunFlag != null">
+        #{fenrunFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="ownAccountId != null">
+        #{ownAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="isAuth != null">
+        #{isAuth,jdbcType=SMALLINT},
+      </if>
+      <if test="agentVersionFlag != null">
+        #{agentVersionFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="flexibleAccountId != null">
+        #{flexibleAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="initCustomerMccRate != null">
+        #{initCustomerMccRate,jdbcType=VARCHAR},
+      </if>
+      <if test="agentKoufeiFlag != null">
+        #{agentKoufeiFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Agent">
+    update agent
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="affiliation != null">
+        affiliation = #{affiliation,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        audit_flag = #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardType != null">
+        bank_card_type = #{bankCardType,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="bohuiMark != null">
+        bohui_mark = #{bohuiMark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="fengdingFenrun != null">
+        fengding_fenrun = #{fengdingFenrun,jdbcType=VARCHAR},
+      </if>
+      <if test="imgBankLicense != null">
+        img_bank_license = #{imgBankLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="imgBusinessLicense != null">
+        img_business_license = #{imgBusinessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="imgHandIdCard != null">
+        img_hand_id_card = #{imgHandIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardDown != null">
+        img_id_card_down = #{imgIdCardDown,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardUp != null">
+        img_id_card_up = #{imgIdCardUp,jdbcType=VARCHAR},
+      </if>
+      <if test="imgOrganization != null">
+        img_organization = #{imgOrganization,jdbcType=VARCHAR},
+      </if>
+      <if test="imgXieyi1 != null">
+        img_xieyi1 = #{imgXieyi1,jdbcType=VARCHAR},
+      </if>
+      <if test="imgXieyi2 != null">
+        img_xieyi2 = #{imgXieyi2,jdbcType=VARCHAR},
+      </if>
+      <if test="imgXieyi3 != null">
+        img_xieyi3 = #{imgXieyi3,jdbcType=VARCHAR},
+      </if>
+      <if test="manEmail != null">
+        man_email = #{manEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="manIdCard != null">
+        man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        man_name = #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        man_tel = #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="daquAgentId != null">
+        daqu_agent_id = #{daquAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="parentType != null">
+        parent_type = #{parentType,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun1 != null">
+        t0fenrun1 = #{t0fenrun1,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun2 != null">
+        t0fenrun2 = #{t0fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun3 != null">
+        t0fenrun3 = #{t0fenrun3,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun4 != null">
+        t0fenrun4 = #{t0fenrun4,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun5 != null">
+        t0fenrun5 = #{t0fenrun5,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun6 != null">
+        t0fenrun6 = #{t0fenrun6,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrunMark != null">
+        t0fenrun_mark = #{t0fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun1 != null">
+        t1fenrun1 = #{t1fenrun1,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun2 != null">
+        t1fenrun2 = #{t1fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun3 != null">
+        t1fenrun3 = #{t1fenrun3,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun4 != null">
+        t1fenrun4 = #{t1fenrun4,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun5 != null">
+        t1fenrun5 = #{t1fenrun5,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun6 != null">
+        t1fenrun6 = #{t1fenrun6,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrunMark != null">
+        t1fenrun_mark = #{t1fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDrawFee != null">
+        agent_draw_fee = #{agentDrawFee,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmargin != null">
+        totalmargin = #{totalmargin,jdbcType=VARCHAR},
+      </if>
+      <if test="countcustomer != null">
+        countcustomer = #{countcustomer,jdbcType=DOUBLE},
+      </if>
+      <if test="countstandard != null">
+        countstandard = #{countstandard,jdbcType=DOUBLE},
+      </if>
+      <if test="posnum != null">
+        posnum = #{posnum,jdbcType=DOUBLE},
+      </if>
+      <if test="actnum != null">
+        actnum = #{actnum,jdbcType=DOUBLE},
+      </if>
+      <if test="actscale != null">
+        actscale = #{actscale,jdbcType=VARCHAR},
+      </if>
+      <if test="counterFee != null">
+        counter_fee = #{counterFee,jdbcType=VARCHAR},
+      </if>
+      <if test="agentAccountid != null">
+        agent_accountId = #{agentAccountid,jdbcType=INTEGER},
+      </if>
+      <if test="fenrunFlag != null">
+        fenrun_flag = #{fenrunFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="ownAccountId != null">
+        own_account_id = #{ownAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="isAuth != null">
+        is_auth = #{isAuth,jdbcType=SMALLINT},
+      </if>
+      <if test="agentVersionFlag != null">
+        agent_version_flag = #{agentVersionFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="flexibleAccountId != null">
+        flexible_account_id = #{flexibleAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="initCustomerMccRate != null">
+        init_customer_mcc_rate = #{initCustomerMccRate,jdbcType=VARCHAR},
+      </if>
+      <if test="agentKoufeiFlag != null">
+        agent_koufei_flag = #{agentKoufeiFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Agent">
+    update agent
+    set `security` = #{security,jdbcType=VARCHAR},
+      affiliation = #{affiliation,jdbcType=VARCHAR},
+      audit_flag = #{auditFlag,jdbcType=INTEGER},
+      bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      bank_card_type = #{bankCardType,jdbcType=INTEGER},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      bohui_mark = #{bohuiMark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      fengding_fenrun = #{fengdingFenrun,jdbcType=VARCHAR},
+      img_bank_license = #{imgBankLicense,jdbcType=VARCHAR},
+      img_business_license = #{imgBusinessLicense,jdbcType=VARCHAR},
+      img_hand_id_card = #{imgHandIdCard,jdbcType=VARCHAR},
+      img_id_card_down = #{imgIdCardDown,jdbcType=VARCHAR},
+      img_id_card_up = #{imgIdCardUp,jdbcType=VARCHAR},
+      img_organization = #{imgOrganization,jdbcType=VARCHAR},
+      img_xieyi1 = #{imgXieyi1,jdbcType=VARCHAR},
+      img_xieyi2 = #{imgXieyi2,jdbcType=VARCHAR},
+      img_xieyi3 = #{imgXieyi3,jdbcType=VARCHAR},
+      man_email = #{manEmail,jdbcType=VARCHAR},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      man_name = #{manName,jdbcType=VARCHAR},
+      man_tel = #{manTel,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      daqu_agent_id = #{daquAgentId,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      parent_type = #{parentType,jdbcType=INTEGER},
+      `password` = #{password,jdbcType=VARCHAR},
+      t0fenrun1 = #{t0fenrun1,jdbcType=VARCHAR},
+      t0fenrun2 = #{t0fenrun2,jdbcType=VARCHAR},
+      t0fenrun3 = #{t0fenrun3,jdbcType=VARCHAR},
+      t0fenrun4 = #{t0fenrun4,jdbcType=VARCHAR},
+      t0fenrun5 = #{t0fenrun5,jdbcType=VARCHAR},
+      t0fenrun6 = #{t0fenrun6,jdbcType=VARCHAR},
+      t0fenrun_mark = #{t0fenrunMark,jdbcType=VARCHAR},
+      t1fenrun1 = #{t1fenrun1,jdbcType=VARCHAR},
+      t1fenrun2 = #{t1fenrun2,jdbcType=VARCHAR},
+      t1fenrun3 = #{t1fenrun3,jdbcType=VARCHAR},
+      t1fenrun4 = #{t1fenrun4,jdbcType=VARCHAR},
+      t1fenrun5 = #{t1fenrun5,jdbcType=VARCHAR},
+      t1fenrun6 = #{t1fenrun6,jdbcType=VARCHAR},
+      t1fenrun_mark = #{t1fenrunMark,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      agent_draw_fee = #{agentDrawFee,jdbcType=VARCHAR},
+      totalmargin = #{totalmargin,jdbcType=VARCHAR},
+      countcustomer = #{countcustomer,jdbcType=DOUBLE},
+      countstandard = #{countstandard,jdbcType=DOUBLE},
+      posnum = #{posnum,jdbcType=DOUBLE},
+      actnum = #{actnum,jdbcType=DOUBLE},
+      actscale = #{actscale,jdbcType=VARCHAR},
+      counter_fee = #{counterFee,jdbcType=VARCHAR},
+      agent_accountId = #{agentAccountid,jdbcType=INTEGER},
+      fenrun_flag = #{fenrunFlag,jdbcType=SMALLINT},
+      own_account_id = #{ownAccountId,jdbcType=INTEGER},
+      is_auth = #{isAuth,jdbcType=SMALLINT},
+      agent_version_flag = #{agentVersionFlag,jdbcType=VARCHAR},
+      flexible_account_id = #{flexibleAccountId,jdbcType=INTEGER},
+      init_customer_mcc_rate = #{initCustomerMccRate,jdbcType=VARCHAR},
+      agent_koufei_flag = #{agentKoufeiFlag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

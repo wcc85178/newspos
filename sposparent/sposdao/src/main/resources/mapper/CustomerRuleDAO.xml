@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerRuleDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerRule">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="day_trans_limit" jdbcType="DECIMAL" property="dayTransLimit" />
+    <result column="enable_card_type" jdbcType="INTEGER" property="enableCardType" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="month_trans_limit" jdbcType="DECIMAL" property="monthTransLimit" />
+    <result column="one_trans_limit" jdbcType="DECIMAL" property="oneTransLimit" />
+    <result column="out_day_trans_limit" jdbcType="DECIMAL" property="outDayTransLimit" />
+    <result column="out_one_trans_limit" jdbcType="DECIMAL" property="outOneTransLimit" />
+    <result column="ref_customer_id" jdbcType="INTEGER" property="refCustomerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, create_time, day_trans_limit, enable_card_type, enable_flag, month_trans_limit, 
+    one_trans_limit, out_day_trans_limit, out_one_trans_limit, ref_customer_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerRule">
+    insert into customer_rule (id, `security`, create_time, 
+      day_trans_limit, enable_card_type, enable_flag, 
+      month_trans_limit, one_trans_limit, out_day_trans_limit, 
+      out_one_trans_limit, ref_customer_id)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{dayTransLimit,jdbcType=DECIMAL}, #{enableCardType,jdbcType=INTEGER}, #{enableFlag,jdbcType=INTEGER}, 
+      #{monthTransLimit,jdbcType=DECIMAL}, #{oneTransLimit,jdbcType=DECIMAL}, #{outDayTransLimit,jdbcType=DECIMAL}, 
+      #{outOneTransLimit,jdbcType=DECIMAL}, #{refCustomerId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerRule">
+    insert into customer_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="dayTransLimit != null">
+        day_trans_limit,
+      </if>
+      <if test="enableCardType != null">
+        enable_card_type,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="monthTransLimit != null">
+        month_trans_limit,
+      </if>
+      <if test="oneTransLimit != null">
+        one_trans_limit,
+      </if>
+      <if test="outDayTransLimit != null">
+        out_day_trans_limit,
+      </if>
+      <if test="outOneTransLimit != null">
+        out_one_trans_limit,
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="dayTransLimit != null">
+        #{dayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="enableCardType != null">
+        #{enableCardType,jdbcType=INTEGER},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="monthTransLimit != null">
+        #{monthTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="oneTransLimit != null">
+        #{oneTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="outDayTransLimit != null">
+        #{outDayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="outOneTransLimit != null">
+        #{outOneTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="refCustomerId != null">
+        #{refCustomerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerRule">
+    update customer_rule
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="dayTransLimit != null">
+        day_trans_limit = #{dayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="enableCardType != null">
+        enable_card_type = #{enableCardType,jdbcType=INTEGER},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="monthTransLimit != null">
+        month_trans_limit = #{monthTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="oneTransLimit != null">
+        one_trans_limit = #{oneTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="outDayTransLimit != null">
+        out_day_trans_limit = #{outDayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="outOneTransLimit != null">
+        out_one_trans_limit = #{outOneTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerRule">
+    update customer_rule
+    set `security` = #{security,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      day_trans_limit = #{dayTransLimit,jdbcType=DECIMAL},
+      enable_card_type = #{enableCardType,jdbcType=INTEGER},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      month_trans_limit = #{monthTransLimit,jdbcType=DECIMAL},
+      one_trans_limit = #{oneTransLimit,jdbcType=DECIMAL},
+      out_day_trans_limit = #{outDayTransLimit,jdbcType=DECIMAL},
+      out_one_trans_limit = #{outOneTransLimit,jdbcType=DECIMAL},
+      ref_customer_id = #{refCustomerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

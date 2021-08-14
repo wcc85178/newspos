@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MrsAgentOperaRecordDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MrsAgentOperaRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="message_type" jdbcType="VARCHAR" property="messageType" />
+    <result column="opera_trace" jdbcType="VARCHAR" property="operaTrace" />
+    <result column="back_url" jdbcType="VARCHAR" property="backUrl" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="async_status" jdbcType="VARCHAR" property="asyncStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shiyi.sposdao.entity.MrsAgentOperaRecordWithBLOBs">
+    <result column="req_data" jdbcType="LONGVARCHAR" property="reqData" />
+    <result column="resp_data" jdbcType="LONGVARCHAR" property="respData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, agent_id, message_type, opera_trace, back_url, `status`, async_status, create_time, 
+    update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    req_data, resp_data
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mrs_agent_opera_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mrs_agent_opera_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MrsAgentOperaRecordWithBLOBs">
+    insert into mrs_agent_opera_record (id, agent_id, message_type, 
+      opera_trace, back_url, `status`, 
+      async_status, create_time, update_time, 
+      req_data, resp_data)
+    values (#{id,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{messageType,jdbcType=VARCHAR}, 
+      #{operaTrace,jdbcType=VARCHAR}, #{backUrl,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{asyncStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{reqData,jdbcType=LONGVARCHAR}, #{respData,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MrsAgentOperaRecordWithBLOBs">
+    insert into mrs_agent_opera_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="messageType != null">
+        message_type,
+      </if>
+      <if test="operaTrace != null">
+        opera_trace,
+      </if>
+      <if test="backUrl != null">
+        back_url,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="asyncStatus != null">
+        async_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="reqData != null">
+        req_data,
+      </if>
+      <if test="respData != null">
+        resp_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="messageType != null">
+        #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="operaTrace != null">
+        #{operaTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="backUrl != null">
+        #{backUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="asyncStatus != null">
+        #{asyncStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reqData != null">
+        #{reqData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="respData != null">
+        #{respData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MrsAgentOperaRecordWithBLOBs">
+    update mrs_agent_opera_record
+    <set>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="messageType != null">
+        message_type = #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="operaTrace != null">
+        opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="backUrl != null">
+        back_url = #{backUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="asyncStatus != null">
+        async_status = #{asyncStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reqData != null">
+        req_data = #{reqData,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="respData != null">
+        resp_data = #{respData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shiyi.sposdao.entity.MrsAgentOperaRecordWithBLOBs">
+    update mrs_agent_opera_record
+    set agent_id = #{agentId,jdbcType=INTEGER},
+      message_type = #{messageType,jdbcType=VARCHAR},
+      opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      back_url = #{backUrl,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      async_status = #{asyncStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      req_data = #{reqData,jdbcType=LONGVARCHAR},
+      resp_data = #{respData,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MrsAgentOperaRecord">
+    update mrs_agent_opera_record
+    set agent_id = #{agentId,jdbcType=INTEGER},
+      message_type = #{messageType,jdbcType=VARCHAR},
+      opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      back_url = #{backUrl,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      async_status = #{asyncStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

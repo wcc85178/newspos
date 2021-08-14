@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerReuseDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerReuse">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="audit_flag" jdbcType="INTEGER" property="auditFlag" />
+    <result column="consumer_addr" jdbcType="VARCHAR" property="consumerAddr" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="img_hand_id_card" jdbcType="VARCHAR" property="imgHandIdCard" />
+    <result column="img_id_card_down" jdbcType="VARCHAR" property="imgIdCardDown" />
+    <result column="img_id_card_up" jdbcType="VARCHAR" property="imgIdCardUp" />
+    <result column="man_id_card" jdbcType="VARCHAR" property="manIdCard" />
+    <result column="man_name" jdbcType="VARCHAR" property="manName" />
+    <result column="man_tel" jdbcType="VARCHAR" property="manTel" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="activetime" jdbcType="BIGINT" property="activetime" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="chargeBackDone" jdbcType="VARCHAR" property="chargebackdone" />
+    <result column="accountId" jdbcType="INTEGER" property="accountid" />
+    <result column="last_policy" jdbcType="VARCHAR" property="lastPolicy" />
+    <result column="start_day" jdbcType="VARCHAR" property="startDay" />
+    <result column="end_day" jdbcType="VARCHAR" property="endDay" />
+    <result column="next_agent_id" jdbcType="INTEGER" property="nextAgentId" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, mer, `security`, audit_flag, consumer_addr, enable_flag, img_hand_id_card, 
+    img_id_card_down, img_id_card_up, man_id_card, man_name, man_tel, ref_agent_id, activetime, 
+    platform, chargeBackDone, accountId, last_policy, start_day, end_day, next_agent_id, 
+    mark, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_reuse
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_reuse
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerReuse">
+    insert into customer_reuse (id, customer_id, mer, 
+      `security`, audit_flag, consumer_addr, 
+      enable_flag, img_hand_id_card, img_id_card_down, 
+      img_id_card_up, man_id_card, man_name, 
+      man_tel, ref_agent_id, activetime, 
+      platform, chargeBackDone, accountId, 
+      last_policy, start_day, end_day, 
+      next_agent_id, mark, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{mer,jdbcType=VARCHAR}, 
+      #{security,jdbcType=VARCHAR}, #{auditFlag,jdbcType=INTEGER}, #{consumerAddr,jdbcType=VARCHAR}, 
+      #{enableFlag,jdbcType=INTEGER}, #{imgHandIdCard,jdbcType=VARCHAR}, #{imgIdCardDown,jdbcType=VARCHAR}, 
+      #{imgIdCardUp,jdbcType=VARCHAR}, #{manIdCard,jdbcType=VARCHAR}, #{manName,jdbcType=VARCHAR}, 
+      #{manTel,jdbcType=VARCHAR}, #{refAgentId,jdbcType=INTEGER}, #{activetime,jdbcType=BIGINT}, 
+      #{platform,jdbcType=VARCHAR}, #{chargebackdone,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}, 
+      #{lastPolicy,jdbcType=VARCHAR}, #{startDay,jdbcType=VARCHAR}, #{endDay,jdbcType=VARCHAR}, 
+      #{nextAgentId,jdbcType=INTEGER}, #{mark,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerReuse">
+    insert into customer_reuse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="auditFlag != null">
+        audit_flag,
+      </if>
+      <if test="consumerAddr != null">
+        consumer_addr,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="imgHandIdCard != null">
+        img_hand_id_card,
+      </if>
+      <if test="imgIdCardDown != null">
+        img_id_card_down,
+      </if>
+      <if test="imgIdCardUp != null">
+        img_id_card_up,
+      </if>
+      <if test="manIdCard != null">
+        man_id_card,
+      </if>
+      <if test="manName != null">
+        man_name,
+      </if>
+      <if test="manTel != null">
+        man_tel,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="activetime != null">
+        activetime,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="chargebackdone != null">
+        chargeBackDone,
+      </if>
+      <if test="accountid != null">
+        accountId,
+      </if>
+      <if test="lastPolicy != null">
+        last_policy,
+      </if>
+      <if test="startDay != null">
+        start_day,
+      </if>
+      <if test="endDay != null">
+        end_day,
+      </if>
+      <if test="nextAgentId != null">
+        next_agent_id,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="consumerAddr != null">
+        #{consumerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="imgHandIdCard != null">
+        #{imgHandIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardDown != null">
+        #{imgIdCardDown,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardUp != null">
+        #{imgIdCardUp,jdbcType=VARCHAR},
+      </if>
+      <if test="manIdCard != null">
+        #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="activetime != null">
+        #{activetime,jdbcType=BIGINT},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackdone != null">
+        #{chargebackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="lastPolicy != null">
+        #{lastPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="startDay != null">
+        #{startDay,jdbcType=VARCHAR},
+      </if>
+      <if test="endDay != null">
+        #{endDay,jdbcType=VARCHAR},
+      </if>
+      <if test="nextAgentId != null">
+        #{nextAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerReuse">
+    update customer_reuse
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        audit_flag = #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="consumerAddr != null">
+        consumer_addr = #{consumerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="imgHandIdCard != null">
+        img_hand_id_card = #{imgHandIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardDown != null">
+        img_id_card_down = #{imgIdCardDown,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardUp != null">
+        img_id_card_up = #{imgIdCardUp,jdbcType=VARCHAR},
+      </if>
+      <if test="manIdCard != null">
+        man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        man_name = #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        man_tel = #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="activetime != null">
+        activetime = #{activetime,jdbcType=BIGINT},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackdone != null">
+        chargeBackDone = #{chargebackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null">
+        accountId = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="lastPolicy != null">
+        last_policy = #{lastPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="startDay != null">
+        start_day = #{startDay,jdbcType=VARCHAR},
+      </if>
+      <if test="endDay != null">
+        end_day = #{endDay,jdbcType=VARCHAR},
+      </if>
+      <if test="nextAgentId != null">
+        next_agent_id = #{nextAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerReuse">
+    update customer_reuse
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      mer = #{mer,jdbcType=VARCHAR},
+      `security` = #{security,jdbcType=VARCHAR},
+      audit_flag = #{auditFlag,jdbcType=INTEGER},
+      consumer_addr = #{consumerAddr,jdbcType=VARCHAR},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      img_hand_id_card = #{imgHandIdCard,jdbcType=VARCHAR},
+      img_id_card_down = #{imgIdCardDown,jdbcType=VARCHAR},
+      img_id_card_up = #{imgIdCardUp,jdbcType=VARCHAR},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      man_name = #{manName,jdbcType=VARCHAR},
+      man_tel = #{manTel,jdbcType=VARCHAR},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      activetime = #{activetime,jdbcType=BIGINT},
+      platform = #{platform,jdbcType=VARCHAR},
+      chargeBackDone = #{chargebackdone,jdbcType=VARCHAR},
+      accountId = #{accountid,jdbcType=INTEGER},
+      last_policy = #{lastPolicy,jdbcType=VARCHAR},
+      start_day = #{startDay,jdbcType=VARCHAR},
+      end_day = #{endDay,jdbcType=VARCHAR},
+      next_agent_id = #{nextAgentId,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

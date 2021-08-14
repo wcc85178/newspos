@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AdvertisementDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Advertisement">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ad_name" jdbcType="VARCHAR" property="adName" />
+    <result column="platform_id" jdbcType="INTEGER" property="platformId" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="h5_url" jdbcType="VARCHAR" property="h5Url" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="turn_time" jdbcType="INTEGER" property="turnTime" />
+    <result column="state" jdbcType="CHAR" property="state" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+    <result column="is_global" jdbcType="INTEGER" property="isGlobal" />
+    <result column="is_true_name" jdbcType="INTEGER" property="isTrueName" />
+    <result column="module_code" jdbcType="VARCHAR" property="moduleCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ad_name, platform_id, img_url, h5_url, `type`, start_time, end_time, create_time, 
+    update_time, turn_time, `state`, tags, is_global, is_true_name, module_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from advertisement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from advertisement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Advertisement">
+    insert into advertisement (id, ad_name, platform_id, 
+      img_url, h5_url, `type`, 
+      start_time, end_time, create_time, 
+      update_time, turn_time, `state`, 
+      tags, is_global, is_true_name, 
+      module_code)
+    values (#{id,jdbcType=INTEGER}, #{adName,jdbcType=VARCHAR}, #{platformId,jdbcType=INTEGER}, 
+      #{imgUrl,jdbcType=VARCHAR}, #{h5Url,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{turnTime,jdbcType=INTEGER}, #{state,jdbcType=CHAR}, 
+      #{tags,jdbcType=VARCHAR}, #{isGlobal,jdbcType=INTEGER}, #{isTrueName,jdbcType=INTEGER}, 
+      #{moduleCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Advertisement">
+    insert into advertisement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="adName != null">
+        ad_name,
+      </if>
+      <if test="platformId != null">
+        platform_id,
+      </if>
+      <if test="imgUrl != null">
+        img_url,
+      </if>
+      <if test="h5Url != null">
+        h5_url,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="turnTime != null">
+        turn_time,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="tags != null">
+        tags,
+      </if>
+      <if test="isGlobal != null">
+        is_global,
+      </if>
+      <if test="isTrueName != null">
+        is_true_name,
+      </if>
+      <if test="moduleCode != null">
+        module_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="adName != null">
+        #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null">
+        #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="h5Url != null">
+        #{h5Url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="turnTime != null">
+        #{turnTime,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="isGlobal != null">
+        #{isGlobal,jdbcType=INTEGER},
+      </if>
+      <if test="isTrueName != null">
+        #{isTrueName,jdbcType=INTEGER},
+      </if>
+      <if test="moduleCode != null">
+        #{moduleCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Advertisement">
+    update advertisement
+    <set>
+      <if test="adName != null">
+        ad_name = #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null">
+        platform_id = #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="h5Url != null">
+        h5_url = #{h5Url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="turnTime != null">
+        turn_time = #{turnTime,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=CHAR},
+      </if>
+      <if test="tags != null">
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="isGlobal != null">
+        is_global = #{isGlobal,jdbcType=INTEGER},
+      </if>
+      <if test="isTrueName != null">
+        is_true_name = #{isTrueName,jdbcType=INTEGER},
+      </if>
+      <if test="moduleCode != null">
+        module_code = #{moduleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Advertisement">
+    update advertisement
+    set ad_name = #{adName,jdbcType=VARCHAR},
+      platform_id = #{platformId,jdbcType=INTEGER},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      h5_url = #{h5Url,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      turn_time = #{turnTime,jdbcType=INTEGER},
+      `state` = #{state,jdbcType=CHAR},
+      tags = #{tags,jdbcType=VARCHAR},
+      is_global = #{isGlobal,jdbcType=INTEGER},
+      is_true_name = #{isTrueName,jdbcType=INTEGER},
+      module_code = #{moduleCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

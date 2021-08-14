@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MarginTotalDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MarginTotal">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="margin_num" jdbcType="INTEGER" property="marginNum" />
+    <result column="tr_num" jdbcType="INTEGER" property="trNum" />
+    <result column="t1_tr_num" jdbcType="INTEGER" property="t1TrNum" />
+    <result column="t1_margin_num" jdbcType="INTEGER" property="t1MarginNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ref_agent_id, margin_num, tr_num, t1_tr_num, t1_margin_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from margin_total
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from margin_total
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MarginTotal">
+    insert into margin_total (id, ref_agent_id, margin_num, 
+      tr_num, t1_tr_num, t1_margin_num
+      )
+    values (#{id,jdbcType=INTEGER}, #{refAgentId,jdbcType=INTEGER}, #{marginNum,jdbcType=INTEGER}, 
+      #{trNum,jdbcType=INTEGER}, #{t1TrNum,jdbcType=INTEGER}, #{t1MarginNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MarginTotal">
+    insert into margin_total
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="marginNum != null">
+        margin_num,
+      </if>
+      <if test="trNum != null">
+        tr_num,
+      </if>
+      <if test="t1TrNum != null">
+        t1_tr_num,
+      </if>
+      <if test="t1MarginNum != null">
+        t1_margin_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="marginNum != null">
+        #{marginNum,jdbcType=INTEGER},
+      </if>
+      <if test="trNum != null">
+        #{trNum,jdbcType=INTEGER},
+      </if>
+      <if test="t1TrNum != null">
+        #{t1TrNum,jdbcType=INTEGER},
+      </if>
+      <if test="t1MarginNum != null">
+        #{t1MarginNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MarginTotal">
+    update margin_total
+    <set>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="marginNum != null">
+        margin_num = #{marginNum,jdbcType=INTEGER},
+      </if>
+      <if test="trNum != null">
+        tr_num = #{trNum,jdbcType=INTEGER},
+      </if>
+      <if test="t1TrNum != null">
+        t1_tr_num = #{t1TrNum,jdbcType=INTEGER},
+      </if>
+      <if test="t1MarginNum != null">
+        t1_margin_num = #{t1MarginNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MarginTotal">
+    update margin_total
+    set ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      margin_num = #{marginNum,jdbcType=INTEGER},
+      tr_num = #{trNum,jdbcType=INTEGER},
+      t1_tr_num = #{t1TrNum,jdbcType=INTEGER},
+      t1_margin_num = #{t1MarginNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

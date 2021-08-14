@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerWithdrawDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerWithdraw">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="agent_gain" jdbcType="DECIMAL" property="agentGain" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="bank_card_city" jdbcType="VARCHAR" property="bankCardCity" />
+    <result column="bank_card_code" jdbcType="VARCHAR" property="bankCardCode" />
+    <result column="bank_card_name" jdbcType="VARCHAR" property="bankCardName" />
+    <result column="bank_card_province" jdbcType="VARCHAR" property="bankCardProvince" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_sub_name" jdbcType="VARCHAR" property="bankSubName" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="clear_amount" jdbcType="DECIMAL" property="clearAmount" />
+    <result column="clear_batch_no" jdbcType="VARCHAR" property="clearBatchNo" />
+    <result column="clear_date_str" jdbcType="VARCHAR" property="clearDateStr" />
+    <result column="clear_datetime" jdbcType="BIGINT" property="clearDatetime" />
+    <result column="clear_flag" jdbcType="INTEGER" property="clearFlag" />
+    <result column="clear_type" jdbcType="INTEGER" property="clearType" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="fee" jdbcType="DECIMAL" property="fee" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="oem_gain" jdbcType="DECIMAL" property="oemGain" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, addr, agent_gain, agent_id, amount, bank_card_city, bank_card_code, 
+    bank_card_name, bank_card_province, bank_name, bank_sub_name, city, clear_amount, 
+    clear_batch_no, clear_date_str, clear_datetime, clear_flag, clear_type, create_time, 
+    customer_id, fee, mark, oem_gain, `position`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_withdraw
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_withdraw
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerWithdraw">
+    insert into customer_withdraw (id, `security`, addr, 
+      agent_gain, agent_id, amount, 
+      bank_card_city, bank_card_code, bank_card_name, 
+      bank_card_province, bank_name, bank_sub_name, 
+      city, clear_amount, clear_batch_no, 
+      clear_date_str, clear_datetime, clear_flag, 
+      clear_type, create_time, customer_id, 
+      fee, mark, oem_gain, 
+      `position`)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{agentGain,jdbcType=DECIMAL}, #{agentId,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, 
+      #{bankCardCity,jdbcType=VARCHAR}, #{bankCardCode,jdbcType=VARCHAR}, #{bankCardName,jdbcType=VARCHAR}, 
+      #{bankCardProvince,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankSubName,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{clearAmount,jdbcType=DECIMAL}, #{clearBatchNo,jdbcType=VARCHAR}, 
+      #{clearDateStr,jdbcType=VARCHAR}, #{clearDatetime,jdbcType=BIGINT}, #{clearFlag,jdbcType=INTEGER}, 
+      #{clearType,jdbcType=INTEGER}, #{createTime,jdbcType=BIGINT}, #{customerId,jdbcType=INTEGER}, 
+      #{fee,jdbcType=DECIMAL}, #{mark,jdbcType=VARCHAR}, #{oemGain,jdbcType=DECIMAL}, 
+      #{position,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerWithdraw">
+    insert into customer_withdraw
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="agentGain != null">
+        agent_gain,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city,
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code,
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name,
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="clearAmount != null">
+        clear_amount,
+      </if>
+      <if test="clearBatchNo != null">
+        clear_batch_no,
+      </if>
+      <if test="clearDateStr != null">
+        clear_date_str,
+      </if>
+      <if test="clearDatetime != null">
+        clear_datetime,
+      </if>
+      <if test="clearFlag != null">
+        clear_flag,
+      </if>
+      <if test="clearType != null">
+        clear_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="oemGain != null">
+        oem_gain,
+      </if>
+      <if test="position != null">
+        `position`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="agentGain != null">
+        #{agentGain,jdbcType=DECIMAL},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCardCity != null">
+        #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="clearAmount != null">
+        #{clearAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="clearBatchNo != null">
+        #{clearBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDateStr != null">
+        #{clearDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDatetime != null">
+        #{clearDatetime,jdbcType=BIGINT},
+      </if>
+      <if test="clearFlag != null">
+        #{clearFlag,jdbcType=INTEGER},
+      </if>
+      <if test="clearType != null">
+        #{clearType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="oemGain != null">
+        #{oemGain,jdbcType=DECIMAL},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerWithdraw">
+    update customer_withdraw
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="agentGain != null">
+        agent_gain = #{agentGain,jdbcType=DECIMAL},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="clearAmount != null">
+        clear_amount = #{clearAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="clearBatchNo != null">
+        clear_batch_no = #{clearBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDateStr != null">
+        clear_date_str = #{clearDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDatetime != null">
+        clear_datetime = #{clearDatetime,jdbcType=BIGINT},
+      </if>
+      <if test="clearFlag != null">
+        clear_flag = #{clearFlag,jdbcType=INTEGER},
+      </if>
+      <if test="clearType != null">
+        clear_type = #{clearType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        fee = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="oemGain != null">
+        oem_gain = #{oemGain,jdbcType=DECIMAL},
+      </if>
+      <if test="position != null">
+        `position` = #{position,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerWithdraw">
+    update customer_withdraw
+    set `security` = #{security,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      agent_gain = #{agentGain,jdbcType=DECIMAL},
+      agent_id = #{agentId,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      clear_amount = #{clearAmount,jdbcType=DECIMAL},
+      clear_batch_no = #{clearBatchNo,jdbcType=VARCHAR},
+      clear_date_str = #{clearDateStr,jdbcType=VARCHAR},
+      clear_datetime = #{clearDatetime,jdbcType=BIGINT},
+      clear_flag = #{clearFlag,jdbcType=INTEGER},
+      clear_type = #{clearType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=BIGINT},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=DECIMAL},
+      mark = #{mark,jdbcType=VARCHAR},
+      oem_gain = #{oemGain,jdbcType=DECIMAL},
+      `position` = #{position,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

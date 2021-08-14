@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PartnerDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Partner">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="grade" jdbcType="INTEGER" property="grade" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="referKey" jdbcType="VARCHAR" property="referkey" />
+    <result column="referId" jdbcType="INTEGER" property="referid" />
+    <result column="referName" jdbcType="VARCHAR" property="refername" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="up_referKey" jdbcType="VARCHAR" property="upReferkey" />
+    <result column="showName" jdbcType="VARCHAR" property="showname" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="institutionId" jdbcType="INTEGER" property="institutionid" />
+    <result column="firstInstitutionId" jdbcType="INTEGER" property="firstinstitutionid" />
+    <result column="secondInstitutionId" jdbcType="INTEGER" property="secondinstitutionid" />
+    <result column="thirdInstitutionId" jdbcType="INTEGER" property="thirdinstitutionid" />
+    <result column="checkTime" jdbcType="TIMESTAMP" property="checktime" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="myGold" jdbcType="INTEGER" property="mygold" />
+    <result column="frozenGold" jdbcType="INTEGER" property="frozengold" />
+    <result column="userGoldConf" jdbcType="INTEGER" property="usergoldconf" />
+    <result column="agent" jdbcType="VARCHAR" property="agent" />
+    <result column="activateCount" jdbcType="INTEGER" property="activatecount" />
+    <result column="allActivateCount" jdbcType="INTEGER" property="allactivatecount" />
+    <result column="t0MoneyCount" jdbcType="DOUBLE" property="t0moneycount" />
+    <result column="t1MoneyCount" jdbcType="DOUBLE" property="t1moneycount" />
+    <result column="qpMoneyCount" jdbcType="DOUBLE" property="qpmoneycount" />
+    <result column="otherMoneyCount" jdbcType="DOUBLE" property="othermoneycount" />
+    <result column="moneyCount" jdbcType="DOUBLE" property="moneycount" />
+    <result column="payCount" jdbcType="INTEGER" property="paycount" />
+    <result column="allMoneyCount" jdbcType="DOUBLE" property="allmoneycount" />
+    <result column="agentAccount" jdbcType="VARCHAR" property="agentaccount" />
+    <result column="ownAccount" jdbcType="VARCHAR" property="ownaccount" />
+    <result column="flexibleAccount" jdbcType="VARCHAR" property="flexibleaccount" />
+    <result column="agents" jdbcType="VARCHAR" property="agents" />
+    <result column="standPartner" jdbcType="SMALLINT" property="standpartner" />
+    <result column="standTime" jdbcType="TIMESTAMP" property="standtime" />
+    <result column="standPosNum" jdbcType="INTEGER" property="standposnum" />
+    <result column="jihuoStand" jdbcType="SMALLINT" property="jihuostand" />
+    <result column="jihuoStandTime" jdbcType="TIMESTAMP" property="jihuostandtime" />
+    <result column="jihuoNum" jdbcType="INTEGER" property="jihuonum" />
+    <result column="enable" jdbcType="SMALLINT" property="enable" />
+    <result column="WposMoneyCount" jdbcType="DOUBLE" property="wposmoneycount" />
+    <result column="WposMoney" jdbcType="DOUBLE" property="wposmoney" />
+    <result column="activeFlag" jdbcType="TINYINT" property="activeflag" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shiyi.sposdao.entity.PartnerWithBLOBs">
+    <result column="idcardFront" jdbcType="LONGVARCHAR" property="idcardfront" />
+    <result column="idcardBack" jdbcType="LONGVARCHAR" property="idcardback" />
+    <result column="payPassword" jdbcType="VARBINARY" property="paypassword" />
+    <result column="icon" jdbcType="LONGVARCHAR" property="icon" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createTime, updateTime, mobile, `status`, grade, `password`, referKey, referId, 
+    referName, realname, up_referKey, showName, idcard, institutionId, firstInstitutionId, 
+    secondInstitutionId, thirdInstitutionId, checkTime, reason, myGold, frozenGold, userGoldConf, 
+    agent, activateCount, allActivateCount, t0MoneyCount, t1MoneyCount, qpMoneyCount, 
+    otherMoneyCount, moneyCount, payCount, allMoneyCount, agentAccount, ownAccount, flexibleAccount, 
+    agents, standPartner, standTime, standPosNum, jihuoStand, jihuoStandTime, jihuoNum, 
+    `enable`, WposMoneyCount, WposMoney, activeFlag
+  </sql>
+  <sql id="Blob_Column_List">
+    idcardFront, idcardBack, payPassword, icon
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from partner
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from partner
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PartnerWithBLOBs">
+    insert into partner (id, createTime, updateTime, 
+      mobile, `status`, grade, 
+      `password`, referKey, referId, 
+      referName, realname, up_referKey, 
+      showName, idcard, institutionId, 
+      firstInstitutionId, secondInstitutionId, 
+      thirdInstitutionId, checkTime, reason, 
+      myGold, frozenGold, userGoldConf, 
+      agent, activateCount, allActivateCount, 
+      t0MoneyCount, t1MoneyCount, qpMoneyCount, 
+      otherMoneyCount, moneyCount, payCount, 
+      allMoneyCount, agentAccount, ownAccount, 
+      flexibleAccount, agents, standPartner, 
+      standTime, standPosNum, jihuoStand, 
+      jihuoStandTime, jihuoNum, `enable`, 
+      WposMoneyCount, WposMoney, activeFlag, 
+      idcardFront, idcardBack, payPassword, 
+      icon)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{mobile,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{grade,jdbcType=INTEGER}, 
+      #{password,jdbcType=VARCHAR}, #{referkey,jdbcType=VARCHAR}, #{referid,jdbcType=INTEGER}, 
+      #{refername,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{upReferkey,jdbcType=VARCHAR}, 
+      #{showname,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{institutionid,jdbcType=INTEGER}, 
+      #{firstinstitutionid,jdbcType=INTEGER}, #{secondinstitutionid,jdbcType=INTEGER}, 
+      #{thirdinstitutionid,jdbcType=INTEGER}, #{checktime,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, 
+      #{mygold,jdbcType=INTEGER}, #{frozengold,jdbcType=INTEGER}, #{usergoldconf,jdbcType=INTEGER}, 
+      #{agent,jdbcType=VARCHAR}, #{activatecount,jdbcType=INTEGER}, #{allactivatecount,jdbcType=INTEGER}, 
+      #{t0moneycount,jdbcType=DOUBLE}, #{t1moneycount,jdbcType=DOUBLE}, #{qpmoneycount,jdbcType=DOUBLE}, 
+      #{othermoneycount,jdbcType=DOUBLE}, #{moneycount,jdbcType=DOUBLE}, #{paycount,jdbcType=INTEGER}, 
+      #{allmoneycount,jdbcType=DOUBLE}, #{agentaccount,jdbcType=VARCHAR}, #{ownaccount,jdbcType=VARCHAR}, 
+      #{flexibleaccount,jdbcType=VARCHAR}, #{agents,jdbcType=VARCHAR}, #{standpartner,jdbcType=SMALLINT}, 
+      #{standtime,jdbcType=TIMESTAMP}, #{standposnum,jdbcType=INTEGER}, #{jihuostand,jdbcType=SMALLINT}, 
+      #{jihuostandtime,jdbcType=TIMESTAMP}, #{jihuonum,jdbcType=INTEGER}, #{enable,jdbcType=SMALLINT}, 
+      #{wposmoneycount,jdbcType=DOUBLE}, #{wposmoney,jdbcType=DOUBLE}, #{activeflag,jdbcType=TINYINT}, 
+      #{idcardfront,jdbcType=LONGVARCHAR}, #{idcardback,jdbcType=LONGVARCHAR}, #{paypassword,jdbcType=VARBINARY}, 
+      #{icon,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PartnerWithBLOBs">
+    insert into partner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="referkey != null">
+        referKey,
+      </if>
+      <if test="referid != null">
+        referId,
+      </if>
+      <if test="refername != null">
+        referName,
+      </if>
+      <if test="realname != null">
+        realname,
+      </if>
+      <if test="upReferkey != null">
+        up_referKey,
+      </if>
+      <if test="showname != null">
+        showName,
+      </if>
+      <if test="idcard != null">
+        idcard,
+      </if>
+      <if test="institutionid != null">
+        institutionId,
+      </if>
+      <if test="firstinstitutionid != null">
+        firstInstitutionId,
+      </if>
+      <if test="secondinstitutionid != null">
+        secondInstitutionId,
+      </if>
+      <if test="thirdinstitutionid != null">
+        thirdInstitutionId,
+      </if>
+      <if test="checktime != null">
+        checkTime,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="mygold != null">
+        myGold,
+      </if>
+      <if test="frozengold != null">
+        frozenGold,
+      </if>
+      <if test="usergoldconf != null">
+        userGoldConf,
+      </if>
+      <if test="agent != null">
+        agent,
+      </if>
+      <if test="activatecount != null">
+        activateCount,
+      </if>
+      <if test="allactivatecount != null">
+        allActivateCount,
+      </if>
+      <if test="t0moneycount != null">
+        t0MoneyCount,
+      </if>
+      <if test="t1moneycount != null">
+        t1MoneyCount,
+      </if>
+      <if test="qpmoneycount != null">
+        qpMoneyCount,
+      </if>
+      <if test="othermoneycount != null">
+        otherMoneyCount,
+      </if>
+      <if test="moneycount != null">
+        moneyCount,
+      </if>
+      <if test="paycount != null">
+        payCount,
+      </if>
+      <if test="allmoneycount != null">
+        allMoneyCount,
+      </if>
+      <if test="agentaccount != null">
+        agentAccount,
+      </if>
+      <if test="ownaccount != null">
+        ownAccount,
+      </if>
+      <if test="flexibleaccount != null">
+        flexibleAccount,
+      </if>
+      <if test="agents != null">
+        agents,
+      </if>
+      <if test="standpartner != null">
+        standPartner,
+      </if>
+      <if test="standtime != null">
+        standTime,
+      </if>
+      <if test="standposnum != null">
+        standPosNum,
+      </if>
+      <if test="jihuostand != null">
+        jihuoStand,
+      </if>
+      <if test="jihuostandtime != null">
+        jihuoStandTime,
+      </if>
+      <if test="jihuonum != null">
+        jihuoNum,
+      </if>
+      <if test="enable != null">
+        `enable`,
+      </if>
+      <if test="wposmoneycount != null">
+        WposMoneyCount,
+      </if>
+      <if test="wposmoney != null">
+        WposMoney,
+      </if>
+      <if test="activeflag != null">
+        activeFlag,
+      </if>
+      <if test="idcardfront != null">
+        idcardFront,
+      </if>
+      <if test="idcardback != null">
+        idcardBack,
+      </if>
+      <if test="paypassword != null">
+        payPassword,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="referkey != null">
+        #{referkey,jdbcType=VARCHAR},
+      </if>
+      <if test="referid != null">
+        #{referid,jdbcType=INTEGER},
+      </if>
+      <if test="refername != null">
+        #{refername,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="upReferkey != null">
+        #{upReferkey,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null">
+        #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="institutionid != null">
+        #{institutionid,jdbcType=INTEGER},
+      </if>
+      <if test="firstinstitutionid != null">
+        #{firstinstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="secondinstitutionid != null">
+        #{secondinstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="thirdinstitutionid != null">
+        #{thirdinstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="checktime != null">
+        #{checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="mygold != null">
+        #{mygold,jdbcType=INTEGER},
+      </if>
+      <if test="frozengold != null">
+        #{frozengold,jdbcType=INTEGER},
+      </if>
+      <if test="usergoldconf != null">
+        #{usergoldconf,jdbcType=INTEGER},
+      </if>
+      <if test="agent != null">
+        #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="activatecount != null">
+        #{activatecount,jdbcType=INTEGER},
+      </if>
+      <if test="allactivatecount != null">
+        #{allactivatecount,jdbcType=INTEGER},
+      </if>
+      <if test="t0moneycount != null">
+        #{t0moneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="t1moneycount != null">
+        #{t1moneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="qpmoneycount != null">
+        #{qpmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="othermoneycount != null">
+        #{othermoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="moneycount != null">
+        #{moneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="paycount != null">
+        #{paycount,jdbcType=INTEGER},
+      </if>
+      <if test="allmoneycount != null">
+        #{allmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="agentaccount != null">
+        #{agentaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ownaccount != null">
+        #{ownaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="flexibleaccount != null">
+        #{flexibleaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="agents != null">
+        #{agents,jdbcType=VARCHAR},
+      </if>
+      <if test="standpartner != null">
+        #{standpartner,jdbcType=SMALLINT},
+      </if>
+      <if test="standtime != null">
+        #{standtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standposnum != null">
+        #{standposnum,jdbcType=INTEGER},
+      </if>
+      <if test="jihuostand != null">
+        #{jihuostand,jdbcType=SMALLINT},
+      </if>
+      <if test="jihuostandtime != null">
+        #{jihuostandtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jihuonum != null">
+        #{jihuonum,jdbcType=INTEGER},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=SMALLINT},
+      </if>
+      <if test="wposmoneycount != null">
+        #{wposmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="wposmoney != null">
+        #{wposmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="activeflag != null">
+        #{activeflag,jdbcType=TINYINT},
+      </if>
+      <if test="idcardfront != null">
+        #{idcardfront,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="idcardback != null">
+        #{idcardback,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="paypassword != null">
+        #{paypassword,jdbcType=VARBINARY},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PartnerWithBLOBs">
+    update partner
+    <set>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="referkey != null">
+        referKey = #{referkey,jdbcType=VARCHAR},
+      </if>
+      <if test="referid != null">
+        referId = #{referid,jdbcType=INTEGER},
+      </if>
+      <if test="refername != null">
+        referName = #{refername,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="upReferkey != null">
+        up_referKey = #{upReferkey,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null">
+        showName = #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="institutionid != null">
+        institutionId = #{institutionid,jdbcType=INTEGER},
+      </if>
+      <if test="firstinstitutionid != null">
+        firstInstitutionId = #{firstinstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="secondinstitutionid != null">
+        secondInstitutionId = #{secondinstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="thirdinstitutionid != null">
+        thirdInstitutionId = #{thirdinstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="checktime != null">
+        checkTime = #{checktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="mygold != null">
+        myGold = #{mygold,jdbcType=INTEGER},
+      </if>
+      <if test="frozengold != null">
+        frozenGold = #{frozengold,jdbcType=INTEGER},
+      </if>
+      <if test="usergoldconf != null">
+        userGoldConf = #{usergoldconf,jdbcType=INTEGER},
+      </if>
+      <if test="agent != null">
+        agent = #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="activatecount != null">
+        activateCount = #{activatecount,jdbcType=INTEGER},
+      </if>
+      <if test="allactivatecount != null">
+        allActivateCount = #{allactivatecount,jdbcType=INTEGER},
+      </if>
+      <if test="t0moneycount != null">
+        t0MoneyCount = #{t0moneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="t1moneycount != null">
+        t1MoneyCount = #{t1moneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="qpmoneycount != null">
+        qpMoneyCount = #{qpmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="othermoneycount != null">
+        otherMoneyCount = #{othermoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="moneycount != null">
+        moneyCount = #{moneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="paycount != null">
+        payCount = #{paycount,jdbcType=INTEGER},
+      </if>
+      <if test="allmoneycount != null">
+        allMoneyCount = #{allmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="agentaccount != null">
+        agentAccount = #{agentaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ownaccount != null">
+        ownAccount = #{ownaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="flexibleaccount != null">
+        flexibleAccount = #{flexibleaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="agents != null">
+        agents = #{agents,jdbcType=VARCHAR},
+      </if>
+      <if test="standpartner != null">
+        standPartner = #{standpartner,jdbcType=SMALLINT},
+      </if>
+      <if test="standtime != null">
+        standTime = #{standtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standposnum != null">
+        standPosNum = #{standposnum,jdbcType=INTEGER},
+      </if>
+      <if test="jihuostand != null">
+        jihuoStand = #{jihuostand,jdbcType=SMALLINT},
+      </if>
+      <if test="jihuostandtime != null">
+        jihuoStandTime = #{jihuostandtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jihuonum != null">
+        jihuoNum = #{jihuonum,jdbcType=INTEGER},
+      </if>
+      <if test="enable != null">
+        `enable` = #{enable,jdbcType=SMALLINT},
+      </if>
+      <if test="wposmoneycount != null">
+        WposMoneyCount = #{wposmoneycount,jdbcType=DOUBLE},
+      </if>
+      <if test="wposmoney != null">
+        WposMoney = #{wposmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="activeflag != null">
+        activeFlag = #{activeflag,jdbcType=TINYINT},
+      </if>
+      <if test="idcardfront != null">
+        idcardFront = #{idcardfront,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="idcardback != null">
+        idcardBack = #{idcardback,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="paypassword != null">
+        payPassword = #{paypassword,jdbcType=VARBINARY},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shiyi.sposdao.entity.PartnerWithBLOBs">
+    update partner
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      `password` = #{password,jdbcType=VARCHAR},
+      referKey = #{referkey,jdbcType=VARCHAR},
+      referId = #{referid,jdbcType=INTEGER},
+      referName = #{refername,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      up_referKey = #{upReferkey,jdbcType=VARCHAR},
+      showName = #{showname,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      institutionId = #{institutionid,jdbcType=INTEGER},
+      firstInstitutionId = #{firstinstitutionid,jdbcType=INTEGER},
+      secondInstitutionId = #{secondinstitutionid,jdbcType=INTEGER},
+      thirdInstitutionId = #{thirdinstitutionid,jdbcType=INTEGER},
+      checkTime = #{checktime,jdbcType=TIMESTAMP},
+      reason = #{reason,jdbcType=VARCHAR},
+      myGold = #{mygold,jdbcType=INTEGER},
+      frozenGold = #{frozengold,jdbcType=INTEGER},
+      userGoldConf = #{usergoldconf,jdbcType=INTEGER},
+      agent = #{agent,jdbcType=VARCHAR},
+      activateCount = #{activatecount,jdbcType=INTEGER},
+      allActivateCount = #{allactivatecount,jdbcType=INTEGER},
+      t0MoneyCount = #{t0moneycount,jdbcType=DOUBLE},
+      t1MoneyCount = #{t1moneycount,jdbcType=DOUBLE},
+      qpMoneyCount = #{qpmoneycount,jdbcType=DOUBLE},
+      otherMoneyCount = #{othermoneycount,jdbcType=DOUBLE},
+      moneyCount = #{moneycount,jdbcType=DOUBLE},
+      payCount = #{paycount,jdbcType=INTEGER},
+      allMoneyCount = #{allmoneycount,jdbcType=DOUBLE},
+      agentAccount = #{agentaccount,jdbcType=VARCHAR},
+      ownAccount = #{ownaccount,jdbcType=VARCHAR},
+      flexibleAccount = #{flexibleaccount,jdbcType=VARCHAR},
+      agents = #{agents,jdbcType=VARCHAR},
+      standPartner = #{standpartner,jdbcType=SMALLINT},
+      standTime = #{standtime,jdbcType=TIMESTAMP},
+      standPosNum = #{standposnum,jdbcType=INTEGER},
+      jihuoStand = #{jihuostand,jdbcType=SMALLINT},
+      jihuoStandTime = #{jihuostandtime,jdbcType=TIMESTAMP},
+      jihuoNum = #{jihuonum,jdbcType=INTEGER},
+      `enable` = #{enable,jdbcType=SMALLINT},
+      WposMoneyCount = #{wposmoneycount,jdbcType=DOUBLE},
+      WposMoney = #{wposmoney,jdbcType=DOUBLE},
+      activeFlag = #{activeflag,jdbcType=TINYINT},
+      idcardFront = #{idcardfront,jdbcType=LONGVARCHAR},
+      idcardBack = #{idcardback,jdbcType=LONGVARCHAR},
+      payPassword = #{paypassword,jdbcType=VARBINARY},
+      icon = #{icon,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Partner">
+    update partner
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      `password` = #{password,jdbcType=VARCHAR},
+      referKey = #{referkey,jdbcType=VARCHAR},
+      referId = #{referid,jdbcType=INTEGER},
+      referName = #{refername,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      up_referKey = #{upReferkey,jdbcType=VARCHAR},
+      showName = #{showname,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      institutionId = #{institutionid,jdbcType=INTEGER},
+      firstInstitutionId = #{firstinstitutionid,jdbcType=INTEGER},
+      secondInstitutionId = #{secondinstitutionid,jdbcType=INTEGER},
+      thirdInstitutionId = #{thirdinstitutionid,jdbcType=INTEGER},
+      checkTime = #{checktime,jdbcType=TIMESTAMP},
+      reason = #{reason,jdbcType=VARCHAR},
+      myGold = #{mygold,jdbcType=INTEGER},
+      frozenGold = #{frozengold,jdbcType=INTEGER},
+      userGoldConf = #{usergoldconf,jdbcType=INTEGER},
+      agent = #{agent,jdbcType=VARCHAR},
+      activateCount = #{activatecount,jdbcType=INTEGER},
+      allActivateCount = #{allactivatecount,jdbcType=INTEGER},
+      t0MoneyCount = #{t0moneycount,jdbcType=DOUBLE},
+      t1MoneyCount = #{t1moneycount,jdbcType=DOUBLE},
+      qpMoneyCount = #{qpmoneycount,jdbcType=DOUBLE},
+      otherMoneyCount = #{othermoneycount,jdbcType=DOUBLE},
+      moneyCount = #{moneycount,jdbcType=DOUBLE},
+      payCount = #{paycount,jdbcType=INTEGER},
+      allMoneyCount = #{allmoneycount,jdbcType=DOUBLE},
+      agentAccount = #{agentaccount,jdbcType=VARCHAR},
+      ownAccount = #{ownaccount,jdbcType=VARCHAR},
+      flexibleAccount = #{flexibleaccount,jdbcType=VARCHAR},
+      agents = #{agents,jdbcType=VARCHAR},
+      standPartner = #{standpartner,jdbcType=SMALLINT},
+      standTime = #{standtime,jdbcType=TIMESTAMP},
+      standPosNum = #{standposnum,jdbcType=INTEGER},
+      jihuoStand = #{jihuostand,jdbcType=SMALLINT},
+      jihuoStandTime = #{jihuostandtime,jdbcType=TIMESTAMP},
+      jihuoNum = #{jihuonum,jdbcType=INTEGER},
+      `enable` = #{enable,jdbcType=SMALLINT},
+      WposMoneyCount = #{wposmoneycount,jdbcType=DOUBLE},
+      WposMoney = #{wposmoney,jdbcType=DOUBLE},
+      activeFlag = #{activeflag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

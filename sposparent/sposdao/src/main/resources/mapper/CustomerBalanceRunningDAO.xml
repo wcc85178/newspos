@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerBalanceRunningDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerBalanceRunning">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="action_flag" jdbcType="INTEGER" property="actionFlag" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="bank_card_code" jdbcType="VARCHAR" property="bankCardCode" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="in_acount" jdbcType="VARCHAR" property="inAcount" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="out_acount" jdbcType="VARCHAR" property="outAcount" />
+    <result column="ref_customer_id" jdbcType="INTEGER" property="refCustomerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, action_flag, amount, bank_card_code, bank_name, create_time, in_acount, 
+    mark, out_acount, ref_customer_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_balance_running
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_balance_running
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerBalanceRunning">
+    insert into customer_balance_running (id, `security`, action_flag, 
+      amount, bank_card_code, bank_name, 
+      create_time, in_acount, mark, 
+      out_acount, ref_customer_id)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{actionFlag,jdbcType=INTEGER}, 
+      #{amount,jdbcType=DECIMAL}, #{bankCardCode,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{inAcount,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
+      #{outAcount,jdbcType=VARCHAR}, #{refCustomerId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerBalanceRunning">
+    insert into customer_balance_running
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="actionFlag != null">
+        action_flag,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="inAcount != null">
+        in_acount,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="outAcount != null">
+        out_acount,
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="actionFlag != null">
+        #{actionFlag,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCardCode != null">
+        #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="inAcount != null">
+        #{inAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcount != null">
+        #{outAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="refCustomerId != null">
+        #{refCustomerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerBalanceRunning">
+    update customer_balance_running
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="actionFlag != null">
+        action_flag = #{actionFlag,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="inAcount != null">
+        in_acount = #{inAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="outAcount != null">
+        out_acount = #{outAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerBalanceRunning">
+    update customer_balance_running
+    set `security` = #{security,jdbcType=VARCHAR},
+      action_flag = #{actionFlag,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      in_acount = #{inAcount,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      out_acount = #{outAcount,jdbcType=VARCHAR},
+      ref_customer_id = #{refCustomerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

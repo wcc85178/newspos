@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerTagsDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerTags">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ref_customer_id" jdbcType="INTEGER" property="refCustomerId" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="constellation" jdbcType="INTEGER" property="constellation" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="os" jdbcType="INTEGER" property="os" />
+    <result column="trade_area" jdbcType="INTEGER" property="tradeArea" />
+    <result column="activity" jdbcType="INTEGER" property="activity" />
+    <result column="turnover" jdbcType="INTEGER" property="turnover" />
+    <result column="rec_card_category" jdbcType="VARCHAR" property="recCardCategory" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ref_customer_id, gender, age, constellation, area, os, trade_area, activity, 
+    turnover, rec_card_category, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_tags
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_tags
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerTags">
+    insert into customer_tags (id, ref_customer_id, gender, 
+      age, constellation, area, 
+      os, trade_area, activity, 
+      turnover, rec_card_category, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{refCustomerId,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, 
+      #{age,jdbcType=INTEGER}, #{constellation,jdbcType=INTEGER}, #{area,jdbcType=INTEGER}, 
+      #{os,jdbcType=INTEGER}, #{tradeArea,jdbcType=INTEGER}, #{activity,jdbcType=INTEGER}, 
+      #{turnover,jdbcType=INTEGER}, #{recCardCategory,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerTags">
+    insert into customer_tags
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="constellation != null">
+        constellation,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="os != null">
+        os,
+      </if>
+      <if test="tradeArea != null">
+        trade_area,
+      </if>
+      <if test="activity != null">
+        activity,
+      </if>
+      <if test="turnover != null">
+        turnover,
+      </if>
+      <if test="recCardCategory != null">
+        rec_card_category,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="refCustomerId != null">
+        #{refCustomerId,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="constellation != null">
+        #{constellation,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="os != null">
+        #{os,jdbcType=INTEGER},
+      </if>
+      <if test="tradeArea != null">
+        #{tradeArea,jdbcType=INTEGER},
+      </if>
+      <if test="activity != null">
+        #{activity,jdbcType=INTEGER},
+      </if>
+      <if test="turnover != null">
+        #{turnover,jdbcType=INTEGER},
+      </if>
+      <if test="recCardCategory != null">
+        #{recCardCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerTags">
+    update customer_tags
+    <set>
+      <if test="refCustomerId != null">
+        ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="constellation != null">
+        constellation = #{constellation,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="os != null">
+        os = #{os,jdbcType=INTEGER},
+      </if>
+      <if test="tradeArea != null">
+        trade_area = #{tradeArea,jdbcType=INTEGER},
+      </if>
+      <if test="activity != null">
+        activity = #{activity,jdbcType=INTEGER},
+      </if>
+      <if test="turnover != null">
+        turnover = #{turnover,jdbcType=INTEGER},
+      </if>
+      <if test="recCardCategory != null">
+        rec_card_category = #{recCardCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerTags">
+    update customer_tags
+    set ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      gender = #{gender,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      constellation = #{constellation,jdbcType=INTEGER},
+      area = #{area,jdbcType=INTEGER},
+      os = #{os,jdbcType=INTEGER},
+      trade_area = #{tradeArea,jdbcType=INTEGER},
+      activity = #{activity,jdbcType=INTEGER},
+      turnover = #{turnover,jdbcType=INTEGER},
+      rec_card_category = #{recCardCategory,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

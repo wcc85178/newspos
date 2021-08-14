@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerFrozenFeeDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerFrozenFee">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="frozen_fee" jdbcType="DECIMAL" property="frozenFee" />
+    <result column="default_dabiao_amt" jdbcType="DECIMAL" property="defaultDabiaoAmt" />
+    <result column="dabiao_amt" jdbcType="DECIMAL" property="dabiaoAmt" />
+    <result column="dabiao_start" jdbcType="TIMESTAMP" property="dabiaoStart" />
+    <result column="dabiao_end" jdbcType="TIMESTAMP" property="dabiaoEnd" />
+    <result column="dabiao_amt_flag" jdbcType="SMALLINT" property="dabiaoAmtFlag" />
+    <result column="dabiao_date_flag" jdbcType="SMALLINT" property="dabiaoDateFlag" />
+    <result column="frozen_fee_flag" jdbcType="SMALLINT" property="frozenFeeFlag" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="trans_no" jdbcType="VARCHAR" property="transNo" />
+    <result column="bt_flag" jdbcType="SMALLINT" property="btFlag" />
+    <result column="bt_amt" jdbcType="VARCHAR" property="btAmt" />
+    <result column="daifu_date" jdbcType="TIMESTAMP" property="daifuDate" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="otherJson" jdbcType="CHAR" property="otherjson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, frozen_fee, default_dabiao_amt, dabiao_amt, dabiao_start, dabiao_end, dabiao_amt_flag, 
+    dabiao_date_flag, frozen_fee_flag, customer_id, agent_id, `security`, trans_no, bt_flag, 
+    bt_amt, daifu_date, fid, mark, otherJson
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_frozen_fee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_frozen_fee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFee">
+    insert into customer_frozen_fee (id, frozen_fee, default_dabiao_amt, 
+      dabiao_amt, dabiao_start, dabiao_end, 
+      dabiao_amt_flag, dabiao_date_flag, frozen_fee_flag, 
+      customer_id, agent_id, `security`, 
+      trans_no, bt_flag, bt_amt, 
+      daifu_date, fid, mark, 
+      otherJson)
+    values (#{id,jdbcType=INTEGER}, #{frozenFee,jdbcType=DECIMAL}, #{defaultDabiaoAmt,jdbcType=DECIMAL}, 
+      #{dabiaoAmt,jdbcType=DECIMAL}, #{dabiaoStart,jdbcType=TIMESTAMP}, #{dabiaoEnd,jdbcType=TIMESTAMP}, 
+      #{dabiaoAmtFlag,jdbcType=SMALLINT}, #{dabiaoDateFlag,jdbcType=SMALLINT}, #{frozenFeeFlag,jdbcType=SMALLINT}, 
+      #{customerId,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, 
+      #{transNo,jdbcType=VARCHAR}, #{btFlag,jdbcType=SMALLINT}, #{btAmt,jdbcType=VARCHAR}, 
+      #{daifuDate,jdbcType=TIMESTAMP}, #{fid,jdbcType=INTEGER}, #{mark,jdbcType=VARCHAR}, 
+      #{otherjson,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFee">
+    insert into customer_frozen_fee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="frozenFee != null">
+        frozen_fee,
+      </if>
+      <if test="defaultDabiaoAmt != null">
+        default_dabiao_amt,
+      </if>
+      <if test="dabiaoAmt != null">
+        dabiao_amt,
+      </if>
+      <if test="dabiaoStart != null">
+        dabiao_start,
+      </if>
+      <if test="dabiaoEnd != null">
+        dabiao_end,
+      </if>
+      <if test="dabiaoAmtFlag != null">
+        dabiao_amt_flag,
+      </if>
+      <if test="dabiaoDateFlag != null">
+        dabiao_date_flag,
+      </if>
+      <if test="frozenFeeFlag != null">
+        frozen_fee_flag,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="transNo != null">
+        trans_no,
+      </if>
+      <if test="btFlag != null">
+        bt_flag,
+      </if>
+      <if test="btAmt != null">
+        bt_amt,
+      </if>
+      <if test="daifuDate != null">
+        daifu_date,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="otherjson != null">
+        otherJson,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="frozenFee != null">
+        #{frozenFee,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultDabiaoAmt != null">
+        #{defaultDabiaoAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="dabiaoAmt != null">
+        #{dabiaoAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="dabiaoStart != null">
+        #{dabiaoStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dabiaoEnd != null">
+        #{dabiaoEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dabiaoAmtFlag != null">
+        #{dabiaoAmtFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="dabiaoDateFlag != null">
+        #{dabiaoDateFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="frozenFeeFlag != null">
+        #{frozenFeeFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="transNo != null">
+        #{transNo,jdbcType=VARCHAR},
+      </if>
+      <if test="btFlag != null">
+        #{btFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="btAmt != null">
+        #{btAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="daifuDate != null">
+        #{daifuDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="otherjson != null">
+        #{otherjson,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFee">
+    update customer_frozen_fee
+    <set>
+      <if test="frozenFee != null">
+        frozen_fee = #{frozenFee,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultDabiaoAmt != null">
+        default_dabiao_amt = #{defaultDabiaoAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="dabiaoAmt != null">
+        dabiao_amt = #{dabiaoAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="dabiaoStart != null">
+        dabiao_start = #{dabiaoStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dabiaoEnd != null">
+        dabiao_end = #{dabiaoEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dabiaoAmtFlag != null">
+        dabiao_amt_flag = #{dabiaoAmtFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="dabiaoDateFlag != null">
+        dabiao_date_flag = #{dabiaoDateFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="frozenFeeFlag != null">
+        frozen_fee_flag = #{frozenFeeFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="transNo != null">
+        trans_no = #{transNo,jdbcType=VARCHAR},
+      </if>
+      <if test="btFlag != null">
+        bt_flag = #{btFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="btAmt != null">
+        bt_amt = #{btAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="daifuDate != null">
+        daifu_date = #{daifuDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="otherjson != null">
+        otherJson = #{otherjson,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFee">
+    update customer_frozen_fee
+    set frozen_fee = #{frozenFee,jdbcType=DECIMAL},
+      default_dabiao_amt = #{defaultDabiaoAmt,jdbcType=DECIMAL},
+      dabiao_amt = #{dabiaoAmt,jdbcType=DECIMAL},
+      dabiao_start = #{dabiaoStart,jdbcType=TIMESTAMP},
+      dabiao_end = #{dabiaoEnd,jdbcType=TIMESTAMP},
+      dabiao_amt_flag = #{dabiaoAmtFlag,jdbcType=SMALLINT},
+      dabiao_date_flag = #{dabiaoDateFlag,jdbcType=SMALLINT},
+      frozen_fee_flag = #{frozenFeeFlag,jdbcType=SMALLINT},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      agent_id = #{agentId,jdbcType=INTEGER},
+      `security` = #{security,jdbcType=VARCHAR},
+      trans_no = #{transNo,jdbcType=VARCHAR},
+      bt_flag = #{btFlag,jdbcType=SMALLINT},
+      bt_amt = #{btAmt,jdbcType=VARCHAR},
+      daifu_date = #{daifuDate,jdbcType=TIMESTAMP},
+      fid = #{fid,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=VARCHAR},
+      otherJson = #{otherjson,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

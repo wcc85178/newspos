@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.DaifuCheckDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.DaifuCheck">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ftp_trand_id" jdbcType="INTEGER" property="ftpTrandId" />
+    <result column="ftp_bank_card" jdbcType="VARCHAR" property="ftpBankCard" />
+    <result column="ftp_amount" jdbcType="VARCHAR" property="ftpAmount" />
+    <result column="ftp_time" jdbcType="BIGINT" property="ftpTime" />
+    <result column="df_bank_card" jdbcType="VARCHAR" property="dfBankCard" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="person_df_time" jdbcType="VARCHAR" property="personDfTime" />
+    <result column="df_time" jdbcType="VARCHAR" property="dfTime" />
+    <result column="df_amout" jdbcType="VARCHAR" property="dfAmout" />
+    <result column="check_message" jdbcType="VARCHAR" property="checkMessage" />
+    <result column="check_code" jdbcType="VARCHAR" property="checkCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ftp_trand_id, ftp_bank_card, ftp_amount, ftp_time, df_bank_card, `name`, person_df_time, 
+    df_time, df_amout, check_message, check_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from daifu_check
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from daifu_check
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.DaifuCheck">
+    insert into daifu_check (id, ftp_trand_id, ftp_bank_card, 
+      ftp_amount, ftp_time, df_bank_card, 
+      `name`, person_df_time, df_time, 
+      df_amout, check_message, check_code
+      )
+    values (#{id,jdbcType=INTEGER}, #{ftpTrandId,jdbcType=INTEGER}, #{ftpBankCard,jdbcType=VARCHAR}, 
+      #{ftpAmount,jdbcType=VARCHAR}, #{ftpTime,jdbcType=BIGINT}, #{dfBankCard,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{personDfTime,jdbcType=VARCHAR}, #{dfTime,jdbcType=VARCHAR}, 
+      #{dfAmout,jdbcType=VARCHAR}, #{checkMessage,jdbcType=VARCHAR}, #{checkCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.DaifuCheck">
+    insert into daifu_check
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ftpTrandId != null">
+        ftp_trand_id,
+      </if>
+      <if test="ftpBankCard != null">
+        ftp_bank_card,
+      </if>
+      <if test="ftpAmount != null">
+        ftp_amount,
+      </if>
+      <if test="ftpTime != null">
+        ftp_time,
+      </if>
+      <if test="dfBankCard != null">
+        df_bank_card,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="personDfTime != null">
+        person_df_time,
+      </if>
+      <if test="dfTime != null">
+        df_time,
+      </if>
+      <if test="dfAmout != null">
+        df_amout,
+      </if>
+      <if test="checkMessage != null">
+        check_message,
+      </if>
+      <if test="checkCode != null">
+        check_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ftpTrandId != null">
+        #{ftpTrandId,jdbcType=INTEGER},
+      </if>
+      <if test="ftpBankCard != null">
+        #{ftpBankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpAmount != null">
+        #{ftpAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpTime != null">
+        #{ftpTime,jdbcType=BIGINT},
+      </if>
+      <if test="dfBankCard != null">
+        #{dfBankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="personDfTime != null">
+        #{personDfTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dfTime != null">
+        #{dfTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dfAmout != null">
+        #{dfAmout,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMessage != null">
+        #{checkMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCode != null">
+        #{checkCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.DaifuCheck">
+    update daifu_check
+    <set>
+      <if test="ftpTrandId != null">
+        ftp_trand_id = #{ftpTrandId,jdbcType=INTEGER},
+      </if>
+      <if test="ftpBankCard != null">
+        ftp_bank_card = #{ftpBankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpAmount != null">
+        ftp_amount = #{ftpAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpTime != null">
+        ftp_time = #{ftpTime,jdbcType=BIGINT},
+      </if>
+      <if test="dfBankCard != null">
+        df_bank_card = #{dfBankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="personDfTime != null">
+        person_df_time = #{personDfTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dfTime != null">
+        df_time = #{dfTime,jdbcType=VARCHAR},
+      </if>
+      <if test="dfAmout != null">
+        df_amout = #{dfAmout,jdbcType=VARCHAR},
+      </if>
+      <if test="checkMessage != null">
+        check_message = #{checkMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCode != null">
+        check_code = #{checkCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.DaifuCheck">
+    update daifu_check
+    set ftp_trand_id = #{ftpTrandId,jdbcType=INTEGER},
+      ftp_bank_card = #{ftpBankCard,jdbcType=VARCHAR},
+      ftp_amount = #{ftpAmount,jdbcType=VARCHAR},
+      ftp_time = #{ftpTime,jdbcType=BIGINT},
+      df_bank_card = #{dfBankCard,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      person_df_time = #{personDfTime,jdbcType=VARCHAR},
+      df_time = #{dfTime,jdbcType=VARCHAR},
+      df_amout = #{dfAmout,jdbcType=VARCHAR},
+      check_message = #{checkMessage,jdbcType=VARCHAR},
+      check_code = #{checkCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

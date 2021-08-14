@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.H5payEncryKeyDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.H5payEncryKey">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="req_key" jdbcType="VARCHAR" property="reqKey" />
+    <result column="busin_name" jdbcType="VARCHAR" property="businName" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="pay_order_id" jdbcType="VARCHAR" property="payOrderId" />
+    <result column="sn_code" jdbcType="VARCHAR" property="snCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="pay_status" jdbcType="VARCHAR" property="payStatus" />
+    <result column="order_time_out" jdbcType="VARCHAR" property="orderTimeOut" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="opt" jdbcType="VARCHAR" property="opt" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="new_merchant_flag" jdbcType="VARCHAR" property="newMerchantFlag" />
+    <result column="is_buy_vip" jdbcType="VARCHAR" property="isBuyVip" />
+    <result column="is_charge" jdbcType="VARCHAR" property="isCharge" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shiyi.sposdao.entity.H5payEncryKey">
+    <result column="pre_pay_id" jdbcType="LONGVARCHAR" property="prePayId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, req_key, busin_name, amount, mer, customer_id, pay_order_id, sn_code, create_time, 
+    update_time, pay_status, order_time_out, open_id, opt, trans_date, new_merchant_flag, 
+    is_buy_vip, is_charge, remark
+  </sql>
+  <sql id="Blob_Column_List">
+    pre_pay_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from h5pay_encry_key
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from h5pay_encry_key
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.H5payEncryKey">
+    insert into h5pay_encry_key (id, req_key, busin_name, 
+      amount, mer, customer_id, 
+      pay_order_id, sn_code, create_time, 
+      update_time, pay_status, order_time_out, 
+      open_id, opt, trans_date, 
+      new_merchant_flag, is_buy_vip, is_charge, 
+      remark, pre_pay_id)
+    values (#{id,jdbcType=INTEGER}, #{reqKey,jdbcType=VARCHAR}, #{businName,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{mer,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, 
+      #{payOrderId,jdbcType=VARCHAR}, #{snCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{payStatus,jdbcType=VARCHAR}, #{orderTimeOut,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{opt,jdbcType=VARCHAR}, #{transDate,jdbcType=VARCHAR}, 
+      #{newMerchantFlag,jdbcType=VARCHAR}, #{isBuyVip,jdbcType=VARCHAR}, #{isCharge,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{prePayId,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.H5payEncryKey">
+    insert into h5pay_encry_key
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="reqKey != null">
+        req_key,
+      </if>
+      <if test="businName != null">
+        busin_name,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="payOrderId != null">
+        pay_order_id,
+      </if>
+      <if test="snCode != null">
+        sn_code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="orderTimeOut != null">
+        order_time_out,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="opt != null">
+        opt,
+      </if>
+      <if test="transDate != null">
+        trans_date,
+      </if>
+      <if test="newMerchantFlag != null">
+        new_merchant_flag,
+      </if>
+      <if test="isBuyVip != null">
+        is_buy_vip,
+      </if>
+      <if test="isCharge != null">
+        is_charge,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="prePayId != null">
+        pre_pay_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="reqKey != null">
+        #{reqKey,jdbcType=VARCHAR},
+      </if>
+      <if test="businName != null">
+        #{businName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="payOrderId != null">
+        #{payOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="snCode != null">
+        #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTimeOut != null">
+        #{orderTimeOut,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="opt != null">
+        #{opt,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null">
+        #{transDate,jdbcType=VARCHAR},
+      </if>
+      <if test="newMerchantFlag != null">
+        #{newMerchantFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="isBuyVip != null">
+        #{isBuyVip,jdbcType=VARCHAR},
+      </if>
+      <if test="isCharge != null">
+        #{isCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="prePayId != null">
+        #{prePayId,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.H5payEncryKey">
+    update h5pay_encry_key
+    <set>
+      <if test="reqKey != null">
+        req_key = #{reqKey,jdbcType=VARCHAR},
+      </if>
+      <if test="businName != null">
+        busin_name = #{businName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="payOrderId != null">
+        pay_order_id = #{payOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="snCode != null">
+        sn_code = #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTimeOut != null">
+        order_time_out = #{orderTimeOut,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="opt != null">
+        opt = #{opt,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null">
+        trans_date = #{transDate,jdbcType=VARCHAR},
+      </if>
+      <if test="newMerchantFlag != null">
+        new_merchant_flag = #{newMerchantFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="isBuyVip != null">
+        is_buy_vip = #{isBuyVip,jdbcType=VARCHAR},
+      </if>
+      <if test="isCharge != null">
+        is_charge = #{isCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="prePayId != null">
+        pre_pay_id = #{prePayId,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shiyi.sposdao.entity.H5payEncryKey">
+    update h5pay_encry_key
+    set req_key = #{reqKey,jdbcType=VARCHAR},
+      busin_name = #{businName,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      mer = #{mer,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      pay_order_id = #{payOrderId,jdbcType=VARCHAR},
+      sn_code = #{snCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      pay_status = #{payStatus,jdbcType=VARCHAR},
+      order_time_out = #{orderTimeOut,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      opt = #{opt,jdbcType=VARCHAR},
+      trans_date = #{transDate,jdbcType=VARCHAR},
+      new_merchant_flag = #{newMerchantFlag,jdbcType=VARCHAR},
+      is_buy_vip = #{isBuyVip,jdbcType=VARCHAR},
+      is_charge = #{isCharge,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      pre_pay_id = #{prePayId,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.H5payEncryKey">
+    update h5pay_encry_key
+    set req_key = #{reqKey,jdbcType=VARCHAR},
+      busin_name = #{businName,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      mer = #{mer,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      pay_order_id = #{payOrderId,jdbcType=VARCHAR},
+      sn_code = #{snCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      pay_status = #{payStatus,jdbcType=VARCHAR},
+      order_time_out = #{orderTimeOut,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      opt = #{opt,jdbcType=VARCHAR},
+      trans_date = #{transDate,jdbcType=VARCHAR},
+      new_merchant_flag = #{newMerchantFlag,jdbcType=VARCHAR},
+      is_buy_vip = #{isBuyVip,jdbcType=VARCHAR},
+      is_charge = #{isCharge,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerAutoApplyDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerAutoApply">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="business_licence1" jdbcType="VARCHAR" property="businessLicence1" />
+    <result column="business_licence2" jdbcType="VARCHAR" property="businessLicence2" />
+    <result column="store_up1" jdbcType="VARCHAR" property="storeUp1" />
+    <result column="store_up2" jdbcType="VARCHAR" property="storeUp2" />
+    <result column="store_down1" jdbcType="VARCHAR" property="storeDown1" />
+    <result column="store_down2" jdbcType="VARCHAR" property="storeDown2" />
+    <result column="img4_up1r" jdbcType="VARCHAR" property="img4Up1r" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="audit_flag" jdbcType="VARCHAR" property="auditFlag" />
+    <result column="apply_auth_time" jdbcType="TIMESTAMP" property="applyAuthTime" />
+    <result column="enable_flag" jdbcType="VARCHAR" property="enableFlag" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, `name`, addr, business_licence1, business_licence2, store_up1, store_up2, 
+    store_down1, store_down2, img4_up1r, create_time, audit_flag, apply_auth_time, enable_flag, 
+    mark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_auto_apply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_auto_apply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerAutoApply">
+    insert into customer_auto_apply (id, code, `name`, 
+      addr, business_licence1, business_licence2, 
+      store_up1, store_up2, store_down1, 
+      store_down2, img4_up1r, create_time, 
+      audit_flag, apply_auth_time, enable_flag, 
+      mark)
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{addr,jdbcType=VARCHAR}, #{businessLicence1,jdbcType=VARCHAR}, #{businessLicence2,jdbcType=VARCHAR}, 
+      #{storeUp1,jdbcType=VARCHAR}, #{storeUp2,jdbcType=VARCHAR}, #{storeDown1,jdbcType=VARCHAR}, 
+      #{storeDown2,jdbcType=VARCHAR}, #{img4Up1r,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{auditFlag,jdbcType=VARCHAR}, #{applyAuthTime,jdbcType=TIMESTAMP}, #{enableFlag,jdbcType=VARCHAR}, 
+      #{mark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerAutoApply">
+    insert into customer_auto_apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="businessLicence1 != null">
+        business_licence1,
+      </if>
+      <if test="businessLicence2 != null">
+        business_licence2,
+      </if>
+      <if test="storeUp1 != null">
+        store_up1,
+      </if>
+      <if test="storeUp2 != null">
+        store_up2,
+      </if>
+      <if test="storeDown1 != null">
+        store_down1,
+      </if>
+      <if test="storeDown2 != null">
+        store_down2,
+      </if>
+      <if test="img4Up1r != null">
+        img4_up1r,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="auditFlag != null">
+        audit_flag,
+      </if>
+      <if test="applyAuthTime != null">
+        apply_auth_time,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence1 != null">
+        #{businessLicence1,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence2 != null">
+        #{businessLicence2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUp1 != null">
+        #{storeUp1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUp2 != null">
+        #{storeUp2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDown1 != null">
+        #{storeDown1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDown2 != null">
+        #{storeDown2,jdbcType=VARCHAR},
+      </if>
+      <if test="img4Up1r != null">
+        #{img4Up1r,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditFlag != null">
+        #{auditFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAuthTime != null">
+        #{applyAuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerAutoApply">
+    update customer_auto_apply
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence1 != null">
+        business_licence1 = #{businessLicence1,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence2 != null">
+        business_licence2 = #{businessLicence2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUp1 != null">
+        store_up1 = #{storeUp1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeUp2 != null">
+        store_up2 = #{storeUp2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDown1 != null">
+        store_down1 = #{storeDown1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDown2 != null">
+        store_down2 = #{storeDown2,jdbcType=VARCHAR},
+      </if>
+      <if test="img4Up1r != null">
+        img4_up1r = #{img4Up1r,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditFlag != null">
+        audit_flag = #{auditFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="applyAuthTime != null">
+        apply_auth_time = #{applyAuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerAutoApply">
+    update customer_auto_apply
+    set code = #{code,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      business_licence1 = #{businessLicence1,jdbcType=VARCHAR},
+      business_licence2 = #{businessLicence2,jdbcType=VARCHAR},
+      store_up1 = #{storeUp1,jdbcType=VARCHAR},
+      store_up2 = #{storeUp2,jdbcType=VARCHAR},
+      store_down1 = #{storeDown1,jdbcType=VARCHAR},
+      store_down2 = #{storeDown2,jdbcType=VARCHAR},
+      img4_up1r = #{img4Up1r,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      audit_flag = #{auditFlag,jdbcType=VARCHAR},
+      apply_auth_time = #{applyAuthTime,jdbcType=TIMESTAMP},
+      enable_flag = #{enableFlag,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

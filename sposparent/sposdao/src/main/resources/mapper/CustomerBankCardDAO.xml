@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerBankCardDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerBankCard">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="bank_card_city" jdbcType="VARCHAR" property="bankCardCity" />
+    <result column="bank_card_code" jdbcType="VARCHAR" property="bankCardCode" />
+    <result column="bank_card_name" jdbcType="VARCHAR" property="bankCardName" />
+    <result column="bank_card_province" jdbcType="VARCHAR" property="bankCardProvince" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_sub_name" jdbcType="VARCHAR" property="bankSubName" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="ref_customer_id" jdbcType="INTEGER" property="refCustomerId" />
+    <result column="bank_unionpay_code" jdbcType="VARCHAR" property="bankUnionpayCode" />
+    <result column="black_flag" jdbcType="VARCHAR" property="blackFlag" />
+    <result column="length" jdbcType="INTEGER" property="length" />
+    <result column="cardbin" jdbcType="VARCHAR" property="cardbin" />
+    <result column="judge_bank_name" jdbcType="VARCHAR" property="judgeBankName" />
+    <result column="bank_unionpay_code_all" jdbcType="VARCHAR" property="bankUnionpayCodeAll" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, bank_card_city, bank_card_code, bank_card_name, bank_card_province, 
+    bank_name, bank_sub_name, create_time, ref_customer_id, bank_unionpay_code, black_flag, 
+    `length`, cardbin, judge_bank_name, bank_unionpay_code_all
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_bank_card
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_bank_card
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerBankCard">
+    insert into customer_bank_card (id, `security`, bank_card_city, 
+      bank_card_code, bank_card_name, bank_card_province, 
+      bank_name, bank_sub_name, create_time, 
+      ref_customer_id, bank_unionpay_code, black_flag, 
+      `length`, cardbin, judge_bank_name, 
+      bank_unionpay_code_all)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{bankCardCity,jdbcType=VARCHAR}, 
+      #{bankCardCode,jdbcType=VARCHAR}, #{bankCardName,jdbcType=VARCHAR}, #{bankCardProvince,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankSubName,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{refCustomerId,jdbcType=INTEGER}, #{bankUnionpayCode,jdbcType=VARCHAR}, #{blackFlag,jdbcType=VARCHAR}, 
+      #{length,jdbcType=INTEGER}, #{cardbin,jdbcType=VARCHAR}, #{judgeBankName,jdbcType=VARCHAR}, 
+      #{bankUnionpayCodeAll,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerBankCard">
+    insert into customer_bank_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city,
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code,
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name,
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id,
+      </if>
+      <if test="bankUnionpayCode != null">
+        bank_unionpay_code,
+      </if>
+      <if test="blackFlag != null">
+        black_flag,
+      </if>
+      <if test="length != null">
+        `length`,
+      </if>
+      <if test="cardbin != null">
+        cardbin,
+      </if>
+      <if test="judgeBankName != null">
+        judge_bank_name,
+      </if>
+      <if test="bankUnionpayCodeAll != null">
+        bank_unionpay_code_all,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCity != null">
+        #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="refCustomerId != null">
+        #{refCustomerId,jdbcType=INTEGER},
+      </if>
+      <if test="bankUnionpayCode != null">
+        #{bankUnionpayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="blackFlag != null">
+        #{blackFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=INTEGER},
+      </if>
+      <if test="cardbin != null">
+        #{cardbin,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeBankName != null">
+        #{judgeBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUnionpayCodeAll != null">
+        #{bankUnionpayCodeAll,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerBankCard">
+    update customer_bank_card
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="refCustomerId != null">
+        ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      </if>
+      <if test="bankUnionpayCode != null">
+        bank_unionpay_code = #{bankUnionpayCode,jdbcType=VARCHAR},
+      </if>
+      <if test="blackFlag != null">
+        black_flag = #{blackFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="length != null">
+        `length` = #{length,jdbcType=INTEGER},
+      </if>
+      <if test="cardbin != null">
+        cardbin = #{cardbin,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeBankName != null">
+        judge_bank_name = #{judgeBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUnionpayCodeAll != null">
+        bank_unionpay_code_all = #{bankUnionpayCodeAll,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerBankCard">
+    update customer_bank_card
+    set `security` = #{security,jdbcType=VARCHAR},
+      bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      ref_customer_id = #{refCustomerId,jdbcType=INTEGER},
+      bank_unionpay_code = #{bankUnionpayCode,jdbcType=VARCHAR},
+      black_flag = #{blackFlag,jdbcType=VARCHAR},
+      `length` = #{length,jdbcType=INTEGER},
+      cardbin = #{cardbin,jdbcType=VARCHAR},
+      judge_bank_name = #{judgeBankName,jdbcType=VARCHAR},
+      bank_unionpay_code_all = #{bankUnionpayCodeAll,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

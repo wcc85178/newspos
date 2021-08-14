@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PayChannelRuleDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PayChannelRule">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mcc" jdbcType="VARCHAR" property="mcc" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="amount_start" jdbcType="DOUBLE" property="amountStart" />
+    <result column="amount_end" jdbcType="DOUBLE" property="amountEnd" />
+    <result column="feibiao_flag" jdbcType="VARCHAR" property="feibiaoFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mcc, province, city, amount_start, amount_end, feibiao_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_channel_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_channel_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PayChannelRule">
+    insert into pay_channel_rule (id, mcc, province, 
+      city, amount_start, amount_end, 
+      feibiao_flag)
+    values (#{id,jdbcType=INTEGER}, #{mcc,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{amountStart,jdbcType=DOUBLE}, #{amountEnd,jdbcType=DOUBLE}, 
+      #{feibiaoFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PayChannelRule">
+    insert into pay_channel_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mcc != null">
+        mcc,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="amountStart != null">
+        amount_start,
+      </if>
+      <if test="amountEnd != null">
+        amount_end,
+      </if>
+      <if test="feibiaoFlag != null">
+        feibiao_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mcc != null">
+        #{mcc,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="amountStart != null">
+        #{amountStart,jdbcType=DOUBLE},
+      </if>
+      <if test="amountEnd != null">
+        #{amountEnd,jdbcType=DOUBLE},
+      </if>
+      <if test="feibiaoFlag != null">
+        #{feibiaoFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PayChannelRule">
+    update pay_channel_rule
+    <set>
+      <if test="mcc != null">
+        mcc = #{mcc,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="amountStart != null">
+        amount_start = #{amountStart,jdbcType=DOUBLE},
+      </if>
+      <if test="amountEnd != null">
+        amount_end = #{amountEnd,jdbcType=DOUBLE},
+      </if>
+      <if test="feibiaoFlag != null">
+        feibiao_flag = #{feibiaoFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PayChannelRule">
+    update pay_channel_rule
+    set mcc = #{mcc,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      amount_start = #{amountStart,jdbcType=DOUBLE},
+      amount_end = #{amountEnd,jdbcType=DOUBLE},
+      feibiao_flag = #{feibiaoFlag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

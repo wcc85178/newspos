@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerBlackFlagRecodeDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerBlackFlagRecode">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="editer" jdbcType="VARCHAR" property="editer" />
+    <result column="DATA_IDS" jdbcType="VARCHAR" property="dataIds" />
+    <result column="black_flag" jdbcType="VARCHAR" property="blackFlag" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, IP, editer, DATA_IDS, black_flag, mark, `time`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_black_flag_recode
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_black_flag_recode
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerBlackFlagRecode">
+    insert into customer_black_flag_recode (id, IP, editer, 
+      DATA_IDS, black_flag, mark, 
+      `time`)
+    values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{editer,jdbcType=VARCHAR}, 
+      #{dataIds,jdbcType=VARCHAR}, #{blackFlag,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerBlackFlagRecode">
+    insert into customer_black_flag_recode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ip != null">
+        IP,
+      </if>
+      <if test="editer != null">
+        editer,
+      </if>
+      <if test="dataIds != null">
+        DATA_IDS,
+      </if>
+      <if test="blackFlag != null">
+        black_flag,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="editer != null">
+        #{editer,jdbcType=VARCHAR},
+      </if>
+      <if test="dataIds != null">
+        #{dataIds,jdbcType=VARCHAR},
+      </if>
+      <if test="blackFlag != null">
+        #{blackFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerBlackFlagRecode">
+    update customer_black_flag_recode
+    <set>
+      <if test="ip != null">
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="editer != null">
+        editer = #{editer,jdbcType=VARCHAR},
+      </if>
+      <if test="dataIds != null">
+        DATA_IDS = #{dataIds,jdbcType=VARCHAR},
+      </if>
+      <if test="blackFlag != null">
+        black_flag = #{blackFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerBlackFlagRecode">
+    update customer_black_flag_recode
+    set IP = #{ip,jdbcType=VARCHAR},
+      editer = #{editer,jdbcType=VARCHAR},
+      DATA_IDS = #{dataIds,jdbcType=VARCHAR},
+      black_flag = #{blackFlag,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

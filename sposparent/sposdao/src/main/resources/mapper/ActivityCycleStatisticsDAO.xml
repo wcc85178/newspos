@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.ActivityCycleStatisticsDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.ActivityCycleStatistics">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="cycle_number" jdbcType="INTEGER" property="cycleNumber" />
+    <result column="start_day" jdbcType="DATE" property="startDay" />
+    <result column="end_day" jdbcType="DATE" property="endDay" />
+    <result column="total_cycle_amt" jdbcType="DECIMAL" property="totalCycleAmt" />
+    <result column="total_cycle_count" jdbcType="INTEGER" property="totalCycleCount" />
+    <result column="reach_amt" jdbcType="DECIMAL" property="reachAmt" />
+    <result column="is_reach" jdbcType="INTEGER" property="isReach" />
+    <result column="statistics_time" jdbcType="TIMESTAMP" property="statisticsTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="first_order_no" jdbcType="VARCHAR" property="firstOrderNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, cycle_number, start_day, end_day, total_cycle_amt, total_cycle_count, 
+    reach_amt, is_reach, statistics_time, create_time, update_time, first_order_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from activity_cycle_statistics
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from activity_cycle_statistics
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.ActivityCycleStatistics">
+    insert into activity_cycle_statistics (id, customer_id, cycle_number, 
+      start_day, end_day, total_cycle_amt, 
+      total_cycle_count, reach_amt, is_reach, 
+      statistics_time, create_time, update_time, 
+      first_order_no)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{cycleNumber,jdbcType=INTEGER}, 
+      #{startDay,jdbcType=DATE}, #{endDay,jdbcType=DATE}, #{totalCycleAmt,jdbcType=DECIMAL}, 
+      #{totalCycleCount,jdbcType=INTEGER}, #{reachAmt,jdbcType=DECIMAL}, #{isReach,jdbcType=INTEGER}, 
+      #{statisticsTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{firstOrderNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.ActivityCycleStatistics">
+    insert into activity_cycle_statistics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="cycleNumber != null">
+        cycle_number,
+      </if>
+      <if test="startDay != null">
+        start_day,
+      </if>
+      <if test="endDay != null">
+        end_day,
+      </if>
+      <if test="totalCycleAmt != null">
+        total_cycle_amt,
+      </if>
+      <if test="totalCycleCount != null">
+        total_cycle_count,
+      </if>
+      <if test="reachAmt != null">
+        reach_amt,
+      </if>
+      <if test="isReach != null">
+        is_reach,
+      </if>
+      <if test="statisticsTime != null">
+        statistics_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="firstOrderNo != null">
+        first_order_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="cycleNumber != null">
+        #{cycleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="startDay != null">
+        #{startDay,jdbcType=DATE},
+      </if>
+      <if test="endDay != null">
+        #{endDay,jdbcType=DATE},
+      </if>
+      <if test="totalCycleAmt != null">
+        #{totalCycleAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCycleCount != null">
+        #{totalCycleCount,jdbcType=INTEGER},
+      </if>
+      <if test="reachAmt != null">
+        #{reachAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="isReach != null">
+        #{isReach,jdbcType=INTEGER},
+      </if>
+      <if test="statisticsTime != null">
+        #{statisticsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstOrderNo != null">
+        #{firstOrderNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.ActivityCycleStatistics">
+    update activity_cycle_statistics
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="cycleNumber != null">
+        cycle_number = #{cycleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="startDay != null">
+        start_day = #{startDay,jdbcType=DATE},
+      </if>
+      <if test="endDay != null">
+        end_day = #{endDay,jdbcType=DATE},
+      </if>
+      <if test="totalCycleAmt != null">
+        total_cycle_amt = #{totalCycleAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCycleCount != null">
+        total_cycle_count = #{totalCycleCount,jdbcType=INTEGER},
+      </if>
+      <if test="reachAmt != null">
+        reach_amt = #{reachAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="isReach != null">
+        is_reach = #{isReach,jdbcType=INTEGER},
+      </if>
+      <if test="statisticsTime != null">
+        statistics_time = #{statisticsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstOrderNo != null">
+        first_order_no = #{firstOrderNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.ActivityCycleStatistics">
+    update activity_cycle_statistics
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      cycle_number = #{cycleNumber,jdbcType=INTEGER},
+      start_day = #{startDay,jdbcType=DATE},
+      end_day = #{endDay,jdbcType=DATE},
+      total_cycle_amt = #{totalCycleAmt,jdbcType=DECIMAL},
+      total_cycle_count = #{totalCycleCount,jdbcType=INTEGER},
+      reach_amt = #{reachAmt,jdbcType=DECIMAL},
+      is_reach = #{isReach,jdbcType=INTEGER},
+      statistics_time = #{statisticsTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      first_order_no = #{firstOrderNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

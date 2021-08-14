@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.HsFtpReconciliationDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.HsFtpReconciliation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ftp_trans_id" jdbcType="CHAR" property="ftpTransId" />
+    <result column="ftp_merid" jdbcType="CHAR" property="ftpMerid" />
+    <result column="ftp_transAmt" jdbcType="INTEGER" property="ftpTransamt" />
+    <result column="ftp_pay_time" jdbcType="VARCHAR" property="ftpPayTime" />
+    <result column="ftp_getAmt" jdbcType="INTEGER" property="ftpGetamt" />
+    <result column="ftp_bankcard" jdbcType="VARCHAR" property="ftpBankcard" />
+    <result column="result_code" jdbcType="INTEGER" property="resultCode" />
+    <result column="worth_transAmt" jdbcType="DECIMAL" property="worthTransamt" />
+    <result column="worth_last_up_ts" jdbcType="TIMESTAMP" property="worthLastUpTs" />
+    <result column="worth_cardNo" jdbcType="CHAR" property="worthCardno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ftp_trans_id, ftp_merid, ftp_transAmt, ftp_pay_time, ftp_getAmt, ftp_bankcard, 
+    result_code, worth_transAmt, worth_last_up_ts, worth_cardNo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hs_ftp_reconciliation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hs_ftp_reconciliation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.HsFtpReconciliation">
+    insert into hs_ftp_reconciliation (id, ftp_trans_id, ftp_merid, 
+      ftp_transAmt, ftp_pay_time, ftp_getAmt, 
+      ftp_bankcard, result_code, worth_transAmt, 
+      worth_last_up_ts, worth_cardNo)
+    values (#{id,jdbcType=INTEGER}, #{ftpTransId,jdbcType=CHAR}, #{ftpMerid,jdbcType=CHAR}, 
+      #{ftpTransamt,jdbcType=INTEGER}, #{ftpPayTime,jdbcType=VARCHAR}, #{ftpGetamt,jdbcType=INTEGER}, 
+      #{ftpBankcard,jdbcType=VARCHAR}, #{resultCode,jdbcType=INTEGER}, #{worthTransamt,jdbcType=DECIMAL}, 
+      #{worthLastUpTs,jdbcType=TIMESTAMP}, #{worthCardno,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.HsFtpReconciliation">
+    insert into hs_ftp_reconciliation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ftpTransId != null">
+        ftp_trans_id,
+      </if>
+      <if test="ftpMerid != null">
+        ftp_merid,
+      </if>
+      <if test="ftpTransamt != null">
+        ftp_transAmt,
+      </if>
+      <if test="ftpPayTime != null">
+        ftp_pay_time,
+      </if>
+      <if test="ftpGetamt != null">
+        ftp_getAmt,
+      </if>
+      <if test="ftpBankcard != null">
+        ftp_bankcard,
+      </if>
+      <if test="resultCode != null">
+        result_code,
+      </if>
+      <if test="worthTransamt != null">
+        worth_transAmt,
+      </if>
+      <if test="worthLastUpTs != null">
+        worth_last_up_ts,
+      </if>
+      <if test="worthCardno != null">
+        worth_cardNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ftpTransId != null">
+        #{ftpTransId,jdbcType=CHAR},
+      </if>
+      <if test="ftpMerid != null">
+        #{ftpMerid,jdbcType=CHAR},
+      </if>
+      <if test="ftpTransamt != null">
+        #{ftpTransamt,jdbcType=INTEGER},
+      </if>
+      <if test="ftpPayTime != null">
+        #{ftpPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpGetamt != null">
+        #{ftpGetamt,jdbcType=INTEGER},
+      </if>
+      <if test="ftpBankcard != null">
+        #{ftpBankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        #{resultCode,jdbcType=INTEGER},
+      </if>
+      <if test="worthTransamt != null">
+        #{worthTransamt,jdbcType=DECIMAL},
+      </if>
+      <if test="worthLastUpTs != null">
+        #{worthLastUpTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="worthCardno != null">
+        #{worthCardno,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.HsFtpReconciliation">
+    update hs_ftp_reconciliation
+    <set>
+      <if test="ftpTransId != null">
+        ftp_trans_id = #{ftpTransId,jdbcType=CHAR},
+      </if>
+      <if test="ftpMerid != null">
+        ftp_merid = #{ftpMerid,jdbcType=CHAR},
+      </if>
+      <if test="ftpTransamt != null">
+        ftp_transAmt = #{ftpTransamt,jdbcType=INTEGER},
+      </if>
+      <if test="ftpPayTime != null">
+        ftp_pay_time = #{ftpPayTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ftpGetamt != null">
+        ftp_getAmt = #{ftpGetamt,jdbcType=INTEGER},
+      </if>
+      <if test="ftpBankcard != null">
+        ftp_bankcard = #{ftpBankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        result_code = #{resultCode,jdbcType=INTEGER},
+      </if>
+      <if test="worthTransamt != null">
+        worth_transAmt = #{worthTransamt,jdbcType=DECIMAL},
+      </if>
+      <if test="worthLastUpTs != null">
+        worth_last_up_ts = #{worthLastUpTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="worthCardno != null">
+        worth_cardNo = #{worthCardno,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.HsFtpReconciliation">
+    update hs_ftp_reconciliation
+    set ftp_trans_id = #{ftpTransId,jdbcType=CHAR},
+      ftp_merid = #{ftpMerid,jdbcType=CHAR},
+      ftp_transAmt = #{ftpTransamt,jdbcType=INTEGER},
+      ftp_pay_time = #{ftpPayTime,jdbcType=VARCHAR},
+      ftp_getAmt = #{ftpGetamt,jdbcType=INTEGER},
+      ftp_bankcard = #{ftpBankcard,jdbcType=VARCHAR},
+      result_code = #{resultCode,jdbcType=INTEGER},
+      worth_transAmt = #{worthTransamt,jdbcType=DECIMAL},
+      worth_last_up_ts = #{worthLastUpTs,jdbcType=TIMESTAMP},
+      worth_cardNo = #{worthCardno,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PartnerposdownresultDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Partnerposdownresult">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="orderType" jdbcType="VARCHAR" property="ordertype" />
+    <result column="orderId" jdbcType="VARCHAR" property="orderid" />
+    <result column="rs" jdbcType="VARCHAR" property="rs" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createtime, orderType, orderId, rs
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from partnerposdownresult
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from partnerposdownresult
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Partnerposdownresult">
+    insert into partnerposdownresult (id, createtime, orderType, 
+      orderId, rs)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{ordertype,jdbcType=VARCHAR}, 
+      #{orderid,jdbcType=VARCHAR}, #{rs,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Partnerposdownresult">
+    insert into partnerposdownresult
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="ordertype != null">
+        orderType,
+      </if>
+      <if test="orderid != null">
+        orderId,
+      </if>
+      <if test="rs != null">
+        rs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordertype != null">
+        #{ordertype,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="rs != null">
+        #{rs,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Partnerposdownresult">
+    update partnerposdownresult
+    <set>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordertype != null">
+        orderType = #{ordertype,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null">
+        orderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="rs != null">
+        rs = #{rs,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Partnerposdownresult">
+    update partnerposdownresult
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      orderType = #{ordertype,jdbcType=VARCHAR},
+      orderId = #{orderid,jdbcType=VARCHAR},
+      rs = #{rs,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

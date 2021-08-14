@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.OutcomesStatisticsDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.OutcomesStatistics">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="dau" jdbcType="INTEGER" property="dau" />
+    <result column="day_new_customer" jdbcType="INTEGER" property="dayNewCustomer" />
+    <result column="day_trans_amount" jdbcType="VARCHAR" property="dayTransAmount" />
+    <result column="day_trans_count" jdbcType="INTEGER" property="dayTransCount" />
+    <result column="total_registers" jdbcType="INTEGER" property="totalRegisters" />
+    <result column="total_autoym" jdbcType="INTEGER" property="totalAutoym" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, trans_date, dau, day_new_customer, day_trans_amount, day_trans_count, total_registers, 
+    total_autoym, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from outcomes_statistics
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from outcomes_statistics
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.OutcomesStatistics">
+    insert into outcomes_statistics (id, trans_date, dau, 
+      day_new_customer, day_trans_amount, day_trans_count, 
+      total_registers, total_autoym, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{transDate,jdbcType=VARCHAR}, #{dau,jdbcType=INTEGER}, 
+      #{dayNewCustomer,jdbcType=INTEGER}, #{dayTransAmount,jdbcType=VARCHAR}, #{dayTransCount,jdbcType=INTEGER}, 
+      #{totalRegisters,jdbcType=INTEGER}, #{totalAutoym,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.OutcomesStatistics">
+    insert into outcomes_statistics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="transDate != null">
+        trans_date,
+      </if>
+      <if test="dau != null">
+        dau,
+      </if>
+      <if test="dayNewCustomer != null">
+        day_new_customer,
+      </if>
+      <if test="dayTransAmount != null">
+        day_trans_amount,
+      </if>
+      <if test="dayTransCount != null">
+        day_trans_count,
+      </if>
+      <if test="totalRegisters != null">
+        total_registers,
+      </if>
+      <if test="totalAutoym != null">
+        total_autoym,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="transDate != null">
+        #{transDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dau != null">
+        #{dau,jdbcType=INTEGER},
+      </if>
+      <if test="dayNewCustomer != null">
+        #{dayNewCustomer,jdbcType=INTEGER},
+      </if>
+      <if test="dayTransAmount != null">
+        #{dayTransAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="dayTransCount != null">
+        #{dayTransCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalRegisters != null">
+        #{totalRegisters,jdbcType=INTEGER},
+      </if>
+      <if test="totalAutoym != null">
+        #{totalAutoym,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.OutcomesStatistics">
+    update outcomes_statistics
+    <set>
+      <if test="transDate != null">
+        trans_date = #{transDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dau != null">
+        dau = #{dau,jdbcType=INTEGER},
+      </if>
+      <if test="dayNewCustomer != null">
+        day_new_customer = #{dayNewCustomer,jdbcType=INTEGER},
+      </if>
+      <if test="dayTransAmount != null">
+        day_trans_amount = #{dayTransAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="dayTransCount != null">
+        day_trans_count = #{dayTransCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalRegisters != null">
+        total_registers = #{totalRegisters,jdbcType=INTEGER},
+      </if>
+      <if test="totalAutoym != null">
+        total_autoym = #{totalAutoym,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.OutcomesStatistics">
+    update outcomes_statistics
+    set trans_date = #{transDate,jdbcType=VARCHAR},
+      dau = #{dau,jdbcType=INTEGER},
+      day_new_customer = #{dayNewCustomer,jdbcType=INTEGER},
+      day_trans_amount = #{dayTransAmount,jdbcType=VARCHAR},
+      day_trans_count = #{dayTransCount,jdbcType=INTEGER},
+      total_registers = #{totalRegisters,jdbcType=INTEGER},
+      total_autoym = #{totalAutoym,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

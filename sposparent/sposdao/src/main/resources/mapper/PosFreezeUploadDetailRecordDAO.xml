@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosFreezeUploadDetailRecordDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosFreezeUploadDetailRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sn_code" jdbcType="VARCHAR" property="snCode" />
+    <result column="upload_record_id" jdbcType="INTEGER" property="uploadRecordId" />
+    <result column="upload_status" jdbcType="INTEGER" property="uploadStatus" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sn_code, upload_record_id, upload_status, `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_freeze_upload_detail_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_freeze_upload_detail_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadDetailRecord">
+    insert into pos_freeze_upload_detail_record (id, sn_code, upload_record_id, 
+      upload_status, `status`)
+    values (#{id,jdbcType=INTEGER}, #{snCode,jdbcType=VARCHAR}, #{uploadRecordId,jdbcType=INTEGER}, 
+      #{uploadStatus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadDetailRecord">
+    insert into pos_freeze_upload_detail_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="snCode != null">
+        sn_code,
+      </if>
+      <if test="uploadRecordId != null">
+        upload_record_id,
+      </if>
+      <if test="uploadStatus != null">
+        upload_status,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="snCode != null">
+        #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadRecordId != null">
+        #{uploadRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadStatus != null">
+        #{uploadStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadDetailRecord">
+    update pos_freeze_upload_detail_record
+    <set>
+      <if test="snCode != null">
+        sn_code = #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadRecordId != null">
+        upload_record_id = #{uploadRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadStatus != null">
+        upload_status = #{uploadStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadDetailRecord">
+    update pos_freeze_upload_detail_record
+    set sn_code = #{snCode,jdbcType=VARCHAR},
+      upload_record_id = #{uploadRecordId,jdbcType=INTEGER},
+      upload_status = #{uploadStatus,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

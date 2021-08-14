@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.OenRuleDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.OenRule">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="oen_code" jdbcType="VARCHAR" property="oenCode" />
+    <result column="out_trans_day_limit" jdbcType="DECIMAL" property="outTransDayLimit" />
+    <result column="out_trans_one_limit" jdbcType="DECIMAL" property="outTransOneLimit" />
+    <result column="transfer_day_limit" jdbcType="DECIMAL" property="transferDayLimit" />
+    <result column="transfer_day_trans_count_limit" jdbcType="INTEGER" property="transferDayTransCountLimit" />
+    <result column="transfer_one_limit" jdbcType="DECIMAL" property="transferOneLimit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, create_time, enable_flag, oen_code, out_trans_day_limit, out_trans_one_limit, 
+    transfer_day_limit, transfer_day_trans_count_limit, transfer_one_limit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oen_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oen_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.OenRule">
+    insert into oen_rule (id, `security`, create_time, 
+      enable_flag, oen_code, out_trans_day_limit, 
+      out_trans_one_limit, transfer_day_limit, transfer_day_trans_count_limit, 
+      transfer_one_limit)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{enableFlag,jdbcType=INTEGER}, #{oenCode,jdbcType=VARCHAR}, #{outTransDayLimit,jdbcType=DECIMAL}, 
+      #{outTransOneLimit,jdbcType=DECIMAL}, #{transferDayLimit,jdbcType=DECIMAL}, #{transferDayTransCountLimit,jdbcType=INTEGER}, 
+      #{transferOneLimit,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.OenRule">
+    insert into oen_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="oenCode != null">
+        oen_code,
+      </if>
+      <if test="outTransDayLimit != null">
+        out_trans_day_limit,
+      </if>
+      <if test="outTransOneLimit != null">
+        out_trans_one_limit,
+      </if>
+      <if test="transferDayLimit != null">
+        transfer_day_limit,
+      </if>
+      <if test="transferDayTransCountLimit != null">
+        transfer_day_trans_count_limit,
+      </if>
+      <if test="transferOneLimit != null">
+        transfer_one_limit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="oenCode != null">
+        #{oenCode,jdbcType=VARCHAR},
+      </if>
+      <if test="outTransDayLimit != null">
+        #{outTransDayLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="outTransOneLimit != null">
+        #{outTransOneLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="transferDayLimit != null">
+        #{transferDayLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="transferDayTransCountLimit != null">
+        #{transferDayTransCountLimit,jdbcType=INTEGER},
+      </if>
+      <if test="transferOneLimit != null">
+        #{transferOneLimit,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.OenRule">
+    update oen_rule
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="oenCode != null">
+        oen_code = #{oenCode,jdbcType=VARCHAR},
+      </if>
+      <if test="outTransDayLimit != null">
+        out_trans_day_limit = #{outTransDayLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="outTransOneLimit != null">
+        out_trans_one_limit = #{outTransOneLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="transferDayLimit != null">
+        transfer_day_limit = #{transferDayLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="transferDayTransCountLimit != null">
+        transfer_day_trans_count_limit = #{transferDayTransCountLimit,jdbcType=INTEGER},
+      </if>
+      <if test="transferOneLimit != null">
+        transfer_one_limit = #{transferOneLimit,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.OenRule">
+    update oen_rule
+    set `security` = #{security,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      oen_code = #{oenCode,jdbcType=VARCHAR},
+      out_trans_day_limit = #{outTransDayLimit,jdbcType=DECIMAL},
+      out_trans_one_limit = #{outTransOneLimit,jdbcType=DECIMAL},
+      transfer_day_limit = #{transferDayLimit,jdbcType=DECIMAL},
+      transfer_day_trans_count_limit = #{transferDayTransCountLimit,jdbcType=INTEGER},
+      transfer_one_limit = #{transferOneLimit,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

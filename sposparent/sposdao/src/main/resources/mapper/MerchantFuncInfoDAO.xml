@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MerchantFuncInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MerchantFuncInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="func_id" jdbcType="VARCHAR" property="funcId" />
+    <result column="func_rate" jdbcType="VARCHAR" property="funcRate" />
+    <result column="open_status" jdbcType="VARCHAR" property="openStatus" />
+    <result column="split_status" jdbcType="VARCHAR" property="splitStatus" />
+    <result column="fail_msg" jdbcType="VARCHAR" property="failMsg" />
+    <result column="channel_id" jdbcType="VARCHAR" property="channelId" />
+    <result column="channel_auth_url" jdbcType="VARCHAR" property="channelAuthUrl" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mer, func_id, func_rate, open_status, split_status, fail_msg, channel_id, channel_auth_url, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_func_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from merchant_func_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MerchantFuncInfo">
+    insert into merchant_func_info (id, mer, func_id, 
+      func_rate, open_status, split_status, 
+      fail_msg, channel_id, channel_auth_url, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{mer,jdbcType=VARCHAR}, #{funcId,jdbcType=VARCHAR}, 
+      #{funcRate,jdbcType=VARCHAR}, #{openStatus,jdbcType=VARCHAR}, #{splitStatus,jdbcType=VARCHAR}, 
+      #{failMsg,jdbcType=VARCHAR}, #{channelId,jdbcType=VARCHAR}, #{channelAuthUrl,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MerchantFuncInfo">
+    insert into merchant_func_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="funcId != null">
+        func_id,
+      </if>
+      <if test="funcRate != null">
+        func_rate,
+      </if>
+      <if test="openStatus != null">
+        open_status,
+      </if>
+      <if test="splitStatus != null">
+        split_status,
+      </if>
+      <if test="failMsg != null">
+        fail_msg,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="channelAuthUrl != null">
+        channel_auth_url,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="funcId != null">
+        #{funcId,jdbcType=VARCHAR},
+      </if>
+      <if test="funcRate != null">
+        #{funcRate,jdbcType=VARCHAR},
+      </if>
+      <if test="openStatus != null">
+        #{openStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="splitStatus != null">
+        #{splitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="failMsg != null">
+        #{failMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelAuthUrl != null">
+        #{channelAuthUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MerchantFuncInfo">
+    update merchant_func_info
+    <set>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="funcId != null">
+        func_id = #{funcId,jdbcType=VARCHAR},
+      </if>
+      <if test="funcRate != null">
+        func_rate = #{funcRate,jdbcType=VARCHAR},
+      </if>
+      <if test="openStatus != null">
+        open_status = #{openStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="splitStatus != null">
+        split_status = #{splitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="failMsg != null">
+        fail_msg = #{failMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelAuthUrl != null">
+        channel_auth_url = #{channelAuthUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MerchantFuncInfo">
+    update merchant_func_info
+    set mer = #{mer,jdbcType=VARCHAR},
+      func_id = #{funcId,jdbcType=VARCHAR},
+      func_rate = #{funcRate,jdbcType=VARCHAR},
+      open_status = #{openStatus,jdbcType=VARCHAR},
+      split_status = #{splitStatus,jdbcType=VARCHAR},
+      fail_msg = #{failMsg,jdbcType=VARCHAR},
+      channel_id = #{channelId,jdbcType=VARCHAR},
+      channel_auth_url = #{channelAuthUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

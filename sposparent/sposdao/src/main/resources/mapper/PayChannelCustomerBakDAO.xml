@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PayChannelCustomerBakDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PayChannelCustomerBak">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="fengding_line" jdbcType="DECIMAL" property="fengdingLine" />
+    <result column="fengding_money" jdbcType="DECIMAL" property="fengdingMoney" />
+    <result column="last_sign_time" jdbcType="BIGINT" property="lastSignTime" />
+    <result column="last_use_time" jdbcType="BIGINT" property="lastUseTime" />
+    <result column="mcc_flag" jdbcType="INTEGER" property="mccFlag" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="pos_m_type" jdbcType="INTEGER" property="posMType" />
+    <result column="pos_no" jdbcType="VARCHAR" property="posNo" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="sn_code" jdbcType="VARCHAR" property="snCode" />
+    <result column="ref_area_id" jdbcType="INTEGER" property="refAreaId" />
+    <result column="ref_pay_channel_id" jdbcType="INTEGER" property="refPayChannelId" />
+    <result column="mcc" jdbcType="VARCHAR" property="mcc" />
+    <result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="turn_num" jdbcType="INTEGER" property="turnNum" />
+    <result column="special_flag" jdbcType="INTEGER" property="specialFlag" />
+    <result column="used_flag" jdbcType="VARCHAR" property="usedFlag" />
+    <result column="t1_used_flag" jdbcType="VARCHAR" property="t1UsedFlag" />
+    <result column="available_amout" jdbcType="DECIMAL" property="availableAmout" />
+    <result column="original_amout" jdbcType="DECIMAL" property="originalAmout" />
+    <result column="standard_flag" jdbcType="TINYINT" property="standardFlag" />
+    <result column="smpos_flag" jdbcType="VARCHAR" property="smposFlag" />
+    <result column="checkStatus" jdbcType="VARCHAR" property="checkstatus" />
+    <result column="regStatus" jdbcType="VARCHAR" property="regstatus" />
+    <result column="last_check_time" jdbcType="TIMESTAMP" property="lastCheckTime" />
+    <result column="person_customer_flag" jdbcType="SMALLINT" property="personCustomerFlag" />
+    <result column="orgFlag" jdbcType="INTEGER" property="orgflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, code, create_time, fengding_line, fengding_money, last_sign_time, 
+    last_use_time, mcc_flag, `name`, operator_name, pos_m_type, pos_no, rate, sn_code, 
+    ref_area_id, ref_pay_channel_id, mcc, merchant_name, province, city, `key`, turn_num, 
+    special_flag, used_flag, t1_used_flag, available_amout, original_amout, standard_flag, 
+    smpos_flag, checkStatus, regStatus, last_check_time, person_customer_flag, orgFlag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_channel_customer_bak
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_channel_customer_bak
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBak">
+    insert into pay_channel_customer_bak (id, `security`, code, 
+      create_time, fengding_line, fengding_money, 
+      last_sign_time, last_use_time, mcc_flag, 
+      `name`, operator_name, pos_m_type, 
+      pos_no, rate, sn_code, 
+      ref_area_id, ref_pay_channel_id, mcc, 
+      merchant_name, province, city, 
+      `key`, turn_num, special_flag, 
+      used_flag, t1_used_flag, available_amout, 
+      original_amout, standard_flag, smpos_flag, 
+      checkStatus, regStatus, last_check_time, 
+      person_customer_flag, orgFlag)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{fengdingLine,jdbcType=DECIMAL}, #{fengdingMoney,jdbcType=DECIMAL}, 
+      #{lastSignTime,jdbcType=BIGINT}, #{lastUseTime,jdbcType=BIGINT}, #{mccFlag,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{posMType,jdbcType=INTEGER}, 
+      #{posNo,jdbcType=VARCHAR}, #{rate,jdbcType=DECIMAL}, #{snCode,jdbcType=VARCHAR}, 
+      #{refAreaId,jdbcType=INTEGER}, #{refPayChannelId,jdbcType=INTEGER}, #{mcc,jdbcType=VARCHAR}, 
+      #{merchantName,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{key,jdbcType=VARCHAR}, #{turnNum,jdbcType=INTEGER}, #{specialFlag,jdbcType=INTEGER}, 
+      #{usedFlag,jdbcType=VARCHAR}, #{t1UsedFlag,jdbcType=VARCHAR}, #{availableAmout,jdbcType=DECIMAL}, 
+      #{originalAmout,jdbcType=DECIMAL}, #{standardFlag,jdbcType=TINYINT}, #{smposFlag,jdbcType=VARCHAR}, 
+      #{checkstatus,jdbcType=VARCHAR}, #{regstatus,jdbcType=VARCHAR}, #{lastCheckTime,jdbcType=TIMESTAMP}, 
+      #{personCustomerFlag,jdbcType=SMALLINT}, #{orgflag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBak">
+    insert into pay_channel_customer_bak
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="fengdingLine != null">
+        fengding_line,
+      </if>
+      <if test="fengdingMoney != null">
+        fengding_money,
+      </if>
+      <if test="lastSignTime != null">
+        last_sign_time,
+      </if>
+      <if test="lastUseTime != null">
+        last_use_time,
+      </if>
+      <if test="mccFlag != null">
+        mcc_flag,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="posMType != null">
+        pos_m_type,
+      </if>
+      <if test="posNo != null">
+        pos_no,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="snCode != null">
+        sn_code,
+      </if>
+      <if test="refAreaId != null">
+        ref_area_id,
+      </if>
+      <if test="refPayChannelId != null">
+        ref_pay_channel_id,
+      </if>
+      <if test="mcc != null">
+        mcc,
+      </if>
+      <if test="merchantName != null">
+        merchant_name,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="key != null">
+        `key`,
+      </if>
+      <if test="turnNum != null">
+        turn_num,
+      </if>
+      <if test="specialFlag != null">
+        special_flag,
+      </if>
+      <if test="usedFlag != null">
+        used_flag,
+      </if>
+      <if test="t1UsedFlag != null">
+        t1_used_flag,
+      </if>
+      <if test="availableAmout != null">
+        available_amout,
+      </if>
+      <if test="originalAmout != null">
+        original_amout,
+      </if>
+      <if test="standardFlag != null">
+        standard_flag,
+      </if>
+      <if test="smposFlag != null">
+        smpos_flag,
+      </if>
+      <if test="checkstatus != null">
+        checkStatus,
+      </if>
+      <if test="regstatus != null">
+        regStatus,
+      </if>
+      <if test="lastCheckTime != null">
+        last_check_time,
+      </if>
+      <if test="personCustomerFlag != null">
+        person_customer_flag,
+      </if>
+      <if test="orgflag != null">
+        orgFlag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="fengdingLine != null">
+        #{fengdingLine,jdbcType=DECIMAL},
+      </if>
+      <if test="fengdingMoney != null">
+        #{fengdingMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="lastSignTime != null">
+        #{lastSignTime,jdbcType=BIGINT},
+      </if>
+      <if test="lastUseTime != null">
+        #{lastUseTime,jdbcType=BIGINT},
+      </if>
+      <if test="mccFlag != null">
+        #{mccFlag,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="posMType != null">
+        #{posMType,jdbcType=INTEGER},
+      </if>
+      <if test="posNo != null">
+        #{posNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="snCode != null">
+        #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="refAreaId != null">
+        #{refAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="refPayChannelId != null">
+        #{refPayChannelId,jdbcType=INTEGER},
+      </if>
+      <if test="mcc != null">
+        #{mcc,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null">
+        #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="turnNum != null">
+        #{turnNum,jdbcType=INTEGER},
+      </if>
+      <if test="specialFlag != null">
+        #{specialFlag,jdbcType=INTEGER},
+      </if>
+      <if test="usedFlag != null">
+        #{usedFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="t1UsedFlag != null">
+        #{t1UsedFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="availableAmout != null">
+        #{availableAmout,jdbcType=DECIMAL},
+      </if>
+      <if test="originalAmout != null">
+        #{originalAmout,jdbcType=DECIMAL},
+      </if>
+      <if test="standardFlag != null">
+        #{standardFlag,jdbcType=TINYINT},
+      </if>
+      <if test="smposFlag != null">
+        #{smposFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="checkstatus != null">
+        #{checkstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="regstatus != null">
+        #{regstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckTime != null">
+        #{lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personCustomerFlag != null">
+        #{personCustomerFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="orgflag != null">
+        #{orgflag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBak">
+    update pay_channel_customer_bak
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="fengdingLine != null">
+        fengding_line = #{fengdingLine,jdbcType=DECIMAL},
+      </if>
+      <if test="fengdingMoney != null">
+        fengding_money = #{fengdingMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="lastSignTime != null">
+        last_sign_time = #{lastSignTime,jdbcType=BIGINT},
+      </if>
+      <if test="lastUseTime != null">
+        last_use_time = #{lastUseTime,jdbcType=BIGINT},
+      </if>
+      <if test="mccFlag != null">
+        mcc_flag = #{mccFlag,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="posMType != null">
+        pos_m_type = #{posMType,jdbcType=INTEGER},
+      </if>
+      <if test="posNo != null">
+        pos_no = #{posNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="snCode != null">
+        sn_code = #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="refAreaId != null">
+        ref_area_id = #{refAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="refPayChannelId != null">
+        ref_pay_channel_id = #{refPayChannelId,jdbcType=INTEGER},
+      </if>
+      <if test="mcc != null">
+        mcc = #{mcc,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantName != null">
+        merchant_name = #{merchantName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        `key` = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="turnNum != null">
+        turn_num = #{turnNum,jdbcType=INTEGER},
+      </if>
+      <if test="specialFlag != null">
+        special_flag = #{specialFlag,jdbcType=INTEGER},
+      </if>
+      <if test="usedFlag != null">
+        used_flag = #{usedFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="t1UsedFlag != null">
+        t1_used_flag = #{t1UsedFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="availableAmout != null">
+        available_amout = #{availableAmout,jdbcType=DECIMAL},
+      </if>
+      <if test="originalAmout != null">
+        original_amout = #{originalAmout,jdbcType=DECIMAL},
+      </if>
+      <if test="standardFlag != null">
+        standard_flag = #{standardFlag,jdbcType=TINYINT},
+      </if>
+      <if test="smposFlag != null">
+        smpos_flag = #{smposFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="checkstatus != null">
+        checkStatus = #{checkstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="regstatus != null">
+        regStatus = #{regstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckTime != null">
+        last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personCustomerFlag != null">
+        person_customer_flag = #{personCustomerFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="orgflag != null">
+        orgFlag = #{orgflag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBak">
+    update pay_channel_customer_bak
+    set `security` = #{security,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      fengding_line = #{fengdingLine,jdbcType=DECIMAL},
+      fengding_money = #{fengdingMoney,jdbcType=DECIMAL},
+      last_sign_time = #{lastSignTime,jdbcType=BIGINT},
+      last_use_time = #{lastUseTime,jdbcType=BIGINT},
+      mcc_flag = #{mccFlag,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      pos_m_type = #{posMType,jdbcType=INTEGER},
+      pos_no = #{posNo,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=DECIMAL},
+      sn_code = #{snCode,jdbcType=VARCHAR},
+      ref_area_id = #{refAreaId,jdbcType=INTEGER},
+      ref_pay_channel_id = #{refPayChannelId,jdbcType=INTEGER},
+      mcc = #{mcc,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      `key` = #{key,jdbcType=VARCHAR},
+      turn_num = #{turnNum,jdbcType=INTEGER},
+      special_flag = #{specialFlag,jdbcType=INTEGER},
+      used_flag = #{usedFlag,jdbcType=VARCHAR},
+      t1_used_flag = #{t1UsedFlag,jdbcType=VARCHAR},
+      available_amout = #{availableAmout,jdbcType=DECIMAL},
+      original_amout = #{originalAmout,jdbcType=DECIMAL},
+      standard_flag = #{standardFlag,jdbcType=TINYINT},
+      smpos_flag = #{smposFlag,jdbcType=VARCHAR},
+      checkStatus = #{checkstatus,jdbcType=VARCHAR},
+      regStatus = #{regstatus,jdbcType=VARCHAR},
+      last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP},
+      person_customer_flag = #{personCustomerFlag,jdbcType=SMALLINT},
+      orgFlag = #{orgflag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

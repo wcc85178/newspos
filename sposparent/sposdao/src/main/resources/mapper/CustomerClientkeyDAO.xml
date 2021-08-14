@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerClientkeyDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerClientkey">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="man_id_card" jdbcType="VARCHAR" property="manIdCard" />
+    <result column="man_name" jdbcType="VARCHAR" property="manName" />
+    <result column="man_tel" jdbcType="VARCHAR" property="manTel" />
+    <result column="serial" jdbcType="VARCHAR" property="serial" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="mps" jdbcType="VARCHAR" property="mps" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shiyi.sposdao.entity.CustomerClientkey">
+    <result column="prikey" jdbcType="LONGVARCHAR" property="prikey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createTime, updateTime, man_id_card, man_name, man_tel, serial, `status`, mps
+  </sql>
+  <sql id="Blob_Column_List">
+    prikey
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from customer_clientkey
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_clientkey
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerClientkey">
+    insert into customer_clientkey (id, createTime, updateTime, 
+      man_id_card, man_name, man_tel, 
+      serial, `status`, mps, 
+      prikey)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{manIdCard,jdbcType=VARCHAR}, #{manName,jdbcType=VARCHAR}, #{manTel,jdbcType=VARCHAR}, 
+      #{serial,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{mps,jdbcType=VARCHAR}, 
+      #{prikey,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerClientkey">
+    insert into customer_clientkey
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="manIdCard != null">
+        man_id_card,
+      </if>
+      <if test="manName != null">
+        man_name,
+      </if>
+      <if test="manTel != null">
+        man_tel,
+      </if>
+      <if test="serial != null">
+        serial,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="mps != null">
+        mps,
+      </if>
+      <if test="prikey != null">
+        prikey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manIdCard != null">
+        #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="serial != null">
+        #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="mps != null">
+        #{mps,jdbcType=VARCHAR},
+      </if>
+      <if test="prikey != null">
+        #{prikey,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerClientkey">
+    update customer_clientkey
+    <set>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manIdCard != null">
+        man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        man_name = #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        man_tel = #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="serial != null">
+        serial = #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="mps != null">
+        mps = #{mps,jdbcType=VARCHAR},
+      </if>
+      <if test="prikey != null">
+        prikey = #{prikey,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shiyi.sposdao.entity.CustomerClientkey">
+    update customer_clientkey
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      man_name = #{manName,jdbcType=VARCHAR},
+      man_tel = #{manTel,jdbcType=VARCHAR},
+      serial = #{serial,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=TINYINT},
+      mps = #{mps,jdbcType=VARCHAR},
+      prikey = #{prikey,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerClientkey">
+    update customer_clientkey
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      man_name = #{manName,jdbcType=VARCHAR},
+      man_tel = #{manTel,jdbcType=VARCHAR},
+      serial = #{serial,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=TINYINT},
+      mps = #{mps,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

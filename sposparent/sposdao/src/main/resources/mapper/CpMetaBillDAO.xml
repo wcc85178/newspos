@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CpMetaBillDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CpMetaBill">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="field_sort" jdbcType="INTEGER" property="fieldSort" />
+    <result column="is_condition" jdbcType="INTEGER" property="isCondition" />
+    <result column="is_list_show" jdbcType="INTEGER" property="isListShow" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="ref_data_url" jdbcType="VARCHAR" property="refDataUrl" />
+    <result column="required" jdbcType="INTEGER" property="required" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="unqiued" jdbcType="INTEGER" property="unqiued" />
+    <result column="system_control" jdbcType="INTEGER" property="systemControl" />
+    <result column="default_value" jdbcType="VARCHAR" property="defaultValue" />
+    <result column="onlycankao" jdbcType="INTEGER" property="onlycankao" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, code, field_sort, is_condition, is_list_show, `name`, ref_data_url, 
+    required, `type`, width, unqiued, system_control, default_value, onlycankao
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_meta_bill
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cp_meta_bill
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CpMetaBill">
+    insert into cp_meta_bill (id, `security`, code, 
+      field_sort, is_condition, is_list_show, 
+      `name`, ref_data_url, required, 
+      `type`, width, unqiued, 
+      system_control, default_value, onlycankao
+      )
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{fieldSort,jdbcType=INTEGER}, #{isCondition,jdbcType=INTEGER}, #{isListShow,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{refDataUrl,jdbcType=VARCHAR}, #{required,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{width,jdbcType=INTEGER}, #{unqiued,jdbcType=INTEGER}, 
+      #{systemControl,jdbcType=INTEGER}, #{defaultValue,jdbcType=VARCHAR}, #{onlycankao,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CpMetaBill">
+    insert into cp_meta_bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="fieldSort != null">
+        field_sort,
+      </if>
+      <if test="isCondition != null">
+        is_condition,
+      </if>
+      <if test="isListShow != null">
+        is_list_show,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="refDataUrl != null">
+        ref_data_url,
+      </if>
+      <if test="required != null">
+        required,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="unqiued != null">
+        unqiued,
+      </if>
+      <if test="systemControl != null">
+        system_control,
+      </if>
+      <if test="defaultValue != null">
+        default_value,
+      </if>
+      <if test="onlycankao != null">
+        onlycankao,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldSort != null">
+        #{fieldSort,jdbcType=INTEGER},
+      </if>
+      <if test="isCondition != null">
+        #{isCondition,jdbcType=INTEGER},
+      </if>
+      <if test="isListShow != null">
+        #{isListShow,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="refDataUrl != null">
+        #{refDataUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="required != null">
+        #{required,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="unqiued != null">
+        #{unqiued,jdbcType=INTEGER},
+      </if>
+      <if test="systemControl != null">
+        #{systemControl,jdbcType=INTEGER},
+      </if>
+      <if test="defaultValue != null">
+        #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="onlycankao != null">
+        #{onlycankao,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CpMetaBill">
+    update cp_meta_bill
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldSort != null">
+        field_sort = #{fieldSort,jdbcType=INTEGER},
+      </if>
+      <if test="isCondition != null">
+        is_condition = #{isCondition,jdbcType=INTEGER},
+      </if>
+      <if test="isListShow != null">
+        is_list_show = #{isListShow,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="refDataUrl != null">
+        ref_data_url = #{refDataUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="required != null">
+        required = #{required,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="unqiued != null">
+        unqiued = #{unqiued,jdbcType=INTEGER},
+      </if>
+      <if test="systemControl != null">
+        system_control = #{systemControl,jdbcType=INTEGER},
+      </if>
+      <if test="defaultValue != null">
+        default_value = #{defaultValue,jdbcType=VARCHAR},
+      </if>
+      <if test="onlycankao != null">
+        onlycankao = #{onlycankao,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CpMetaBill">
+    update cp_meta_bill
+    set `security` = #{security,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      field_sort = #{fieldSort,jdbcType=INTEGER},
+      is_condition = #{isCondition,jdbcType=INTEGER},
+      is_list_show = #{isListShow,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      ref_data_url = #{refDataUrl,jdbcType=VARCHAR},
+      required = #{required,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=INTEGER},
+      width = #{width,jdbcType=INTEGER},
+      unqiued = #{unqiued,jdbcType=INTEGER},
+      system_control = #{systemControl,jdbcType=INTEGER},
+      default_value = #{defaultValue,jdbcType=VARCHAR},
+      onlycankao = #{onlycankao,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

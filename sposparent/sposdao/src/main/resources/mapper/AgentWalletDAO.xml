@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AgentWalletDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.AgentWallet">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="green_balance" jdbcType="DECIMAL" property="greenBalance" />
+    <result column="green_balance_update_time" jdbcType="BIGINT" property="greenBalanceUpdateTime" />
+    <result column="margin" jdbcType="DECIMAL" property="margin" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="withdraw_gain" jdbcType="DECIMAL" property="withdrawGain" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, create_time, green_balance, green_balance_update_time, margin, version, 
+    withdraw_gain, ref_agent_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from agent_wallet
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from agent_wallet
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.AgentWallet">
+    insert into agent_wallet (id, `security`, create_time, 
+      green_balance, green_balance_update_time, margin, 
+      version, withdraw_gain, ref_agent_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{greenBalance,jdbcType=DECIMAL}, #{greenBalanceUpdateTime,jdbcType=BIGINT}, #{margin,jdbcType=DECIMAL}, 
+      #{version,jdbcType=INTEGER}, #{withdrawGain,jdbcType=DECIMAL}, #{refAgentId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.AgentWallet">
+    insert into agent_wallet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="greenBalance != null">
+        green_balance,
+      </if>
+      <if test="greenBalanceUpdateTime != null">
+        green_balance_update_time,
+      </if>
+      <if test="margin != null">
+        margin,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="withdrawGain != null">
+        withdraw_gain,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="greenBalance != null">
+        #{greenBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="greenBalanceUpdateTime != null">
+        #{greenBalanceUpdateTime,jdbcType=BIGINT},
+      </if>
+      <if test="margin != null">
+        #{margin,jdbcType=DECIMAL},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawGain != null">
+        #{withdrawGain,jdbcType=DECIMAL},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.AgentWallet">
+    update agent_wallet
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="greenBalance != null">
+        green_balance = #{greenBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="greenBalanceUpdateTime != null">
+        green_balance_update_time = #{greenBalanceUpdateTime,jdbcType=BIGINT},
+      </if>
+      <if test="margin != null">
+        margin = #{margin,jdbcType=DECIMAL},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawGain != null">
+        withdraw_gain = #{withdrawGain,jdbcType=DECIMAL},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.AgentWallet">
+    update agent_wallet
+    set `security` = #{security,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      green_balance = #{greenBalance,jdbcType=DECIMAL},
+      green_balance_update_time = #{greenBalanceUpdateTime,jdbcType=BIGINT},
+      margin = #{margin,jdbcType=DECIMAL},
+      version = #{version,jdbcType=INTEGER},
+      withdraw_gain = #{withdrawGain,jdbcType=DECIMAL},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

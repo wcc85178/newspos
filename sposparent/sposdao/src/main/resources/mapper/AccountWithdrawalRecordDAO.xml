@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AccountWithdrawalRecordDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.AccountWithdrawalRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="trancde" jdbcType="VARCHAR" property="trancde" />
+    <result column="card" jdbcType="VARCHAR" property="card" />
+    <result column="name_" jdbcType="VARCHAR" property="name" />
+    <result column="bill_id" jdbcType="VARCHAR" property="billId" />
+    <result column="org_bill_id" jdbcType="VARCHAR" property="orgBillId" />
+    <result column="bill_amt" jdbcType="BIGINT" property="billAmt" />
+    <result column="bill_fee" jdbcType="BIGINT" property="billFee" />
+    <result column="amt_date" jdbcType="INTEGER" property="amtDate" />
+    <result column="field39" jdbcType="VARCHAR" property="field39" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="account_amt" jdbcType="DECIMAL" property="accountAmt" />
+    <result column="account_frozen_amt" jdbcType="DECIMAL" property="accountFrozenAmt" />
+    <result column="account_free_amt" jdbcType="DECIMAL" property="accountFreeAmt" />
+    <result column="handling_time" jdbcType="TIMESTAMP" property="handlingTime" />
+    <result column="bill_type" jdbcType="INTEGER" property="billType" />
+    <result column="from_type" jdbcType="VARCHAR" property="fromType" />
+    <result column="in_account_id" jdbcType="INTEGER" property="inAccountId" />
+    <result column="in_mobile" jdbcType="VARCHAR" property="inMobile" />
+    <result column="notify_url" jdbcType="VARCHAR" property="notifyUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account_id, trancde, card, name_, bill_id, org_bill_id, bill_amt, bill_fee, amt_date, 
+    field39, message, `result`, account_amt, account_frozen_amt, account_free_amt, handling_time, 
+    bill_type, from_type, in_account_id, in_mobile, notify_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_withdrawal_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from account_withdrawal_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.AccountWithdrawalRecord">
+    insert into account_withdrawal_record (id, account_id, trancde, 
+      card, name_, bill_id, 
+      org_bill_id, bill_amt, bill_fee, 
+      amt_date, field39, message, 
+      `result`, account_amt, account_frozen_amt, 
+      account_free_amt, handling_time, bill_type, 
+      from_type, in_account_id, in_mobile, 
+      notify_url)
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=INTEGER}, #{trancde,jdbcType=VARCHAR}, 
+      #{card,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{billId,jdbcType=VARCHAR}, 
+      #{orgBillId,jdbcType=VARCHAR}, #{billAmt,jdbcType=BIGINT}, #{billFee,jdbcType=BIGINT}, 
+      #{amtDate,jdbcType=INTEGER}, #{field39,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
+      #{result,jdbcType=VARCHAR}, #{accountAmt,jdbcType=DECIMAL}, #{accountFrozenAmt,jdbcType=DECIMAL}, 
+      #{accountFreeAmt,jdbcType=DECIMAL}, #{handlingTime,jdbcType=TIMESTAMP}, #{billType,jdbcType=INTEGER}, 
+      #{fromType,jdbcType=VARCHAR}, #{inAccountId,jdbcType=INTEGER}, #{inMobile,jdbcType=VARCHAR}, 
+      #{notifyUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.AccountWithdrawalRecord">
+    insert into account_withdrawal_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="trancde != null">
+        trancde,
+      </if>
+      <if test="card != null">
+        card,
+      </if>
+      <if test="name != null">
+        name_,
+      </if>
+      <if test="billId != null">
+        bill_id,
+      </if>
+      <if test="orgBillId != null">
+        org_bill_id,
+      </if>
+      <if test="billAmt != null">
+        bill_amt,
+      </if>
+      <if test="billFee != null">
+        bill_fee,
+      </if>
+      <if test="amtDate != null">
+        amt_date,
+      </if>
+      <if test="field39 != null">
+        field39,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="result != null">
+        `result`,
+      </if>
+      <if test="accountAmt != null">
+        account_amt,
+      </if>
+      <if test="accountFrozenAmt != null">
+        account_frozen_amt,
+      </if>
+      <if test="accountFreeAmt != null">
+        account_free_amt,
+      </if>
+      <if test="handlingTime != null">
+        handling_time,
+      </if>
+      <if test="billType != null">
+        bill_type,
+      </if>
+      <if test="fromType != null">
+        from_type,
+      </if>
+      <if test="inAccountId != null">
+        in_account_id,
+      </if>
+      <if test="inMobile != null">
+        in_mobile,
+      </if>
+      <if test="notifyUrl != null">
+        notify_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="trancde != null">
+        #{trancde,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null">
+        #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null">
+        #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgBillId != null">
+        #{orgBillId,jdbcType=VARCHAR},
+      </if>
+      <if test="billAmt != null">
+        #{billAmt,jdbcType=BIGINT},
+      </if>
+      <if test="billFee != null">
+        #{billFee,jdbcType=BIGINT},
+      </if>
+      <if test="amtDate != null">
+        #{amtDate,jdbcType=INTEGER},
+      </if>
+      <if test="field39 != null">
+        #{field39,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAmt != null">
+        #{accountAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="accountFrozenAmt != null">
+        #{accountFrozenAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="accountFreeAmt != null">
+        #{accountFreeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="handlingTime != null">
+        #{handlingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billType != null">
+        #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="fromType != null">
+        #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountId != null">
+        #{inAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="inMobile != null">
+        #{inMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyUrl != null">
+        #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.AccountWithdrawalRecord">
+    update account_withdrawal_record
+    <set>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="trancde != null">
+        trancde = #{trancde,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null">
+        card = #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null">
+        bill_id = #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgBillId != null">
+        org_bill_id = #{orgBillId,jdbcType=VARCHAR},
+      </if>
+      <if test="billAmt != null">
+        bill_amt = #{billAmt,jdbcType=BIGINT},
+      </if>
+      <if test="billFee != null">
+        bill_fee = #{billFee,jdbcType=BIGINT},
+      </if>
+      <if test="amtDate != null">
+        amt_date = #{amtDate,jdbcType=INTEGER},
+      </if>
+      <if test="field39 != null">
+        field39 = #{field39,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        `result` = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAmt != null">
+        account_amt = #{accountAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="accountFrozenAmt != null">
+        account_frozen_amt = #{accountFrozenAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="accountFreeAmt != null">
+        account_free_amt = #{accountFreeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="handlingTime != null">
+        handling_time = #{handlingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billType != null">
+        bill_type = #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="fromType != null">
+        from_type = #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountId != null">
+        in_account_id = #{inAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="inMobile != null">
+        in_mobile = #{inMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyUrl != null">
+        notify_url = #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.AccountWithdrawalRecord">
+    update account_withdrawal_record
+    set account_id = #{accountId,jdbcType=INTEGER},
+      trancde = #{trancde,jdbcType=VARCHAR},
+      card = #{card,jdbcType=VARCHAR},
+      name_ = #{name,jdbcType=VARCHAR},
+      bill_id = #{billId,jdbcType=VARCHAR},
+      org_bill_id = #{orgBillId,jdbcType=VARCHAR},
+      bill_amt = #{billAmt,jdbcType=BIGINT},
+      bill_fee = #{billFee,jdbcType=BIGINT},
+      amt_date = #{amtDate,jdbcType=INTEGER},
+      field39 = #{field39,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      `result` = #{result,jdbcType=VARCHAR},
+      account_amt = #{accountAmt,jdbcType=DECIMAL},
+      account_frozen_amt = #{accountFrozenAmt,jdbcType=DECIMAL},
+      account_free_amt = #{accountFreeAmt,jdbcType=DECIMAL},
+      handling_time = #{handlingTime,jdbcType=TIMESTAMP},
+      bill_type = #{billType,jdbcType=INTEGER},
+      from_type = #{fromType,jdbcType=VARCHAR},
+      in_account_id = #{inAccountId,jdbcType=INTEGER},
+      in_mobile = #{inMobile,jdbcType=VARCHAR},
+      notify_url = #{notifyUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

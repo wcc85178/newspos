@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CpLoginuserDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CpLoginuser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="add_security" jdbcType="VARCHAR" property="addSecurity" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="manName" jdbcType="VARCHAR" property="manname" />
+    <result column="enable" jdbcType="INTEGER" property="enable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, add_security, `name`, `password`, `uid`, user_type, username, enable_flag, 
+    manName, `enable`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_loginuser
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cp_loginuser
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CpLoginuser">
+    insert into cp_loginuser (id, `security`, add_security, 
+      `name`, `password`, `uid`, 
+      user_type, username, enable_flag, 
+      manName, `enable`)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{addSecurity,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, 
+      #{userType,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{enableFlag,jdbcType=INTEGER}, 
+      #{manname,jdbcType=VARCHAR}, #{enable,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CpLoginuser">
+    insert into cp_loginuser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="addSecurity != null">
+        add_security,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="uid != null">
+        `uid`,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="manname != null">
+        manName,
+      </if>
+      <if test="enable != null">
+        `enable`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="addSecurity != null">
+        #{addSecurity,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="manname != null">
+        #{manname,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CpLoginuser">
+    update cp_loginuser
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="addSecurity != null">
+        add_security = #{addSecurity,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        `uid` = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="manname != null">
+        manName = #{manname,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        `enable` = #{enable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CpLoginuser">
+    update cp_loginuser
+    set `security` = #{security,jdbcType=VARCHAR},
+      add_security = #{addSecurity,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      `uid` = #{uid,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      manName = #{manname,jdbcType=VARCHAR},
+      `enable` = #{enable,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

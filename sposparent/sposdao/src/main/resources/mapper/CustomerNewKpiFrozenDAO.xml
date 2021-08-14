@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerNewKpiFrozenDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerNewKpiFrozen">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="chargeBackAmount" jdbcType="DECIMAL" property="chargebackamount" />
+    <result column="posp_trans_datetime" jdbcType="BIGINT" property="pospTransDatetime" />
+    <result column="frozen_fee_flag" jdbcType="SMALLINT" property="frozenFeeFlag" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="field11" jdbcType="VARCHAR" property="field11" />
+    <result column="agent_koufei_flag" jdbcType="VARCHAR" property="agentKoufeiFlag" />
+    <result column="bt_flag" jdbcType="SMALLINT" property="btFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, chargeBackAmount, posp_trans_datetime, frozen_fee_flag, customer_code, ref_agent_id, 
+    `security`, field11, agent_koufei_flag, bt_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_new_kpi_frozen
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_new_kpi_frozen
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerNewKpiFrozen">
+    insert into customer_new_kpi_frozen (id, chargeBackAmount, posp_trans_datetime, 
+      frozen_fee_flag, customer_code, ref_agent_id, 
+      `security`, field11, agent_koufei_flag, 
+      bt_flag)
+    values (#{id,jdbcType=INTEGER}, #{chargebackamount,jdbcType=DECIMAL}, #{pospTransDatetime,jdbcType=BIGINT}, 
+      #{frozenFeeFlag,jdbcType=SMALLINT}, #{customerCode,jdbcType=VARCHAR}, #{refAgentId,jdbcType=INTEGER}, 
+      #{security,jdbcType=VARCHAR}, #{field11,jdbcType=VARCHAR}, #{agentKoufeiFlag,jdbcType=VARCHAR}, 
+      #{btFlag,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerNewKpiFrozen">
+    insert into customer_new_kpi_frozen
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="chargebackamount != null">
+        chargeBackAmount,
+      </if>
+      <if test="pospTransDatetime != null">
+        posp_trans_datetime,
+      </if>
+      <if test="frozenFeeFlag != null">
+        frozen_fee_flag,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="field11 != null">
+        field11,
+      </if>
+      <if test="agentKoufeiFlag != null">
+        agent_koufei_flag,
+      </if>
+      <if test="btFlag != null">
+        bt_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chargebackamount != null">
+        #{chargebackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="pospTransDatetime != null">
+        #{pospTransDatetime,jdbcType=BIGINT},
+      </if>
+      <if test="frozenFeeFlag != null">
+        #{frozenFeeFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="field11 != null">
+        #{field11,jdbcType=VARCHAR},
+      </if>
+      <if test="agentKoufeiFlag != null">
+        #{agentKoufeiFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="btFlag != null">
+        #{btFlag,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerNewKpiFrozen">
+    update customer_new_kpi_frozen
+    <set>
+      <if test="chargebackamount != null">
+        chargeBackAmount = #{chargebackamount,jdbcType=DECIMAL},
+      </if>
+      <if test="pospTransDatetime != null">
+        posp_trans_datetime = #{pospTransDatetime,jdbcType=BIGINT},
+      </if>
+      <if test="frozenFeeFlag != null">
+        frozen_fee_flag = #{frozenFeeFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="field11 != null">
+        field11 = #{field11,jdbcType=VARCHAR},
+      </if>
+      <if test="agentKoufeiFlag != null">
+        agent_koufei_flag = #{agentKoufeiFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="btFlag != null">
+        bt_flag = #{btFlag,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerNewKpiFrozen">
+    update customer_new_kpi_frozen
+    set chargeBackAmount = #{chargebackamount,jdbcType=DECIMAL},
+      posp_trans_datetime = #{pospTransDatetime,jdbcType=BIGINT},
+      frozen_fee_flag = #{frozenFeeFlag,jdbcType=SMALLINT},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      `security` = #{security,jdbcType=VARCHAR},
+      field11 = #{field11,jdbcType=VARCHAR},
+      agent_koufei_flag = #{agentKoufeiFlag,jdbcType=VARCHAR},
+      bt_flag = #{btFlag,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

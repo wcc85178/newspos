@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Customer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="end_flag" jdbcType="INTEGER" property="endFlag" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="audit_flag" jdbcType="INTEGER" property="auditFlag" />
+    <result column="bohui_mark" jdbcType="VARCHAR" property="bohuiMark" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="consumer_addr" jdbcType="VARCHAR" property="consumerAddr" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="hand_sign_img" jdbcType="VARCHAR" property="handSignImg" />
+    <result column="img_hand_id_card" jdbcType="VARCHAR" property="imgHandIdCard" />
+    <result column="img_id_card_down" jdbcType="VARCHAR" property="imgIdCardDown" />
+    <result column="img_id_card_up" jdbcType="VARCHAR" property="imgIdCardUp" />
+    <result column="man_email" jdbcType="VARCHAR" property="manEmail" />
+    <result column="man_id_card" jdbcType="VARCHAR" property="manIdCard" />
+    <result column="man_name" jdbcType="VARCHAR" property="manName" />
+    <result column="man_tel" jdbcType="VARCHAR" property="manTel" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="xyk_rz_flag" jdbcType="INTEGER" property="xykRzFlag" />
+    <result column="apply_auth_time" jdbcType="BIGINT" property="applyAuthTime" />
+    <result column="standard" jdbcType="VARCHAR" property="standard" />
+    <result column="activetime" jdbcType="BIGINT" property="activetime" />
+    <result column="standard_time" jdbcType="BIGINT" property="standardTime" />
+    <result column="mcc_rate" jdbcType="VARCHAR" property="mccRate" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="show_time" jdbcType="BIGINT" property="showTime" />
+    <result column="counter_fee" jdbcType="VARCHAR" property="counterFee" />
+    <result column="chargeBackDone" jdbcType="VARCHAR" property="chargebackdone" />
+    <result column="accountId" jdbcType="INTEGER" property="accountid" />
+    <result column="closed" jdbcType="VARCHAR" property="closed" />
+    <result column="agentKouFeiDone" jdbcType="VARCHAR" property="agentkoufeidone" />
+    <result column="lastTransTime" jdbcType="TIMESTAMP" property="lasttranstime" />
+    <result column="negativeFlag" jdbcType="SMALLINT" property="negativeflag" />
+    <result column="negativeMonth" jdbcType="SMALLINT" property="negativemonth" />
+    <result column="isCreditCStand" jdbcType="TINYINT" property="iscreditcstand" />
+    <result column="isCreditCTime" jdbcType="TIMESTAMP" property="iscreditctime" />
+    <result column="regist_addr" jdbcType="VARCHAR" property="registAddr" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="platform_app" jdbcType="VARCHAR" property="platformApp" />
+    <result column="app_down_platform" jdbcType="VARCHAR" property="appDownPlatform" />
+    <result column="avmark" jdbcType="VARCHAR" property="avmark" />
+    <result column="lastLginTime" jdbcType="TIMESTAMP" property="lastlgintime" />
+    <result column="kfSignFlag" jdbcType="TINYINT" property="kfsignflag" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="cer_validity" jdbcType="VARCHAR" property="cerValidity" />
+    <result column="register_way" jdbcType="INTEGER" property="registerWay" />
+    <result column="auth_way" jdbcType="INTEGER" property="authWay" />
+    <result column="vip_start_date" jdbcType="VARCHAR" property="vipStartDate" />
+    <result column="vip_end_date" jdbcType="VARCHAR" property="vipEndDate" />
+    <result column="vip_state" jdbcType="INTEGER" property="vipState" />
+    <result column="is_silent_customer" jdbcType="INTEGER" property="isSilentCustomer" />
+    <result column="longitude_and_latitude" jdbcType="VARCHAR" property="longitudeAndLatitude" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="isBackDone" jdbcType="VARCHAR" property="isbackdone" />
+    <result column="freeze_mark" jdbcType="VARCHAR" property="freezeMark" />
+    <result column="agent_type" jdbcType="VARCHAR" property="agentType" />
+    <result column="pos_traffic_kf_status" jdbcType="VARCHAR" property="posTrafficKfStatus" />
+    <result column="first_trans_suc_time" jdbcType="DATE" property="firstTransSucTime" />
+    <result column="next_pos_kf_time" jdbcType="DATE" property="nextPosKfTime" />
+    <result column="renewal_way" jdbcType="VARCHAR" property="renewalWay" />
+    <result column="policy_id" jdbcType="VARCHAR" property="policyId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, end_flag, mer, `security`, audit_flag, bohui_mark, code, consumer_addr, create_time, 
+    enable_flag, hand_sign_img, img_hand_id_card, img_id_card_down, img_id_card_up, man_email, 
+    man_id_card, man_name, man_tel, mark, `name`, `password`, photo, sex, username, ref_agent_id, 
+    xyk_rz_flag, apply_auth_time, `standard`, activetime, standard_time, mcc_rate, platform, 
+    show_time, counter_fee, chargeBackDone, accountId, closed, agentKouFeiDone, lastTransTime, 
+    negativeFlag, negativeMonth, isCreditCStand, isCreditCTime, regist_addr, version, 
+    platform_app, app_down_platform, avmark, lastLginTime, kfSignFlag, update_time, cer_validity, 
+    register_way, auth_way, vip_start_date, vip_end_date, vip_state, is_silent_customer, 
+    longitude_and_latitude, province, city, industry, isBackDone, freeze_mark, agent_type, 
+    pos_traffic_kf_status, first_trans_suc_time, next_pos_kf_time, renewal_way, policy_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=INTEGER}
+      and end_flag = #{endFlag,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerKey">
+    delete from customer
+    where id = #{id,jdbcType=INTEGER}
+      and end_flag = #{endFlag,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Customer">
+    insert into customer (id, end_flag, mer, 
+      `security`, audit_flag, bohui_mark, 
+      code, consumer_addr, create_time, 
+      enable_flag, hand_sign_img, img_hand_id_card, 
+      img_id_card_down, img_id_card_up, man_email, 
+      man_id_card, man_name, man_tel, 
+      mark, `name`, `password`, 
+      photo, sex, username, 
+      ref_agent_id, xyk_rz_flag, apply_auth_time, 
+      `standard`, activetime, standard_time, 
+      mcc_rate, platform, show_time, 
+      counter_fee, chargeBackDone, accountId, 
+      closed, agentKouFeiDone, lastTransTime, 
+      negativeFlag, negativeMonth, isCreditCStand, 
+      isCreditCTime, regist_addr, version, 
+      platform_app, app_down_platform, avmark, 
+      lastLginTime, kfSignFlag, update_time, 
+      cer_validity, register_way, auth_way, 
+      vip_start_date, vip_end_date, vip_state, 
+      is_silent_customer, longitude_and_latitude, 
+      province, city, industry, 
+      isBackDone, freeze_mark, agent_type, 
+      pos_traffic_kf_status, first_trans_suc_time, next_pos_kf_time, 
+      renewal_way, policy_id)
+    values (#{id,jdbcType=INTEGER}, #{endFlag,jdbcType=INTEGER}, #{mer,jdbcType=VARCHAR}, 
+      #{security,jdbcType=VARCHAR}, #{auditFlag,jdbcType=INTEGER}, #{bohuiMark,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{consumerAddr,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{enableFlag,jdbcType=INTEGER}, #{handSignImg,jdbcType=VARCHAR}, #{imgHandIdCard,jdbcType=VARCHAR}, 
+      #{imgIdCardDown,jdbcType=VARCHAR}, #{imgIdCardUp,jdbcType=VARCHAR}, #{manEmail,jdbcType=VARCHAR}, 
+      #{manIdCard,jdbcType=VARCHAR}, #{manName,jdbcType=VARCHAR}, #{manTel,jdbcType=VARCHAR}, 
+      #{mark,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{refAgentId,jdbcType=INTEGER}, #{xykRzFlag,jdbcType=INTEGER}, #{applyAuthTime,jdbcType=BIGINT}, 
+      #{standard,jdbcType=VARCHAR}, #{activetime,jdbcType=BIGINT}, #{standardTime,jdbcType=BIGINT}, 
+      #{mccRate,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, #{showTime,jdbcType=BIGINT}, 
+      #{counterFee,jdbcType=VARCHAR}, #{chargebackdone,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}, 
+      #{closed,jdbcType=VARCHAR}, #{agentkoufeidone,jdbcType=VARCHAR}, #{lasttranstime,jdbcType=TIMESTAMP}, 
+      #{negativeflag,jdbcType=SMALLINT}, #{negativemonth,jdbcType=SMALLINT}, #{iscreditcstand,jdbcType=TINYINT}, 
+      #{iscreditctime,jdbcType=TIMESTAMP}, #{registAddr,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{platformApp,jdbcType=VARCHAR}, #{appDownPlatform,jdbcType=VARCHAR}, #{avmark,jdbcType=VARCHAR}, 
+      #{lastlgintime,jdbcType=TIMESTAMP}, #{kfsignflag,jdbcType=TINYINT}, #{updateTime,jdbcType=VARCHAR}, 
+      #{cerValidity,jdbcType=VARCHAR}, #{registerWay,jdbcType=INTEGER}, #{authWay,jdbcType=INTEGER}, 
+      #{vipStartDate,jdbcType=VARCHAR}, #{vipEndDate,jdbcType=VARCHAR}, #{vipState,jdbcType=INTEGER}, 
+      #{isSilentCustomer,jdbcType=INTEGER}, #{longitudeAndLatitude,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
+      #{isbackdone,jdbcType=VARCHAR}, #{freezeMark,jdbcType=VARCHAR}, #{agentType,jdbcType=VARCHAR}, 
+      #{posTrafficKfStatus,jdbcType=VARCHAR}, #{firstTransSucTime,jdbcType=DATE}, #{nextPosKfTime,jdbcType=DATE}, 
+      #{renewalWay,jdbcType=VARCHAR}, #{policyId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="endFlag != null">
+        end_flag,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="auditFlag != null">
+        audit_flag,
+      </if>
+      <if test="bohuiMark != null">
+        bohui_mark,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="consumerAddr != null">
+        consumer_addr,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="handSignImg != null">
+        hand_sign_img,
+      </if>
+      <if test="imgHandIdCard != null">
+        img_hand_id_card,
+      </if>
+      <if test="imgIdCardDown != null">
+        img_id_card_down,
+      </if>
+      <if test="imgIdCardUp != null">
+        img_id_card_up,
+      </if>
+      <if test="manEmail != null">
+        man_email,
+      </if>
+      <if test="manIdCard != null">
+        man_id_card,
+      </if>
+      <if test="manName != null">
+        man_name,
+      </if>
+      <if test="manTel != null">
+        man_tel,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="xykRzFlag != null">
+        xyk_rz_flag,
+      </if>
+      <if test="applyAuthTime != null">
+        apply_auth_time,
+      </if>
+      <if test="standard != null">
+        `standard`,
+      </if>
+      <if test="activetime != null">
+        activetime,
+      </if>
+      <if test="standardTime != null">
+        standard_time,
+      </if>
+      <if test="mccRate != null">
+        mcc_rate,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="showTime != null">
+        show_time,
+      </if>
+      <if test="counterFee != null">
+        counter_fee,
+      </if>
+      <if test="chargebackdone != null">
+        chargeBackDone,
+      </if>
+      <if test="accountid != null">
+        accountId,
+      </if>
+      <if test="closed != null">
+        closed,
+      </if>
+      <if test="agentkoufeidone != null">
+        agentKouFeiDone,
+      </if>
+      <if test="lasttranstime != null">
+        lastTransTime,
+      </if>
+      <if test="negativeflag != null">
+        negativeFlag,
+      </if>
+      <if test="negativemonth != null">
+        negativeMonth,
+      </if>
+      <if test="iscreditcstand != null">
+        isCreditCStand,
+      </if>
+      <if test="iscreditctime != null">
+        isCreditCTime,
+      </if>
+      <if test="registAddr != null">
+        regist_addr,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="platformApp != null">
+        platform_app,
+      </if>
+      <if test="appDownPlatform != null">
+        app_down_platform,
+      </if>
+      <if test="avmark != null">
+        avmark,
+      </if>
+      <if test="lastlgintime != null">
+        lastLginTime,
+      </if>
+      <if test="kfsignflag != null">
+        kfSignFlag,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="cerValidity != null">
+        cer_validity,
+      </if>
+      <if test="registerWay != null">
+        register_way,
+      </if>
+      <if test="authWay != null">
+        auth_way,
+      </if>
+      <if test="vipStartDate != null">
+        vip_start_date,
+      </if>
+      <if test="vipEndDate != null">
+        vip_end_date,
+      </if>
+      <if test="vipState != null">
+        vip_state,
+      </if>
+      <if test="isSilentCustomer != null">
+        is_silent_customer,
+      </if>
+      <if test="longitudeAndLatitude != null">
+        longitude_and_latitude,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="isbackdone != null">
+        isBackDone,
+      </if>
+      <if test="freezeMark != null">
+        freeze_mark,
+      </if>
+      <if test="agentType != null">
+        agent_type,
+      </if>
+      <if test="posTrafficKfStatus != null">
+        pos_traffic_kf_status,
+      </if>
+      <if test="firstTransSucTime != null">
+        first_trans_suc_time,
+      </if>
+      <if test="nextPosKfTime != null">
+        next_pos_kf_time,
+      </if>
+      <if test="renewalWay != null">
+        renewal_way,
+      </if>
+      <if test="policyId != null">
+        policy_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="endFlag != null">
+        #{endFlag,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bohuiMark != null">
+        #{bohuiMark,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="consumerAddr != null">
+        #{consumerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="handSignImg != null">
+        #{handSignImg,jdbcType=VARCHAR},
+      </if>
+      <if test="imgHandIdCard != null">
+        #{imgHandIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardDown != null">
+        #{imgIdCardDown,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardUp != null">
+        #{imgIdCardUp,jdbcType=VARCHAR},
+      </if>
+      <if test="manEmail != null">
+        #{manEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="manIdCard != null">
+        #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="xykRzFlag != null">
+        #{xykRzFlag,jdbcType=INTEGER},
+      </if>
+      <if test="applyAuthTime != null">
+        #{applyAuthTime,jdbcType=BIGINT},
+      </if>
+      <if test="standard != null">
+        #{standard,jdbcType=VARCHAR},
+      </if>
+      <if test="activetime != null">
+        #{activetime,jdbcType=BIGINT},
+      </if>
+      <if test="standardTime != null">
+        #{standardTime,jdbcType=BIGINT},
+      </if>
+      <if test="mccRate != null">
+        #{mccRate,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="showTime != null">
+        #{showTime,jdbcType=BIGINT},
+      </if>
+      <if test="counterFee != null">
+        #{counterFee,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackdone != null">
+        #{chargebackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="closed != null">
+        #{closed,jdbcType=VARCHAR},
+      </if>
+      <if test="agentkoufeidone != null">
+        #{agentkoufeidone,jdbcType=VARCHAR},
+      </if>
+      <if test="lasttranstime != null">
+        #{lasttranstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="negativeflag != null">
+        #{negativeflag,jdbcType=SMALLINT},
+      </if>
+      <if test="negativemonth != null">
+        #{negativemonth,jdbcType=SMALLINT},
+      </if>
+      <if test="iscreditcstand != null">
+        #{iscreditcstand,jdbcType=TINYINT},
+      </if>
+      <if test="iscreditctime != null">
+        #{iscreditctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registAddr != null">
+        #{registAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="platformApp != null">
+        #{platformApp,jdbcType=VARCHAR},
+      </if>
+      <if test="appDownPlatform != null">
+        #{appDownPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="avmark != null">
+        #{avmark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlgintime != null">
+        #{lastlgintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kfsignflag != null">
+        #{kfsignflag,jdbcType=TINYINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cerValidity != null">
+        #{cerValidity,jdbcType=VARCHAR},
+      </if>
+      <if test="registerWay != null">
+        #{registerWay,jdbcType=INTEGER},
+      </if>
+      <if test="authWay != null">
+        #{authWay,jdbcType=INTEGER},
+      </if>
+      <if test="vipStartDate != null">
+        #{vipStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vipEndDate != null">
+        #{vipEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vipState != null">
+        #{vipState,jdbcType=INTEGER},
+      </if>
+      <if test="isSilentCustomer != null">
+        #{isSilentCustomer,jdbcType=INTEGER},
+      </if>
+      <if test="longitudeAndLatitude != null">
+        #{longitudeAndLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="isbackdone != null">
+        #{isbackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeMark != null">
+        #{freezeMark,jdbcType=VARCHAR},
+      </if>
+      <if test="agentType != null">
+        #{agentType,jdbcType=VARCHAR},
+      </if>
+      <if test="posTrafficKfStatus != null">
+        #{posTrafficKfStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTransSucTime != null">
+        #{firstTransSucTime,jdbcType=DATE},
+      </if>
+      <if test="nextPosKfTime != null">
+        #{nextPosKfTime,jdbcType=DATE},
+      </if>
+      <if test="renewalWay != null">
+        #{renewalWay,jdbcType=VARCHAR},
+      </if>
+      <if test="policyId != null">
+        #{policyId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Customer">
+    update customer
+    <set>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="auditFlag != null">
+        audit_flag = #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bohuiMark != null">
+        bohui_mark = #{bohuiMark,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="consumerAddr != null">
+        consumer_addr = #{consumerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="handSignImg != null">
+        hand_sign_img = #{handSignImg,jdbcType=VARCHAR},
+      </if>
+      <if test="imgHandIdCard != null">
+        img_hand_id_card = #{imgHandIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardDown != null">
+        img_id_card_down = #{imgIdCardDown,jdbcType=VARCHAR},
+      </if>
+      <if test="imgIdCardUp != null">
+        img_id_card_up = #{imgIdCardUp,jdbcType=VARCHAR},
+      </if>
+      <if test="manEmail != null">
+        man_email = #{manEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="manIdCard != null">
+        man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        man_name = #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        man_tel = #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="xykRzFlag != null">
+        xyk_rz_flag = #{xykRzFlag,jdbcType=INTEGER},
+      </if>
+      <if test="applyAuthTime != null">
+        apply_auth_time = #{applyAuthTime,jdbcType=BIGINT},
+      </if>
+      <if test="standard != null">
+        `standard` = #{standard,jdbcType=VARCHAR},
+      </if>
+      <if test="activetime != null">
+        activetime = #{activetime,jdbcType=BIGINT},
+      </if>
+      <if test="standardTime != null">
+        standard_time = #{standardTime,jdbcType=BIGINT},
+      </if>
+      <if test="mccRate != null">
+        mcc_rate = #{mccRate,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="showTime != null">
+        show_time = #{showTime,jdbcType=BIGINT},
+      </if>
+      <if test="counterFee != null">
+        counter_fee = #{counterFee,jdbcType=VARCHAR},
+      </if>
+      <if test="chargebackdone != null">
+        chargeBackDone = #{chargebackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null">
+        accountId = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="closed != null">
+        closed = #{closed,jdbcType=VARCHAR},
+      </if>
+      <if test="agentkoufeidone != null">
+        agentKouFeiDone = #{agentkoufeidone,jdbcType=VARCHAR},
+      </if>
+      <if test="lasttranstime != null">
+        lastTransTime = #{lasttranstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="negativeflag != null">
+        negativeFlag = #{negativeflag,jdbcType=SMALLINT},
+      </if>
+      <if test="negativemonth != null">
+        negativeMonth = #{negativemonth,jdbcType=SMALLINT},
+      </if>
+      <if test="iscreditcstand != null">
+        isCreditCStand = #{iscreditcstand,jdbcType=TINYINT},
+      </if>
+      <if test="iscreditctime != null">
+        isCreditCTime = #{iscreditctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registAddr != null">
+        regist_addr = #{registAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="platformApp != null">
+        platform_app = #{platformApp,jdbcType=VARCHAR},
+      </if>
+      <if test="appDownPlatform != null">
+        app_down_platform = #{appDownPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="avmark != null">
+        avmark = #{avmark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlgintime != null">
+        lastLginTime = #{lastlgintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="kfsignflag != null">
+        kfSignFlag = #{kfsignflag,jdbcType=TINYINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cerValidity != null">
+        cer_validity = #{cerValidity,jdbcType=VARCHAR},
+      </if>
+      <if test="registerWay != null">
+        register_way = #{registerWay,jdbcType=INTEGER},
+      </if>
+      <if test="authWay != null">
+        auth_way = #{authWay,jdbcType=INTEGER},
+      </if>
+      <if test="vipStartDate != null">
+        vip_start_date = #{vipStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vipEndDate != null">
+        vip_end_date = #{vipEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vipState != null">
+        vip_state = #{vipState,jdbcType=INTEGER},
+      </if>
+      <if test="isSilentCustomer != null">
+        is_silent_customer = #{isSilentCustomer,jdbcType=INTEGER},
+      </if>
+      <if test="longitudeAndLatitude != null">
+        longitude_and_latitude = #{longitudeAndLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="isbackdone != null">
+        isBackDone = #{isbackdone,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeMark != null">
+        freeze_mark = #{freezeMark,jdbcType=VARCHAR},
+      </if>
+      <if test="agentType != null">
+        agent_type = #{agentType,jdbcType=VARCHAR},
+      </if>
+      <if test="posTrafficKfStatus != null">
+        pos_traffic_kf_status = #{posTrafficKfStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTransSucTime != null">
+        first_trans_suc_time = #{firstTransSucTime,jdbcType=DATE},
+      </if>
+      <if test="nextPosKfTime != null">
+        next_pos_kf_time = #{nextPosKfTime,jdbcType=DATE},
+      </if>
+      <if test="renewalWay != null">
+        renewal_way = #{renewalWay,jdbcType=VARCHAR},
+      </if>
+      <if test="policyId != null">
+        policy_id = #{policyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and end_flag = #{endFlag,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Customer">
+    update customer
+    set mer = #{mer,jdbcType=VARCHAR},
+      `security` = #{security,jdbcType=VARCHAR},
+      audit_flag = #{auditFlag,jdbcType=INTEGER},
+      bohui_mark = #{bohuiMark,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      consumer_addr = #{consumerAddr,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      hand_sign_img = #{handSignImg,jdbcType=VARCHAR},
+      img_hand_id_card = #{imgHandIdCard,jdbcType=VARCHAR},
+      img_id_card_down = #{imgIdCardDown,jdbcType=VARCHAR},
+      img_id_card_up = #{imgIdCardUp,jdbcType=VARCHAR},
+      man_email = #{manEmail,jdbcType=VARCHAR},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      man_name = #{manName,jdbcType=VARCHAR},
+      man_tel = #{manTel,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      xyk_rz_flag = #{xykRzFlag,jdbcType=INTEGER},
+      apply_auth_time = #{applyAuthTime,jdbcType=BIGINT},
+      `standard` = #{standard,jdbcType=VARCHAR},
+      activetime = #{activetime,jdbcType=BIGINT},
+      standard_time = #{standardTime,jdbcType=BIGINT},
+      mcc_rate = #{mccRate,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      show_time = #{showTime,jdbcType=BIGINT},
+      counter_fee = #{counterFee,jdbcType=VARCHAR},
+      chargeBackDone = #{chargebackdone,jdbcType=VARCHAR},
+      accountId = #{accountid,jdbcType=INTEGER},
+      closed = #{closed,jdbcType=VARCHAR},
+      agentKouFeiDone = #{agentkoufeidone,jdbcType=VARCHAR},
+      lastTransTime = #{lasttranstime,jdbcType=TIMESTAMP},
+      negativeFlag = #{negativeflag,jdbcType=SMALLINT},
+      negativeMonth = #{negativemonth,jdbcType=SMALLINT},
+      isCreditCStand = #{iscreditcstand,jdbcType=TINYINT},
+      isCreditCTime = #{iscreditctime,jdbcType=TIMESTAMP},
+      regist_addr = #{registAddr,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      platform_app = #{platformApp,jdbcType=VARCHAR},
+      app_down_platform = #{appDownPlatform,jdbcType=VARCHAR},
+      avmark = #{avmark,jdbcType=VARCHAR},
+      lastLginTime = #{lastlgintime,jdbcType=TIMESTAMP},
+      kfSignFlag = #{kfsignflag,jdbcType=TINYINT},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      cer_validity = #{cerValidity,jdbcType=VARCHAR},
+      register_way = #{registerWay,jdbcType=INTEGER},
+      auth_way = #{authWay,jdbcType=INTEGER},
+      vip_start_date = #{vipStartDate,jdbcType=VARCHAR},
+      vip_end_date = #{vipEndDate,jdbcType=VARCHAR},
+      vip_state = #{vipState,jdbcType=INTEGER},
+      is_silent_customer = #{isSilentCustomer,jdbcType=INTEGER},
+      longitude_and_latitude = #{longitudeAndLatitude,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      isBackDone = #{isbackdone,jdbcType=VARCHAR},
+      freeze_mark = #{freezeMark,jdbcType=VARCHAR},
+      agent_type = #{agentType,jdbcType=VARCHAR},
+      pos_traffic_kf_status = #{posTrafficKfStatus,jdbcType=VARCHAR},
+      first_trans_suc_time = #{firstTransSucTime,jdbcType=DATE},
+      next_pos_kf_time = #{nextPosKfTime,jdbcType=DATE},
+      renewal_way = #{renewalWay,jdbcType=VARCHAR},
+      policy_id = #{policyId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and end_flag = #{endFlag,jdbcType=INTEGER}
+  </update>
+</mapper>

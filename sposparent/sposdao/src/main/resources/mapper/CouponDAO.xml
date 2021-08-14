@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CouponDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Coupon">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="valid_day" jdbcType="INTEGER" property="validDay" />
+    <result column="start_amt" jdbcType="INTEGER" property="startAmt" />
+    <result column="desr" jdbcType="CHAR" property="desr" />
+    <result column="prefer_amt" jdbcType="CHAR" property="preferAmt" />
+    <result column="settle_type" jdbcType="CHAR" property="settleType" />
+    <result column="give_out_num" jdbcType="INTEGER" property="giveOutNum" />
+    <result column="is_used_num" jdbcType="INTEGER" property="isUsedNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `name`, `type`, valid_day, start_amt, desr, prefer_amt, settle_type, give_out_num, 
+    is_used_num, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from coupon
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from coupon
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Coupon">
+    insert into coupon (id, `name`, `type`, 
+      valid_day, start_amt, desr, 
+      prefer_amt, settle_type, give_out_num, 
+      is_used_num, create_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{type,jdbcType=INTEGER}, 
+      #{validDay,jdbcType=INTEGER}, #{startAmt,jdbcType=INTEGER}, #{desr,jdbcType=CHAR}, 
+      #{preferAmt,jdbcType=CHAR}, #{settleType,jdbcType=CHAR}, #{giveOutNum,jdbcType=INTEGER}, 
+      #{isUsedNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Coupon">
+    insert into coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="validDay != null">
+        valid_day,
+      </if>
+      <if test="startAmt != null">
+        start_amt,
+      </if>
+      <if test="desr != null">
+        desr,
+      </if>
+      <if test="preferAmt != null">
+        prefer_amt,
+      </if>
+      <if test="settleType != null">
+        settle_type,
+      </if>
+      <if test="giveOutNum != null">
+        give_out_num,
+      </if>
+      <if test="isUsedNum != null">
+        is_used_num,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="validDay != null">
+        #{validDay,jdbcType=INTEGER},
+      </if>
+      <if test="startAmt != null">
+        #{startAmt,jdbcType=INTEGER},
+      </if>
+      <if test="desr != null">
+        #{desr,jdbcType=CHAR},
+      </if>
+      <if test="preferAmt != null">
+        #{preferAmt,jdbcType=CHAR},
+      </if>
+      <if test="settleType != null">
+        #{settleType,jdbcType=CHAR},
+      </if>
+      <if test="giveOutNum != null">
+        #{giveOutNum,jdbcType=INTEGER},
+      </if>
+      <if test="isUsedNum != null">
+        #{isUsedNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Coupon">
+    update coupon
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="validDay != null">
+        valid_day = #{validDay,jdbcType=INTEGER},
+      </if>
+      <if test="startAmt != null">
+        start_amt = #{startAmt,jdbcType=INTEGER},
+      </if>
+      <if test="desr != null">
+        desr = #{desr,jdbcType=CHAR},
+      </if>
+      <if test="preferAmt != null">
+        prefer_amt = #{preferAmt,jdbcType=CHAR},
+      </if>
+      <if test="settleType != null">
+        settle_type = #{settleType,jdbcType=CHAR},
+      </if>
+      <if test="giveOutNum != null">
+        give_out_num = #{giveOutNum,jdbcType=INTEGER},
+      </if>
+      <if test="isUsedNum != null">
+        is_used_num = #{isUsedNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Coupon">
+    update coupon
+    set `name` = #{name,jdbcType=CHAR},
+      `type` = #{type,jdbcType=INTEGER},
+      valid_day = #{validDay,jdbcType=INTEGER},
+      start_amt = #{startAmt,jdbcType=INTEGER},
+      desr = #{desr,jdbcType=CHAR},
+      prefer_amt = #{preferAmt,jdbcType=CHAR},
+      settle_type = #{settleType,jdbcType=CHAR},
+      give_out_num = #{giveOutNum,jdbcType=INTEGER},
+      is_used_num = #{isUsedNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

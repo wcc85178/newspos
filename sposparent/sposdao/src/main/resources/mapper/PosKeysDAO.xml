@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosKeysDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosKeys">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="tak" jdbcType="VARCHAR" property="tak" />
+    <result column="tmk" jdbcType="VARCHAR" property="tmk" />
+    <result column="tpk" jdbcType="VARCHAR" property="tpk" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="ref_pos_id" jdbcType="INTEGER" property="refPosId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, tak, tmk, tpk, update_time, ref_pos_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_keys
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_keys
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosKeys">
+    insert into pos_keys (id, `security`, tak, 
+      tmk, tpk, update_time, 
+      ref_pos_id)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{tak,jdbcType=VARCHAR}, 
+      #{tmk,jdbcType=VARCHAR}, #{tpk,jdbcType=VARCHAR}, #{updateTime,jdbcType=BIGINT}, 
+      #{refPosId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosKeys">
+    insert into pos_keys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="tak != null">
+        tak,
+      </if>
+      <if test="tmk != null">
+        tmk,
+      </if>
+      <if test="tpk != null">
+        tpk,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="refPosId != null">
+        ref_pos_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="tak != null">
+        #{tak,jdbcType=VARCHAR},
+      </if>
+      <if test="tmk != null">
+        #{tmk,jdbcType=VARCHAR},
+      </if>
+      <if test="tpk != null">
+        #{tpk,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="refPosId != null">
+        #{refPosId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosKeys">
+    update pos_keys
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="tak != null">
+        tak = #{tak,jdbcType=VARCHAR},
+      </if>
+      <if test="tmk != null">
+        tmk = #{tmk,jdbcType=VARCHAR},
+      </if>
+      <if test="tpk != null">
+        tpk = #{tpk,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="refPosId != null">
+        ref_pos_id = #{refPosId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosKeys">
+    update pos_keys
+    set `security` = #{security,jdbcType=VARCHAR},
+      tak = #{tak,jdbcType=VARCHAR},
+      tmk = #{tmk,jdbcType=VARCHAR},
+      tpk = #{tpk,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      ref_pos_id = #{refPosId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

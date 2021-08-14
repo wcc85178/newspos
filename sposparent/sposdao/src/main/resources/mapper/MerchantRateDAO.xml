@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MerchantRateDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MerchantRate">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+    <result column="trans_code" jdbcType="VARCHAR" property="transCode" />
+    <result column="debit_rate" jdbcType="DECIMAL" property="debitRate" />
+    <result column="debit_max_amt" jdbcType="DECIMAL" property="debitMaxAmt" />
+    <result column="debit_low_limit" jdbcType="DECIMAL" property="debitLowLimit" />
+    <result column="credit_rate" jdbcType="DECIMAL" property="creditRate" />
+    <result column="credit_low_limit" jdbcType="DECIMAL" property="creditLowLimit" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, merchant_id, trans_code, debit_rate, debit_max_amt, debit_low_limit, 
+    credit_rate, credit_low_limit, `state`, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_rate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from merchant_rate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MerchantRate">
+    insert into merchant_rate (id, customer_id, merchant_id, 
+      trans_code, debit_rate, debit_max_amt, 
+      debit_low_limit, credit_rate, credit_low_limit, 
+      `state`, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{merchantId,jdbcType=INTEGER}, 
+      #{transCode,jdbcType=VARCHAR}, #{debitRate,jdbcType=DECIMAL}, #{debitMaxAmt,jdbcType=DECIMAL}, 
+      #{debitLowLimit,jdbcType=DECIMAL}, #{creditRate,jdbcType=DECIMAL}, #{creditLowLimit,jdbcType=DECIMAL}, 
+      #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MerchantRate">
+    insert into merchant_rate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="merchantId != null">
+        merchant_id,
+      </if>
+      <if test="transCode != null">
+        trans_code,
+      </if>
+      <if test="debitRate != null">
+        debit_rate,
+      </if>
+      <if test="debitMaxAmt != null">
+        debit_max_amt,
+      </if>
+      <if test="debitLowLimit != null">
+        debit_low_limit,
+      </if>
+      <if test="creditRate != null">
+        credit_rate,
+      </if>
+      <if test="creditLowLimit != null">
+        credit_low_limit,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="merchantId != null">
+        #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="transCode != null">
+        #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="debitRate != null">
+        #{debitRate,jdbcType=DECIMAL},
+      </if>
+      <if test="debitMaxAmt != null">
+        #{debitMaxAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="debitLowLimit != null">
+        #{debitLowLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="creditRate != null">
+        #{creditRate,jdbcType=DECIMAL},
+      </if>
+      <if test="creditLowLimit != null">
+        #{creditLowLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MerchantRate">
+    update merchant_rate
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="merchantId != null">
+        merchant_id = #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="transCode != null">
+        trans_code = #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="debitRate != null">
+        debit_rate = #{debitRate,jdbcType=DECIMAL},
+      </if>
+      <if test="debitMaxAmt != null">
+        debit_max_amt = #{debitMaxAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="debitLowLimit != null">
+        debit_low_limit = #{debitLowLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="creditRate != null">
+        credit_rate = #{creditRate,jdbcType=DECIMAL},
+      </if>
+      <if test="creditLowLimit != null">
+        credit_low_limit = #{creditLowLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MerchantRate">
+    update merchant_rate
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      merchant_id = #{merchantId,jdbcType=INTEGER},
+      trans_code = #{transCode,jdbcType=VARCHAR},
+      debit_rate = #{debitRate,jdbcType=DECIMAL},
+      debit_max_amt = #{debitMaxAmt,jdbcType=DECIMAL},
+      debit_low_limit = #{debitLowLimit,jdbcType=DECIMAL},
+      credit_rate = #{creditRate,jdbcType=DECIMAL},
+      credit_low_limit = #{creditLowLimit,jdbcType=DECIMAL},
+      `state` = #{state,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

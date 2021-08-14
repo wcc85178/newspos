@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PayChannelAgentWhiteDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PayChannelAgentWhite">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="agent_id_list" jdbcType="VARCHAR" property="agentIdList" />
+    <result column="trans_time_start" jdbcType="TIMESTAMP" property="transTimeStart" />
+    <result column="trans_time_end" jdbcType="TIMESTAMP" property="transTimeEnd" />
+    <result column="trans_amount" jdbcType="DECIMAL" property="transAmount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, agent_id_list, trans_time_start, trans_time_end, trans_amount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_channel_agent_white
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_channel_agent_white
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PayChannelAgentWhite">
+    insert into pay_channel_agent_white (id, agent_id_list, trans_time_start, 
+      trans_time_end, trans_amount)
+    values (#{id,jdbcType=INTEGER}, #{agentIdList,jdbcType=VARCHAR}, #{transTimeStart,jdbcType=TIMESTAMP}, 
+      #{transTimeEnd,jdbcType=TIMESTAMP}, #{transAmount,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PayChannelAgentWhite">
+    insert into pay_channel_agent_white
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="agentIdList != null">
+        agent_id_list,
+      </if>
+      <if test="transTimeStart != null">
+        trans_time_start,
+      </if>
+      <if test="transTimeEnd != null">
+        trans_time_end,
+      </if>
+      <if test="transAmount != null">
+        trans_amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agentIdList != null">
+        #{agentIdList,jdbcType=VARCHAR},
+      </if>
+      <if test="transTimeStart != null">
+        #{transTimeStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTimeEnd != null">
+        #{transTimeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transAmount != null">
+        #{transAmount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PayChannelAgentWhite">
+    update pay_channel_agent_white
+    <set>
+      <if test="agentIdList != null">
+        agent_id_list = #{agentIdList,jdbcType=VARCHAR},
+      </if>
+      <if test="transTimeStart != null">
+        trans_time_start = #{transTimeStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTimeEnd != null">
+        trans_time_end = #{transTimeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transAmount != null">
+        trans_amount = #{transAmount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PayChannelAgentWhite">
+    update pay_channel_agent_white
+    set agent_id_list = #{agentIdList,jdbcType=VARCHAR},
+      trans_time_start = #{transTimeStart,jdbcType=TIMESTAMP},
+      trans_time_end = #{transTimeEnd,jdbcType=TIMESTAMP},
+      trans_amount = #{transAmount,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

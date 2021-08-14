@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MerchantInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MerchantInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="mer_code" jdbcType="VARCHAR" property="merCode" />
+    <result column="mer_trace" jdbcType="VARCHAR" property="merTrace" />
+    <result column="opera_trace" jdbcType="VARCHAR" property="operaTrace" />
+    <result column="mer_name" jdbcType="VARCHAR" property="merName" />
+    <result column="busin_name" jdbcType="VARCHAR" property="businName" />
+    <result column="mer_eng_name" jdbcType="VARCHAR" property="merEngName" />
+    <result column="standard_flag" jdbcType="VARCHAR" property="standardFlag" />
+    <result column="mer_addr" jdbcType="VARCHAR" property="merAddr" />
+    <result column="busin_begtime" jdbcType="VARCHAR" property="businBegtime" />
+    <result column="busin_endtime" jdbcType="VARCHAR" property="businEndtime" />
+    <result column="employee_num" jdbcType="VARCHAR" property="employeeNum" />
+    <result column="busin_form" jdbcType="VARCHAR" property="businForm" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="con_mode" jdbcType="VARCHAR" property="conMode" />
+    <result column="pay_acc_Mode" jdbcType="VARCHAR" property="payAccMode" />
+    <result column="stlm_type" jdbcType="VARCHAR" property="stlmType" />
+    <result column="mer_mark" jdbcType="VARCHAR" property="merMark" />
+    <result column="link_man" jdbcType="VARCHAR" property="linkMan" />
+    <result column="link_man_type" jdbcType="VARCHAR" property="linkManType" />
+    <result column="link_man_code" jdbcType="VARCHAR" property="linkManCode" />
+    <result column="link_man_valid_start" jdbcType="VARCHAR" property="linkManValidStart" />
+    <result column="link_man_valid_end" jdbcType="VARCHAR" property="linkManValidEnd" />
+    <result column="link_man_phone" jdbcType="VARCHAR" property="linkManPhone" />
+    <result column="link_man_mobile" jdbcType="VARCHAR" property="linkManMobile" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="sn_code" jdbcType="VARCHAR" property="snCode" />
+    <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime" />
+    <result column="audit_msg" jdbcType="VARCHAR" property="auditMsg" />
+    <result column="qr_status" jdbcType="VARCHAR" property="qrStatus" />
+    <result column="ep_mer_code" jdbcType="VARCHAR" property="epMerCode" />
+    <result column="reg_time" jdbcType="TIMESTAMP" property="regTime" />
+    <result column="split_status" jdbcType="VARCHAR" property="splitStatus" />
+    <result column="split_channel" jdbcType="VARCHAR" property="splitChannel" />
+    <result column="split_msg" jdbcType="VARCHAR" property="splitMsg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mer, mer_code, mer_trace, opera_trace, mer_name, busin_name, mer_eng_name, standard_flag, 
+    mer_addr, busin_begtime, busin_endtime, employee_num, busin_form, `status`, audit_status, 
+    con_mode, pay_acc_Mode, stlm_type, mer_mark, link_man, link_man_type, link_man_code, 
+    link_man_valid_start, link_man_valid_end, link_man_phone, link_man_mobile, create_time, 
+    update_time, sn_code, audit_time, audit_msg, qr_status, ep_mer_code, reg_time, split_status, 
+    split_channel, split_msg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from merchant_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MerchantInfo">
+    insert into merchant_info (id, mer, mer_code, 
+      mer_trace, opera_trace, mer_name, 
+      busin_name, mer_eng_name, standard_flag, 
+      mer_addr, busin_begtime, busin_endtime, 
+      employee_num, busin_form, `status`, 
+      audit_status, con_mode, pay_acc_Mode, 
+      stlm_type, mer_mark, link_man, 
+      link_man_type, link_man_code, link_man_valid_start, 
+      link_man_valid_end, link_man_phone, link_man_mobile, 
+      create_time, update_time, sn_code, 
+      audit_time, audit_msg, qr_status, 
+      ep_mer_code, reg_time, split_status, 
+      split_channel, split_msg)
+    values (#{id,jdbcType=INTEGER}, #{mer,jdbcType=VARCHAR}, #{merCode,jdbcType=VARCHAR}, 
+      #{merTrace,jdbcType=VARCHAR}, #{operaTrace,jdbcType=VARCHAR}, #{merName,jdbcType=VARCHAR}, 
+      #{businName,jdbcType=VARCHAR}, #{merEngName,jdbcType=VARCHAR}, #{standardFlag,jdbcType=VARCHAR}, 
+      #{merAddr,jdbcType=VARCHAR}, #{businBegtime,jdbcType=VARCHAR}, #{businEndtime,jdbcType=VARCHAR}, 
+      #{employeeNum,jdbcType=VARCHAR}, #{businForm,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{auditStatus,jdbcType=VARCHAR}, #{conMode,jdbcType=VARCHAR}, #{payAccMode,jdbcType=VARCHAR}, 
+      #{stlmType,jdbcType=VARCHAR}, #{merMark,jdbcType=VARCHAR}, #{linkMan,jdbcType=VARCHAR}, 
+      #{linkManType,jdbcType=VARCHAR}, #{linkManCode,jdbcType=VARCHAR}, #{linkManValidStart,jdbcType=VARCHAR}, 
+      #{linkManValidEnd,jdbcType=VARCHAR}, #{linkManPhone,jdbcType=VARCHAR}, #{linkManMobile,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{snCode,jdbcType=VARCHAR}, 
+      #{auditTime,jdbcType=TIMESTAMP}, #{auditMsg,jdbcType=VARCHAR}, #{qrStatus,jdbcType=VARCHAR}, 
+      #{epMerCode,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP}, #{splitStatus,jdbcType=VARCHAR}, 
+      #{splitChannel,jdbcType=VARCHAR}, #{splitMsg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MerchantInfo">
+    insert into merchant_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="merCode != null">
+        mer_code,
+      </if>
+      <if test="merTrace != null">
+        mer_trace,
+      </if>
+      <if test="operaTrace != null">
+        opera_trace,
+      </if>
+      <if test="merName != null">
+        mer_name,
+      </if>
+      <if test="businName != null">
+        busin_name,
+      </if>
+      <if test="merEngName != null">
+        mer_eng_name,
+      </if>
+      <if test="standardFlag != null">
+        standard_flag,
+      </if>
+      <if test="merAddr != null">
+        mer_addr,
+      </if>
+      <if test="businBegtime != null">
+        busin_begtime,
+      </if>
+      <if test="businEndtime != null">
+        busin_endtime,
+      </if>
+      <if test="employeeNum != null">
+        employee_num,
+      </if>
+      <if test="businForm != null">
+        busin_form,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="auditStatus != null">
+        audit_status,
+      </if>
+      <if test="conMode != null">
+        con_mode,
+      </if>
+      <if test="payAccMode != null">
+        pay_acc_Mode,
+      </if>
+      <if test="stlmType != null">
+        stlm_type,
+      </if>
+      <if test="merMark != null">
+        mer_mark,
+      </if>
+      <if test="linkMan != null">
+        link_man,
+      </if>
+      <if test="linkManType != null">
+        link_man_type,
+      </if>
+      <if test="linkManCode != null">
+        link_man_code,
+      </if>
+      <if test="linkManValidStart != null">
+        link_man_valid_start,
+      </if>
+      <if test="linkManValidEnd != null">
+        link_man_valid_end,
+      </if>
+      <if test="linkManPhone != null">
+        link_man_phone,
+      </if>
+      <if test="linkManMobile != null">
+        link_man_mobile,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="snCode != null">
+        sn_code,
+      </if>
+      <if test="auditTime != null">
+        audit_time,
+      </if>
+      <if test="auditMsg != null">
+        audit_msg,
+      </if>
+      <if test="qrStatus != null">
+        qr_status,
+      </if>
+      <if test="epMerCode != null">
+        ep_mer_code,
+      </if>
+      <if test="regTime != null">
+        reg_time,
+      </if>
+      <if test="splitStatus != null">
+        split_status,
+      </if>
+      <if test="splitChannel != null">
+        split_channel,
+      </if>
+      <if test="splitMsg != null">
+        split_msg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="merCode != null">
+        #{merCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merTrace != null">
+        #{merTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="operaTrace != null">
+        #{operaTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="merName != null">
+        #{merName,jdbcType=VARCHAR},
+      </if>
+      <if test="businName != null">
+        #{businName,jdbcType=VARCHAR},
+      </if>
+      <if test="merEngName != null">
+        #{merEngName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardFlag != null">
+        #{standardFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="merAddr != null">
+        #{merAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="businBegtime != null">
+        #{businBegtime,jdbcType=VARCHAR},
+      </if>
+      <if test="businEndtime != null">
+        #{businEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeNum != null">
+        #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="businForm != null">
+        #{businForm,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="conMode != null">
+        #{conMode,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccMode != null">
+        #{payAccMode,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmType != null">
+        #{stlmType,jdbcType=VARCHAR},
+      </if>
+      <if test="merMark != null">
+        #{merMark,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null">
+        #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManType != null">
+        #{linkManType,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManCode != null">
+        #{linkManCode,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManValidStart != null">
+        #{linkManValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManValidEnd != null">
+        #{linkManValidEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManPhone != null">
+        #{linkManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManMobile != null">
+        #{linkManMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="snCode != null">
+        #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditMsg != null">
+        #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="qrStatus != null">
+        #{qrStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="epMerCode != null">
+        #{epMerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null">
+        #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="splitStatus != null">
+        #{splitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="splitChannel != null">
+        #{splitChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="splitMsg != null">
+        #{splitMsg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MerchantInfo">
+    update merchant_info
+    <set>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="merCode != null">
+        mer_code = #{merCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merTrace != null">
+        mer_trace = #{merTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="operaTrace != null">
+        opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      </if>
+      <if test="merName != null">
+        mer_name = #{merName,jdbcType=VARCHAR},
+      </if>
+      <if test="businName != null">
+        busin_name = #{businName,jdbcType=VARCHAR},
+      </if>
+      <if test="merEngName != null">
+        mer_eng_name = #{merEngName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardFlag != null">
+        standard_flag = #{standardFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="merAddr != null">
+        mer_addr = #{merAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="businBegtime != null">
+        busin_begtime = #{businBegtime,jdbcType=VARCHAR},
+      </if>
+      <if test="businEndtime != null">
+        busin_endtime = #{businEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeNum != null">
+        employee_num = #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="businForm != null">
+        busin_form = #{businForm,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        audit_status = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="conMode != null">
+        con_mode = #{conMode,jdbcType=VARCHAR},
+      </if>
+      <if test="payAccMode != null">
+        pay_acc_Mode = #{payAccMode,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmType != null">
+        stlm_type = #{stlmType,jdbcType=VARCHAR},
+      </if>
+      <if test="merMark != null">
+        mer_mark = #{merMark,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null">
+        link_man = #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManType != null">
+        link_man_type = #{linkManType,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManCode != null">
+        link_man_code = #{linkManCode,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManValidStart != null">
+        link_man_valid_start = #{linkManValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManValidEnd != null">
+        link_man_valid_end = #{linkManValidEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManPhone != null">
+        link_man_phone = #{linkManPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkManMobile != null">
+        link_man_mobile = #{linkManMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="snCode != null">
+        sn_code = #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditMsg != null">
+        audit_msg = #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="qrStatus != null">
+        qr_status = #{qrStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="epMerCode != null">
+        ep_mer_code = #{epMerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null">
+        reg_time = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="splitStatus != null">
+        split_status = #{splitStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="splitChannel != null">
+        split_channel = #{splitChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="splitMsg != null">
+        split_msg = #{splitMsg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MerchantInfo">
+    update merchant_info
+    set mer = #{mer,jdbcType=VARCHAR},
+      mer_code = #{merCode,jdbcType=VARCHAR},
+      mer_trace = #{merTrace,jdbcType=VARCHAR},
+      opera_trace = #{operaTrace,jdbcType=VARCHAR},
+      mer_name = #{merName,jdbcType=VARCHAR},
+      busin_name = #{businName,jdbcType=VARCHAR},
+      mer_eng_name = #{merEngName,jdbcType=VARCHAR},
+      standard_flag = #{standardFlag,jdbcType=VARCHAR},
+      mer_addr = #{merAddr,jdbcType=VARCHAR},
+      busin_begtime = #{businBegtime,jdbcType=VARCHAR},
+      busin_endtime = #{businEndtime,jdbcType=VARCHAR},
+      employee_num = #{employeeNum,jdbcType=VARCHAR},
+      busin_form = #{businForm,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=VARCHAR},
+      con_mode = #{conMode,jdbcType=VARCHAR},
+      pay_acc_Mode = #{payAccMode,jdbcType=VARCHAR},
+      stlm_type = #{stlmType,jdbcType=VARCHAR},
+      mer_mark = #{merMark,jdbcType=VARCHAR},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      link_man_type = #{linkManType,jdbcType=VARCHAR},
+      link_man_code = #{linkManCode,jdbcType=VARCHAR},
+      link_man_valid_start = #{linkManValidStart,jdbcType=VARCHAR},
+      link_man_valid_end = #{linkManValidEnd,jdbcType=VARCHAR},
+      link_man_phone = #{linkManPhone,jdbcType=VARCHAR},
+      link_man_mobile = #{linkManMobile,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      sn_code = #{snCode,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      audit_msg = #{auditMsg,jdbcType=VARCHAR},
+      qr_status = #{qrStatus,jdbcType=VARCHAR},
+      ep_mer_code = #{epMerCode,jdbcType=VARCHAR},
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
+      split_status = #{splitStatus,jdbcType=VARCHAR},
+      split_channel = #{splitChannel,jdbcType=VARCHAR},
+      split_msg = #{splitMsg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

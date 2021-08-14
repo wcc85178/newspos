@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CardAuthDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CardAuth">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="req_from" jdbcType="VARCHAR" property="reqFrom" />
+    <result column="rsp_desc" jdbcType="VARCHAR" property="rspDesc" />
+    <result column="rsp_type" jdbcType="VARCHAR" property="rspType" />
+    <result column="desp_code" jdbcType="VARCHAR" property="despCode" />
+    <result column="trans_id" jdbcType="VARCHAR" property="transId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="creat_time" jdbcType="VARCHAR" property="creatTime" />
+    <result column="resp_time" jdbcType="VARCHAR" property="respTime" />
+    <result column="bank_card_no" jdbcType="VARCHAR" property="bankCardNo" />
+    <result column="user_crad_name" jdbcType="VARCHAR" property="userCradName" />
+    <result column="id_card_no" jdbcType="VARCHAR" property="idCardNo" />
+    <result column="editor" jdbcType="VARCHAR" property="editor" />
+    <result column="holder_tel" jdbcType="VARCHAR" property="holderTel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, req_from, rsp_desc, rsp_type, desp_code, trans_id, create_by, creat_time, resp_time, 
+    bank_card_no, user_crad_name, id_card_no, editor, holder_tel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from card_auth
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from card_auth
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CardAuth">
+    insert into card_auth (id, req_from, rsp_desc, 
+      rsp_type, desp_code, trans_id, 
+      create_by, creat_time, resp_time, 
+      bank_card_no, user_crad_name, id_card_no, 
+      editor, holder_tel)
+    values (#{id,jdbcType=INTEGER}, #{reqFrom,jdbcType=VARCHAR}, #{rspDesc,jdbcType=VARCHAR}, 
+      #{rspType,jdbcType=VARCHAR}, #{despCode,jdbcType=VARCHAR}, #{transId,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{creatTime,jdbcType=VARCHAR}, #{respTime,jdbcType=VARCHAR}, 
+      #{bankCardNo,jdbcType=VARCHAR}, #{userCradName,jdbcType=VARCHAR}, #{idCardNo,jdbcType=VARCHAR}, 
+      #{editor,jdbcType=VARCHAR}, #{holderTel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CardAuth">
+    insert into card_auth
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="reqFrom != null">
+        req_from,
+      </if>
+      <if test="rspDesc != null">
+        rsp_desc,
+      </if>
+      <if test="rspType != null">
+        rsp_type,
+      </if>
+      <if test="despCode != null">
+        desp_code,
+      </if>
+      <if test="transId != null">
+        trans_id,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="respTime != null">
+        resp_time,
+      </if>
+      <if test="bankCardNo != null">
+        bank_card_no,
+      </if>
+      <if test="userCradName != null">
+        user_crad_name,
+      </if>
+      <if test="idCardNo != null">
+        id_card_no,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+      <if test="holderTel != null">
+        holder_tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="reqFrom != null">
+        #{reqFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rspDesc != null">
+        #{rspDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="rspType != null">
+        #{rspType,jdbcType=VARCHAR},
+      </if>
+      <if test="despCode != null">
+        #{despCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transId != null">
+        #{transId,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="respTime != null">
+        #{respTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null">
+        #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userCradName != null">
+        #{userCradName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null">
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="holderTel != null">
+        #{holderTel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CardAuth">
+    update card_auth
+    <set>
+      <if test="reqFrom != null">
+        req_from = #{reqFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="rspDesc != null">
+        rsp_desc = #{rspDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="rspType != null">
+        rsp_type = #{rspType,jdbcType=VARCHAR},
+      </if>
+      <if test="despCode != null">
+        desp_code = #{despCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transId != null">
+        trans_id = #{transId,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=VARCHAR},
+      </if>
+      <if test="respTime != null">
+        resp_time = #{respTime,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null">
+        bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userCradName != null">
+        user_crad_name = #{userCradName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null">
+        id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="holderTel != null">
+        holder_tel = #{holderTel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CardAuth">
+    update card_auth
+    set req_from = #{reqFrom,jdbcType=VARCHAR},
+      rsp_desc = #{rspDesc,jdbcType=VARCHAR},
+      rsp_type = #{rspType,jdbcType=VARCHAR},
+      desp_code = #{despCode,jdbcType=VARCHAR},
+      trans_id = #{transId,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=VARCHAR},
+      resp_time = #{respTime,jdbcType=VARCHAR},
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      user_crad_name = #{userCradName,jdbcType=VARCHAR},
+      id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      editor = #{editor,jdbcType=VARCHAR},
+      holder_tel = #{holderTel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerFrozenFeeConfigDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerFrozenFeeConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="default_frozen_fee" jdbcType="DECIMAL" property="defaultFrozenFee" />
+    <result column="open_flag" jdbcType="SMALLINT" property="openFlag" />
+    <result column="agent_id_list" jdbcType="VARCHAR" property="agentIdList" />
+    <result column="default_dabiao_amt" jdbcType="DECIMAL" property="defaultDabiaoAmt" />
+    <result column="default_dabiao_month" jdbcType="SMALLINT" property="defaultDabiaoMonth" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, default_frozen_fee, open_flag, agent_id_list, default_dabiao_amt, default_dabiao_month, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_frozen_fee_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_frozen_fee_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFeeConfig">
+    insert into customer_frozen_fee_config (id, default_frozen_fee, open_flag, 
+      agent_id_list, default_dabiao_amt, default_dabiao_month, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{defaultFrozenFee,jdbcType=DECIMAL}, #{openFlag,jdbcType=SMALLINT}, 
+      #{agentIdList,jdbcType=VARCHAR}, #{defaultDabiaoAmt,jdbcType=DECIMAL}, #{defaultDabiaoMonth,jdbcType=SMALLINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFeeConfig">
+    insert into customer_frozen_fee_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="defaultFrozenFee != null">
+        default_frozen_fee,
+      </if>
+      <if test="openFlag != null">
+        open_flag,
+      </if>
+      <if test="agentIdList != null">
+        agent_id_list,
+      </if>
+      <if test="defaultDabiaoAmt != null">
+        default_dabiao_amt,
+      </if>
+      <if test="defaultDabiaoMonth != null">
+        default_dabiao_month,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="defaultFrozenFee != null">
+        #{defaultFrozenFee,jdbcType=DECIMAL},
+      </if>
+      <if test="openFlag != null">
+        #{openFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="agentIdList != null">
+        #{agentIdList,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultDabiaoAmt != null">
+        #{defaultDabiaoAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultDabiaoMonth != null">
+        #{defaultDabiaoMonth,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFeeConfig">
+    update customer_frozen_fee_config
+    <set>
+      <if test="defaultFrozenFee != null">
+        default_frozen_fee = #{defaultFrozenFee,jdbcType=DECIMAL},
+      </if>
+      <if test="openFlag != null">
+        open_flag = #{openFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="agentIdList != null">
+        agent_id_list = #{agentIdList,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultDabiaoAmt != null">
+        default_dabiao_amt = #{defaultDabiaoAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultDabiaoMonth != null">
+        default_dabiao_month = #{defaultDabiaoMonth,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerFrozenFeeConfig">
+    update customer_frozen_fee_config
+    set default_frozen_fee = #{defaultFrozenFee,jdbcType=DECIMAL},
+      open_flag = #{openFlag,jdbcType=SMALLINT},
+      agent_id_list = #{agentIdList,jdbcType=VARCHAR},
+      default_dabiao_amt = #{defaultDabiaoAmt,jdbcType=DECIMAL},
+      default_dabiao_month = #{defaultDabiaoMonth,jdbcType=SMALLINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

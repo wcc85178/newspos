@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CardBinDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CardBin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bin_code" jdbcType="VARCHAR" property="binCode" />
+    <result column="card_nickname" jdbcType="VARCHAR" property="cardNickname" />
+    <result column="card_type" jdbcType="INTEGER" property="cardType" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, bank_name, bin_code, card_nickname, card_type, org_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from card_bin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from card_bin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CardBin">
+    insert into card_bin (id, `security`, bank_name, 
+      bin_code, card_nickname, card_type, 
+      org_code)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{binCode,jdbcType=VARCHAR}, #{cardNickname,jdbcType=VARCHAR}, #{cardType,jdbcType=INTEGER}, 
+      #{orgCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CardBin">
+    insert into card_bin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="binCode != null">
+        bin_code,
+      </if>
+      <if test="cardNickname != null">
+        card_nickname,
+      </if>
+      <if test="cardType != null">
+        card_type,
+      </if>
+      <if test="orgCode != null">
+        org_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="binCode != null">
+        #{binCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNickname != null">
+        #{cardNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CardBin">
+    update card_bin
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="binCode != null">
+        bin_code = #{binCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNickname != null">
+        card_nickname = #{cardNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        card_type = #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="orgCode != null">
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CardBin">
+    update card_bin
+    set `security` = #{security,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bin_code = #{binCode,jdbcType=VARCHAR},
+      card_nickname = #{cardNickname,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=INTEGER},
+      org_code = #{orgCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

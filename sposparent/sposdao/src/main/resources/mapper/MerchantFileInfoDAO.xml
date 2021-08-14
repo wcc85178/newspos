@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MerchantFileInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MerchantFileInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="pic_name" jdbcType="VARCHAR" property="picName" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="pic_mode" jdbcType="VARCHAR" property="picMode" />
+    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+    <result column="ret_code" jdbcType="VARCHAR" property="retCode" />
+    <result column="ret_msg" jdbcType="VARCHAR" property="retMsg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mer, pic_name, pic_url, pic_mode, file_id, ret_code, ret_msg, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_file_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from merchant_file_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MerchantFileInfo">
+    insert into merchant_file_info (id, mer, pic_name, 
+      pic_url, pic_mode, file_id, 
+      ret_code, ret_msg, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{mer,jdbcType=VARCHAR}, #{picName,jdbcType=VARCHAR}, 
+      #{picUrl,jdbcType=VARCHAR}, #{picMode,jdbcType=VARCHAR}, #{fileId,jdbcType=VARCHAR}, 
+      #{retCode,jdbcType=VARCHAR}, #{retMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MerchantFileInfo">
+    insert into merchant_file_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="picName != null">
+        pic_name,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="picMode != null">
+        pic_mode,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+      <if test="retCode != null">
+        ret_code,
+      </if>
+      <if test="retMsg != null">
+        ret_msg,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="picName != null">
+        #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picMode != null">
+        #{picMode,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="retCode != null">
+        #{retCode,jdbcType=VARCHAR},
+      </if>
+      <if test="retMsg != null">
+        #{retMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MerchantFileInfo">
+    update merchant_file_info
+    <set>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="picName != null">
+        pic_name = #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picMode != null">
+        pic_mode = #{picMode,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="retCode != null">
+        ret_code = #{retCode,jdbcType=VARCHAR},
+      </if>
+      <if test="retMsg != null">
+        ret_msg = #{retMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MerchantFileInfo">
+    update merchant_file_info
+    set mer = #{mer,jdbcType=VARCHAR},
+      pic_name = #{picName,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      pic_mode = #{picMode,jdbcType=VARCHAR},
+      file_id = #{fileId,jdbcType=VARCHAR},
+      ret_code = #{retCode,jdbcType=VARCHAR},
+      ret_msg = #{retMsg,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

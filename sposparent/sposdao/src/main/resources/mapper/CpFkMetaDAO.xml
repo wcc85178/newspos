@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CpFkMetaDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CpFkMeta">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="fun_id" jdbcType="INTEGER" property="funId" />
+    <result column="meta_id" jdbcType="INTEGER" property="metaId" />
+    <result column="ref_fun_id" jdbcType="INTEGER" property="refFunId" />
+    <result column="ref_name" jdbcType="VARCHAR" property="refName" />
+    <result column="relation_ship" jdbcType="INTEGER" property="relationShip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, fun_id, meta_id, ref_fun_id, ref_name, relation_ship
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_fk_meta
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cp_fk_meta
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CpFkMeta">
+    insert into cp_fk_meta (id, `security`, fun_id, 
+      meta_id, ref_fun_id, ref_name, 
+      relation_ship)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{funId,jdbcType=INTEGER}, 
+      #{metaId,jdbcType=INTEGER}, #{refFunId,jdbcType=INTEGER}, #{refName,jdbcType=VARCHAR}, 
+      #{relationShip,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CpFkMeta">
+    insert into cp_fk_meta
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="funId != null">
+        fun_id,
+      </if>
+      <if test="metaId != null">
+        meta_id,
+      </if>
+      <if test="refFunId != null">
+        ref_fun_id,
+      </if>
+      <if test="refName != null">
+        ref_name,
+      </if>
+      <if test="relationShip != null">
+        relation_ship,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="funId != null">
+        #{funId,jdbcType=INTEGER},
+      </if>
+      <if test="metaId != null">
+        #{metaId,jdbcType=INTEGER},
+      </if>
+      <if test="refFunId != null">
+        #{refFunId,jdbcType=INTEGER},
+      </if>
+      <if test="refName != null">
+        #{refName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationShip != null">
+        #{relationShip,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CpFkMeta">
+    update cp_fk_meta
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="funId != null">
+        fun_id = #{funId,jdbcType=INTEGER},
+      </if>
+      <if test="metaId != null">
+        meta_id = #{metaId,jdbcType=INTEGER},
+      </if>
+      <if test="refFunId != null">
+        ref_fun_id = #{refFunId,jdbcType=INTEGER},
+      </if>
+      <if test="refName != null">
+        ref_name = #{refName,jdbcType=VARCHAR},
+      </if>
+      <if test="relationShip != null">
+        relation_ship = #{relationShip,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CpFkMeta">
+    update cp_fk_meta
+    set `security` = #{security,jdbcType=VARCHAR},
+      fun_id = #{funId,jdbcType=INTEGER},
+      meta_id = #{metaId,jdbcType=INTEGER},
+      ref_fun_id = #{refFunId,jdbcType=INTEGER},
+      ref_name = #{refName,jdbcType=VARCHAR},
+      relation_ship = #{relationShip,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

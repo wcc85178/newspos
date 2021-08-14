@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosModelDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosModel">
+    <id column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="model_type" jdbcType="INTEGER" property="modelType" />
+    <result column="model_type_name" jdbcType="VARCHAR" property="modelTypeName" />
+    <result column="model_section" jdbcType="VARCHAR" property="modelSection" />
+    <result column="factory_id" jdbcType="INTEGER" property="factoryId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    model_id, model_name, model_type, model_type_name, model_section, factory_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_model
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_model
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosModel">
+    insert into pos_model (model_id, model_name, model_type, 
+      model_type_name, model_section, factory_id
+      )
+    values (#{modelId,jdbcType=INTEGER}, #{modelName,jdbcType=VARCHAR}, #{modelType,jdbcType=INTEGER}, 
+      #{modelTypeName,jdbcType=VARCHAR}, #{modelSection,jdbcType=VARCHAR}, #{factoryId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosModel">
+    insert into pos_model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="modelName != null">
+        model_name,
+      </if>
+      <if test="modelType != null">
+        model_type,
+      </if>
+      <if test="modelTypeName != null">
+        model_type_name,
+      </if>
+      <if test="modelSection != null">
+        model_section,
+      </if>
+      <if test="factoryId != null">
+        factory_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="modelId != null">
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="modelName != null">
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelType != null">
+        #{modelType,jdbcType=INTEGER},
+      </if>
+      <if test="modelTypeName != null">
+        #{modelTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelSection != null">
+        #{modelSection,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null">
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosModel">
+    update pos_model
+    <set>
+      <if test="modelName != null">
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelType != null">
+        model_type = #{modelType,jdbcType=INTEGER},
+      </if>
+      <if test="modelTypeName != null">
+        model_type_name = #{modelTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelSection != null">
+        model_section = #{modelSection,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null">
+        factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosModel">
+    update pos_model
+    set model_name = #{modelName,jdbcType=VARCHAR},
+      model_type = #{modelType,jdbcType=INTEGER},
+      model_type_name = #{modelTypeName,jdbcType=VARCHAR},
+      model_section = #{modelSection,jdbcType=VARCHAR},
+      factory_id = #{factoryId,jdbcType=INTEGER}
+    where model_id = #{modelId,jdbcType=INTEGER}
+  </update>
+</mapper>

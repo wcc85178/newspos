@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MoveTaskDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MoveTask">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="move_date" jdbcType="VARCHAR" property="moveDate" />
+    <result column="move_flag" jdbcType="INTEGER" property="moveFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, move_date, move_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from move_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from move_task
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MoveTask">
+    insert into move_task (id, `security`, move_date, 
+      move_flag)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{moveDate,jdbcType=VARCHAR}, 
+      #{moveFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MoveTask">
+    insert into move_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="moveDate != null">
+        move_date,
+      </if>
+      <if test="moveFlag != null">
+        move_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="moveDate != null">
+        #{moveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="moveFlag != null">
+        #{moveFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MoveTask">
+    update move_task
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="moveDate != null">
+        move_date = #{moveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="moveFlag != null">
+        move_flag = #{moveFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MoveTask">
+    update move_task
+    set `security` = #{security,jdbcType=VARCHAR},
+      move_date = #{moveDate,jdbcType=VARCHAR},
+      move_flag = #{moveFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

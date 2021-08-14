@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerAccumulateTaskDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerAccumulateTask">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="req_no" jdbcType="VARCHAR" property="reqNo" />
+    <result column="trade_listener" jdbcType="VARCHAR" property="tradeListener" />
+    <result column="card_type" jdbcType="VARCHAR" property="cardType" />
+    <result column="join_time" jdbcType="TIMESTAMP" property="joinTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, req_no, trade_listener, card_type, join_time, end_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_accumulate_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_accumulate_task
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerAccumulateTask">
+    insert into customer_accumulate_task (id, customer_id, req_no, 
+      trade_listener, card_type, join_time, 
+      end_time, create_time)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{reqNo,jdbcType=VARCHAR}, 
+      #{tradeListener,jdbcType=VARCHAR}, #{cardType,jdbcType=VARCHAR}, #{joinTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerAccumulateTask">
+    insert into customer_accumulate_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="reqNo != null">
+        req_no,
+      </if>
+      <if test="tradeListener != null">
+        trade_listener,
+      </if>
+      <if test="cardType != null">
+        card_type,
+      </if>
+      <if test="joinTime != null">
+        join_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="reqNo != null">
+        #{reqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeListener != null">
+        #{tradeListener,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="joinTime != null">
+        #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerAccumulateTask">
+    update customer_accumulate_task
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="reqNo != null">
+        req_no = #{reqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeListener != null">
+        trade_listener = #{tradeListener,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        card_type = #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="joinTime != null">
+        join_time = #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerAccumulateTask">
+    update customer_accumulate_task
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      req_no = #{reqNo,jdbcType=VARCHAR},
+      trade_listener = #{tradeListener,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=VARCHAR},
+      join_time = #{joinTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.ChannelFeeTypeDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.ChannelFeeType">
+    <id column="chFeeId" jdbcType="SMALLINT" property="chfeeid" />
+    <result column="feeType" jdbcType="SMALLINT" property="feetype" />
+    <result column="feeTypeName" jdbcType="VARCHAR" property="feetypename" />
+    <result column="feeRate" jdbcType="DECIMAL" property="feerate" />
+    <result column="topFee" jdbcType="DECIMAL" property="topfee" />
+    <result column="lastUpdTs" jdbcType="TIMESTAMP" property="lastupdts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    chFeeId, feeType, feeTypeName, feeRate, topFee, lastUpdTs
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from channel_fee_type
+    where chFeeId = #{chfeeid,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from channel_fee_type
+    where chFeeId = #{chfeeid,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.ChannelFeeType">
+    insert into channel_fee_type (chFeeId, feeType, feeTypeName, 
+      feeRate, topFee, lastUpdTs
+      )
+    values (#{chfeeid,jdbcType=SMALLINT}, #{feetype,jdbcType=SMALLINT}, #{feetypename,jdbcType=VARCHAR}, 
+      #{feerate,jdbcType=DECIMAL}, #{topfee,jdbcType=DECIMAL}, #{lastupdts,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.ChannelFeeType">
+    insert into channel_fee_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chfeeid != null">
+        chFeeId,
+      </if>
+      <if test="feetype != null">
+        feeType,
+      </if>
+      <if test="feetypename != null">
+        feeTypeName,
+      </if>
+      <if test="feerate != null">
+        feeRate,
+      </if>
+      <if test="topfee != null">
+        topFee,
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chfeeid != null">
+        #{chfeeid,jdbcType=SMALLINT},
+      </if>
+      <if test="feetype != null">
+        #{feetype,jdbcType=SMALLINT},
+      </if>
+      <if test="feetypename != null">
+        #{feetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="feerate != null">
+        #{feerate,jdbcType=DECIMAL},
+      </if>
+      <if test="topfee != null">
+        #{topfee,jdbcType=DECIMAL},
+      </if>
+      <if test="lastupdts != null">
+        #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.ChannelFeeType">
+    update channel_fee_type
+    <set>
+      <if test="feetype != null">
+        feeType = #{feetype,jdbcType=SMALLINT},
+      </if>
+      <if test="feetypename != null">
+        feeTypeName = #{feetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="feerate != null">
+        feeRate = #{feerate,jdbcType=DECIMAL},
+      </if>
+      <if test="topfee != null">
+        topFee = #{topfee,jdbcType=DECIMAL},
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where chFeeId = #{chfeeid,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.ChannelFeeType">
+    update channel_fee_type
+    set feeType = #{feetype,jdbcType=SMALLINT},
+      feeTypeName = #{feetypename,jdbcType=VARCHAR},
+      feeRate = #{feerate,jdbcType=DECIMAL},
+      topFee = #{topfee,jdbcType=DECIMAL},
+      lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP}
+    where chFeeId = #{chfeeid,jdbcType=SMALLINT}
+  </update>
+</mapper>

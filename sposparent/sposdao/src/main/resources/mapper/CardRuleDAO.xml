@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CardRuleDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CardRule">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="card" jdbcType="VARCHAR" property="card" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="day_trans_count_limit" jdbcType="INTEGER" property="dayTransCountLimit" />
+    <result column="day_trans_limit" jdbcType="DECIMAL" property="dayTransLimit" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="month_trans_limit" jdbcType="DECIMAL" property="monthTransLimit" />
+    <result column="one_trans_limit" jdbcType="DECIMAL" property="oneTransLimit" />
+    <result column="trans_down_line" jdbcType="DECIMAL" property="transDownLine" />
+    <result column="editor" jdbcType="VARCHAR" property="editor" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, card, create_time, day_trans_count_limit, day_trans_limit, enable_flag, 
+    month_trans_limit, one_trans_limit, trans_down_line, editor
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from card_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from card_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CardRule">
+    insert into card_rule (id, `security`, card, 
+      create_time, day_trans_count_limit, day_trans_limit, 
+      enable_flag, month_trans_limit, one_trans_limit, 
+      trans_down_line, editor)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{card,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{dayTransCountLimit,jdbcType=INTEGER}, #{dayTransLimit,jdbcType=DECIMAL}, 
+      #{enableFlag,jdbcType=INTEGER}, #{monthTransLimit,jdbcType=DECIMAL}, #{oneTransLimit,jdbcType=DECIMAL}, 
+      #{transDownLine,jdbcType=DECIMAL}, #{editor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CardRule">
+    insert into card_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="card != null">
+        card,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="dayTransCountLimit != null">
+        day_trans_count_limit,
+      </if>
+      <if test="dayTransLimit != null">
+        day_trans_limit,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="monthTransLimit != null">
+        month_trans_limit,
+      </if>
+      <if test="oneTransLimit != null">
+        one_trans_limit,
+      </if>
+      <if test="transDownLine != null">
+        trans_down_line,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null">
+        #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="dayTransCountLimit != null">
+        #{dayTransCountLimit,jdbcType=INTEGER},
+      </if>
+      <if test="dayTransLimit != null">
+        #{dayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="monthTransLimit != null">
+        #{monthTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="oneTransLimit != null">
+        #{oneTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="transDownLine != null">
+        #{transDownLine,jdbcType=DECIMAL},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CardRule">
+    update card_rule
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="card != null">
+        card = #{card,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="dayTransCountLimit != null">
+        day_trans_count_limit = #{dayTransCountLimit,jdbcType=INTEGER},
+      </if>
+      <if test="dayTransLimit != null">
+        day_trans_limit = #{dayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="monthTransLimit != null">
+        month_trans_limit = #{monthTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="oneTransLimit != null">
+        one_trans_limit = #{oneTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="transDownLine != null">
+        trans_down_line = #{transDownLine,jdbcType=DECIMAL},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CardRule">
+    update card_rule
+    set `security` = #{security,jdbcType=VARCHAR},
+      card = #{card,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      day_trans_count_limit = #{dayTransCountLimit,jdbcType=INTEGER},
+      day_trans_limit = #{dayTransLimit,jdbcType=DECIMAL},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      month_trans_limit = #{monthTransLimit,jdbcType=DECIMAL},
+      one_trans_limit = #{oneTransLimit,jdbcType=DECIMAL},
+      trans_down_line = #{transDownLine,jdbcType=DECIMAL},
+      editor = #{editor,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

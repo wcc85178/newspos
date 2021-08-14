@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.Fort1196DAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Fort1196">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="cffid" jdbcType="INTEGER" property="cffid" />
+    <result column="outid" jdbcType="INTEGER" property="outid" />
+    <result column="frozen_fee" jdbcType="VARCHAR" property="frozenFee" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="bt_flag" jdbcType="VARCHAR" property="btFlag" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="day" jdbcType="VARCHAR" property="day" />
+    <result column="accountId" jdbcType="INTEGER" property="accountid" />
+    <result column="man_name" jdbcType="VARCHAR" property="manName" />
+    <result column="bank_card_code" jdbcType="VARCHAR" property="bankCardCode" />
+    <result column="bank_unionpay_code_all" jdbcType="VARCHAR" property="bankUnionpayCodeAll" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="timeflag" jdbcType="VARCHAR" property="timeflag" />
+    <result column="dabiao_start" jdbcType="TIMESTAMP" property="dabiaoStart" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createtime, cffid, outid, frozen_fee, customer_id, fid, bt_flag, `security`, 
+    agent_id, `day`, accountId, man_name, bank_card_code, bank_unionpay_code_all, `status`, 
+    timeflag, dabiao_start
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fort1196
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fort1196
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Fort1196">
+    insert into fort1196 (id, createtime, cffid, 
+      outid, frozen_fee, customer_id, 
+      fid, bt_flag, `security`, 
+      agent_id, `day`, accountId, 
+      man_name, bank_card_code, bank_unionpay_code_all, 
+      `status`, timeflag, dabiao_start
+      )
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{cffid,jdbcType=INTEGER}, 
+      #{outid,jdbcType=INTEGER}, #{frozenFee,jdbcType=VARCHAR}, #{customerId,jdbcType=INTEGER}, 
+      #{fid,jdbcType=INTEGER}, #{btFlag,jdbcType=VARCHAR}, #{security,jdbcType=VARCHAR}, 
+      #{agentId,jdbcType=INTEGER}, #{day,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}, 
+      #{manName,jdbcType=VARCHAR}, #{bankCardCode,jdbcType=VARCHAR}, #{bankUnionpayCodeAll,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{timeflag,jdbcType=VARCHAR}, #{dabiaoStart,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Fort1196">
+    insert into fort1196
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="cffid != null">
+        cffid,
+      </if>
+      <if test="outid != null">
+        outid,
+      </if>
+      <if test="frozenFee != null">
+        frozen_fee,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="btFlag != null">
+        bt_flag,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="day != null">
+        `day`,
+      </if>
+      <if test="accountid != null">
+        accountId,
+      </if>
+      <if test="manName != null">
+        man_name,
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code,
+      </if>
+      <if test="bankUnionpayCodeAll != null">
+        bank_unionpay_code_all,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="timeflag != null">
+        timeflag,
+      </if>
+      <if test="dabiaoStart != null">
+        dabiao_start,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cffid != null">
+        #{cffid,jdbcType=INTEGER},
+      </if>
+      <if test="outid != null">
+        #{outid,jdbcType=INTEGER},
+      </if>
+      <if test="frozenFee != null">
+        #{frozenFee,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="btFlag != null">
+        #{btFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="day != null">
+        #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="manName != null">
+        #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUnionpayCodeAll != null">
+        #{bankUnionpayCodeAll,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="timeflag != null">
+        #{timeflag,jdbcType=VARCHAR},
+      </if>
+      <if test="dabiaoStart != null">
+        #{dabiaoStart,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Fort1196">
+    update fort1196
+    <set>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cffid != null">
+        cffid = #{cffid,jdbcType=INTEGER},
+      </if>
+      <if test="outid != null">
+        outid = #{outid,jdbcType=INTEGER},
+      </if>
+      <if test="frozenFee != null">
+        frozen_fee = #{frozenFee,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="btFlag != null">
+        bt_flag = #{btFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="day != null">
+        `day` = #{day,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null">
+        accountId = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="manName != null">
+        man_name = #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUnionpayCodeAll != null">
+        bank_unionpay_code_all = #{bankUnionpayCodeAll,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="timeflag != null">
+        timeflag = #{timeflag,jdbcType=VARCHAR},
+      </if>
+      <if test="dabiaoStart != null">
+        dabiao_start = #{dabiaoStart,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Fort1196">
+    update fort1196
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      cffid = #{cffid,jdbcType=INTEGER},
+      outid = #{outid,jdbcType=INTEGER},
+      frozen_fee = #{frozenFee,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      fid = #{fid,jdbcType=INTEGER},
+      bt_flag = #{btFlag,jdbcType=VARCHAR},
+      `security` = #{security,jdbcType=VARCHAR},
+      agent_id = #{agentId,jdbcType=INTEGER},
+      `day` = #{day,jdbcType=VARCHAR},
+      accountId = #{accountid,jdbcType=INTEGER},
+      man_name = #{manName,jdbcType=VARCHAR},
+      bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      bank_unionpay_code_all = #{bankUnionpayCodeAll,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=TINYINT},
+      timeflag = #{timeflag,jdbcType=VARCHAR},
+      dabiao_start = #{dabiaoStart,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

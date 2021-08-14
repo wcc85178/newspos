@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosRuleDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosRule">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sn_code" jdbcType="VARCHAR" property="snCode" />
+    <result column="day_trans_limit" jdbcType="DECIMAL" property="dayTransLimit" />
+    <result column="one_trans_limit" jdbcType="DECIMAL" property="oneTransLimit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sn_code, day_trans_limit, one_trans_limit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosRule">
+    insert into pos_rule (id, sn_code, day_trans_limit, 
+      one_trans_limit)
+    values (#{id,jdbcType=INTEGER}, #{snCode,jdbcType=VARCHAR}, #{dayTransLimit,jdbcType=DECIMAL}, 
+      #{oneTransLimit,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosRule">
+    insert into pos_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="snCode != null">
+        sn_code,
+      </if>
+      <if test="dayTransLimit != null">
+        day_trans_limit,
+      </if>
+      <if test="oneTransLimit != null">
+        one_trans_limit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="snCode != null">
+        #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dayTransLimit != null">
+        #{dayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="oneTransLimit != null">
+        #{oneTransLimit,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosRule">
+    update pos_rule
+    <set>
+      <if test="snCode != null">
+        sn_code = #{snCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dayTransLimit != null">
+        day_trans_limit = #{dayTransLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="oneTransLimit != null">
+        one_trans_limit = #{oneTransLimit,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosRule">
+    update pos_rule
+    set sn_code = #{snCode,jdbcType=VARCHAR},
+      day_trans_limit = #{dayTransLimit,jdbcType=DECIMAL},
+      one_trans_limit = #{oneTransLimit,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

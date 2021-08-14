@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerCreditcardsDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerCreditcards">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_id" jdbcType="CHAR" property="appId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="carditcard" jdbcType="VARCHAR" property="carditcard" />
+    <result column="isactive" jdbcType="SMALLINT" property="isactive" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_img_url" jdbcType="VARCHAR" property="bankImgUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, app_id, user_id, user_tel, customer_name, carditcard, isactive, bank_name, bank_img_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_creditcards
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_creditcards
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerCreditcards">
+    insert into customer_creditcards (id, app_id, user_id, 
+      user_tel, customer_name, carditcard, 
+      isactive, bank_name, bank_img_url
+      )
+    values (#{id,jdbcType=INTEGER}, #{appId,jdbcType=CHAR}, #{userId,jdbcType=INTEGER}, 
+      #{userTel,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, #{carditcard,jdbcType=VARCHAR}, 
+      #{isactive,jdbcType=SMALLINT}, #{bankName,jdbcType=VARCHAR}, #{bankImgUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerCreditcards">
+    insert into customer_creditcards
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userTel != null">
+        user_tel,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="carditcard != null">
+        carditcard,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankImgUrl != null">
+        bank_img_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userTel != null">
+        #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="carditcard != null">
+        #{carditcard,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=SMALLINT},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankImgUrl != null">
+        #{bankImgUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerCreditcards">
+    update customer_creditcards
+    <set>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userTel != null">
+        user_tel = #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="carditcard != null">
+        carditcard = #{carditcard,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=SMALLINT},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankImgUrl != null">
+        bank_img_url = #{bankImgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerCreditcards">
+    update customer_creditcards
+    set app_id = #{appId,jdbcType=CHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_tel = #{userTel,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      carditcard = #{carditcard,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=SMALLINT},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_img_url = #{bankImgUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

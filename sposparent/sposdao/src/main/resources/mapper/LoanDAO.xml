@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.LoanDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Loan">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="audit_flag" jdbcType="INTEGER" property="auditFlag" />
+    <result column="bohui_mark" jdbcType="VARCHAR" property="bohuiMark" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="gongjijin" jdbcType="VARCHAR" property="gongjijin" />
+    <result column="img1" jdbcType="VARCHAR" property="img1" />
+    <result column="img2" jdbcType="VARCHAR" property="img2" />
+    <result column="img3" jdbcType="VARCHAR" property="img3" />
+    <result column="loan_limit" jdbcType="VARCHAR" property="loanLimit" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nianshouru" jdbcType="VARCHAR" property="nianshouru" />
+    <result column="over_loan" jdbcType="INTEGER" property="overLoan" />
+    <result column="py_card_code" jdbcType="VARCHAR" property="pyCardCode" />
+    <result column="py_name" jdbcType="VARCHAR" property="pyName" />
+    <result column="py_tel" jdbcType="VARCHAR" property="pyTel" />
+    <result column="real_amount" jdbcType="DECIMAL" property="realAmount" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="yishebao" jdbcType="VARCHAR" property="yishebao" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, addr, amount, audit_flag, bohui_mark, create_time, gongjijin, img1, 
+    img2, img3, loan_limit, mark, `name`, nianshouru, over_loan, py_card_code, py_name, 
+    py_tel, real_amount, tel, yishebao
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from loan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from loan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Loan">
+    insert into loan (id, `security`, addr, 
+      amount, audit_flag, bohui_mark, 
+      create_time, gongjijin, img1, 
+      img2, img3, loan_limit, 
+      mark, `name`, nianshouru, 
+      over_loan, py_card_code, py_name, 
+      py_tel, real_amount, tel, 
+      yishebao)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{auditFlag,jdbcType=INTEGER}, #{bohuiMark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{gongjijin,jdbcType=VARCHAR}, #{img1,jdbcType=VARCHAR}, 
+      #{img2,jdbcType=VARCHAR}, #{img3,jdbcType=VARCHAR}, #{loanLimit,jdbcType=VARCHAR}, 
+      #{mark,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{nianshouru,jdbcType=VARCHAR}, 
+      #{overLoan,jdbcType=INTEGER}, #{pyCardCode,jdbcType=VARCHAR}, #{pyName,jdbcType=VARCHAR}, 
+      #{pyTel,jdbcType=VARCHAR}, #{realAmount,jdbcType=DECIMAL}, #{tel,jdbcType=VARCHAR}, 
+      #{yishebao,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Loan">
+    insert into loan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="auditFlag != null">
+        audit_flag,
+      </if>
+      <if test="bohuiMark != null">
+        bohui_mark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="gongjijin != null">
+        gongjijin,
+      </if>
+      <if test="img1 != null">
+        img1,
+      </if>
+      <if test="img2 != null">
+        img2,
+      </if>
+      <if test="img3 != null">
+        img3,
+      </if>
+      <if test="loanLimit != null">
+        loan_limit,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="nianshouru != null">
+        nianshouru,
+      </if>
+      <if test="overLoan != null">
+        over_loan,
+      </if>
+      <if test="pyCardCode != null">
+        py_card_code,
+      </if>
+      <if test="pyName != null">
+        py_name,
+      </if>
+      <if test="pyTel != null">
+        py_tel,
+      </if>
+      <if test="realAmount != null">
+        real_amount,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="yishebao != null">
+        yishebao,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="auditFlag != null">
+        #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bohuiMark != null">
+        #{bohuiMark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="gongjijin != null">
+        #{gongjijin,jdbcType=VARCHAR},
+      </if>
+      <if test="img1 != null">
+        #{img1,jdbcType=VARCHAR},
+      </if>
+      <if test="img2 != null">
+        #{img2,jdbcType=VARCHAR},
+      </if>
+      <if test="img3 != null">
+        #{img3,jdbcType=VARCHAR},
+      </if>
+      <if test="loanLimit != null">
+        #{loanLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nianshouru != null">
+        #{nianshouru,jdbcType=VARCHAR},
+      </if>
+      <if test="overLoan != null">
+        #{overLoan,jdbcType=INTEGER},
+      </if>
+      <if test="pyCardCode != null">
+        #{pyCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pyName != null">
+        #{pyName,jdbcType=VARCHAR},
+      </if>
+      <if test="pyTel != null">
+        #{pyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="realAmount != null">
+        #{realAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="yishebao != null">
+        #{yishebao,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Loan">
+    update loan
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="auditFlag != null">
+        audit_flag = #{auditFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bohuiMark != null">
+        bohui_mark = #{bohuiMark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="gongjijin != null">
+        gongjijin = #{gongjijin,jdbcType=VARCHAR},
+      </if>
+      <if test="img1 != null">
+        img1 = #{img1,jdbcType=VARCHAR},
+      </if>
+      <if test="img2 != null">
+        img2 = #{img2,jdbcType=VARCHAR},
+      </if>
+      <if test="img3 != null">
+        img3 = #{img3,jdbcType=VARCHAR},
+      </if>
+      <if test="loanLimit != null">
+        loan_limit = #{loanLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nianshouru != null">
+        nianshouru = #{nianshouru,jdbcType=VARCHAR},
+      </if>
+      <if test="overLoan != null">
+        over_loan = #{overLoan,jdbcType=INTEGER},
+      </if>
+      <if test="pyCardCode != null">
+        py_card_code = #{pyCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pyName != null">
+        py_name = #{pyName,jdbcType=VARCHAR},
+      </if>
+      <if test="pyTel != null">
+        py_tel = #{pyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="realAmount != null">
+        real_amount = #{realAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="yishebao != null">
+        yishebao = #{yishebao,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Loan">
+    update loan
+    set `security` = #{security,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      audit_flag = #{auditFlag,jdbcType=INTEGER},
+      bohui_mark = #{bohuiMark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      gongjijin = #{gongjijin,jdbcType=VARCHAR},
+      img1 = #{img1,jdbcType=VARCHAR},
+      img2 = #{img2,jdbcType=VARCHAR},
+      img3 = #{img3,jdbcType=VARCHAR},
+      loan_limit = #{loanLimit,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      nianshouru = #{nianshouru,jdbcType=VARCHAR},
+      over_loan = #{overLoan,jdbcType=INTEGER},
+      py_card_code = #{pyCardCode,jdbcType=VARCHAR},
+      py_name = #{pyName,jdbcType=VARCHAR},
+      py_tel = #{pyTel,jdbcType=VARCHAR},
+      real_amount = #{realAmount,jdbcType=DECIMAL},
+      tel = #{tel,jdbcType=VARCHAR},
+      yishebao = #{yishebao,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

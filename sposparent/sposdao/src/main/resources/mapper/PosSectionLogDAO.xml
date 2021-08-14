@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosSectionLogDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosSectionLog">
+    <id column="section_id" jdbcType="INTEGER" property="sectionId" />
+    <result column="section_start" jdbcType="BIGINT" property="sectionStart" />
+    <result column="section_end" jdbcType="BIGINT" property="sectionEnd" />
+    <result column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="factory_id" jdbcType="INTEGER" property="factoryId" />
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+    <result column="section_create_time" jdbcType="TIMESTAMP" property="sectionCreateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    section_id, section_start, section_end, model_id, model_name, factory_id, factory_name, 
+    section_create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_section_log
+    where section_id = #{sectionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_section_log
+    where section_id = #{sectionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosSectionLog">
+    insert into pos_section_log (section_id, section_start, section_end, 
+      model_id, model_name, factory_id, 
+      factory_name, section_create_time)
+    values (#{sectionId,jdbcType=INTEGER}, #{sectionStart,jdbcType=BIGINT}, #{sectionEnd,jdbcType=BIGINT}, 
+      #{modelId,jdbcType=INTEGER}, #{modelName,jdbcType=VARCHAR}, #{factoryId,jdbcType=INTEGER}, 
+      #{factoryName,jdbcType=VARCHAR}, #{sectionCreateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosSectionLog">
+    insert into pos_section_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sectionId != null">
+        section_id,
+      </if>
+      <if test="sectionStart != null">
+        section_start,
+      </if>
+      <if test="sectionEnd != null">
+        section_end,
+      </if>
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="modelName != null">
+        model_name,
+      </if>
+      <if test="factoryId != null">
+        factory_id,
+      </if>
+      <if test="factoryName != null">
+        factory_name,
+      </if>
+      <if test="sectionCreateTime != null">
+        section_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sectionId != null">
+        #{sectionId,jdbcType=INTEGER},
+      </if>
+      <if test="sectionStart != null">
+        #{sectionStart,jdbcType=BIGINT},
+      </if>
+      <if test="sectionEnd != null">
+        #{sectionEnd,jdbcType=BIGINT},
+      </if>
+      <if test="modelId != null">
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="modelName != null">
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null">
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryName != null">
+        #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="sectionCreateTime != null">
+        #{sectionCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosSectionLog">
+    update pos_section_log
+    <set>
+      <if test="sectionStart != null">
+        section_start = #{sectionStart,jdbcType=BIGINT},
+      </if>
+      <if test="sectionEnd != null">
+        section_end = #{sectionEnd,jdbcType=BIGINT},
+      </if>
+      <if test="modelId != null">
+        model_id = #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="modelName != null">
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null">
+        factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryName != null">
+        factory_name = #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="sectionCreateTime != null">
+        section_create_time = #{sectionCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where section_id = #{sectionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosSectionLog">
+    update pos_section_log
+    set section_start = #{sectionStart,jdbcType=BIGINT},
+      section_end = #{sectionEnd,jdbcType=BIGINT},
+      model_id = #{modelId,jdbcType=INTEGER},
+      model_name = #{modelName,jdbcType=VARCHAR},
+      factory_id = #{factoryId,jdbcType=INTEGER},
+      factory_name = #{factoryName,jdbcType=VARCHAR},
+      section_create_time = #{sectionCreateTime,jdbcType=TIMESTAMP}
+    where section_id = #{sectionId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PayChannelCustomerBatchNoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PayChannelCustomerBatchNo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="batch_no" jdbcType="VARCHAR" property="batchNo" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="ref_pay_channel_consumer_id" jdbcType="INTEGER" property="refPayChannelConsumerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, batch_no, version, ref_pay_channel_consumer_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_channel_customer_batch_no
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_channel_customer_batch_no
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBatchNo">
+    insert into pay_channel_customer_batch_no (id, `security`, batch_no, 
+      version, ref_pay_channel_consumer_id)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{batchNo,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER}, #{refPayChannelConsumerId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBatchNo">
+    insert into pay_channel_customer_batch_no
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="batchNo != null">
+        batch_no,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="refPayChannelConsumerId != null">
+        ref_pay_channel_consumer_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="refPayChannelConsumerId != null">
+        #{refPayChannelConsumerId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBatchNo">
+    update pay_channel_customer_batch_no
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="batchNo != null">
+        batch_no = #{batchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="refPayChannelConsumerId != null">
+        ref_pay_channel_consumer_id = #{refPayChannelConsumerId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PayChannelCustomerBatchNo">
+    update pay_channel_customer_batch_no
+    set `security` = #{security,jdbcType=VARCHAR},
+      batch_no = #{batchNo,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      ref_pay_channel_consumer_id = #{refPayChannelConsumerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

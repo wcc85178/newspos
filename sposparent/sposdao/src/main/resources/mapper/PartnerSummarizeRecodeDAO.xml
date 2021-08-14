@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PartnerSummarizeRecodeDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PartnerSummarizeRecode">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="trancde" jdbcType="VARCHAR" property="trancde" />
+    <result column="in_account_id" jdbcType="INTEGER" property="inAccountId" />
+    <result column="out_account_id" jdbcType="INTEGER" property="outAccountId" />
+    <result column="from_type" jdbcType="VARCHAR" property="fromType" />
+    <result column="bill_id" jdbcType="VARCHAR" property="billId" />
+    <result column="amt" jdbcType="DECIMAL" property="amt" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="result_code" jdbcType="VARCHAR" property="resultCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createtime, updatetime, trancde, in_account_id, out_account_id, from_type, bill_id, 
+    amt, `result`, result_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from partner_summarize_recode
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from partner_summarize_recode
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PartnerSummarizeRecode">
+    insert into partner_summarize_recode (id, createtime, updatetime, 
+      trancde, in_account_id, out_account_id, 
+      from_type, bill_id, amt, 
+      `result`, result_code)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{trancde,jdbcType=VARCHAR}, #{inAccountId,jdbcType=INTEGER}, #{outAccountId,jdbcType=INTEGER}, 
+      #{fromType,jdbcType=VARCHAR}, #{billId,jdbcType=VARCHAR}, #{amt,jdbcType=DECIMAL}, 
+      #{result,jdbcType=VARCHAR}, #{resultCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PartnerSummarizeRecode">
+    insert into partner_summarize_recode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="trancde != null">
+        trancde,
+      </if>
+      <if test="inAccountId != null">
+        in_account_id,
+      </if>
+      <if test="outAccountId != null">
+        out_account_id,
+      </if>
+      <if test="fromType != null">
+        from_type,
+      </if>
+      <if test="billId != null">
+        bill_id,
+      </if>
+      <if test="amt != null">
+        amt,
+      </if>
+      <if test="result != null">
+        `result`,
+      </if>
+      <if test="resultCode != null">
+        result_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trancde != null">
+        #{trancde,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountId != null">
+        #{inAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="outAccountId != null">
+        #{outAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="fromType != null">
+        #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null">
+        #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null">
+        #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        #{resultCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PartnerSummarizeRecode">
+    update partner_summarize_recode
+    <set>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trancde != null">
+        trancde = #{trancde,jdbcType=VARCHAR},
+      </if>
+      <if test="inAccountId != null">
+        in_account_id = #{inAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="outAccountId != null">
+        out_account_id = #{outAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="fromType != null">
+        from_type = #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="billId != null">
+        bill_id = #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null">
+        amt = #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="result != null">
+        `result` = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        result_code = #{resultCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PartnerSummarizeRecode">
+    update partner_summarize_recode
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      trancde = #{trancde,jdbcType=VARCHAR},
+      in_account_id = #{inAccountId,jdbcType=INTEGER},
+      out_account_id = #{outAccountId,jdbcType=INTEGER},
+      from_type = #{fromType,jdbcType=VARCHAR},
+      bill_id = #{billId,jdbcType=VARCHAR},
+      amt = #{amt,jdbcType=DECIMAL},
+      `result` = #{result,jdbcType=VARCHAR},
+      result_code = #{resultCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

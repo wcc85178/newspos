@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PayChannelDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PayChannel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="enable_flag" jdbcType="INTEGER" property="enableFlag" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="need_sign" jdbcType="INTEGER" property="needSign" />
+    <result column="oak" jdbcType="VARCHAR" property="oak" />
+    <result column="omk" jdbcType="VARCHAR" property="omk" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="opk" jdbcType="VARCHAR" property="opk" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="sign_date" jdbcType="VARCHAR" property="signDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, code, create_time, enable_flag, ip, `name`, need_sign, oak, omk, 
+    operator_name, opk, org_code, port, sign_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_channel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_channel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PayChannel">
+    insert into pay_channel (id, `security`, code, 
+      create_time, enable_flag, ip, 
+      `name`, need_sign, oak, 
+      omk, operator_name, opk, 
+      org_code, port, sign_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{enableFlag,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{needSign,jdbcType=INTEGER}, #{oak,jdbcType=VARCHAR}, 
+      #{omk,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{opk,jdbcType=VARCHAR}, 
+      #{orgCode,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, #{signDate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PayChannel">
+    insert into pay_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="enableFlag != null">
+        enable_flag,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="needSign != null">
+        need_sign,
+      </if>
+      <if test="oak != null">
+        oak,
+      </if>
+      <if test="omk != null">
+        omk,
+      </if>
+      <if test="operatorName != null">
+        operator_name,
+      </if>
+      <if test="opk != null">
+        opk,
+      </if>
+      <if test="orgCode != null">
+        org_code,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="signDate != null">
+        sign_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="needSign != null">
+        #{needSign,jdbcType=INTEGER},
+      </if>
+      <if test="oak != null">
+        #{oak,jdbcType=VARCHAR},
+      </if>
+      <if test="omk != null">
+        #{omk,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="opk != null">
+        #{opk,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null">
+        #{signDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PayChannel">
+    update pay_channel
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="enableFlag != null">
+        enable_flag = #{enableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="needSign != null">
+        need_sign = #{needSign,jdbcType=INTEGER},
+      </if>
+      <if test="oak != null">
+        oak = #{oak,jdbcType=VARCHAR},
+      </if>
+      <if test="omk != null">
+        omk = #{omk,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="opk != null">
+        opk = #{opk,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null">
+        sign_date = #{signDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PayChannel">
+    update pay_channel
+    set `security` = #{security,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      enable_flag = #{enableFlag,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      need_sign = #{needSign,jdbcType=INTEGER},
+      oak = #{oak,jdbcType=VARCHAR},
+      omk = #{omk,jdbcType=VARCHAR},
+      operator_name = #{operatorName,jdbcType=VARCHAR},
+      opk = #{opk,jdbcType=VARCHAR},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      port = #{port,jdbcType=VARCHAR},
+      sign_date = #{signDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

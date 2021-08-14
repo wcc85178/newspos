@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerOtherLoginDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerOtherLogin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="unionid" jdbcType="VARCHAR" property="unionid" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="headimgurl" jdbcType="VARCHAR" property="headimgurl" />
+    <result column="finger_id" jdbcType="VARCHAR" property="fingerId" />
+    <result column="finger_key" jdbcType="VARCHAR" property="fingerKey" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="apple_id" jdbcType="VARCHAR" property="appleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, openid, unionid, nickname, headimgurl, finger_id, finger_key, create_time, 
+    apple_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_other_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_other_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerOtherLogin">
+    insert into customer_other_login (id, customer_id, openid, 
+      unionid, nickname, headimgurl, 
+      finger_id, finger_key, create_time, 
+      apple_id)
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, 
+      #{unionid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR}, 
+      #{fingerId,jdbcType=VARCHAR}, #{fingerKey,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{appleId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerOtherLogin">
+    insert into customer_other_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="unionid != null">
+        unionid,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="headimgurl != null">
+        headimgurl,
+      </if>
+      <if test="fingerId != null">
+        finger_id,
+      </if>
+      <if test="fingerKey != null">
+        finger_key,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="appleId != null">
+        apple_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null">
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null">
+        #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerId != null">
+        #{fingerId,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerKey != null">
+        #{fingerKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appleId != null">
+        #{appleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerOtherLogin">
+    update customer_other_login
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null">
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null">
+        headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerId != null">
+        finger_id = #{fingerId,jdbcType=VARCHAR},
+      </if>
+      <if test="fingerKey != null">
+        finger_key = #{fingerKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appleId != null">
+        apple_id = #{appleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerOtherLogin">
+    update customer_other_login
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      openid = #{openid,jdbcType=VARCHAR},
+      unionid = #{unionid,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      finger_id = #{fingerId,jdbcType=VARCHAR},
+      finger_key = #{fingerKey,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      apple_id = #{appleId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

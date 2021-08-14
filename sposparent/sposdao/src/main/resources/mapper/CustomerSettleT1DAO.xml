@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerSettleT1DAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerSettleT1">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="bank_card_city" jdbcType="VARCHAR" property="bankCardCity" />
+    <result column="bank_card_code" jdbcType="VARCHAR" property="bankCardCode" />
+    <result column="bank_card_name" jdbcType="VARCHAR" property="bankCardName" />
+    <result column="bank_card_province" jdbcType="VARCHAR" property="bankCardProvince" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_sub_name" jdbcType="VARCHAR" property="bankSubName" />
+    <result column="clear_batch" jdbcType="VARCHAR" property="clearBatch" />
+    <result column="clear_date_str" jdbcType="VARCHAR" property="clearDateStr" />
+    <result column="clear_num" jdbcType="INTEGER" property="clearNum" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="customer_enable_flag" jdbcType="INTEGER" property="customerEnableFlag" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="man_name" jdbcType="VARCHAR" property="manName" />
+    <result column="man_tel" jdbcType="VARCHAR" property="manTel" />
+    <result column="settle_amount" jdbcType="DECIMAL" property="settleAmount" />
+    <result column="settle_flag" jdbcType="INTEGER" property="settleFlag" />
+    <result column="settle_time" jdbcType="BIGINT" property="settleTime" />
+    <result column="trans_amount" jdbcType="DECIMAL" property="transAmount" />
+    <result column="fare_fee" jdbcType="DECIMAL" property="fareFee" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, agent_id, bank_card_city, bank_card_code, bank_card_name, bank_card_province, 
+    bank_name, bank_sub_name, clear_batch, clear_date_str, clear_num, customer_code, 
+    customer_enable_flag, customer_id, customer_name, man_name, man_tel, settle_amount, 
+    settle_flag, settle_time, trans_amount, fare_fee
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_settle_t1
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_settle_t1
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerSettleT1">
+    insert into customer_settle_t1 (id, `security`, agent_id, 
+      bank_card_city, bank_card_code, bank_card_name, 
+      bank_card_province, bank_name, bank_sub_name, 
+      clear_batch, clear_date_str, clear_num, 
+      customer_code, customer_enable_flag, customer_id, 
+      customer_name, man_name, man_tel, 
+      settle_amount, settle_flag, settle_time, 
+      trans_amount, fare_fee)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{agentId,jdbcType=INTEGER}, 
+      #{bankCardCity,jdbcType=VARCHAR}, #{bankCardCode,jdbcType=VARCHAR}, #{bankCardName,jdbcType=VARCHAR}, 
+      #{bankCardProvince,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankSubName,jdbcType=VARCHAR}, 
+      #{clearBatch,jdbcType=VARCHAR}, #{clearDateStr,jdbcType=VARCHAR}, #{clearNum,jdbcType=INTEGER}, 
+      #{customerCode,jdbcType=VARCHAR}, #{customerEnableFlag,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{customerName,jdbcType=VARCHAR}, #{manName,jdbcType=VARCHAR}, #{manTel,jdbcType=VARCHAR}, 
+      #{settleAmount,jdbcType=DECIMAL}, #{settleFlag,jdbcType=INTEGER}, #{settleTime,jdbcType=BIGINT}, 
+      #{transAmount,jdbcType=DECIMAL}, #{fareFee,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerSettleT1">
+    insert into customer_settle_t1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city,
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code,
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name,
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name,
+      </if>
+      <if test="clearBatch != null">
+        clear_batch,
+      </if>
+      <if test="clearDateStr != null">
+        clear_date_str,
+      </if>
+      <if test="clearNum != null">
+        clear_num,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="customerEnableFlag != null">
+        customer_enable_flag,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="manName != null">
+        man_name,
+      </if>
+      <if test="manTel != null">
+        man_tel,
+      </if>
+      <if test="settleAmount != null">
+        settle_amount,
+      </if>
+      <if test="settleFlag != null">
+        settle_flag,
+      </if>
+      <if test="settleTime != null">
+        settle_time,
+      </if>
+      <if test="transAmount != null">
+        trans_amount,
+      </if>
+      <if test="fareFee != null">
+        fare_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="bankCardCity != null">
+        #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="clearBatch != null">
+        #{clearBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDateStr != null">
+        #{clearDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="clearNum != null">
+        #{clearNum,jdbcType=INTEGER},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEnableFlag != null">
+        #{customerEnableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="settleAmount != null">
+        #{settleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="settleFlag != null">
+        #{settleFlag,jdbcType=INTEGER},
+      </if>
+      <if test="settleTime != null">
+        #{settleTime,jdbcType=BIGINT},
+      </if>
+      <if test="transAmount != null">
+        #{transAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="fareFee != null">
+        #{fareFee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerSettleT1">
+    update customer_settle_t1
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="bankCardCity != null">
+        bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardCode != null">
+        bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null">
+        bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardProvince != null">
+        bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSubName != null">
+        bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      </if>
+      <if test="clearBatch != null">
+        clear_batch = #{clearBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDateStr != null">
+        clear_date_str = #{clearDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="clearNum != null">
+        clear_num = #{clearNum,jdbcType=INTEGER},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEnableFlag != null">
+        customer_enable_flag = #{customerEnableFlag,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="manName != null">
+        man_name = #{manName,jdbcType=VARCHAR},
+      </if>
+      <if test="manTel != null">
+        man_tel = #{manTel,jdbcType=VARCHAR},
+      </if>
+      <if test="settleAmount != null">
+        settle_amount = #{settleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="settleFlag != null">
+        settle_flag = #{settleFlag,jdbcType=INTEGER},
+      </if>
+      <if test="settleTime != null">
+        settle_time = #{settleTime,jdbcType=BIGINT},
+      </if>
+      <if test="transAmount != null">
+        trans_amount = #{transAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="fareFee != null">
+        fare_fee = #{fareFee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerSettleT1">
+    update customer_settle_t1
+    set `security` = #{security,jdbcType=VARCHAR},
+      agent_id = #{agentId,jdbcType=INTEGER},
+      bank_card_city = #{bankCardCity,jdbcType=VARCHAR},
+      bank_card_code = #{bankCardCode,jdbcType=VARCHAR},
+      bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      bank_card_province = #{bankCardProvince,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_sub_name = #{bankSubName,jdbcType=VARCHAR},
+      clear_batch = #{clearBatch,jdbcType=VARCHAR},
+      clear_date_str = #{clearDateStr,jdbcType=VARCHAR},
+      clear_num = #{clearNum,jdbcType=INTEGER},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      customer_enable_flag = #{customerEnableFlag,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      man_name = #{manName,jdbcType=VARCHAR},
+      man_tel = #{manTel,jdbcType=VARCHAR},
+      settle_amount = #{settleAmount,jdbcType=DECIMAL},
+      settle_flag = #{settleFlag,jdbcType=INTEGER},
+      settle_time = #{settleTime,jdbcType=BIGINT},
+      trans_amount = #{transAmount,jdbcType=DECIMAL},
+      fare_fee = #{fareFee,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

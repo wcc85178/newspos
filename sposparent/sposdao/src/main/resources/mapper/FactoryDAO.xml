@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.FactoryDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Factory">
+    <id column="factory_id" jdbcType="TINYINT" property="factoryId" />
+    <result column="appid" jdbcType="VARCHAR" property="appid" />
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+    <result column="factory_company_name" jdbcType="VARCHAR" property="factoryCompanyName" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="phone" jdbcType="BIGINT" property="phone" />
+    <result column="protect_key_index" jdbcType="CHAR" property="protectKeyIndex" />
+    <result column="protect_key" jdbcType="CHAR" property="protectKey" />
+    <result column="factory_section" jdbcType="VARCHAR" property="factorySection" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    factory_id, appid, factory_name, factory_company_name, contacts, phone, protect_key_index, 
+    protect_key, factory_section
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Byte" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from factory
+    where factory_id = #{factoryId,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte">
+    delete from factory
+    where factory_id = #{factoryId,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Factory">
+    insert into factory (factory_id, appid, factory_name, 
+      factory_company_name, contacts, phone, 
+      protect_key_index, protect_key, factory_section
+      )
+    values (#{factoryId,jdbcType=TINYINT}, #{appid,jdbcType=VARCHAR}, #{factoryName,jdbcType=VARCHAR}, 
+      #{factoryCompanyName,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{phone,jdbcType=BIGINT}, 
+      #{protectKeyIndex,jdbcType=CHAR}, #{protectKey,jdbcType=CHAR}, #{factorySection,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Factory">
+    insert into factory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="factoryId != null">
+        factory_id,
+      </if>
+      <if test="appid != null">
+        appid,
+      </if>
+      <if test="factoryName != null">
+        factory_name,
+      </if>
+      <if test="factoryCompanyName != null">
+        factory_company_name,
+      </if>
+      <if test="contacts != null">
+        contacts,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="protectKeyIndex != null">
+        protect_key_index,
+      </if>
+      <if test="protectKey != null">
+        protect_key,
+      </if>
+      <if test="factorySection != null">
+        factory_section,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="factoryId != null">
+        #{factoryId,jdbcType=TINYINT},
+      </if>
+      <if test="appid != null">
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryName != null">
+        #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryCompanyName != null">
+        #{factoryCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="protectKeyIndex != null">
+        #{protectKeyIndex,jdbcType=CHAR},
+      </if>
+      <if test="protectKey != null">
+        #{protectKey,jdbcType=CHAR},
+      </if>
+      <if test="factorySection != null">
+        #{factorySection,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Factory">
+    update factory
+    <set>
+      <if test="appid != null">
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryName != null">
+        factory_name = #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryCompanyName != null">
+        factory_company_name = #{factoryCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="protectKeyIndex != null">
+        protect_key_index = #{protectKeyIndex,jdbcType=CHAR},
+      </if>
+      <if test="protectKey != null">
+        protect_key = #{protectKey,jdbcType=CHAR},
+      </if>
+      <if test="factorySection != null">
+        factory_section = #{factorySection,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where factory_id = #{factoryId,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Factory">
+    update factory
+    set appid = #{appid,jdbcType=VARCHAR},
+      factory_name = #{factoryName,jdbcType=VARCHAR},
+      factory_company_name = #{factoryCompanyName,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=BIGINT},
+      protect_key_index = #{protectKeyIndex,jdbcType=CHAR},
+      protect_key = #{protectKey,jdbcType=CHAR},
+      factory_section = #{factorySection,jdbcType=VARCHAR}
+    where factory_id = #{factoryId,jdbcType=TINYINT}
+  </update>
+</mapper>

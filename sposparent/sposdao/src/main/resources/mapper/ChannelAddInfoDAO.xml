@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.ChannelAddInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.ChannelAddInfo">
+    <id column="chAddId" jdbcType="INTEGER" property="chaddid" />
+    <result column="chName" jdbcType="VARCHAR" property="chname" />
+    <result column="chHost" jdbcType="CHAR" property="chhost" />
+    <result column="chPort" jdbcType="CHAR" property="chport" />
+    <result column="chTPDU" jdbcType="CHAR" property="chtpdu" />
+    <result column="chHeader" jdbcType="CHAR" property="chheader" />
+    <result column="chOrgNo" jdbcType="CHAR" property="chorgno" />
+    <result column="chOrgKey" jdbcType="CHAR" property="chorgkey" />
+    <result column="chStat" jdbcType="SMALLINT" property="chstat" />
+    <result column="openDate" jdbcType="TIMESTAMP" property="opendate" />
+    <result column="lastUpdTs" jdbcType="TIMESTAMP" property="lastupdts" />
+    <result column="chShortName" jdbcType="VARCHAR" property="chshortname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    chAddId, chName, chHost, chPort, chTPDU, chHeader, chOrgNo, chOrgKey, chStat, openDate, 
+    lastUpdTs, chShortName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from channel_add_info
+    where chAddId = #{chaddid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from channel_add_info
+    where chAddId = #{chaddid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.ChannelAddInfo">
+    insert into channel_add_info (chAddId, chName, chHost, 
+      chPort, chTPDU, chHeader, chOrgNo, 
+      chOrgKey, chStat, openDate, 
+      lastUpdTs, chShortName)
+    values (#{chaddid,jdbcType=INTEGER}, #{chname,jdbcType=VARCHAR}, #{chhost,jdbcType=CHAR}, 
+      #{chport,jdbcType=CHAR}, #{chtpdu,jdbcType=CHAR}, #{chheader,jdbcType=CHAR}, #{chorgno,jdbcType=CHAR}, 
+      #{chorgkey,jdbcType=CHAR}, #{chstat,jdbcType=SMALLINT}, #{opendate,jdbcType=TIMESTAMP}, 
+      #{lastupdts,jdbcType=TIMESTAMP}, #{chshortname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.ChannelAddInfo">
+    insert into channel_add_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chaddid != null">
+        chAddId,
+      </if>
+      <if test="chname != null">
+        chName,
+      </if>
+      <if test="chhost != null">
+        chHost,
+      </if>
+      <if test="chport != null">
+        chPort,
+      </if>
+      <if test="chtpdu != null">
+        chTPDU,
+      </if>
+      <if test="chheader != null">
+        chHeader,
+      </if>
+      <if test="chorgno != null">
+        chOrgNo,
+      </if>
+      <if test="chorgkey != null">
+        chOrgKey,
+      </if>
+      <if test="chstat != null">
+        chStat,
+      </if>
+      <if test="opendate != null">
+        openDate,
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs,
+      </if>
+      <if test="chshortname != null">
+        chShortName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chaddid != null">
+        #{chaddid,jdbcType=INTEGER},
+      </if>
+      <if test="chname != null">
+        #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="chhost != null">
+        #{chhost,jdbcType=CHAR},
+      </if>
+      <if test="chport != null">
+        #{chport,jdbcType=CHAR},
+      </if>
+      <if test="chtpdu != null">
+        #{chtpdu,jdbcType=CHAR},
+      </if>
+      <if test="chheader != null">
+        #{chheader,jdbcType=CHAR},
+      </if>
+      <if test="chorgno != null">
+        #{chorgno,jdbcType=CHAR},
+      </if>
+      <if test="chorgkey != null">
+        #{chorgkey,jdbcType=CHAR},
+      </if>
+      <if test="chstat != null">
+        #{chstat,jdbcType=SMALLINT},
+      </if>
+      <if test="opendate != null">
+        #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdts != null">
+        #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chshortname != null">
+        #{chshortname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.ChannelAddInfo">
+    update channel_add_info
+    <set>
+      <if test="chname != null">
+        chName = #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="chhost != null">
+        chHost = #{chhost,jdbcType=CHAR},
+      </if>
+      <if test="chport != null">
+        chPort = #{chport,jdbcType=CHAR},
+      </if>
+      <if test="chtpdu != null">
+        chTPDU = #{chtpdu,jdbcType=CHAR},
+      </if>
+      <if test="chheader != null">
+        chHeader = #{chheader,jdbcType=CHAR},
+      </if>
+      <if test="chorgno != null">
+        chOrgNo = #{chorgno,jdbcType=CHAR},
+      </if>
+      <if test="chorgkey != null">
+        chOrgKey = #{chorgkey,jdbcType=CHAR},
+      </if>
+      <if test="chstat != null">
+        chStat = #{chstat,jdbcType=SMALLINT},
+      </if>
+      <if test="opendate != null">
+        openDate = #{opendate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdts != null">
+        lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chshortname != null">
+        chShortName = #{chshortname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where chAddId = #{chaddid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.ChannelAddInfo">
+    update channel_add_info
+    set chName = #{chname,jdbcType=VARCHAR},
+      chHost = #{chhost,jdbcType=CHAR},
+      chPort = #{chport,jdbcType=CHAR},
+      chTPDU = #{chtpdu,jdbcType=CHAR},
+      chHeader = #{chheader,jdbcType=CHAR},
+      chOrgNo = #{chorgno,jdbcType=CHAR},
+      chOrgKey = #{chorgkey,jdbcType=CHAR},
+      chStat = #{chstat,jdbcType=SMALLINT},
+      openDate = #{opendate,jdbcType=TIMESTAMP},
+      lastUpdTs = #{lastupdts,jdbcType=TIMESTAMP},
+      chShortName = #{chshortname,jdbcType=VARCHAR}
+    where chAddId = #{chaddid,jdbcType=INTEGER}
+  </update>
+</mapper>

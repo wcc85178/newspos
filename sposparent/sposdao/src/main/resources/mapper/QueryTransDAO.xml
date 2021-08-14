@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.QueryTransDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.QueryTrans">
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="out_account_no" jdbcType="VARCHAR" property="outAccountNo" />
+    <result column="body" jdbcType="CHAR" property="body" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="pos_trans_datetime" jdbcType="VARCHAR" property="posTransDatetime" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="pay_channel_result_code" jdbcType="VARCHAR" property="payChannelResultCode" />
+    <result column="mcc_rate" jdbcType="VARCHAR" property="mccRate" />
+    <result column="withdraw_fee" jdbcType="DECIMAL" property="withdrawFee" />
+    <result column="posp_fee" jdbcType="VARCHAR" property="pospFee" />
+    <result column="customer_amount" jdbcType="DECIMAL" property="customerAmount" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.QueryTrans">
+    insert into query_trans (customer_code, customer_name, out_account_no, 
+      body, trade_type, pos_trans_datetime, 
+      amount, pay_channel_result_code, mcc_rate, 
+      withdraw_fee, posp_fee, customer_amount, 
+      agent_id)
+    values (#{customerCode,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, #{outAccountNo,jdbcType=VARCHAR}, 
+      #{body,jdbcType=CHAR}, #{tradeType,jdbcType=VARCHAR}, #{posTransDatetime,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{payChannelResultCode,jdbcType=VARCHAR}, #{mccRate,jdbcType=VARCHAR}, 
+      #{withdrawFee,jdbcType=DECIMAL}, #{pospFee,jdbcType=VARCHAR}, #{customerAmount,jdbcType=DECIMAL}, 
+      #{agentId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.QueryTrans">
+    insert into query_trans
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="outAccountNo != null">
+        out_account_no,
+      </if>
+      <if test="body != null">
+        body,
+      </if>
+      <if test="tradeType != null">
+        trade_type,
+      </if>
+      <if test="posTransDatetime != null">
+        pos_trans_datetime,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payChannelResultCode != null">
+        pay_channel_result_code,
+      </if>
+      <if test="mccRate != null">
+        mcc_rate,
+      </if>
+      <if test="withdrawFee != null">
+        withdraw_fee,
+      </if>
+      <if test="pospFee != null">
+        posp_fee,
+      </if>
+      <if test="customerAmount != null">
+        customer_amount,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="outAccountNo != null">
+        #{outAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="body != null">
+        #{body,jdbcType=CHAR},
+      </if>
+      <if test="tradeType != null">
+        #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="posTransDatetime != null">
+        #{posTransDatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payChannelResultCode != null">
+        #{payChannelResultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mccRate != null">
+        #{mccRate,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawFee != null">
+        #{withdrawFee,jdbcType=DECIMAL},
+      </if>
+      <if test="pospFee != null">
+        #{pospFee,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAmount != null">
+        #{customerAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AppConfigDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.AppConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_id" jdbcType="CHAR" property="appId" />
+    <result column="module_code" jdbcType="VARCHAR" property="moduleCode" />
+    <result column="module_type" jdbcType="VARCHAR" property="moduleType" />
+    <result column="module_name" jdbcType="VARCHAR" property="moduleName" />
+    <result column="module_url" jdbcType="VARCHAR" property="moduleUrl" />
+    <result column="module_img_url" jdbcType="VARCHAR" property="moduleImgUrl" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="module_value" jdbcType="SMALLINT" property="moduleValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, app_id, module_code, module_type, module_name, module_url, module_img_url, descr, 
+    create_time, tel, module_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from app_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.AppConfig">
+    insert into app_config (id, app_id, module_code, 
+      module_type, module_name, module_url, 
+      module_img_url, descr, create_time, 
+      tel, module_value)
+    values (#{id,jdbcType=INTEGER}, #{appId,jdbcType=CHAR}, #{moduleCode,jdbcType=VARCHAR}, 
+      #{moduleType,jdbcType=VARCHAR}, #{moduleName,jdbcType=VARCHAR}, #{moduleUrl,jdbcType=VARCHAR}, 
+      #{moduleImgUrl,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{tel,jdbcType=VARCHAR}, #{moduleValue,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.AppConfig">
+    insert into app_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="moduleCode != null">
+        module_code,
+      </if>
+      <if test="moduleType != null">
+        module_type,
+      </if>
+      <if test="moduleName != null">
+        module_name,
+      </if>
+      <if test="moduleUrl != null">
+        module_url,
+      </if>
+      <if test="moduleImgUrl != null">
+        module_img_url,
+      </if>
+      <if test="descr != null">
+        descr,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="moduleValue != null">
+        module_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=CHAR},
+      </if>
+      <if test="moduleCode != null">
+        #{moduleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleType != null">
+        #{moduleType,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleName != null">
+        #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleUrl != null">
+        #{moduleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleImgUrl != null">
+        #{moduleImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleValue != null">
+        #{moduleValue,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.AppConfig">
+    update app_config
+    <set>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=CHAR},
+      </if>
+      <if test="moduleCode != null">
+        module_code = #{moduleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleType != null">
+        module_type = #{moduleType,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleName != null">
+        module_name = #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleUrl != null">
+        module_url = #{moduleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleImgUrl != null">
+        module_img_url = #{moduleImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleValue != null">
+        module_value = #{moduleValue,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.AppConfig">
+    update app_config
+    set app_id = #{appId,jdbcType=CHAR},
+      module_code = #{moduleCode,jdbcType=VARCHAR},
+      module_type = #{moduleType,jdbcType=VARCHAR},
+      module_name = #{moduleName,jdbcType=VARCHAR},
+      module_url = #{moduleUrl,jdbcType=VARCHAR},
+      module_img_url = #{moduleImgUrl,jdbcType=VARCHAR},
+      descr = #{descr,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      tel = #{tel,jdbcType=VARCHAR},
+      module_value = #{moduleValue,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

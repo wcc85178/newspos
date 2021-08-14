@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AgenttwoconfigDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.Agenttwoconfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="fengding_fenrun" jdbcType="VARCHAR" property="fengdingFenrun" />
+    <result column="t1fenrun1" jdbcType="VARCHAR" property="t1fenrun1" />
+    <result column="agent_draw_fee" jdbcType="VARCHAR" property="agentDrawFee" />
+    <result column="counter_fee" jdbcType="VARCHAR" property="counterFee" />
+    <result column="t1fenrun_mark" jdbcType="VARCHAR" property="t1fenrunMark" />
+    <result column="t0fenrun_mark" jdbcType="VARCHAR" property="t0fenrunMark" />
+    <result column="t0fenrun2" jdbcType="VARCHAR" property="t0fenrun2" />
+    <result column="t1fenrun2" jdbcType="VARCHAR" property="t1fenrun2" />
+    <result column="readonly" jdbcType="VARCHAR" property="readonly" />
+    <result column="init_customer_mcc_rate" jdbcType="VARCHAR" property="initCustomerMccRate" />
+    <result column="change_mail" jdbcType="VARCHAR" property="changeMail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `type`, ROLE_ID, mark, fengding_fenrun, t1fenrun1, agent_draw_fee, counter_fee, 
+    t1fenrun_mark, t0fenrun_mark, t0fenrun2, t1fenrun2, readonly, init_customer_mcc_rate, 
+    change_mail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from agenttwoconfig
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from agenttwoconfig
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.Agenttwoconfig">
+    insert into agenttwoconfig (id, `type`, ROLE_ID, 
+      mark, fengding_fenrun, t1fenrun1, 
+      agent_draw_fee, counter_fee, t1fenrun_mark, 
+      t0fenrun_mark, t0fenrun2, t1fenrun2, 
+      readonly, init_customer_mcc_rate, change_mail
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}, 
+      #{mark,jdbcType=VARCHAR}, #{fengdingFenrun,jdbcType=VARCHAR}, #{t1fenrun1,jdbcType=VARCHAR}, 
+      #{agentDrawFee,jdbcType=VARCHAR}, #{counterFee,jdbcType=VARCHAR}, #{t1fenrunMark,jdbcType=VARCHAR}, 
+      #{t0fenrunMark,jdbcType=VARCHAR}, #{t0fenrun2,jdbcType=VARCHAR}, #{t1fenrun2,jdbcType=VARCHAR}, 
+      #{readonly,jdbcType=VARCHAR}, #{initCustomerMccRate,jdbcType=VARCHAR}, #{changeMail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.Agenttwoconfig">
+    insert into agenttwoconfig
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="fengdingFenrun != null">
+        fengding_fenrun,
+      </if>
+      <if test="t1fenrun1 != null">
+        t1fenrun1,
+      </if>
+      <if test="agentDrawFee != null">
+        agent_draw_fee,
+      </if>
+      <if test="counterFee != null">
+        counter_fee,
+      </if>
+      <if test="t1fenrunMark != null">
+        t1fenrun_mark,
+      </if>
+      <if test="t0fenrunMark != null">
+        t0fenrun_mark,
+      </if>
+      <if test="t0fenrun2 != null">
+        t0fenrun2,
+      </if>
+      <if test="t1fenrun2 != null">
+        t1fenrun2,
+      </if>
+      <if test="readonly != null">
+        readonly,
+      </if>
+      <if test="initCustomerMccRate != null">
+        init_customer_mcc_rate,
+      </if>
+      <if test="changeMail != null">
+        change_mail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="fengdingFenrun != null">
+        #{fengdingFenrun,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun1 != null">
+        #{t1fenrun1,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDrawFee != null">
+        #{agentDrawFee,jdbcType=VARCHAR},
+      </if>
+      <if test="counterFee != null">
+        #{counterFee,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrunMark != null">
+        #{t1fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrunMark != null">
+        #{t0fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun2 != null">
+        #{t0fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun2 != null">
+        #{t1fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="readonly != null">
+        #{readonly,jdbcType=VARCHAR},
+      </if>
+      <if test="initCustomerMccRate != null">
+        #{initCustomerMccRate,jdbcType=VARCHAR},
+      </if>
+      <if test="changeMail != null">
+        #{changeMail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.Agenttwoconfig">
+    update agenttwoconfig
+    <set>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="fengdingFenrun != null">
+        fengding_fenrun = #{fengdingFenrun,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun1 != null">
+        t1fenrun1 = #{t1fenrun1,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDrawFee != null">
+        agent_draw_fee = #{agentDrawFee,jdbcType=VARCHAR},
+      </if>
+      <if test="counterFee != null">
+        counter_fee = #{counterFee,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrunMark != null">
+        t1fenrun_mark = #{t1fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrunMark != null">
+        t0fenrun_mark = #{t0fenrunMark,jdbcType=VARCHAR},
+      </if>
+      <if test="t0fenrun2 != null">
+        t0fenrun2 = #{t0fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="t1fenrun2 != null">
+        t1fenrun2 = #{t1fenrun2,jdbcType=VARCHAR},
+      </if>
+      <if test="readonly != null">
+        readonly = #{readonly,jdbcType=VARCHAR},
+      </if>
+      <if test="initCustomerMccRate != null">
+        init_customer_mcc_rate = #{initCustomerMccRate,jdbcType=VARCHAR},
+      </if>
+      <if test="changeMail != null">
+        change_mail = #{changeMail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.Agenttwoconfig">
+    update agenttwoconfig
+    set `type` = #{type,jdbcType=INTEGER},
+      ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      fengding_fenrun = #{fengdingFenrun,jdbcType=VARCHAR},
+      t1fenrun1 = #{t1fenrun1,jdbcType=VARCHAR},
+      agent_draw_fee = #{agentDrawFee,jdbcType=VARCHAR},
+      counter_fee = #{counterFee,jdbcType=VARCHAR},
+      t1fenrun_mark = #{t1fenrunMark,jdbcType=VARCHAR},
+      t0fenrun_mark = #{t0fenrunMark,jdbcType=VARCHAR},
+      t0fenrun2 = #{t0fenrun2,jdbcType=VARCHAR},
+      t1fenrun2 = #{t1fenrun2,jdbcType=VARCHAR},
+      readonly = #{readonly,jdbcType=VARCHAR},
+      init_customer_mcc_rate = #{initCustomerMccRate,jdbcType=VARCHAR},
+      change_mail = #{changeMail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

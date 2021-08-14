@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CpFunButtonMappingButtonConfigDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CpFunButtonMappingButtonConfig">
+    <result column="cp_fun_button_id" jdbcType="INTEGER" property="cpFunButtonId" />
+    <result column="cp_fun_button_config_id" jdbcType="INTEGER" property="cpFunButtonConfigId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CpFunButtonMappingButtonConfig">
+    insert into cp_fun_button_mapping_button_config (cp_fun_button_id, cp_fun_button_config_id
+      )
+    values (#{cpFunButtonId,jdbcType=INTEGER}, #{cpFunButtonConfigId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CpFunButtonMappingButtonConfig">
+    insert into cp_fun_button_mapping_button_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cpFunButtonId != null">
+        cp_fun_button_id,
+      </if>
+      <if test="cpFunButtonConfigId != null">
+        cp_fun_button_config_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cpFunButtonId != null">
+        #{cpFunButtonId,jdbcType=INTEGER},
+      </if>
+      <if test="cpFunButtonConfigId != null">
+        #{cpFunButtonConfigId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

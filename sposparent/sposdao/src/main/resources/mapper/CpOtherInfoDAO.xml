@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CpOtherInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CpOtherInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="bottom_banner" jdbcType="VARCHAR" property="bottomBanner" />
+    <result column="head_banner" jdbcType="VARCHAR" property="headBanner" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, bottom_banner, head_banner
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_other_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cp_other_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CpOtherInfo">
+    insert into cp_other_info (id, `security`, bottom_banner, 
+      head_banner)
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{bottomBanner,jdbcType=VARCHAR}, 
+      #{headBanner,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CpOtherInfo">
+    insert into cp_other_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="bottomBanner != null">
+        bottom_banner,
+      </if>
+      <if test="headBanner != null">
+        head_banner,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="bottomBanner != null">
+        #{bottomBanner,jdbcType=VARCHAR},
+      </if>
+      <if test="headBanner != null">
+        #{headBanner,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CpOtherInfo">
+    update cp_other_info
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="bottomBanner != null">
+        bottom_banner = #{bottomBanner,jdbcType=VARCHAR},
+      </if>
+      <if test="headBanner != null">
+        head_banner = #{headBanner,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CpOtherInfo">
+    update cp_other_info
+    set `security` = #{security,jdbcType=VARCHAR},
+      bottom_banner = #{bottomBanner,jdbcType=VARCHAR},
+      head_banner = #{headBanner,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.AgentGreenBalanceRunningDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.AgentGreenBalanceRunning">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="clear_batch" jdbcType="VARCHAR" property="clearBatch" />
+    <result column="clear_date_str" jdbcType="VARCHAR" property="clearDateStr" />
+    <result column="clear_task_id" jdbcType="INTEGER" property="clearTaskId" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, agent_id, amount, clear_batch, clear_date_str, clear_task_id, create_time, 
+    mark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from agent_green_balance_running
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from agent_green_balance_running
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.AgentGreenBalanceRunning">
+    insert into agent_green_balance_running (id, `security`, agent_id, 
+      amount, clear_batch, clear_date_str, 
+      clear_task_id, create_time, mark
+      )
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{agentId,jdbcType=INTEGER}, 
+      #{amount,jdbcType=DECIMAL}, #{clearBatch,jdbcType=VARCHAR}, #{clearDateStr,jdbcType=VARCHAR}, 
+      #{clearTaskId,jdbcType=INTEGER}, #{createTime,jdbcType=BIGINT}, #{mark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.AgentGreenBalanceRunning">
+    insert into agent_green_balance_running
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="agentId != null">
+        agent_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="clearBatch != null">
+        clear_batch,
+      </if>
+      <if test="clearDateStr != null">
+        clear_date_str,
+      </if>
+      <if test="clearTaskId != null">
+        clear_task_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="clearBatch != null">
+        #{clearBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDateStr != null">
+        #{clearDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="clearTaskId != null">
+        #{clearTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.AgentGreenBalanceRunning">
+    update agent_green_balance_running
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="agentId != null">
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="clearBatch != null">
+        clear_batch = #{clearBatch,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDateStr != null">
+        clear_date_str = #{clearDateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="clearTaskId != null">
+        clear_task_id = #{clearTaskId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.AgentGreenBalanceRunning">
+    update agent_green_balance_running
+    set `security` = #{security,jdbcType=VARCHAR},
+      agent_id = #{agentId,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      clear_batch = #{clearBatch,jdbcType=VARCHAR},
+      clear_date_str = #{clearDateStr,jdbcType=VARCHAR},
+      clear_task_id = #{clearTaskId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=BIGINT},
+      mark = #{mark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

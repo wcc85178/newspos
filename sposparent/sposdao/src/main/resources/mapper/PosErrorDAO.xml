@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosErrorDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosError">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="ksn" jdbcType="VARCHAR" property="ksn" />
+    <result column="error" jdbcType="VARCHAR" property="error" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="apptype" jdbcType="VARCHAR" property="apptype" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="mobileversion" jdbcType="VARCHAR" property="mobileversion" />
+    <result column="section_id" jdbcType="VARCHAR" property="sectionId" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+    <result column="remarkjson" jdbcType="VARCHAR" property="remarkjson" />
+    <result column="app_down_platform" jdbcType="VARCHAR" property="appDownPlatform" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, ksn, error, tel, apptype, version, mobileversion, section_id, 
+    model_name, factory_name, remarkjson, app_down_platform, app_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_error
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_error
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosError">
+    insert into pos_error (id, create_time, update_time, 
+      ksn, error, tel, apptype, 
+      version, mobileversion, section_id, 
+      model_name, factory_name, remarkjson, 
+      app_down_platform, app_id)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{ksn,jdbcType=VARCHAR}, #{error,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{apptype,jdbcType=VARCHAR}, 
+      #{version,jdbcType=VARCHAR}, #{mobileversion,jdbcType=VARCHAR}, #{sectionId,jdbcType=VARCHAR}, 
+      #{modelName,jdbcType=VARCHAR}, #{factoryName,jdbcType=VARCHAR}, #{remarkjson,jdbcType=VARCHAR}, 
+      #{appDownPlatform,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosError">
+    insert into pos_error
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="ksn != null">
+        ksn,
+      </if>
+      <if test="error != null">
+        error,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="apptype != null">
+        apptype,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="mobileversion != null">
+        mobileversion,
+      </if>
+      <if test="sectionId != null">
+        section_id,
+      </if>
+      <if test="modelName != null">
+        model_name,
+      </if>
+      <if test="factoryName != null">
+        factory_name,
+      </if>
+      <if test="remarkjson != null">
+        remarkjson,
+      </if>
+      <if test="appDownPlatform != null">
+        app_down_platform,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ksn != null">
+        #{ksn,jdbcType=VARCHAR},
+      </if>
+      <if test="error != null">
+        #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="apptype != null">
+        #{apptype,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileversion != null">
+        #{mobileversion,jdbcType=VARCHAR},
+      </if>
+      <if test="sectionId != null">
+        #{sectionId,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null">
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryName != null">
+        #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkjson != null">
+        #{remarkjson,jdbcType=VARCHAR},
+      </if>
+      <if test="appDownPlatform != null">
+        #{appDownPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosError">
+    update pos_error
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ksn != null">
+        ksn = #{ksn,jdbcType=VARCHAR},
+      </if>
+      <if test="error != null">
+        error = #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="apptype != null">
+        apptype = #{apptype,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileversion != null">
+        mobileversion = #{mobileversion,jdbcType=VARCHAR},
+      </if>
+      <if test="sectionId != null">
+        section_id = #{sectionId,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null">
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryName != null">
+        factory_name = #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkjson != null">
+        remarkjson = #{remarkjson,jdbcType=VARCHAR},
+      </if>
+      <if test="appDownPlatform != null">
+        app_down_platform = #{appDownPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosError">
+    update pos_error
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ksn = #{ksn,jdbcType=VARCHAR},
+      error = #{error,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      apptype = #{apptype,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      mobileversion = #{mobileversion,jdbcType=VARCHAR},
+      section_id = #{sectionId,jdbcType=VARCHAR},
+      model_name = #{modelName,jdbcType=VARCHAR},
+      factory_name = #{factoryName,jdbcType=VARCHAR},
+      remarkjson = #{remarkjson,jdbcType=VARCHAR},
+      app_down_platform = #{appDownPlatform,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

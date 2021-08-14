@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MerchantSettleInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MerchantSettleInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="acc_name" jdbcType="VARCHAR" property="accName" />
+    <result column="acc_type" jdbcType="VARCHAR" property="accType" />
+    <result column="acc_area" jdbcType="VARCHAR" property="accArea" />
+    <result column="acc_legal_code_type" jdbcType="VARCHAR" property="accLegalCodeType" />
+    <result column="acc_legal_code" jdbcType="VARCHAR" property="accLegalCode" />
+    <result column="acc_phone" jdbcType="VARCHAR" property="accPhone" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="sub_bank_name" jdbcType="VARCHAR" property="subBankName" />
+    <result column="acc_legal_code_valid_start" jdbcType="VARCHAR" property="accLegalCodeValidStart" />
+    <result column="acc_legal_code_valid_end" jdbcType="VARCHAR" property="accLegalCodeValidEnd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mer, bank_name, bank_code, account, acc_name, acc_type, acc_area, acc_legal_code_type, 
+    acc_legal_code, acc_phone, create_time, update_time, sub_bank_name, acc_legal_code_valid_start, 
+    acc_legal_code_valid_end
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_settle_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from merchant_settle_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MerchantSettleInfo">
+    insert into merchant_settle_info (id, mer, bank_name, 
+      bank_code, account, acc_name, 
+      acc_type, acc_area, acc_legal_code_type, 
+      acc_legal_code, acc_phone, create_time, 
+      update_time, sub_bank_name, acc_legal_code_valid_start, 
+      acc_legal_code_valid_end)
+    values (#{id,jdbcType=INTEGER}, #{mer,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{bankCode,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{accName,jdbcType=VARCHAR}, 
+      #{accType,jdbcType=VARCHAR}, #{accArea,jdbcType=VARCHAR}, #{accLegalCodeType,jdbcType=VARCHAR}, 
+      #{accLegalCode,jdbcType=VARCHAR}, #{accPhone,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{subBankName,jdbcType=VARCHAR}, #{accLegalCodeValidStart,jdbcType=VARCHAR}, 
+      #{accLegalCodeValidEnd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MerchantSettleInfo">
+    insert into merchant_settle_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankCode != null">
+        bank_code,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="accName != null">
+        acc_name,
+      </if>
+      <if test="accType != null">
+        acc_type,
+      </if>
+      <if test="accArea != null">
+        acc_area,
+      </if>
+      <if test="accLegalCodeType != null">
+        acc_legal_code_type,
+      </if>
+      <if test="accLegalCode != null">
+        acc_legal_code,
+      </if>
+      <if test="accPhone != null">
+        acc_phone,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="subBankName != null">
+        sub_bank_name,
+      </if>
+      <if test="accLegalCodeValidStart != null">
+        acc_legal_code_valid_start,
+      </if>
+      <if test="accLegalCodeValidEnd != null">
+        acc_legal_code_valid_end,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accName != null">
+        #{accName,jdbcType=VARCHAR},
+      </if>
+      <if test="accType != null">
+        #{accType,jdbcType=VARCHAR},
+      </if>
+      <if test="accArea != null">
+        #{accArea,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCodeType != null">
+        #{accLegalCodeType,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCode != null">
+        #{accLegalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="accPhone != null">
+        #{accPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subBankName != null">
+        #{subBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCodeValidStart != null">
+        #{accLegalCodeValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCodeValidEnd != null">
+        #{accLegalCodeValidEnd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MerchantSettleInfo">
+    update merchant_settle_info
+    <set>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accName != null">
+        acc_name = #{accName,jdbcType=VARCHAR},
+      </if>
+      <if test="accType != null">
+        acc_type = #{accType,jdbcType=VARCHAR},
+      </if>
+      <if test="accArea != null">
+        acc_area = #{accArea,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCodeType != null">
+        acc_legal_code_type = #{accLegalCodeType,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCode != null">
+        acc_legal_code = #{accLegalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="accPhone != null">
+        acc_phone = #{accPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subBankName != null">
+        sub_bank_name = #{subBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCodeValidStart != null">
+        acc_legal_code_valid_start = #{accLegalCodeValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="accLegalCodeValidEnd != null">
+        acc_legal_code_valid_end = #{accLegalCodeValidEnd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MerchantSettleInfo">
+    update merchant_settle_info
+    set mer = #{mer,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_code = #{bankCode,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      acc_name = #{accName,jdbcType=VARCHAR},
+      acc_type = #{accType,jdbcType=VARCHAR},
+      acc_area = #{accArea,jdbcType=VARCHAR},
+      acc_legal_code_type = #{accLegalCodeType,jdbcType=VARCHAR},
+      acc_legal_code = #{accLegalCode,jdbcType=VARCHAR},
+      acc_phone = #{accPhone,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      sub_bank_name = #{subBankName,jdbcType=VARCHAR},
+      acc_legal_code_valid_start = #{accLegalCodeValidStart,jdbcType=VARCHAR},
+      acc_legal_code_valid_end = #{accLegalCodeValidEnd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

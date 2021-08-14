@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MqReceiveAddDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MqReceiveAdd">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="field11" jdbcType="VARCHAR" property="field11" />
+    <result column="queueKey" jdbcType="VARCHAR" property="queuekey" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="reflag" jdbcType="SMALLINT" property="reflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, num, content, field11, queueKey, `time`, reflag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mq_receive_add
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mq_receive_add
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MqReceiveAdd">
+    insert into mq_receive_add (id, num, content, 
+      field11, queueKey, `time`, 
+      reflag)
+    values (#{id,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{field11,jdbcType=VARCHAR}, #{queuekey,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{reflag,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MqReceiveAdd">
+    insert into mq_receive_add
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="field11 != null">
+        field11,
+      </if>
+      <if test="queuekey != null">
+        queueKey,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+      <if test="reflag != null">
+        reflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="field11 != null">
+        #{field11,jdbcType=VARCHAR},
+      </if>
+      <if test="queuekey != null">
+        #{queuekey,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reflag != null">
+        #{reflag,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MqReceiveAdd">
+    update mq_receive_add
+    <set>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="field11 != null">
+        field11 = #{field11,jdbcType=VARCHAR},
+      </if>
+      <if test="queuekey != null">
+        queueKey = #{queuekey,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reflag != null">
+        reflag = #{reflag,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MqReceiveAdd">
+    update mq_receive_add
+    set num = #{num,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      field11 = #{field11,jdbcType=VARCHAR},
+      queueKey = #{queuekey,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=TIMESTAMP},
+      reflag = #{reflag,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.MerchantLicInfoDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.MerchantLicInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mer" jdbcType="VARCHAR" property="mer" />
+    <result column="mer_mode" jdbcType="VARCHAR" property="merMode" />
+    <result column="mer_lic" jdbcType="VARCHAR" property="merLic" />
+    <result column="lic_valid_start" jdbcType="VARCHAR" property="licValidStart" />
+    <result column="lic_valid_end" jdbcType="VARCHAR" property="licValidEnd" />
+    <result column="lic_name" jdbcType="VARCHAR" property="licName" />
+    <result column="busin_scope" jdbcType="VARCHAR" property="businScope" />
+    <result column="capital" jdbcType="VARCHAR" property="capital" />
+    <result column="capital_currency" jdbcType="VARCHAR" property="capitalCurrency" />
+    <result column="lic_area_code" jdbcType="VARCHAR" property="licAreaCode" />
+    <result column="lic_area" jdbcType="VARCHAR" property="licArea" />
+    <result column="lic_addr" jdbcType="VARCHAR" property="licAddr" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="mer_legal" jdbcType="VARCHAR" property="merLegal" />
+    <result column="legal_type" jdbcType="VARCHAR" property="legalType" />
+    <result column="legal_code" jdbcType="VARCHAR" property="legalCode" />
+    <result column="legal_valid_start" jdbcType="VARCHAR" property="legalValidStart" />
+    <result column="legal_valid_end" jdbcType="VARCHAR" property="legalValidEnd" />
+    <result column="legal_phone" jdbcType="VARCHAR" property="legalPhone" />
+    <result column="legal_mobile" jdbcType="VARCHAR" property="legalMobile" />
+    <result column="mcc_main_category" jdbcType="VARCHAR" property="mccMainCategory" />
+    <result column="mcc_sub_category" jdbcType="VARCHAR" property="mccSubCategory" />
+    <result column="mcc_sub_code" jdbcType="VARCHAR" property="mccSubCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mer, mer_mode, mer_lic, lic_valid_start, lic_valid_end, lic_name, busin_scope, 
+    capital, capital_currency, lic_area_code, lic_area, lic_addr, create_time, update_time, 
+    mer_legal, legal_type, legal_code, legal_valid_start, legal_valid_end, legal_phone, 
+    legal_mobile, mcc_main_category, mcc_sub_category, mcc_sub_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_lic_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from merchant_lic_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.MerchantLicInfo">
+    insert into merchant_lic_info (id, mer, mer_mode, 
+      mer_lic, lic_valid_start, lic_valid_end, 
+      lic_name, busin_scope, capital, 
+      capital_currency, lic_area_code, lic_area, 
+      lic_addr, create_time, update_time, 
+      mer_legal, legal_type, legal_code, 
+      legal_valid_start, legal_valid_end, legal_phone, 
+      legal_mobile, mcc_main_category, mcc_sub_category, 
+      mcc_sub_code)
+    values (#{id,jdbcType=INTEGER}, #{mer,jdbcType=VARCHAR}, #{merMode,jdbcType=VARCHAR}, 
+      #{merLic,jdbcType=VARCHAR}, #{licValidStart,jdbcType=VARCHAR}, #{licValidEnd,jdbcType=VARCHAR}, 
+      #{licName,jdbcType=VARCHAR}, #{businScope,jdbcType=VARCHAR}, #{capital,jdbcType=VARCHAR}, 
+      #{capitalCurrency,jdbcType=VARCHAR}, #{licAreaCode,jdbcType=VARCHAR}, #{licArea,jdbcType=VARCHAR}, 
+      #{licAddr,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{merLegal,jdbcType=VARCHAR}, #{legalType,jdbcType=VARCHAR}, #{legalCode,jdbcType=VARCHAR}, 
+      #{legalValidStart,jdbcType=VARCHAR}, #{legalValidEnd,jdbcType=VARCHAR}, #{legalPhone,jdbcType=VARCHAR}, 
+      #{legalMobile,jdbcType=VARCHAR}, #{mccMainCategory,jdbcType=VARCHAR}, #{mccSubCategory,jdbcType=VARCHAR}, 
+      #{mccSubCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.MerchantLicInfo">
+    insert into merchant_lic_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mer != null">
+        mer,
+      </if>
+      <if test="merMode != null">
+        mer_mode,
+      </if>
+      <if test="merLic != null">
+        mer_lic,
+      </if>
+      <if test="licValidStart != null">
+        lic_valid_start,
+      </if>
+      <if test="licValidEnd != null">
+        lic_valid_end,
+      </if>
+      <if test="licName != null">
+        lic_name,
+      </if>
+      <if test="businScope != null">
+        busin_scope,
+      </if>
+      <if test="capital != null">
+        capital,
+      </if>
+      <if test="capitalCurrency != null">
+        capital_currency,
+      </if>
+      <if test="licAreaCode != null">
+        lic_area_code,
+      </if>
+      <if test="licArea != null">
+        lic_area,
+      </if>
+      <if test="licAddr != null">
+        lic_addr,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="merLegal != null">
+        mer_legal,
+      </if>
+      <if test="legalType != null">
+        legal_type,
+      </if>
+      <if test="legalCode != null">
+        legal_code,
+      </if>
+      <if test="legalValidStart != null">
+        legal_valid_start,
+      </if>
+      <if test="legalValidEnd != null">
+        legal_valid_end,
+      </if>
+      <if test="legalPhone != null">
+        legal_phone,
+      </if>
+      <if test="legalMobile != null">
+        legal_mobile,
+      </if>
+      <if test="mccMainCategory != null">
+        mcc_main_category,
+      </if>
+      <if test="mccSubCategory != null">
+        mcc_sub_category,
+      </if>
+      <if test="mccSubCode != null">
+        mcc_sub_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mer != null">
+        #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="merMode != null">
+        #{merMode,jdbcType=VARCHAR},
+      </if>
+      <if test="merLic != null">
+        #{merLic,jdbcType=VARCHAR},
+      </if>
+      <if test="licValidStart != null">
+        #{licValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="licValidEnd != null">
+        #{licValidEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="licName != null">
+        #{licName,jdbcType=VARCHAR},
+      </if>
+      <if test="businScope != null">
+        #{businScope,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        #{capital,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalCurrency != null">
+        #{capitalCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="licAreaCode != null">
+        #{licAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="licArea != null">
+        #{licArea,jdbcType=VARCHAR},
+      </if>
+      <if test="licAddr != null">
+        #{licAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="merLegal != null">
+        #{merLegal,jdbcType=VARCHAR},
+      </if>
+      <if test="legalType != null">
+        #{legalType,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCode != null">
+        #{legalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="legalValidStart != null">
+        #{legalValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="legalValidEnd != null">
+        #{legalValidEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPhone != null">
+        #{legalPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="legalMobile != null">
+        #{legalMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mccMainCategory != null">
+        #{mccMainCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="mccSubCategory != null">
+        #{mccSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="mccSubCode != null">
+        #{mccSubCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.MerchantLicInfo">
+    update merchant_lic_info
+    <set>
+      <if test="mer != null">
+        mer = #{mer,jdbcType=VARCHAR},
+      </if>
+      <if test="merMode != null">
+        mer_mode = #{merMode,jdbcType=VARCHAR},
+      </if>
+      <if test="merLic != null">
+        mer_lic = #{merLic,jdbcType=VARCHAR},
+      </if>
+      <if test="licValidStart != null">
+        lic_valid_start = #{licValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="licValidEnd != null">
+        lic_valid_end = #{licValidEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="licName != null">
+        lic_name = #{licName,jdbcType=VARCHAR},
+      </if>
+      <if test="businScope != null">
+        busin_scope = #{businScope,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        capital = #{capital,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalCurrency != null">
+        capital_currency = #{capitalCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="licAreaCode != null">
+        lic_area_code = #{licAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="licArea != null">
+        lic_area = #{licArea,jdbcType=VARCHAR},
+      </if>
+      <if test="licAddr != null">
+        lic_addr = #{licAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="merLegal != null">
+        mer_legal = #{merLegal,jdbcType=VARCHAR},
+      </if>
+      <if test="legalType != null">
+        legal_type = #{legalType,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCode != null">
+        legal_code = #{legalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="legalValidStart != null">
+        legal_valid_start = #{legalValidStart,jdbcType=VARCHAR},
+      </if>
+      <if test="legalValidEnd != null">
+        legal_valid_end = #{legalValidEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPhone != null">
+        legal_phone = #{legalPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="legalMobile != null">
+        legal_mobile = #{legalMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mccMainCategory != null">
+        mcc_main_category = #{mccMainCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="mccSubCategory != null">
+        mcc_sub_category = #{mccSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="mccSubCode != null">
+        mcc_sub_code = #{mccSubCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.MerchantLicInfo">
+    update merchant_lic_info
+    set mer = #{mer,jdbcType=VARCHAR},
+      mer_mode = #{merMode,jdbcType=VARCHAR},
+      mer_lic = #{merLic,jdbcType=VARCHAR},
+      lic_valid_start = #{licValidStart,jdbcType=VARCHAR},
+      lic_valid_end = #{licValidEnd,jdbcType=VARCHAR},
+      lic_name = #{licName,jdbcType=VARCHAR},
+      busin_scope = #{businScope,jdbcType=VARCHAR},
+      capital = #{capital,jdbcType=VARCHAR},
+      capital_currency = #{capitalCurrency,jdbcType=VARCHAR},
+      lic_area_code = #{licAreaCode,jdbcType=VARCHAR},
+      lic_area = #{licArea,jdbcType=VARCHAR},
+      lic_addr = #{licAddr,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      mer_legal = #{merLegal,jdbcType=VARCHAR},
+      legal_type = #{legalType,jdbcType=VARCHAR},
+      legal_code = #{legalCode,jdbcType=VARCHAR},
+      legal_valid_start = #{legalValidStart,jdbcType=VARCHAR},
+      legal_valid_end = #{legalValidEnd,jdbcType=VARCHAR},
+      legal_phone = #{legalPhone,jdbcType=VARCHAR},
+      legal_mobile = #{legalMobile,jdbcType=VARCHAR},
+      mcc_main_category = #{mccMainCategory,jdbcType=VARCHAR},
+      mcc_sub_category = #{mccSubCategory,jdbcType=VARCHAR},
+      mcc_sub_code = #{mccSubCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

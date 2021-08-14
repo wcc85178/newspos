@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerNoTransDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerNoTrans">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="security" jdbcType="VARCHAR" property="security" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="ref_agent_id" jdbcType="INTEGER" property="refAgentId" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="agent_name" jdbcType="VARCHAR" property="agentName" />
+    <result column="top_agent" jdbcType="VARCHAR" property="topAgent" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="man_id_card" jdbcType="VARCHAR" property="manIdCard" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="stand_time" jdbcType="BIGINT" property="standTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `security`, code, `name`, ref_agent_id, `type`, agent_name, top_agent, amount, 
+    man_id_card, `status`, stand_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_no_trans
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_no_trans
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerNoTrans">
+    insert into customer_no_trans (id, `security`, code, 
+      `name`, ref_agent_id, `type`, 
+      agent_name, top_agent, amount, 
+      man_id_card, `status`, stand_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{security,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{refAgentId,jdbcType=INTEGER}, #{type,jdbcType=SMALLINT}, 
+      #{agentName,jdbcType=VARCHAR}, #{topAgent,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE}, 
+      #{manIdCard,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{standTime,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerNoTrans">
+    insert into customer_no_trans
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="security != null">
+        `security`,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="agentName != null">
+        agent_name,
+      </if>
+      <if test="topAgent != null">
+        top_agent,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="manIdCard != null">
+        man_id_card,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="standTime != null">
+        stand_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="security != null">
+        #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="agentName != null">
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="topAgent != null">
+        #{topAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="manIdCard != null">
+        #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="standTime != null">
+        #{standTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerNoTrans">
+    update customer_no_trans
+    <set>
+      <if test="security != null">
+        `security` = #{security,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="refAgentId != null">
+        ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="agentName != null">
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="topAgent != null">
+        top_agent = #{topAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="manIdCard != null">
+        man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="standTime != null">
+        stand_time = #{standTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerNoTrans">
+    update customer_no_trans
+    set `security` = #{security,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      ref_agent_id = #{refAgentId,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=SMALLINT},
+      agent_name = #{agentName,jdbcType=VARCHAR},
+      top_agent = #{topAgent,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DOUBLE},
+      man_id_card = #{manIdCard,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=TINYINT},
+      stand_time = #{standTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

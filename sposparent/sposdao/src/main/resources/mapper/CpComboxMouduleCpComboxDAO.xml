@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CpComboxMouduleCpComboxDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CpComboxMouduleCpCombox">
+    <id column="cp_combox_id" jdbcType="INTEGER" property="cpComboxId" />
+    <result column="cp_combox_moudule_id" jdbcType="INTEGER" property="cpComboxMouduleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cp_combox_id, cp_combox_moudule_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_combox_moudule_cp_combox
+    where cp_combox_id = #{cpComboxId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cp_combox_moudule_cp_combox
+    where cp_combox_id = #{cpComboxId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CpComboxMouduleCpCombox">
+    insert into cp_combox_moudule_cp_combox (cp_combox_id, cp_combox_moudule_id)
+    values (#{cpComboxId,jdbcType=INTEGER}, #{cpComboxMouduleId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CpComboxMouduleCpCombox">
+    insert into cp_combox_moudule_cp_combox
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cpComboxId != null">
+        cp_combox_id,
+      </if>
+      <if test="cpComboxMouduleId != null">
+        cp_combox_moudule_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cpComboxId != null">
+        #{cpComboxId,jdbcType=INTEGER},
+      </if>
+      <if test="cpComboxMouduleId != null">
+        #{cpComboxMouduleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CpComboxMouduleCpCombox">
+    update cp_combox_moudule_cp_combox
+    <set>
+      <if test="cpComboxMouduleId != null">
+        cp_combox_moudule_id = #{cpComboxMouduleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cp_combox_id = #{cpComboxId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CpComboxMouduleCpCombox">
+    update cp_combox_moudule_cp_combox
+    set cp_combox_moudule_id = #{cpComboxMouduleId,jdbcType=INTEGER}
+    where cp_combox_id = #{cpComboxId,jdbcType=INTEGER}
+  </update>
+</mapper>

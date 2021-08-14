@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.CustomerSubscribeDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.CustomerSubscribe">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="openid" jdbcType="VARCHAR" property="openid" />
+    <id column="unionid" jdbcType="VARCHAR" property="unionid" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="headimgurl" jdbcType="VARCHAR" property="headimgurl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, openid, unionid, nickname, headimgurl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerSubscribeKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_subscribe
+    where id = #{id,jdbcType=INTEGER}
+      and openid = #{openid,jdbcType=VARCHAR}
+      and unionid = #{unionid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerSubscribeKey">
+    delete from customer_subscribe
+    where id = #{id,jdbcType=INTEGER}
+      and openid = #{openid,jdbcType=VARCHAR}
+      and unionid = #{unionid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.CustomerSubscribe">
+    insert into customer_subscribe (id, openid, unionid, 
+      nickname, headimgurl)
+    values (#{id,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{unionid,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.CustomerSubscribe">
+    insert into customer_subscribe
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="unionid != null">
+        unionid,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="headimgurl != null">
+        headimgurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null">
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null">
+        #{headimgurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.CustomerSubscribe">
+    update customer_subscribe
+    <set>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null">
+        headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and openid = #{openid,jdbcType=VARCHAR}
+      and unionid = #{unionid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.CustomerSubscribe">
+    update customer_subscribe
+    set nickname = #{nickname,jdbcType=VARCHAR},
+      headimgurl = #{headimgurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and openid = #{openid,jdbcType=VARCHAR}
+      and unionid = #{unionid,jdbcType=VARCHAR}
+  </update>
+</mapper>

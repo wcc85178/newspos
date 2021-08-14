@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyi.sposdao.dao.PosFreezeUploadRecordDAO">
+  <resultMap id="BaseResultMap" type="com.shiyi.sposdao.entity.PosFreezeUploadRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="upload_fileName" jdbcType="VARCHAR" property="uploadFilename" />
+    <result column="upload_success_count" jdbcType="INTEGER" property="uploadSuccessCount" />
+    <result column="upload_fail_count" jdbcType="INTEGER" property="uploadFailCount" />
+    <result column="exec_success_count" jdbcType="INTEGER" property="execSuccessCount" />
+    <result column="exec_fail_count" jdbcType="INTEGER" property="execFailCount" />
+    <result column="exec_type" jdbcType="INTEGER" property="execType" />
+    <result column="exec_time" jdbcType="TIMESTAMP" property="execTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="upload_userName" jdbcType="VARCHAR" property="uploadUsername" />
+    <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
+    <result column="ins_mark" jdbcType="VARCHAR" property="insMark" />
+    <result column="money_mark" jdbcType="VARCHAR" property="moneyMark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, upload_fileName, upload_success_count, upload_fail_count, exec_success_count, 
+    exec_fail_count, exec_type, exec_time, `status`, upload_userName, upload_time, ins_mark, 
+    money_mark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pos_freeze_upload_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pos_freeze_upload_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadRecord">
+    insert into pos_freeze_upload_record (id, upload_fileName, upload_success_count, 
+      upload_fail_count, exec_success_count, exec_fail_count, 
+      exec_type, exec_time, `status`, 
+      upload_userName, upload_time, ins_mark, 
+      money_mark)
+    values (#{id,jdbcType=INTEGER}, #{uploadFilename,jdbcType=VARCHAR}, #{uploadSuccessCount,jdbcType=INTEGER}, 
+      #{uploadFailCount,jdbcType=INTEGER}, #{execSuccessCount,jdbcType=INTEGER}, #{execFailCount,jdbcType=INTEGER}, 
+      #{execType,jdbcType=INTEGER}, #{execTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{uploadUsername,jdbcType=VARCHAR}, #{uploadTime,jdbcType=TIMESTAMP}, #{insMark,jdbcType=VARCHAR}, 
+      #{moneyMark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadRecord">
+    insert into pos_freeze_upload_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uploadFilename != null">
+        upload_fileName,
+      </if>
+      <if test="uploadSuccessCount != null">
+        upload_success_count,
+      </if>
+      <if test="uploadFailCount != null">
+        upload_fail_count,
+      </if>
+      <if test="execSuccessCount != null">
+        exec_success_count,
+      </if>
+      <if test="execFailCount != null">
+        exec_fail_count,
+      </if>
+      <if test="execType != null">
+        exec_type,
+      </if>
+      <if test="execTime != null">
+        exec_time,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="uploadUsername != null">
+        upload_userName,
+      </if>
+      <if test="uploadTime != null">
+        upload_time,
+      </if>
+      <if test="insMark != null">
+        ins_mark,
+      </if>
+      <if test="moneyMark != null">
+        money_mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uploadFilename != null">
+        #{uploadFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadSuccessCount != null">
+        #{uploadSuccessCount,jdbcType=INTEGER},
+      </if>
+      <if test="uploadFailCount != null">
+        #{uploadFailCount,jdbcType=INTEGER},
+      </if>
+      <if test="execSuccessCount != null">
+        #{execSuccessCount,jdbcType=INTEGER},
+      </if>
+      <if test="execFailCount != null">
+        #{execFailCount,jdbcType=INTEGER},
+      </if>
+      <if test="execType != null">
+        #{execType,jdbcType=INTEGER},
+      </if>
+      <if test="execTime != null">
+        #{execTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="uploadUsername != null">
+        #{uploadUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insMark != null">
+        #{insMark,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyMark != null">
+        #{moneyMark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadRecord">
+    update pos_freeze_upload_record
+    <set>
+      <if test="uploadFilename != null">
+        upload_fileName = #{uploadFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadSuccessCount != null">
+        upload_success_count = #{uploadSuccessCount,jdbcType=INTEGER},
+      </if>
+      <if test="uploadFailCount != null">
+        upload_fail_count = #{uploadFailCount,jdbcType=INTEGER},
+      </if>
+      <if test="execSuccessCount != null">
+        exec_success_count = #{execSuccessCount,jdbcType=INTEGER},
+      </if>
+      <if test="execFailCount != null">
+        exec_fail_count = #{execFailCount,jdbcType=INTEGER},
+      </if>
+      <if test="execType != null">
+        exec_type = #{execType,jdbcType=INTEGER},
+      </if>
+      <if test="execTime != null">
+        exec_time = #{execTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="uploadUsername != null">
+        upload_userName = #{uploadUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insMark != null">
+        ins_mark = #{insMark,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyMark != null">
+        money_mark = #{moneyMark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shiyi.sposdao.entity.PosFreezeUploadRecord">
+    update pos_freeze_upload_record
+    set upload_fileName = #{uploadFilename,jdbcType=VARCHAR},
+      upload_success_count = #{uploadSuccessCount,jdbcType=INTEGER},
+      upload_fail_count = #{uploadFailCount,jdbcType=INTEGER},
+      exec_success_count = #{execSuccessCount,jdbcType=INTEGER},
+      exec_fail_count = #{execFailCount,jdbcType=INTEGER},
+      exec_type = #{execType,jdbcType=INTEGER},
+      exec_time = #{execTime,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=INTEGER},
+      upload_userName = #{uploadUsername,jdbcType=VARCHAR},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      ins_mark = #{insMark,jdbcType=VARCHAR},
+      money_mark = #{moneyMark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
